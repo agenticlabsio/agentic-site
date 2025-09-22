@@ -209,7 +209,7 @@ export const GlowButton: React.FC<GlowButtonProps> = ({
       onMouseMove={handleMouseMove}
       className={`
         relative overflow-hidden px-8 py-4 rounded-full font-semibold text-lg
-        bg-gradient-to-r from-purple-600 to-pink-600 text-white
+        bg-blue-600 hover:bg-blue-700 text-white
         transition-all duration-300 transform hover:scale-105 hover:shadow-2xl
         ${pulseAnimation ? 'animate-pulse-glow' : ''}
         ${className}

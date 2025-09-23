@@ -47,9 +47,9 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   };
 
   const variantClasses = {
-    primary: 'bg-white text-black hover:shadow-2xl',
-    secondary: 'bg-transparent text-white border-2 border-white hover:bg-white hover:text-black',
-    ghost: 'bg-white/10 text-white backdrop-blur-sm hover:bg-white/20',
+    primary: 'bg-gray-900 text-white hover:shadow-2xl',
+    secondary: 'bg-transparent text-gray-900 border-2 border-gray-900 hover:bg-gray-900 hover:text-white',
+    ghost: 'bg-gray-100 text-gray-900 backdrop-blur-sm hover:bg-gray-200',
   };
 
   return (
@@ -135,8 +135,8 @@ export const LiquidButton: React.FC<LiquidButtonProps> = ({
         relative overflow-hidden px-8 py-4 rounded-full font-semibold text-lg
         transition-all duration-300 transform hover:scale-105
         ${isPrimary
-          ? 'bg-white text-black hover:shadow-xl'
-          : 'bg-transparent text-white border-2 border-white hover:bg-white/10'
+          ? 'bg-gray-900 text-white hover:shadow-xl'
+          : 'bg-transparent text-gray-900 border-2 border-gray-900 hover:bg-gray-100'
         }
         ${isClicked ? 'scale-95' : ''}
         ${className}
@@ -293,13 +293,13 @@ export const ElectricButton: React.FC<ElectricButtonProps> = ({
         relative overflow-visible px-8 py-4 rounded-full font-semibold text-lg
         transition-all duration-300 transform hover:scale-105
         ${isPrimary
-          ? 'bg-black text-white border-2'
-          : 'bg-transparent text-white border-2'
+          ? 'bg-white text-gray-900 border-2 border-gray-900'
+          : 'bg-transparent text-gray-900 border-2'
         }
         ${className}
       `}
       style={{
-        borderColor: isHovered ? electricColor : 'white',
+        borderColor: isHovered ? electricColor : '#111827',
         boxShadow: isHovered ? `0 0 20px ${electricColor}` : 'none',
       }}
     >

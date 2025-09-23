@@ -188,8 +188,8 @@ export const ShimmerButton: React.FC<ShimmerButtonProps> = ({
         relative overflow-hidden px-8 py-4 rounded-full font-semibold text-lg
         transition-all duration-300 transform hover:scale-105
         ${isPrimary
-          ? 'bg-white text-black'
-          : 'bg-transparent text-white border-2 border-white hover:bg-white hover:text-black'
+          ? 'bg-gray-900 text-white'
+          : 'bg-transparent text-gray-900 border-2 border-gray-900 hover:bg-gray-900 hover:text-white'
         }
         ${className}
       `}

@@ -33,7 +33,7 @@ export default function RootPage() {
       {/* Background Layer */}
       <div className="fixed inset-0 -z-10">
         <LiquidEther
-          colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+          colors={['#E0E7FF', '#FEE2F8', '#F3E8FF']}
           mouseForce={isMobile ? 15 : 20}
           cursorSize={isMobile ? 80 : 100}
           isViscous={false}
@@ -52,10 +52,10 @@ export default function RootPage() {
       </div>
 
       {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 bg-black/20 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div className="flex justify-between items-center">
           {/* Logo on the left */}
-          <div className="text-xl sm:text-2xl font-bold text-white">
+          <div className="text-xl sm:text-2xl font-bold text-gray-900">
             Agentic Labs
           </div>
 
@@ -86,7 +86,7 @@ export default function RootPage() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white p-2"
+            className="lg:hidden text-gray-900 p-2"
             aria-label="Toggle menu"
           >
             <svg
@@ -109,13 +109,13 @@ export default function RootPage() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 bg-black/20 backdrop-blur-md rounded-lg border border-white/10">
+          <div className="lg:hidden mt-4 py-4 bg-white/90 backdrop-blur-md rounded-lg border border-gray-200">
             <nav className="flex flex-col space-y-2 px-4">
               {items.map((item, index) => (
                 <a
                   key={index}
                   href={item.href}
-                  className="text-white py-2 px-4 rounded hover:bg-white/10 transition-colors"
+                  className="text-gray-900 py-2 px-4 rounded hover:bg-gray-100 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
@@ -142,28 +142,28 @@ export default function RootPage() {
         <main className="text-center max-w-7xl mx-auto w-full">
           {/* Security Badge */}
           <FadeInText delay={0} duration={0.6} direction="down">
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-gray-100 backdrop-blur-sm border border-gray-200">
               <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2L3.5 7v6c0 5.55 3.84 10.74 8.5 12 4.66-1.26 8.5-6.45 8.5-12V7L12 2zm0 3.9l5 2.5V13c0 3.53-2.16 6.82-5 8.47-2.84-1.65-5-4.94-5-8.47V8.4l5-2.5z"/>
               </svg>
-              <span className="text-sm font-medium text-white/80">SOC 2 Ready • Enterprise Security</span>
+              <span className="text-sm font-medium text-gray-600">SOC 2 Ready • Enterprise Security</span>
             </div>
           </FadeInText>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
             <FadeInText delay={0.2} duration={0.8} direction="up">
-              <div className="text-white">Build Agentic Products</div>
+              <div className="text-gray-900">Build Agentic Products</div>
             </FadeInText>
             <FadeInText delay={0.4} duration={0.8} direction="up">
-              <div className="text-blue-400">that Move the Business</div>
+              <div className="text-blue-600">that Move the Business</div>
             </FadeInText>
           </h1>
 
           {/* Subheadline */}
           <FadeInText delay={0.6} duration={0.8} direction="up">
-            <p className="text-lg sm:text-xl md:text-2xl text-white/70 max-w-4xl mx-auto mb-12">
-              From roadmap to revenue: AI agents deployed in <span className="text-white font-semibold">weeks, not quarters</span>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12">
+              From roadmap to revenue: AI agents deployed in <span className="text-gray-900 font-semibold">weeks, not quarters</span>
             </p>
           </FadeInText>
 
@@ -172,7 +172,7 @@ export default function RootPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
               <button
                 onClick={() => console.log('Explore Solutions')}
-                className="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
               >
                 Explore Solutions
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -182,7 +182,7 @@ export default function RootPage() {
 
               <button
                 onClick={() => console.log('Book a Strategy Call')}
-                className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold text-lg transition-all duration-300"
+                className="px-8 py-4 bg-gray-100 hover:bg-gray-200 backdrop-blur-sm border border-gray-300 text-gray-900 rounded-full font-semibold text-lg transition-all duration-300"
               >
                 Book a Strategy Call
               </button>
@@ -192,21 +192,21 @@ export default function RootPage() {
           {/* Statistics Cards */}
           <FadeInText delay={1} duration={0.8} direction="up">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300">
+              <div className="bg-gray-50 backdrop-blur-sm border border-gray-200 rounded-xl p-4 hover:bg-gray-100 transition-all duration-300">
                 <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1">42%</div>
-                <div className="text-xs text-white/60">Faster launches</div>
+                <div className="text-xs text-gray-600">Faster launches</div>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300">
+              <div className="bg-gray-50 backdrop-blur-sm border border-gray-200 rounded-xl p-4 hover:bg-gray-100 transition-all duration-300">
                 <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1">30%</div>
-                <div className="text-xs text-white/60">Less rework</div>
+                <div className="text-xs text-gray-600">Less rework</div>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300">
+              <div className="bg-gray-50 backdrop-blur-sm border border-gray-200 rounded-xl p-4 hover:bg-gray-100 transition-all duration-300">
                 <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1">+18</div>
-                <div className="text-xs text-white/60">NPS uplift</div>
+                <div className="text-xs text-gray-600">NPS uplift</div>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300">
+              <div className="bg-gray-50 backdrop-blur-sm border border-gray-200 rounded-xl p-4 hover:bg-gray-100 transition-all duration-300">
                 <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1">Weeks</div>
-                <div className="text-xs text-white/60">not quarters</div>
+                <div className="text-xs text-gray-600">not quarters</div>
               </div>
             </div>
           </FadeInText>

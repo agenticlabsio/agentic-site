@@ -164,11 +164,11 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             z-index: 1;
           }
           .effect.text {
-            color: white;
+            color: #111827;
             transition: color 0.3s ease;
           }
           .effect.text.active {
-            color: black;
+            color: white;
           }
           .effect.filter {
             filter: blur(7px) contrast(100) blur(0);
@@ -185,7 +185,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             content: "";
             position: absolute;
             inset: 0;
-            background: white;
+            background: #111827;
             transform: scale(0);
             opacity: 0;
             z-index: -1;
@@ -268,7 +268,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             }
           }
           li.active {
-            color: black;
+            color: white;
             text-shadow: none;
           }
           li.active::after {
@@ -280,7 +280,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             position: absolute;
             inset: 0;
             border-radius: 8px;
-            background: white;
+            background: #111827;
             opacity: 0;
             transform: scale(0);
             transition: all 0.3s ease;
@@ -294,14 +294,14 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
                         ref={navRef}
                         className="flex gap-8 list-none p-0 px-4 m-0 relative z-[3]"
                         style={{
-                            color: 'white',
-                            textShadow: '0 1px 1px hsl(205deg 30% 10% / 0.2)'
+                            color: '#111827',
+                            textShadow: '0 1px 1px hsl(205deg 30% 70% / 0.2)'
                         }}
                     >
                         {items.map((item, index) => (
                             <li
                                 key={index}
-                                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white ${activeIndex === index ? 'active' : ''
+                                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-gray-900 ${activeIndex === index ? 'active' : ''
                                     }`}
                             >
                                 <a

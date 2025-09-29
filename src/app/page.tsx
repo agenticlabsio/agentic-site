@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import LiquidEther from '@/components/LiquidEther';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
+import Accordion from '@/components/Accordion';
 import { SplitText, FadeInText, GlowText, WordReveal } from '@/components/TextAnimations';
 import { MagneticButton, LiquidButton, GlowButton, ElectricButton } from '@/components/AnimatedButtons';
 
@@ -137,14 +138,14 @@ export default function RootPage() {
         )}
       </header>
 
-      {/* Content Layer */}
+      {/* Hero Section */}
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-8 pt-20 sm:pt-24">
         <main className="text-center max-w-7xl mx-auto w-full">
           {/* Security Badge */}
           <FadeInText delay={0} duration={0.6} direction="down">
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-gray-100 backdrop-blur-sm border border-gray-200">
               <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L3.5 7v6c0 5.55 3.84 10.74 8.5 12 4.66-1.26 8.5-6.45 8.5-12V7L12 2zm0 3.9l5 2.5V13c0 3.53-2.16 6.82-5 8.47-2.84-1.65-5-4.94-5-8.47V8.4l5-2.5z"/>
+                <path d="M12 2L3.5 7v6c0 5.55 3.84 10.74 8.5 12 4.66-1.26 8.5-6.45 8.5-12V7L12 2zm0 3.9l5 2.5V13c0 3.53-2.16 6.82-5 8.47-2.84-1.65-5-4.94-5-8.47V8.4l5-2.5z" />
               </svg>
               <span className="text-sm font-medium text-gray-600">SOC 2 Ready • Enterprise Security</span>
             </div>
@@ -212,6 +213,224 @@ export default function RootPage() {
           </FadeInText>
         </main>
       </div>
+
+      {/* Industries We Serve Section */}
+      <section className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+        <div className="max-w-7xl mx-auto w-full">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
+            <SplitText
+              text="Industries we serve"
+              className="inline-block"
+              delay={0}
+            />
+          </h2>
+
+          <FadeInText delay={0.2} duration={0.6} direction="up">
+            <p className="text-lg text-gray-600 text-center mb-16">
+              Practical, governed AI tailored to your domain and tech stack.
+            </p>
+          </FadeInText>
+
+          {/* Industry Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Healthcare */}
+            <FadeInText delay={0.3} duration={0.8} direction="up">
+              <div className="group flex flex-col items-center text-center space-y-4 p-6 rounded-2xl hover:bg-white/50 transition-all duration-300">
+                <div className="w-20 h-20 bg-gradient-to-br from-red-400 to-red-500 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 8h-2v3h-3v2h3v3h2v-3h3v-2h-3zM4 8h8v2H4zM4 13h5v2H4zM4 18h5v2H4z"/>
+                    <path d="M20 3H4C2.9 3 2 3.9 2 5v14c0 1.1.9 2 2 2h8.5c-.3-.6-.5-1.3-.5-2H4V5h16v7c.7 0 1.4.2 2 .5V5c0-1.1-.9-2-2-2z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Healthcare</h3>
+                <p className="text-gray-600 text-sm">
+                  Smarter care, automated workflows, better outcomes.
+                </p>
+              </div>
+            </FadeInText>
+
+            {/* Software & Platforms */}
+            <FadeInText delay={0.4} duration={0.8} direction="up">
+              <div className="group flex flex-col items-center text-center space-y-4 p-6 rounded-2xl hover:bg-white/50 transition-all duration-300">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Software & Platforms</h3>
+                <p className="text-gray-600 text-sm">
+                  Scalable AI for automation, analytics, and growth.
+                </p>
+              </div>
+            </FadeInText>
+
+            {/* Retail */}
+            <FadeInText delay={0.5} duration={0.8} direction="up">
+              <div className="group flex flex-col items-center text-center space-y-4 p-6 rounded-2xl hover:bg-white/50 transition-all duration-300">
+                <div className="w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-500 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Retail</h3>
+                <p className="text-gray-600 text-sm">
+                  AI-driven demand forecasting & personalized shopping.
+                </p>
+              </div>
+            </FadeInText>
+
+            {/* Manufacturing & Industry 4.0 */}
+            <FadeInText delay={0.6} duration={0.8} direction="up">
+              <div className="group flex flex-col items-center text-center space-y-4 p-6 rounded-2xl hover:bg-white/50 transition-all duration-300">
+                <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22 9h-4.79l-4.38-6.56c-.19-.28-.51-.42-.83-.42s-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1zM12 4.8L14.8 9H9.2L12 4.8zM18.5 19l-12.99.01L3.31 11H20.7l-2.2 8z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Manufacturing & Industry 4.0</h3>
+                <p className="text-gray-600 text-sm">
+                  Optimized production, predictive maintenance, and AI automation.
+                </p>
+              </div>
+            </FadeInText>
+
+            {/* Banking & Insurance */}
+            <FadeInText delay={0.7} duration={0.8} direction="up">
+              <div className="group flex flex-col items-center text-center space-y-4 p-6 rounded-2xl hover:bg-white/50 transition-all duration-300">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-500 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Banking & Insurance</h3>
+                <p className="text-gray-600 text-sm">
+                  Fraud detection, compliance, and AI-driven insights.
+                </p>
+              </div>
+            </FadeInText>
+
+            {/* Supply Chain & Logistics */}
+            <FadeInText delay={0.8} duration={0.8} direction="up">
+              <div className="group flex flex-col items-center text-center space-y-4 p-6 rounded-2xl hover:bg-white/50 transition-all duration-300">
+                <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Supply Chain & Logistics</h3>
+                <p className="text-gray-600 text-sm">
+                  AI-powered inventory, fleet, and supplier intelligence.
+                </p>
+              </div>
+            </FadeInText>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Trust Us Section */}
+      <section className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+        <div className="max-w-7xl mx-auto w-full">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 text-gray-900">
+            <SplitText
+              text="Why Trust Us"
+              className="inline-block"
+              delay={0}
+            />
+          </h2>
+
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-4 text-blue-600">
+            <WordReveal
+              words={["Your", "Vision,", "Our", "Expertise—Delivered"]}
+              className="justify-center"
+              delay={0.3}
+              stagger={0.08}
+            />
+          </h3>
+
+          <FadeInText delay={0.4} duration={0.8} direction="up">
+            <p className="text-lg text-gray-600 text-center max-w-4xl mx-auto mb-16">
+              We've delivered enterprise-grade AI for Fortune 500s and high-growth startups alike.
+              Our industry-specific blueprints, security-first delivery, and production SLAs turn
+              pilots into measurable outcomes—cost takeout, cycle-time reduction, and new revenue—on
+              timelines that match the business.
+            </p>
+          </FadeInText>
+
+          {/* Trust Metrics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <FadeInText delay={0.6} duration={0.8} direction="up">
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col justify-center">
+                <div className="text-4xl sm:text-5xl font-bold text-blue-600 mb-2">100+</div>
+                <div className="text-sm sm:text-base text-gray-600">Hours Saved</div>
+              </div>
+            </FadeInText>
+
+            <FadeInText delay={0.7} duration={0.8} direction="up">
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col justify-center">
+                <div className="text-4xl sm:text-5xl font-bold text-blue-600 mb-2">20+</div>
+                <div className="text-sm sm:text-base text-gray-600 whitespace-nowrap">Years of Experience</div>
+              </div>
+            </FadeInText>
+
+            <FadeInText delay={0.8} duration={0.8} direction="up">
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col justify-center">
+                <div className="text-4xl sm:text-5xl font-bold text-blue-600 mb-2">50+</div>
+                <div className="text-sm sm:text-base text-gray-600">AI Solutions</div>
+              </div>
+            </FadeInText>
+
+            <FadeInText delay={0.9} duration={0.8} direction="up">
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col justify-center">
+                <div className="text-4xl sm:text-5xl font-bold text-blue-600 mb-2">10+</div>
+                <div className="text-sm sm:text-base text-gray-600">
+                  <span className="block sm:hidden">Products Delivered</span>
+                  <span className="hidden sm:block">Software Products<br />Delivered</span>
+                </div>
+              </div>
+            </FadeInText>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-b from-transparent to-gray-50/50">
+        <div className="max-w-4xl mx-auto w-full">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
+            <SplitText
+              text="Frequently Asked Questions"
+              className="inline-block"
+              delay={0}
+            />
+          </h2>
+
+          <FadeInText delay={0.2} duration={0.6} direction="up">
+            <p className="text-lg text-gray-600 text-center mb-12">
+              Got questions? We've got answers.
+            </p>
+          </FadeInText>
+
+          <Accordion
+            items={[
+              {
+                question: "What is Agentic Labs?",
+                answer: "Agentic Labs specializes in providing customized AI solutions that help businesses drive efficiency, agility, and measurable results. We help enterprises and startups optimize operations, reduce complexity, and stay ahead of market disruptions with AI-driven innovations."
+              },
+              {
+                question: "How can AI help my business?",
+                answer: "AI can drive significant improvements in efficiency, streamline operations, and enhance decision-making. At Agentic Labs, we offer AI solutions tailored to your business needs, from automation and decision intelligence to predictive insights, helping you scale faster and smarter."
+              },
+              {
+                question: "Why should I trust Agentic Labs with my AI needs?",
+                answer: "With over a decade of AI expertise, we have delivered more than 50 solutions to enterprises and startups. Our industry-specific approach ensures that our solutions are not only relevant but also highly impactful. Our focus on measurable outcomes and continuous support ensures that your business can fully leverage the power of AI."
+              },
+              {
+                question: "What type of businesses can benefit from Agentic Labs' AI solutions?",
+                answer: "Our AI solutions are suitable for businesses of all sizes, ranging from small startups to large enterprises. We tailor our services to meet the specific needs of your industry and company, ensuring that we address your unique business challenges."
+              }
+            ]}
+          />
+        </div>
+      </section>
 
       {/* Footer */}
       <Footer />

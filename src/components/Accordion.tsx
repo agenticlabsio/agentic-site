@@ -14,7 +14,7 @@ interface AccordionProps {
 }
 
 const Accordion: React.FC<AccordionProps> = ({ items, className = '' }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleItem = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -47,16 +47,14 @@ const Accordion: React.FC<AccordionProps> = ({ items, className = '' }) => {
       {items.map((item, index) => (
         <FadeInText key={index} delay={index * 0.1} duration={0.6} direction="up">
           <div
-            className={`group relative bg-white/90 backdrop-blur-sm border-2 transition-all duration-500 ${
-              openIndex === index
-                ? 'border-blue-400 shadow-2xl scale-[1.02] rounded-3xl'
-                : 'border-gray-200 hover:border-gray-300 rounded-2xl hover:shadow-xl'
-            }`}
+            className={`group relative bg-white/90 backdrop-blur-sm border-2 transition-all duration-500 ${openIndex === index
+              ? 'border-blue-400 shadow-2xl scale-[1.02] rounded-3xl'
+              : 'border-gray-200 hover:border-gray-300 rounded-2xl hover:shadow-xl'
+              }`}
           >
             {/* Gradient overlay on hover */}
-            <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl transition-opacity duration-300 ${
-              openIndex === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-            }`} />
+            <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl transition-opacity duration-300 ${openIndex === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+              }`} />
 
             <button
               onClick={() => toggleItem(index)}
@@ -64,27 +62,24 @@ const Accordion: React.FC<AccordionProps> = ({ items, className = '' }) => {
               aria-expanded={openIndex === index}
             >
               {/* Icon */}
-              <div className={`flex-shrink-0 p-3 rounded-xl transition-all duration-300 ${
-                openIndex === index
-                  ? 'bg-gradient-to-br from-blue-500 to-purple-500 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-600 group-hover:bg-gray-200'
-              }`}>
+              <div className={`flex-shrink-0 p-3 rounded-xl transition-all duration-300 ${openIndex === index
+                ? 'bg-gradient-to-br from-blue-500 to-purple-500 text-white shadow-lg'
+                : 'bg-gray-100 text-gray-600 group-hover:bg-gray-200'
+                }`}>
                 {getIcon(index)}
               </div>
 
               {/* Question */}
-              <span className={`flex-grow text-lg font-semibold transition-colors duration-300 ${
-                openIndex === index ? 'text-gray-900' : 'text-gray-700'
-              }`}>
+              <span className={`flex-grow text-lg font-semibold transition-colors duration-300 ${openIndex === index ? 'text-gray-900' : 'text-gray-700'
+                }`}>
                 {item.question}
               </span>
 
               {/* Expand/Collapse indicator */}
-              <div className={`flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
-                openIndex === index
-                  ? 'bg-gradient-to-br from-blue-500 to-purple-500 text-white rotate-180'
-                  : 'bg-gray-100 text-gray-500 group-hover:bg-gray-200'
-              }`}>
+              <div className={`flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${openIndex === index
+                ? 'bg-gradient-to-br from-blue-500 to-purple-500 text-white rotate-180'
+                : 'bg-gray-100 text-gray-500 group-hover:bg-gray-200'
+                }`}>
                 <svg
                   className="w-5 h-5 transition-transform duration-500"
                   fill="none"
@@ -103,9 +98,8 @@ const Accordion: React.FC<AccordionProps> = ({ items, className = '' }) => {
 
             {/* Answer */}
             <div
-              className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                openIndex === index ? 'max-h-96' : 'max-h-0'
-              }`}
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-96' : 'max-h-0'
+                }`}
             >
               <div className="relative px-6 pb-6 pl-[88px]">
                 <div className="text-gray-600 leading-relaxed">

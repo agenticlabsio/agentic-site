@@ -13,6 +13,7 @@ import WhyTrustUsSection from '@/components/WhyTrustUsSection';
 import FAQSection from '@/components/FAQSection';
 import ContactFormSection from '@/components/ContactFormSection';
 import { LiquidButton, GlowButton } from '@/components/AnimatedButtons';
+import PartnersDropdown from '@/components/PartnersDropdown';
 
 export default function RootPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,7 +33,7 @@ export default function RootPage() {
     { label: "Home", href: "#" },
     { label: "Product", href: "#" },
     { label: "Solutions", href: "#" },
-    { label: "Partners", href: "#" },
+    { label: "Partners", dropdown: <PartnersDropdown /> },
     { label: "Case Studies", href: "#" },
   ];
 

@@ -18,6 +18,7 @@ import PartnersDropdown from '@/components/PartnersDropdown';
 export default function RootPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isPartnersOpen, setIsPartnersOpen] = useState(false);
 
   // Check if mobile on mount and resize
   useEffect(() => {
@@ -51,9 +52,9 @@ export default function RootPage() {
           iterationsPoisson={isMobile ? 16 : 32}
           resolution={isMobile ? 0.3 : 0.5}
           isBounce={false}
-          autoDemo={true}
-          autoSpeed={isMobile ? 0.3 : 0.5}
-          autoIntensity={isMobile ? 1.5 : 2.2}
+          autoDemo={false}
+          autoSpeed={isMobile ? 0.1 : 0.15}
+          autoIntensity={isMobile ? 1.0 : 1.5}
           takeoverDuration={0.25}
           autoResumeDelay={isMobile ? 2000 : 3000}
           autoRampDuration={0.6}
@@ -64,8 +65,12 @@ export default function RootPage() {
       <header className="fixed top-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div className="flex justify-between items-center">
           {/* Logo on the left */}
-          <div className="text-xl sm:text-2xl font-bold text-gray-900">
-            Agentic Labs
+          <div className="flex items-center">
+            <img
+              src="/agentic-site-logo.png"
+              alt="Agentic Labs"
+              className="h-12 sm:h-14 md:h-16 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation menu and button on the right */}
@@ -120,16 +125,76 @@ export default function RootPage() {
         {isMobileMenuOpen && (
           <div className="lg:hidden mt-4 py-4 bg-white/90 backdrop-blur-md rounded-lg border border-gray-200">
             <nav className="flex flex-col space-y-2 px-4">
-              {items.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  className="text-gray-900 py-2 px-4 rounded hover:bg-gray-100 transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
+              {items.map((item, index) => {
+                if (item.dropdown) {
+                  // Handle Partners dropdown
+                  return (
+                    <div key={index}>
+                      <button
+                        onClick={() => setIsPartnersOpen(!isPartnersOpen)}
+                        className="w-full text-left text-gray-900 py-2 px-4 rounded hover:bg-gray-100 transition-colors flex items-center justify-between"
+                      >
+                        <span>{item.label}</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 ${isPartnersOpen ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {isPartnersOpen && (
+                        <div className="ml-4 mt-2 space-y-2">
+                          <a
+                            href="#partner-program"
+                            className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsPartnersOpen(false);
+                            }}
+                          >
+                            <div className="font-semibold">Partner Program</div>
+                            <div className="text-xs text-gray-500">Explore our partner program</div>
+                          </a>
+                          <a
+                            href="#become-partner"
+                            className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsPartnersOpen(false);
+                            }}
+                          >
+                            <div className="font-semibold">Become a Partner</div>
+                            <div className="text-xs text-gray-500">Join our partner ecosystem</div>
+                          </a>
+                          <a
+                            href="#find-partner"
+                            className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsPartnersOpen(false);
+                            }}
+                          >
+                            <div className="font-semibold">Find a Partner</div>
+                            <div className="text-xs text-gray-500">Connect with a partner</div>
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+                return (
+                  <a
+                    key={index}
+                    href={item.href}
+                    className="text-gray-900 py-2 px-4 rounded hover:bg-gray-100 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
               <LiquidButton
                 variant="primary"
                 liquidColor="#5227FF"

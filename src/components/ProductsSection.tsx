@@ -60,15 +60,15 @@ export default function ProductsSection() {
           </FadeInText>
 
           <FadeInText delay={0.3} duration={0.8} direction="up">
-            <button
-              onClick={() => console.log('View all products')}
-              className="text-cyan-500 hover:text-cyan-600 font-semibold inline-flex items-center gap-2 transition-colors duration-300"
+            <a
+              href="/products#products-list"
+              className="text-blue-600 hover:text-cyan-600 font-semibold inline-flex items-center gap-2 transition-colors duration-300"
             >
               View all products
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </button>
+            </a>
           </FadeInText>
         </div>
 

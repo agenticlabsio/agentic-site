@@ -3,7 +3,8 @@ import React, { useRef, useEffect, useState } from 'react';
 
 interface GooeyNavItem {
     label: string;
-    href: string;
+    href?: string;
+    dropdown?: React.ReactNode;
 }
 
 export interface GooeyNavProps {
@@ -84,7 +85,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             }, 30);
         }
     };
-    const updateEffectPosition = (element: HTMLElement) => {
+    const updateEffectPosition = (element: HTMLElement, customText?: string) => {
         if (!containerRef.current || !filterRef.current || !textRef.current) return;
         const containerRect = containerRef.current.getBoundingClientRect();
         const pos = element.getBoundingClientRect();
@@ -96,10 +97,27 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         };
         Object.assign(filterRef.current.style, styles);
         Object.assign(textRef.current.style, styles);
-        textRef.current.innerText = element.innerText;
+
+        // Always use customText if provided
+        if (customText) {
+            textRef.current.innerText = customText;
+        } else {
+            // Get text from anchor element
+            const anchor = element.querySelector('a');
+            const dataText = anchor?.getAttribute('data-nav-text');
+
+            if (dataText) {
+                textRef.current.innerText = dataText;
+            } else {
+                // Get only the first span's text content
+                const span = anchor?.querySelector('span');
+                textRef.current.innerText = span?.textContent?.trim() || anchor?.textContent?.trim() || element.innerText;
+            }
+        }
     };
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
-        const liEl = e.currentTarget;
+        const liEl = e.currentTarget.closest('li') as HTMLElement;
+        if (!liEl) return;
         if (activeIndex === index) return;
         setActiveIndex(index);
         updateEffectPosition(liEl);
@@ -286,6 +304,10 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             transition: all 0.3s ease;
             z-index: -1;
           }
+          li.active > div > a,
+          li.active > a {
+            color: transparent;
+          }
         `}
             </style>
             <div className="relative" ref={containerRef}>
@@ -304,14 +326,38 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
                                 className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-gray-900 ${activeIndex === index ? 'active' : ''
                                     }`}
                             >
-                                <a
-                                    href={item.href}
-                                    onClick={e => handleClick(e, index)}
-                                    onKeyDown={e => handleKeyDown(e, index)}
-                                    className="outline-none py-[0.6em] px-[1em] inline-block"
-                                >
-                                    {item.label}
-                                </a>
+                                {item.dropdown ? (
+                                    React.cloneElement(item.dropdown as React.ReactElement, {
+                                        onOptionClick: () => {
+                                            const liEl = navRef.current?.querySelectorAll('li')[index] as HTMLElement;
+                                            if (liEl) {
+                                                setActiveIndex(index);
+                                                updateEffectPosition(liEl, 'Partners');
+                                                if (filterRef.current) {
+                                                    const particles = filterRef.current.querySelectorAll('.particle');
+                                                    particles.forEach(p => filterRef.current!.removeChild(p));
+                                                }
+                                                if (textRef.current) {
+                                                    textRef.current.classList.remove('active');
+                                                    void textRef.current.offsetWidth;
+                                                    textRef.current.classList.add('active');
+                                                }
+                                                if (filterRef.current) {
+                                                    makeParticles(filterRef.current);
+                                                }
+                                            }
+                                        }
+                                    })
+                                ) : (
+                                    <a
+                                        href={item.href}
+                                        onClick={e => handleClick(e, index)}
+                                        onKeyDown={e => handleKeyDown(e, index)}
+                                        className="outline-none py-[0.6em] px-[1em] inline-block"
+                                    >
+                                        {item.label}
+                                    </a>
+                                )}
                             </li>
                         ))}
                     </ul>

@@ -41,7 +41,7 @@ const partnerOptions: PartnerOption[] = [
   }
 ];
 
-interface PartnersDropdownProps {
+export interface PartnersDropdownProps {
   onToggle?: (isOpen: boolean) => void;
   onOptionClick?: () => void;
 }

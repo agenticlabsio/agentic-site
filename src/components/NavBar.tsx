@@ -1,10 +1,11 @@
 "use client";
 import React, { useRef, useEffect, useState } from 'react';
+import type { PartnersDropdownProps } from './PartnersDropdown';
 
 interface GooeyNavItem {
     label: string;
     href?: string;
-    dropdown?: React.ReactNode;
+    dropdown?: React.ReactElement<PartnersDropdownProps>;
 }
 
 export interface GooeyNavProps {
@@ -327,7 +328,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
                                     }`}
                             >
                                 {item.dropdown ? (
-                                    React.cloneElement(item.dropdown as React.ReactElement, {
+                                    React.cloneElement<PartnersDropdownProps>(item.dropdown, {
                                         onOptionClick: () => {
                                             const liEl = navRef.current?.querySelectorAll('li')[index] as HTMLElement;
                                             if (liEl) {

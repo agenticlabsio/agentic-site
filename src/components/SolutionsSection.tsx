@@ -62,7 +62,7 @@ export default function SolutionsSection() {
           <FadeInText delay={0.3} duration={0.8} direction="up">
             <button
               onClick={() => console.log('View all solutions')}
-              className="text-cyan-500 hover:text-cyan-600 font-semibold inline-flex items-center gap-2 transition-colors duration-300"
+              className="text-blue-600 hover:text-cyan-600 font-semibold inline-flex items-center gap-2 transition-colors duration-300"
             >
               View all solutions
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

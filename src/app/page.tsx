@@ -30,8 +30,8 @@ export default function RootPage() {
   }, []);
 
   const items = [
-    { label: "Home", href: "#" },
-    { label: "Product", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Product", href: "/products" },
     { label: "Solutions", href: "#" },
     { label: "Partners", dropdown: <PartnersDropdown /> },
     { label: "Case Studies", href: "#" },

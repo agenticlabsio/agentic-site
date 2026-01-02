@@ -36,10 +36,10 @@ export default function ProductsPage() {
 
   const items = [
     { label: "Home", href: "/" },
-    { label: "Product", href: "/products" },
-    { label: "Solutions", href: "#" },
-    { label: "Partners", dropdown: <PartnersDropdown /> },
-    { label: "Case Studies", href: "#" },
+    { label: "Products", href: "/products" },
+    { label: "Solutions", href: "#" }
+    // { label: "Partners", dropdown: <PartnersDropdown /> },
+    // { label: "Case Studies", href: "#" },
   ];
 
   const features = [
@@ -324,64 +324,64 @@ export default function ProductsPage() {
           <div className="lg:hidden mt-4 py-4 bg-white/90 backdrop-blur-md rounded-lg border border-gray-200">
             <nav className="flex flex-col space-y-2 px-4">
               {items.map((item, index) => {
-                if (item.dropdown) {
-                  // Handle Partners dropdown
-                  return (
-                    <div key={index}>
-                      <button
-                        onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                        className="w-full text-left text-gray-900 py-2 px-4 rounded hover:bg-gray-100 transition-colors flex items-center justify-between"
-                      >
-                        <span>{item.label}</span>
-                        <svg
-                          className={`w-4 h-4 transition-transform duration-200 ${isPartnersOpen ? 'rotate-180' : ''}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                      {isPartnersOpen && (
-                        <div className="ml-4 mt-2 space-y-2">
-                          <a
-                            href="#partner-program"
-                            className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
-                            onClick={() => {
-                              setIsMobileMenuOpen(false);
-                              setIsPartnersOpen(false);
-                            }}
-                          >
-                            <div className="font-semibold">Partner Program</div>
-                            <div className="text-xs text-gray-500">Explore our partner program</div>
-                          </a>
-                          <a
-                            href="#become-partner"
-                            className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
-                            onClick={() => {
-                              setIsMobileMenuOpen(false);
-                              setIsPartnersOpen(false);
-                            }}
-                          >
-                            <div className="font-semibold">Become a Partner</div>
-                            <div className="text-xs text-gray-500">Join our partner ecosystem</div>
-                          </a>
-                          <a
-                            href="#find-partner"
-                            className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
-                            onClick={() => {
-                              setIsMobileMenuOpen(false);
-                              setIsPartnersOpen(false);
-                            }}
-                          >
-                            <div className="font-semibold">Find a Partner</div>
-                            <div className="text-xs text-gray-500">Connect with a partner</div>
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  );
-                }
+                // if (item.dropdown) {
+                //   // Handle Partners dropdown
+                //   return (
+                //     <div key={index}>
+                //       <button
+                //         onClick={() => setIsPartnersOpen(!isPartnersOpen)}
+                //         className="w-full text-left text-gray-900 py-2 px-4 rounded hover:bg-gray-100 transition-colors flex items-center justify-between"
+                //       >
+                //         <span>{item.label}</span>
+                //         <svg
+                //           className={`w-4 h-4 transition-transform duration-200 ${isPartnersOpen ? 'rotate-180' : ''}`}
+                //           fill="none"
+                //           stroke="currentColor"
+                //           viewBox="0 0 24 24"
+                //         >
+                //           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                //         </svg>
+                //       </button>
+                //       {isPartnersOpen && (
+                //         <div className="ml-4 mt-2 space-y-2">
+                //           <a
+                //             href="#partner-program"
+                //             className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
+                //             onClick={() => {
+                //               setIsMobileMenuOpen(false);
+                //               setIsPartnersOpen(false);
+                //             }}
+                //           >
+                //             <div className="font-semibold">Partner Program</div>
+                //             <div className="text-xs text-gray-500">Explore our partner program</div>
+                //           </a>
+                //           <a
+                //             href="#become-partner"
+                //             className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
+                //             onClick={() => {
+                //               setIsMobileMenuOpen(false);
+                //               setIsPartnersOpen(false);
+                //             }}
+                //           >
+                //             <div className="font-semibold">Become a Partner</div>
+                //             <div className="text-xs text-gray-500">Join our partner ecosystem</div>
+                //           </a>
+                //           <a
+                //             href="#find-partner"
+                //             className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
+                //             onClick={() => {
+                //               setIsMobileMenuOpen(false);
+                //               setIsPartnersOpen(false);
+                //             }}
+                //           >
+                //             <div className="font-semibold">Find a Partner</div>
+                //             <div className="text-xs text-gray-500">Connect with a partner</div>
+                //           </a>
+                //         </div>
+                //       )}
+                //     </div>
+                //   );
+                // }
                 return (
                   <a
                     key={index}
@@ -599,11 +599,10 @@ export default function ProductsPage() {
                 <button
                   key={category.category}
                   onClick={() => setSelectedCategory(category.category)}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                    selectedCategory === category.category
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-white/80 text-gray-900 border border-gray-200 hover:bg-gray-50'
-                  }`}
+                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${selectedCategory === category.category
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-white/80 text-gray-900 border border-gray-200 hover:bg-gray-50'
+                    }`}
                 >
                   {category.category}
                 </button>

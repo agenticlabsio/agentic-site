@@ -10,6 +10,9 @@ import FeaturedCaseStudy from '@/components/FeaturedCaseStudy';
 import DifferentiatorsSection from '@/components/DifferentiatorsSection';
 import ContactFormSection from '@/components/ContactFormSection';
 import FAQSection, { homepageFAQs } from '@/components/FAQSection';
+import AIChatPromptSection from '@/components/AIChatPromptSection';
+import NewsletterSection from '@/components/NewsletterSection';
+import ContentHubSection from '@/components/ContentHubSection';
 import { OrganizationSchema } from '@/components/SEO';
 
 export default function RootPage() {
@@ -115,7 +118,12 @@ export default function RootPage() {
         <SolutionsSection />
         <FeaturedCaseStudy />
         <DifferentiatorsSection />
+        <AIChatPromptSection />
+        <ContentHubSection />
         <FAQSection faqs={homepageFAQs} />
+        <div id="newsletter">
+          <NewsletterSection />
+        </div>
         <ContactFormSection />
       </main>
 

@@ -100,7 +100,7 @@ export default function IntegrationsPage() {
               ))}
               <Link
                 href="/#contact"
-                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 font-display"
+                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
                 Get In Touch
               </Link>
@@ -123,7 +123,7 @@ export default function IntegrationsPage() {
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
+                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
                   Get In Touch
                 </Link>
               </nav>
@@ -147,7 +147,7 @@ export default function IntegrationsPage() {
               </ol>
             </nav>
 
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-4">Integrations</p>
+            <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">Integrations</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight mb-4 font-display">
               Enterprise Integrations
             </h1>
@@ -167,7 +167,7 @@ export default function IntegrationsPage() {
                   onClick={() => setActiveCategory(category)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-display ${
                     activeCategory === category
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25'
+                      ? 'bg-brand-600 text-white shadow-lg shadow-brand-600/25'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
                   }`}
                 >
@@ -185,12 +185,12 @@ export default function IntegrationsPage() {
               {filteredIntegrations.map((integration) => (
                 <div
                   key={integration.slug}
-                  className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300"
+                  className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-200 transition-all duration-300"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h3 className="text-xl font-bold text-slate-900 font-display">{integration.name}</h3>
-                      <span className="text-sm text-blue-600 font-medium font-display">{integration.category}</span>
+                      <span className="text-sm text-brand-600 font-medium font-display">{integration.category}</span>
                     </div>
                   </div>
                   <p className="text-slate-600 mb-4 font-body">{integration.description}</p>
@@ -218,7 +218,7 @@ export default function IntegrationsPage() {
               </p>
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all duration-200 font-display"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold transition-all duration-200 font-display"
               >
                 Discuss Your Integration
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -249,7 +249,7 @@ export default function IntegrationsPage() {
                     'Future-proof your AI infrastructure',
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 text-slate-600 font-body">
-                      <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {item}
@@ -272,7 +272,7 @@ export default function IntegrationsPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-blue-600 py-20 px-4 sm:px-6 lg:px-8">
+        <section className="bg-brand-600 py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4 font-display">
               Ready to connect your systems?
@@ -282,7 +282,7 @@ export default function IntegrationsPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold text-lg hover:bg-blue-50 transition-all duration-200 shadow-lg font-display"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-semibold text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg font-display"
             >
               Schedule Discovery Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

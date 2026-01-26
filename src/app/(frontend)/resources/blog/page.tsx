@@ -131,7 +131,7 @@ export default function BlogPage() {
               ))}
               <Link
                 href="/#contact"
-                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 font-display"
+                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
                 Get In Touch
               </Link>
@@ -154,7 +154,7 @@ export default function BlogPage() {
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
+                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
                   Get In Touch
                 </Link>
               </nav>
@@ -178,7 +178,7 @@ export default function BlogPage() {
               </ol>
             </nav>
 
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-4">Blog</p>
+            <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">Blog</p>
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight mb-4 font-display">
               Enterprise AI Blog
             </h1>
@@ -198,7 +198,7 @@ export default function BlogPage() {
                   onClick={() => setActiveCategory(category)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-display ${
                     activeCategory === category
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25'
+                      ? 'bg-brand-600 text-white shadow-lg shadow-brand-600/25'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
                   }`}
                 >
@@ -223,7 +223,7 @@ export default function BlogPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="p-8 md:p-10">
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="px-3 py-1 bg-blue-50 text-blue-600 text-sm font-medium rounded-full font-display">
+                      <span className="px-3 py-1 bg-brand-50 text-brand-600 text-sm font-medium rounded-full font-display">
                         {featuredPost.category}
                       </span>
                       <span className="text-slate-500 text-sm font-body">{featuredPost.date}</span>
@@ -236,7 +236,7 @@ export default function BlogPage() {
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-slate-500 text-sm font-body">{featuredPost.readTime}</span>
-                      <span className="inline-flex items-center gap-2 text-blue-600 font-semibold font-display">
+                      <span className="inline-flex items-center gap-2 text-brand-600 font-semibold font-display">
                         Read article
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -244,12 +244,12 @@ export default function BlogPage() {
                       </span>
                     </div>
                   </div>
-                  <div className="bg-blue-600 p-8 md:p-10 flex items-center justify-center">
+                  <div className="bg-brand-600 p-8 md:p-10 flex items-center justify-center">
                     <div className="text-center">
                       <div className="text-6xl lg:text-7xl font-bold text-white mb-2 font-display">
                         2026
                       </div>
-                      <div className="text-blue-100 font-body text-lg">Enterprise AI Outlook</div>
+                      <div className="text-brand-100 font-body text-lg">Enterprise AI Outlook</div>
                     </div>
                   </div>
                 </div>
@@ -271,7 +271,7 @@ export default function BlogPage() {
                 <Link
                   key={post.slug}
                   href={`/resources/blog/${post.slug}`}
-                  className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group block"
+                  className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-200 transition-all duration-300 group block"
                 >
                   <div className="flex items-center gap-2 mb-4">
                     <span className="px-2 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded font-display">
@@ -279,7 +279,7 @@ export default function BlogPage() {
                     </span>
                     <span className="text-slate-400 text-xs font-body">{post.date}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display group-hover:text-blue-600 transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display group-hover:text-brand-600 transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-slate-600 text-sm mb-4 font-body line-clamp-3">
@@ -287,7 +287,7 @@ export default function BlogPage() {
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="text-slate-400 text-sm font-body">{post.readTime}</span>
-                    <div className="w-8 h-8 bg-slate-100 group-hover:bg-blue-600 rounded-full flex items-center justify-center text-slate-600 group-hover:text-white transition-all duration-200">
+                    <div className="w-8 h-8 bg-slate-100 group-hover:bg-brand-600 rounded-full flex items-center justify-center text-slate-600 group-hover:text-white transition-all duration-200">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
@@ -310,7 +310,7 @@ export default function BlogPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg font-display"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg font-display"
             >
               Schedule Discovery Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

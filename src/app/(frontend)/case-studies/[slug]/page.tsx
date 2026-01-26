@@ -239,7 +239,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               </a>
               <a
                 href="#contact"
-                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 font-display"
+                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
                 Get In Touch
               </a>
@@ -267,7 +267,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         {/* Header */}
         <section className="pt-8 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full mb-4 font-display">
+            <div className="inline-block px-3 py-1 bg-brand-50 text-brand-700 text-xs font-medium rounded-full mb-4 font-display">
               {caseStudy.industry}
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight mb-2 font-display">
@@ -286,7 +286,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {caseStudy.metrics.map((metric, i) => (
                 <div key={i} className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-                  <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-1 font-display">
+                  <div className="text-3xl sm:text-4xl font-bold text-brand-600 mb-1 font-display">
                     {metric.value}
                   </div>
                   <div className="text-sm text-slate-900 font-medium font-display">{metric.label}</div>
@@ -331,8 +331,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               {caseStudy.solution.components.map((component, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300">
-                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold text-sm mb-4 font-display">
+                <div key={i} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-200 transition-all duration-300">
+                  <div className="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 font-bold text-sm mb-4 font-display">
                     {i + 1}
                   </div>
                   <div className="text-slate-900 font-semibold mb-2 font-display">{component.title}</div>
@@ -341,7 +341,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               ))}
             </div>
             <div className="flex items-center gap-2 text-slate-600">
-              <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span className="font-body">
@@ -367,8 +367,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                     ))}
                   </ul>
                 </div>
-                <div className="p-6 bg-blue-50">
-                  <h3 className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4 font-display">
+                <div className="p-6 bg-brand-50">
+                  <h3 className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-4 font-display">
                     After
                   </h3>
                   <ul className="space-y-3">
@@ -385,7 +385,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         {/* Quote */}
         <section className="pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <blockquote className="border-l-4 border-blue-600 pl-6">
+            <blockquote className="border-l-4 border-brand-600 pl-6">
               <p className="text-xl text-slate-700 italic mb-4 font-body">
                 &quot;{caseStudy.quote.text}&quot;
               </p>
@@ -397,14 +397,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         </section>
 
         {/* CTA */}
-        <section id="contact" className="bg-blue-600 py-20 px-4 sm:px-6 lg:px-8">
+        <section id="contact" className="bg-brand-600 py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-6 font-display">
               Want similar results?
             </h2>
             <a
               href="mailto:contact@agenticlabs.io?subject=Discovery%20Call%20Request"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold text-lg hover:bg-blue-50 transition-all duration-200 shadow-lg font-display"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-semibold text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg font-display"
             >
               Schedule Discovery Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

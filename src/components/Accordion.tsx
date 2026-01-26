@@ -25,7 +25,7 @@ export default function Accordion({ items, className = '' }: AccordionProps) {
           key={index}
           className={`bg-white border rounded-xl transition-all ${
             openIndex === index
-              ? 'border-blue-200 shadow-sm'
+              ? 'border-brand-200 shadow-sm'
               : 'border-slate-200 hover:border-slate-300'
           }`}
         >
@@ -42,7 +42,7 @@ export default function Accordion({ items, className = '' }: AccordionProps) {
 
             <span className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full transition-all ${
               openIndex === index
-                ? 'bg-blue-600 text-white'
+                ? 'bg-brand-600 text-white'
                 : 'bg-slate-100 text-slate-500'
             }`}>
               <svg

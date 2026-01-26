@@ -32,19 +32,21 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="section-dark border-t border-[var(--color-gray-800)]">
+    <footer className="bg-stone-900 border-t border-stone-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <h2 className="text-xl font-bold text-white mb-4 font-display">Agentic Labs</h2>
-            <p className="text-[var(--color-gray-400)] text-sm leading-relaxed max-w-sm mb-6 font-body">
-              A creative AI design and development studio. Enterprise AI systems that deliver results.
-              From roadmap to revenue in weeks, not quarters.
+            <h2 className="text-xl font-semibold text-white mb-4">Agentic Labs</h2>
+            <p className="text-stone-400 text-sm leading-relaxed max-w-sm mb-2">
+              Enterprise AI systems. Shipped in 8 weeks.
+            </p>
+            <p className="text-stone-500 text-sm leading-relaxed max-w-sm mb-6">
+              Production-ready AI for enterprises that can&apos;t afford to wait.
             </p>
             <a
               href="mailto:contact@agenticlabs.io"
-              className="inline-flex items-center gap-2 text-[var(--color-brand-light)] hover:text-white text-sm transition-colors font-display font-medium mb-6"
+              className="inline-flex items-center gap-2 text-brand-400 hover:text-white text-sm transition-colors font-medium mb-6"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -59,7 +61,7 @@ export default function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-[var(--color-gray-800)] hover:bg-[var(--color-gray-700)] rounded-lg flex items-center justify-center text-[var(--color-gray-400)] hover:text-white transition-all duration-200"
+                  className="w-10 h-10 bg-stone-800 hover:bg-stone-700 rounded-lg flex items-center justify-center text-stone-400 hover:text-white transition-all duration-200"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -70,7 +72,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-sm font-semibold text-[var(--color-gray-300)] uppercase tracking-wider mb-4 font-display">
+            <h3 className="text-sm font-medium text-stone-300 uppercase tracking-wider mb-4">
               Company
             </h3>
             <ul className="space-y-3">
@@ -81,7 +83,7 @@ export default function Footer() {
                 { label: 'Industries', href: '/industries' },
               ].map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-[var(--color-gray-400)] hover:text-white text-sm transition-colors font-body">
+                  <a href={link.href} className="text-stone-400 hover:text-white text-sm transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -91,7 +93,7 @@ export default function Footer() {
 
           {/* Resources & CTA */}
           <div>
-            <h3 className="text-sm font-semibold text-[var(--color-gray-300)] uppercase tracking-wider mb-4 font-display">
+            <h3 className="text-sm font-medium text-stone-300 uppercase tracking-wider mb-4">
               Resources
             </h3>
             <ul className="space-y-3 mb-6">
@@ -105,7 +107,7 @@ export default function Footer() {
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
-                    className="text-[var(--color-gray-400)] hover:text-white text-sm transition-colors font-body"
+                    className="text-stone-400 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </a>
@@ -114,9 +116,9 @@ export default function Footer() {
             </ul>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-brand)] hover:bg-[var(--color-brand-dark)] text-white rounded-lg text-sm font-semibold transition-colors font-display"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-medium transition-colors"
             >
-              Book a Demo
+              Book a Call
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -125,15 +127,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-[var(--color-gray-800)] flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-[var(--color-gray-500)] text-sm font-body">
+        <div className="mt-12 pt-8 border-t border-stone-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-stone-500 text-sm">
             &copy; {currentYear} Agentic Labs Solutions LLC
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-[var(--color-gray-500)] hover:text-[var(--color-gray-300)] text-sm transition-colors font-body">
+            <a href="#" className="text-stone-500 hover:text-stone-300 text-sm transition-colors">
               Privacy
             </a>
-            <a href="#" className="text-[var(--color-gray-500)] hover:text-[var(--color-gray-300)] text-sm transition-colors font-body">
+            <a href="#" className="text-stone-500 hover:text-stone-300 text-sm transition-colors">
               Terms
             </a>
           </div>

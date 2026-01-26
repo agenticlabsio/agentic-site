@@ -302,7 +302,7 @@ export default function SolutionDetailPage() {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-4">Solution Not Found</h1>
-          <Link href="/solutions" className="text-sky-500 hover:underline">
+          <Link href="/solutions" className="text-brand-600 hover:underline">
             View all solutions
           </Link>
         </div>
@@ -350,7 +350,7 @@ export default function SolutionDetailPage() {
               ))}
               <Link
                 href="/#contact"
-                className="px-5 py-2.5 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-500/30 font-display"
+                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
                 Get In Touch
               </Link>
@@ -373,7 +373,7 @@ export default function SolutionDetailPage() {
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
+                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
                   Get In Touch
                 </Link>
               </nav>
@@ -397,13 +397,13 @@ export default function SolutionDetailPage() {
               </ol>
             </nav>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-sky-50 text-sky-700 text-sm font-medium rounded-full mb-4 font-display">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-50 text-brand-700 text-sm font-medium rounded-full mb-4 font-display">
               {solution.category}
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 font-display">
               {solution.name}
             </h1>
-            <p className="text-xl sm:text-2xl text-sky-500 font-medium mb-6 font-display">
+            <p className="text-xl sm:text-2xl text-brand-600 font-medium mb-6 font-display">
               {solution.heroTagline}
             </p>
             <p className="text-lg text-slate-600 max-w-3xl mb-8 font-body">
@@ -412,7 +412,7 @@ export default function SolutionDetailPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25 font-display"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 font-display"
               >
                 Schedule Discovery Call
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -466,7 +466,7 @@ export default function SolutionDetailPage() {
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-lg font-bold text-slate-900 font-display">{cap.title}</h3>
                     {cap.metric && (
-                      <span className="text-sm font-medium text-sky-600 bg-sky-50 px-2 py-1 rounded font-display">
+                      <span className="text-sm font-medium text-brand-700 bg-brand-50 px-2 py-1 rounded font-display">
                         {cap.metric}
                       </span>
                     )}
@@ -486,7 +486,7 @@ export default function SolutionDetailPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {solution.howItWorks.map((step) => (
                 <div key={step.step} className="relative">
-                  <div className="text-5xl font-bold text-sky-100 absolute -top-2 -left-2 font-display">
+                  <div className="text-5xl font-bold text-brand-100 absolute -top-2 -left-2 font-display">
                     {step.step}
                   </div>
                   <div className="relative pt-8 pl-4">
@@ -515,15 +515,15 @@ export default function SolutionDetailPage() {
         </section>
 
         {/* Results Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-sky-500">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-brand-600">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-12 text-center font-display">Results We Deliver</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {solution.results.map((result, i) => (
                 <div key={i} className="text-center">
                   <div className="text-5xl font-bold text-white mb-2 font-display">{result.metric}</div>
-                  <div className="text-sky-100 font-medium mb-2 font-display">{result.label}</div>
-                  <p className="text-sky-200 text-sm font-body">{result.description}</p>
+                  <div className="text-brand-100 font-medium mb-2 font-display">{result.label}</div>
+                  <p className="text-brand-200 text-sm font-body">{result.description}</p>
                 </div>
               ))}
             </div>
@@ -557,7 +557,7 @@ export default function SolutionDetailPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-sky-500 hover:bg-sky-600 text-white rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg font-display"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg font-display"
             >
               Schedule Discovery Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

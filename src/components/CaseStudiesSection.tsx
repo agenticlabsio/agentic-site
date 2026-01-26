@@ -23,7 +23,7 @@ export default function CaseStudiesSection() {
           <FadeInText delay={0.3} duration={0.8} direction="up">
             <button
               onClick={() => console.log('Explore all')}
-              className="text-blue-600 hover:text-blue-700 font-semibold text-lg inline-flex items-center gap-2 transition-colors duration-300"
+              className="text-brand-600 hover:text-brand-700 font-semibold text-lg inline-flex items-center gap-2 transition-colors duration-300"
             >
               Explore all
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@ export default function CaseStudiesSection() {
           <FadeInText delay={0.4} duration={0.8} direction="up">
             <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-4 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
               <div className="mb-3">
-                <span className="inline-block px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
+                <span className="inline-block px-2.5 py-0.5 bg-brand-100 text-brand-700 text-xs font-semibold rounded-full">
                   Automation
                 </span>
               </div>
@@ -51,7 +51,7 @@ export default function CaseStudiesSection() {
               </p>
               <button
                 onClick={() => console.log('Read more - Fortune 500')}
-                className="text-blue-600 hover:text-blue-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
+                className="text-brand-600 hover:text-brand-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
               >
                 Read more
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,7 +77,7 @@ export default function CaseStudiesSection() {
               </p>
               <button
                 onClick={() => console.log('Read more - Retail')}
-                className="text-blue-600 hover:text-blue-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
+                className="text-brand-600 hover:text-brand-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
               >
                 Read more
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@ export default function CaseStudiesSection() {
               </p>
               <button
                 onClick={() => console.log('Read more - Banking')}
-                className="text-blue-600 hover:text-blue-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
+                className="text-brand-600 hover:text-brand-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
               >
                 Read more
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,7 +129,7 @@ export default function CaseStudiesSection() {
               </p>
               <button
                 onClick={() => console.log('Read more - Pharma')}
-                className="text-blue-600 hover:text-blue-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
+                className="text-brand-600 hover:text-brand-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
               >
                 Read more
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,7 +155,7 @@ export default function CaseStudiesSection() {
               </p>
               <button
                 onClick={() => console.log('Read more - Manufacturing')}
-                className="text-blue-600 hover:text-blue-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
+                className="text-brand-600 hover:text-brand-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
               >
                 Read more
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,7 +181,7 @@ export default function CaseStudiesSection() {
               </p>
               <button
                 onClick={() => console.log('Read more - Insurance')}
-                className="text-blue-600 hover:text-blue-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
+                className="text-brand-600 hover:text-brand-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors duration-300"
               >
                 Read more
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -412,7 +412,7 @@ export default function IndustryDetailPage() {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-4">Industry Not Found</h1>
-          <Link href="/industries" className="text-sky-500 hover:underline">
+          <Link href="/industries" className="text-brand-600 hover:underline">
             View all industries
           </Link>
         </div>
@@ -460,7 +460,7 @@ export default function IndustryDetailPage() {
               ))}
               <Link
                 href="/#contact"
-                className="px-5 py-2.5 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-500/30 font-display"
+                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
                 Get In Touch
               </Link>
@@ -483,7 +483,7 @@ export default function IndustryDetailPage() {
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
+                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
                   Get In Touch
                 </Link>
               </nav>
@@ -511,7 +511,7 @@ export default function IndustryDetailPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 font-display">
               AI for {industry.name}
             </h1>
-            <p className="text-xl sm:text-2xl text-sky-500 font-medium mb-6 font-display">
+            <p className="text-xl sm:text-2xl text-brand-600 font-medium mb-6 font-display">
               {industry.tagline}
             </p>
             <p className="text-lg text-slate-600 max-w-3xl mb-8 font-body">
@@ -523,7 +523,7 @@ export default function IndustryDetailPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25 font-display"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 font-display"
               >
                 Schedule Discovery Call
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -541,14 +541,14 @@ export default function IndustryDetailPage() {
         </section>
 
         {/* Market Context */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-sky-500">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-brand-600">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-8 text-center font-display">Market Context</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {industry.marketContext.map((ctx, i) => (
                 <div key={i} className="bg-white/10 backdrop-blur rounded-xl p-6 text-center">
                   <p className="text-white font-medium mb-2 font-body">{ctx.stat}</p>
-                  {ctx.source && <p className="text-sky-200 text-sm font-body">— {ctx.source}</p>}
+                  {ctx.source && <p className="text-brand-200 text-sm font-body">— {ctx.source}</p>}
                 </div>
               ))}
             </div>
@@ -582,7 +582,7 @@ export default function IndustryDetailPage() {
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-lg font-bold text-slate-900 font-display">{sol.title}</h3>
                     {sol.metric && (
-                      <span className="text-sm font-medium text-sky-600 bg-sky-50 px-2 py-1 rounded font-display">
+                      <span className="text-sm font-medium text-brand-600 bg-brand-50 px-2 py-1 rounded font-display">
                         {sol.metric}
                       </span>
                     )}
@@ -632,7 +632,7 @@ export default function IndustryDetailPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {industry.roiMetrics.map((metric, i) => (
                 <div key={i} className="flex items-center gap-4 bg-white/5 rounded-xl p-6">
-                  <svg className="w-6 h-6 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-brand-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span className="text-white font-body">{metric}</span>
@@ -667,7 +667,7 @@ export default function IndustryDetailPage() {
                 <Link
                   key={i}
                   href={`/solutions/${sol}`}
-                  className="px-6 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium hover:border-sky-200 hover:text-sky-500 transition-colors font-display"
+                  className="px-6 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium hover:border-brand-200 hover:text-brand-600 transition-colors font-display"
                 >
                   {sol.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
                 </Link>
@@ -677,7 +677,7 @@ export default function IndustryDetailPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-sky-500 py-20 px-4 sm:px-6 lg:px-8">
+        <section className="bg-brand-600 py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4 font-display">
               Ready to transform {industry.name.toLowerCase()} operations with AI?
@@ -687,7 +687,7 @@ export default function IndustryDetailPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-sky-600 rounded-xl font-semibold text-lg hover:bg-sky-50 transition-all duration-200 shadow-lg font-display"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-semibold text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg font-display"
             >
               Schedule Discovery Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -24,7 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700',
+    primary: 'bg-brand-600 text-white hover:bg-brand-700',
     secondary: 'bg-transparent text-slate-900 border-2 border-slate-300 hover:border-slate-400 hover:bg-slate-50',
     ghost: 'bg-slate-100 text-slate-900 hover:bg-slate-200',
   };
@@ -98,7 +98,7 @@ export const GlowButton: React.FC<GlowButtonProps> = ({
       onClick={onClick}
       className={`
         px-6 py-3 rounded-lg font-semibold transition-colors
-        bg-blue-600 hover:bg-blue-700 text-white
+        bg-brand-600 hover:bg-brand-700 text-white
         ${className}
       `}
     >

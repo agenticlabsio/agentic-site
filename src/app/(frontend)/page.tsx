@@ -31,11 +31,11 @@ export default function RootPage() {
       <OrganizationSchema />
 
       {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <a href="/" className="text-xl font-bold text-slate-900 font-display">
+            <a href="/" className="text-xl font-bold text-stone-900">
               Agentic Labs
             </a>
 
@@ -45,23 +45,23 @@ export default function RootPage() {
                 <a
                   key={index}
                   href={item.href}
-                  className="text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors font-display"
+                  className="text-stone-600 hover:text-stone-900 font-medium text-sm transition-colors"
                 >
                   {item.label}
                 </a>
               ))}
               <a
                 href="#contact"
-                className="px-5 py-2.5 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-500/30 font-display"
+                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-medium transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30"
               >
-                Get In Touch
+                Book a Call
               </a>
             </nav>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-slate-700 p-2"
+              className="md:hidden text-stone-700 p-2"
               aria-label="Toggle menu"
             >
               <svg
@@ -84,13 +84,13 @@ export default function RootPage() {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-slate-200">
+            <div className="md:hidden py-4 border-t border-stone-200">
               <nav className="flex flex-col space-y-2">
                 {items.map((item, index) => (
                   <a
                     key={index}
                     href={item.href}
-                    className="text-slate-600 hover:text-slate-900 py-2 px-4 rounded-lg hover:bg-slate-50 transition-colors font-medium text-sm font-display"
+                    className="text-stone-600 hover:text-stone-900 py-2 px-4 rounded-lg hover:bg-stone-50 transition-colors font-medium text-sm"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -99,9 +99,9 @@ export default function RootPage() {
                 <a
                   href="#contact"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="mt-4 px-4 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display"
+                  className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium text-sm text-center transition-colors"
                 >
-                  Get In Touch
+                  Book a Call
                 </a>
               </nav>
             </div>
@@ -121,9 +121,7 @@ export default function RootPage() {
         <AIChatPromptSection />
         <ContentHubSection />
         <FAQSection faqs={homepageFAQs} />
-        <div id="newsletter">
-          <NewsletterSection />
-        </div>
+        <NewsletterSection />
         <ContactFormSection />
       </main>
 

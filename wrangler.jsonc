@@ -36,6 +36,6 @@
 
   // Non-sensitive environment variables
   "vars": {
-    "NEXT_PUBLIC_SERVER_URL": "https://agentic-site.pages.dev"
+    "NEXT_PUBLIC_SERVER_URL": "https://agentic-site.cloud-d71.workers.dev"
   }
 }

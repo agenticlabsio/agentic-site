@@ -131,11 +131,11 @@ export default function PartnersDropdown({ onToggle, onOptionClick }: PartnersDr
                   onClick={handleOptionClick}
                   className="group flex flex-col items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all duration-200"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-200">
+                  <div className="flex-shrink-0 w-12 h-12 bg-brand-50 text-brand-600 rounded-full flex items-center justify-center group-hover:bg-brand-100 transition-colors duration-200">
                     {option.icon}
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
+                    <h4 className="text-base font-semibold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors duration-200">
                       {option.title}
                     </h4>
                     <p className="text-sm text-gray-600 leading-relaxed">

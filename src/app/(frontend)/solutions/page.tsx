@@ -120,10 +120,10 @@ export default function SolutionsPage() {
   return (
     <div className="relative min-h-screen bg-white">
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-xl font-bold text-slate-900 font-display">
+            <Link href="/" className="text-xl font-bold text-stone-900">
               Agentic Labs
             </Link>
             <nav className="hidden md:flex items-center gap-8">
@@ -131,8 +131,8 @@ export default function SolutionsPage() {
                 <Link
                   key={index}
                   href={item.href}
-                  className={`font-medium text-sm transition-colors font-display ${
-                    item.href === '/solutions' ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'
+                  className={`font-medium text-sm transition-colors ${
+                    item.href === '/solutions' ? 'text-stone-900' : 'text-stone-600 hover:text-stone-900'
                   }`}
                 >
                   {item.label}
@@ -140,14 +140,14 @@ export default function SolutionsPage() {
               ))}
               <Link
                 href="/#contact"
-                className="px-5 py-2.5 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-500/30 font-display"
+                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-medium transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30"
               >
-                Get In Touch
+                Book a Call
               </Link>
             </nav>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-slate-700 p-2"
+              className="md:hidden text-stone-700 p-2"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -156,15 +156,15 @@ export default function SolutionsPage() {
             </button>
           </div>
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-slate-200">
+            <div className="md:hidden py-4 border-t border-stone-200">
               <nav className="flex flex-col space-y-2">
                 {items.map((item, index) => (
-                  <Link key={index} href={item.href} className="text-slate-600 hover:text-slate-900 py-2 px-4 rounded-lg hover:bg-slate-50 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link key={index} href={item.href} className="text-stone-600 hover:text-stone-900 py-2 px-4 rounded-lg hover:bg-stone-50 transition-colors font-medium text-sm" onClick={() => setIsMobileMenuOpen(false)}>
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
-                  Get In Touch
+                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium text-sm text-center transition-colors">
+                  Book a Call
                 </Link>
               </nav>
             </div>
@@ -176,13 +176,13 @@ export default function SolutionsPage() {
         {/* Hero */}
         <section className="bg-white pt-20 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <p className="text-sky-500 font-semibold text-sm uppercase tracking-wide mb-4">Solutions</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 font-display">
-              Enterprise AI Solutions
+            <p className="text-brand-600 font-medium text-sm uppercase tracking-wide mb-4">Solutions</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 tracking-tight mb-4">
+              AI that ships to production.
             </h1>
-            <p className="text-xl text-slate-600 max-w-2xl font-body">
-              Production-ready AI systems that replace fragmented SaaS, accelerate engineering,
-              and automate complex operations. Delivered in 6-8 weeks.
+            <p className="text-xl text-stone-600 max-w-2xl">
+              Not demos. Not pilots. Production systems that deliver ROI from week one.
+              Delivered in 8 weeks.
             </p>
           </div>
         </section>
@@ -195,10 +195,10 @@ export default function SolutionsPage() {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-display ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     activeCategory === category
-                      ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/25'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                      ? 'bg-brand-600 text-white shadow-lg shadow-brand-600/25'
+                      : 'bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-900'
                   }`}
                 >
                   {category}
@@ -212,25 +212,25 @@ export default function SolutionsPage() {
         {featured && activeCategory === 'All' && (
           <section className="pb-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4 font-display">
+              <div className="text-sm font-medium text-stone-400 uppercase tracking-wider mb-4">
                 Featured Solution
               </div>
-              <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl border border-slate-200 overflow-hidden shadow-lg">
+              <div className="bg-gradient-to-br from-stone-50 to-white rounded-2xl border border-stone-200 overflow-hidden shadow-lg">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="p-8 md:p-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-sky-50 text-sky-700 text-sm font-medium rounded-full mb-4 font-display">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-50 text-brand-700 text-sm font-medium rounded-full mb-4">
                       {featured.category}
                     </div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 font-display">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 mb-4">
                       {featured.name}
                     </h2>
-                    <p className="text-slate-600 mb-6 font-body">
+                    <p className="text-stone-600 mb-6">
                       {featured.description}
                     </p>
                     <ul className="space-y-3 mb-8">
                       {featured.features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3 text-slate-600 font-body">
-                          <svg className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <li key={i} className="flex items-start gap-3 text-stone-600">
+                          <svg className="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                           {feature}
@@ -240,7 +240,7 @@ export default function SolutionsPage() {
                     <div className="flex flex-wrap gap-4">
                       <Link
                         href={`/solutions/${featured.slug}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25 font-display"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-medium transition-all duration-200 shadow-lg shadow-brand-600/25"
                       >
                         Learn More
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -249,12 +249,12 @@ export default function SolutionsPage() {
                       </Link>
                     </div>
                   </div>
-                  <div className="bg-sky-500 p-8 md:p-10 flex items-center justify-center">
+                  <div className="bg-brand-600 p-8 md:p-10 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="text-6xl lg:text-7xl font-bold text-white mb-2 font-display">
+                      <div className="text-6xl lg:text-7xl font-bold text-white mb-2">
                         {featured.metric}
                       </div>
-                      <div className="text-sky-100 font-body text-lg">{featured.metricLabel}</div>
+                      <div className="text-brand-100 text-lg">{featured.metricLabel}</div>
                     </div>
                   </div>
                 </div>
@@ -267,7 +267,7 @@ export default function SolutionsPage() {
         <section className="pb-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             {activeCategory === 'All' && (
-              <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4 font-display">
+              <div className="text-sm font-medium text-stone-400 uppercase tracking-wider mb-4">
                 All Solutions
               </div>
             )}
@@ -276,25 +276,25 @@ export default function SolutionsPage() {
                 <Link
                   key={solution.id}
                   href={`/solutions/${solution.slug}`}
-                  className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-sky-200 transition-all duration-300 group block"
+                  className="bg-white rounded-2xl p-6 border border-stone-200 shadow-sm hover:shadow-md hover:border-brand-200 transition-all duration-300 group block"
                 >
-                  <div className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-full mb-4 font-display">
+                  <div className="inline-block px-3 py-1 bg-stone-100 text-stone-600 text-xs font-medium rounded-full mb-4">
                     {solution.category}
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display group-hover:text-sky-500 transition-colors">
+                  <h3 className="text-lg font-semibold text-stone-900 mb-2 group-hover:text-brand-600 transition-colors">
                     {solution.name}
                   </h3>
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-2 font-body">
+                  <p className="text-stone-600 text-sm mb-4 line-clamp-2">
                     {solution.description}
                   </p>
                   <div className="flex items-end justify-between">
                     <div>
-                      <div className="text-2xl font-bold text-sky-500 font-display">
+                      <div className="text-2xl font-bold text-brand-600">
                         {solution.metric}
                       </div>
-                      <div className="text-sm text-slate-500 font-body">{solution.metricLabel}</div>
+                      <div className="text-sm text-stone-500">{solution.metricLabel}</div>
                     </div>
-                    <div className="w-10 h-10 bg-slate-100 group-hover:bg-sky-500 rounded-full flex items-center justify-center text-slate-600 group-hover:text-white transition-all duration-200">
+                    <div className="w-10 h-10 bg-stone-100 group-hover:bg-brand-600 rounded-full flex items-center justify-center text-stone-600 group-hover:text-white transition-all duration-200">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
@@ -307,19 +307,19 @@ export default function SolutionsPage() {
         </section>
 
         {/* CTA */}
-        <section id="contact" className="bg-sky-500 py-20 px-4 sm:px-6 lg:px-8">
+        <section id="contact" className="bg-brand-600 py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4 font-display">
-              Ready to see which solution fits your needs?
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+              Not sure which solution fits?
             </h2>
-            <p className="text-xl text-white/80 mb-8 font-body">
-              Book a 30-minute discovery call. We&apos;ll assess your workflows and recommend the right approach.
+            <p className="text-xl text-white/80 mb-8">
+              30 minutes. We&apos;ll map your workflows and tell you exactly what to build first.
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-sky-600 rounded-xl font-semibold text-lg hover:bg-sky-50 transition-all duration-200 shadow-lg font-display"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-medium text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg"
             >
-              Schedule Discovery Call
+              Book Your Strategy Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

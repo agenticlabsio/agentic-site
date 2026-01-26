@@ -75,7 +75,7 @@ export default function PlatformPage() {
               ))}
               <Link
                 href="/#contact"
-                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 font-display"
+                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
                 Get In Touch
               </Link>
@@ -98,7 +98,7 @@ export default function PlatformPage() {
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
+                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
                   Get In Touch
                 </Link>
               </nav>
@@ -111,7 +111,7 @@ export default function PlatformPage() {
         {/* Hero */}
         <section className="bg-gradient-to-br from-slate-50 to-white pt-20 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-4">Platform</p>
+            <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">Platform</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 font-display">
               Enterprise AI Platform
             </h1>
@@ -122,7 +122,7 @@ export default function PlatformPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-blue-600/25 font-display"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 font-display"
               >
                 Schedule Demo
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -168,7 +168,7 @@ export default function PlatformPage() {
               </div>
               <Link
                 href="/platform/integrations"
-                className="hidden md:inline-flex items-center gap-2 text-blue-600 font-semibold font-display"
+                className="hidden md:inline-flex items-center gap-2 text-brand-600 font-semibold font-display"
               >
                 View all integrations
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,9 +181,9 @@ export default function PlatformPage() {
                 <Link
                   key={index}
                   href={integration.href}
-                  className="bg-white rounded-xl p-6 border border-slate-200 hover:border-blue-200 hover:shadow-md transition-all text-center group"
+                  className="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-200 hover:shadow-md transition-all text-center group"
                 >
-                  <div className="text-xl font-bold text-slate-900 mb-1 font-display group-hover:text-blue-600 transition-colors">
+                  <div className="text-xl font-bold text-slate-900 mb-1 font-display group-hover:text-brand-600 transition-colors">
                     {integration.name}
                   </div>
                   <div className="text-sm text-slate-500 font-body">{integration.category}</div>
@@ -192,7 +192,7 @@ export default function PlatformPage() {
             </div>
             <Link
               href="/platform/integrations"
-              className="md:hidden inline-flex items-center gap-2 text-blue-600 font-semibold font-display mt-6"
+              className="md:hidden inline-flex items-center gap-2 text-brand-600 font-semibold font-display mt-6"
             >
               View all integrations
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -212,7 +212,7 @@ export default function PlatformPage() {
             <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">📊</span>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">Your Data</h3>
@@ -221,7 +221,7 @@ export default function PlatformPage() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">🔌</span>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">MCP Layer</h3>
@@ -230,7 +230,7 @@ export default function PlatformPage() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">🤖</span>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">AI Agents</h3>
@@ -254,7 +254,7 @@ export default function PlatformPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg font-display"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg font-display"
             >
               Schedule Platform Demo
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

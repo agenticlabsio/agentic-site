@@ -27,15 +27,15 @@ export default function FAQSection({
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-stone-50">
       {showSchema && <FAQSchema faqs={faqs} />}
 
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4 font-display">
+          <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight mb-4">
             {title}
           </h2>
-          <p className="text-lg text-slate-600 font-body">
+          <p className="text-lg text-stone-600">
             {description}
           </p>
         </div>
@@ -44,18 +44,18 @@ export default function FAQSection({
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border border-slate-200 overflow-hidden"
+              className="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors"
+                className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-stone-50 transition-colors"
                 aria-expanded={openIndex === index}
               >
-                <span className="text-lg font-semibold text-slate-900 font-display">
+                <span className="text-lg font-semibold text-stone-900">
                   {faq.question}
                 </span>
                 <svg
-                  className={`w-5 h-5 text-slate-500 flex-shrink-0 transition-transform duration-200 ${
+                  className={`w-5 h-5 text-stone-500 flex-shrink-0 transition-transform duration-200 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                   fill="none"
@@ -71,7 +71,7 @@ export default function FAQSection({
                   openIndex === index ? 'max-h-96' : 'max-h-0'
                 }`}
               >
-                <div className="px-6 pb-5 text-slate-600 font-body">
+                <div className="px-6 pb-5 text-stone-600 leading-relaxed">
                   {faq.answer}
                 </div>
               </div>

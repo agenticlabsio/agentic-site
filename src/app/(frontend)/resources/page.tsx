@@ -65,7 +65,7 @@ export default function ResourcesPage() {
               ))}
               <Link
                 href="/#contact"
-                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/30 font-display"
+                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
                 Get In Touch
               </Link>
@@ -88,7 +88,7 @@ export default function ResourcesPage() {
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
+                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
                   Get In Touch
                 </Link>
               </nav>
@@ -101,7 +101,7 @@ export default function ResourcesPage() {
         {/* Hero */}
         <section className="bg-white pt-20 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-4">Resources</p>
+            <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">Resources</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 font-display">
               Enterprise AI Insights
             </h1>
@@ -116,7 +116,7 @@ export default function ResourcesPage() {
         <section className="pb-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-wrap gap-4 border-b border-slate-200 pb-4">
-              <Link href="/resources" className="text-blue-600 font-semibold text-sm font-display border-b-2 border-blue-600 pb-2">
+              <Link href="/resources" className="text-brand-600 font-semibold text-sm font-display border-b-2 border-brand-600 pb-2">
                 All Resources
               </Link>
               <Link href="/resources/blog" className="text-slate-600 hover:text-slate-900 font-medium text-sm font-display pb-2">
@@ -138,23 +138,23 @@ export default function ResourcesPage() {
                 <Link
                   key={index}
                   href={resource.href}
-                  className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group block"
+                  className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-200 transition-all duration-300 group block"
                 >
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="px-2 py-1 bg-blue-50 text-blue-600 text-xs font-medium rounded font-display">
+                    <span className="px-2 py-1 bg-brand-50 text-brand-600 text-xs font-medium rounded font-display">
                       {resource.type}
                     </span>
                     <span className="px-2 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded font-display">
                       {resource.category}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display group-hover:text-brand-600 transition-colors">
                     {resource.title}
                   </h3>
                   <p className="text-slate-600 text-sm mb-4 font-body">
                     {resource.description}
                   </p>
-                  <div className="flex items-center text-blue-600 text-sm font-semibold font-display">
+                  <div className="flex items-center text-brand-600 text-sm font-semibold font-display">
                     Read more
                     <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -175,9 +175,9 @@ export default function ResourcesPage() {
                 <Link
                   key={index}
                   href={`/resources/blog?category=${category.name.toLowerCase().replace(' ', '-')}`}
-                  className="bg-white rounded-xl p-6 border border-slate-200 hover:border-blue-200 hover:shadow-md transition-all text-center"
+                  className="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-200 hover:shadow-md transition-all text-center"
                 >
-                  <div className="text-2xl font-bold text-blue-600 mb-1 font-display">{category.count}</div>
+                  <div className="text-2xl font-bold text-brand-600 mb-1 font-display">{category.count}</div>
                   <div className="text-slate-600 font-medium font-display">{category.name}</div>
                 </Link>
               ))}
@@ -186,7 +186,7 @@ export default function ResourcesPage() {
         </section>
 
         {/* Newsletter CTA */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blue-600">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-brand-600">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4 font-display">
               Get Enterprise AI Insights
@@ -196,7 +196,7 @@ export default function ResourcesPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold text-lg hover:bg-blue-50 transition-all duration-200 shadow-lg font-display"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-semibold text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg font-display"
             >
               Subscribe to Updates
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

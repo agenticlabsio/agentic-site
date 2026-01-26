@@ -1,242 +1,123 @@
 'use client';
-import { useState, useEffect } from 'react';
-import LiquidEther from '@/components/LiquidEther';
-import NavBar from '@/components/NavBar';
+import { useState } from 'react';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
-import WhyCXOsSection from '@/components/WhyCXOsSection';
-import ProductsSection from '@/components/ProductsSection';
+import LogoBar from '@/components/LogoBar';
+import ProblemSection from '@/components/ProblemSection';
+import ProcessSection from '@/components/ProcessSection';
 import SolutionsSection from '@/components/SolutionsSection';
-import CaseStudiesSection from '@/components/CaseStudiesSection';
-import IndustriesSection from '@/components/IndustriesSection';
-import WhyTrustUsSection from '@/components/WhyTrustUsSection';
-import FAQSection from '@/components/FAQSection';
+import FeaturedCaseStudy from '@/components/FeaturedCaseStudy';
+import DifferentiatorsSection from '@/components/DifferentiatorsSection';
 import ContactFormSection from '@/components/ContactFormSection';
-import { LiquidButton, GlowButton } from '@/components/AnimatedButtons';
-import PartnersDropdown from '@/components/PartnersDropdown';
+import FAQSection, { homepageFAQs } from '@/components/FAQSection';
+import { OrganizationSchema } from '@/components/SEO';
 
 export default function RootPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isPartnersOpen, setIsPartnersOpen] = useState(false);
-
-  // Check if mobile on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const items = [
     { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
-    { label: "Solutions", href: "#" }
-    // { label: "Partners", dropdown: <PartnersDropdown /> },
-    // { label: "Case Studies", href: "#" },
+    { label: "Solutions", href: "/solutions" },
+    { label: "Industries", href: "/industries" },
+    { label: "Case Studies", href: "/case-studies" }
   ];
 
   return (
-    <div className="relative min-h-screen">
-      {/* Background Layer */}
-      <div className="fixed inset-0 -z-10">
-        <LiquidEther
-          colors={['#E0E7FF', '#FEE2F8', '#F3E8FF']}
-          mouseForce={isMobile ? 15 : 20}
-          cursorSize={isMobile ? 80 : 100}
-          isViscous={false}
-          viscous={30}
-          iterationsViscous={isMobile ? 16 : 32}
-          iterationsPoisson={isMobile ? 16 : 32}
-          resolution={isMobile ? 0.3 : 0.5}
-          isBounce={false}
-          autoDemo={false}
-          autoSpeed={isMobile ? 0.1 : 0.15}
-          autoIntensity={isMobile ? 1.0 : 1.5}
-          takeoverDuration={0.25}
-          autoResumeDelay={isMobile ? 2000 : 3000}
-          autoRampDuration={0.6}
-        />
-      </div>
+    <div className="relative min-h-screen bg-white">
+      {/* SEO Schema Markup */}
+      <OrganizationSchema />
 
       {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div className="flex justify-between items-center">
-          {/* Logo on the left */}
-          <div className="flex items-center">
-            <img
-              src="/agentic-site-logo.png"
-              alt="Agentic Labs"
-              className="h-12 sm:h-14 md:h-16 w-auto"
-            />
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <a href="/" className="text-xl font-bold text-slate-900 font-display">
+              Agentic Labs
+            </a>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-8">
+              {items.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  className="text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors font-display"
+                >
+                  {item.label}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                className="px-5 py-2.5 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-500/30 font-display"
+              >
+                Get In Touch
+              </a>
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden text-slate-700 p-2"
+              aria-label="Toggle menu"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isMobileMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
 
-          {/* Desktop Navigation menu and button on the right */}
-          <div className="hidden lg:flex items-center gap-8">
-            <NavBar
-              items={items}
-              particleCount={15}
-              particleDistances={[90, 10]}
-              particleR={100}
-              initialActiveIndex={0}
-              animationTime={600}
-              timeVariance={300}
-              colors={[1, 2, 3, 1, 2, 3, 1, 4]}
-            />
-
-            {/* Book A Demo Button */}
-            <GlowButton
-              glowColor="#2563eb"
-              pulseAnimation={true}
-              onClick={() => console.log('Book A Demo')}
-              className="!px-6 !py-3 !text-base"
-            >
-              Book A Demo
-            </GlowButton>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-gray-900 p-2"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {isMobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 bg-white/90 backdrop-blur-md rounded-lg border border-gray-200">
-            <nav className="flex flex-col space-y-2 px-4">
-              {items.map((item, index) => {
-                // if (item.dropdown) {
-                //   // Handle Partners dropdown
-                //   return (
-                //     <div key={index}>
-                //       <button
-                //         onClick={() => setIsPartnersOpen(!isPartnersOpen)}
-                //         className="w-full text-left text-gray-900 py-2 px-4 rounded hover:bg-gray-100 transition-colors flex items-center justify-between"
-                //       >
-                //         <span>{item.label}</span>
-                //         <svg
-                //           className={`w-4 h-4 transition-transform duration-200 ${isPartnersOpen ? 'rotate-180' : ''}`}
-                //           fill="none"
-                //           stroke="currentColor"
-                //           viewBox="0 0 24 24"
-                //         >
-                //           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                //         </svg>
-                //       </button>
-                //       {isPartnersOpen && (
-                //         <div className="ml-4 mt-2 space-y-2">
-                //           <a
-                //             href="#partner-program"
-                //             className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
-                //             onClick={() => {
-                //               setIsMobileMenuOpen(false);
-                //               setIsPartnersOpen(false);
-                //             }}
-                //           >
-                //             <div className="font-semibold">Partner Program</div>
-                //             <div className="text-xs text-gray-500">Explore our partner program</div>
-                //           </a>
-                //           <a
-                //             href="#become-partner"
-                //             className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
-                //             onClick={() => {
-                //               setIsMobileMenuOpen(false);
-                //               setIsPartnersOpen(false);
-                //             }}
-                //           >
-                //             <div className="font-semibold">Become a Partner</div>
-                //             <div className="text-xs text-gray-500">Join our partner ecosystem</div>
-                //           </a>
-                //           <a
-                //             href="#find-partner"
-                //             className="block text-gray-700 py-2 px-4 rounded hover:bg-gray-100 transition-colors text-sm"
-                //             onClick={() => {
-                //               setIsMobileMenuOpen(false);
-                //               setIsPartnersOpen(false);
-                //             }}
-                //           >
-                //             <div className="font-semibold">Find a Partner</div>
-                //             <div className="text-xs text-gray-500">Connect with a partner</div>
-                //           </a>
-                //         </div>
-                //       )}
-                //     </div>
-                //   );
-                // }
-                return (
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden py-4 border-t border-slate-200">
+              <nav className="flex flex-col space-y-2">
+                {items.map((item, index) => (
                   <a
                     key={index}
                     href={item.href}
-                    className="text-gray-900 py-2 px-4 rounded hover:bg-gray-100 transition-colors"
+                    className="text-slate-600 hover:text-slate-900 py-2 px-4 rounded-lg hover:bg-slate-50 transition-colors font-medium text-sm font-display"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
                   </a>
-                );
-              })}
-              <LiquidButton
-                variant="primary"
-                liquidColor="#5227FF"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  console.log('Book A Demo');
-                }}
-                className="mt-4 w-full"
-              >
-                Book A Demo
-              </LiquidButton>
-            </nav>
-          </div>
-        )}
+                ))}
+                <a
+                  href="#contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="mt-4 px-4 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display"
+                >
+                  Get In Touch
+                </a>
+              </nav>
+            </div>
+          )}
+        </div>
       </header>
 
-      {/* Hero Section */}
-      <HeroSection />
-
-      {/* Why CXOs Choose Us Section */}
-      <WhyCXOsSection />
-
-      {/* Products Section */}
-      <ProductsSection />
-
-      {/* Solutions Section */}
-      <SolutionsSection />
-
-      {/* Case Studies Section */}
-      {/* <CaseStudiesSection /> */}
-
-      {/* Industries We Serve Section */}
-      {/* <IndustriesSection /> */}
-
-      {/* Why Trust Us Section */}
-      <WhyTrustUsSection />
-
-      {/* FAQ Section */}
-      <FAQSection />
-
-      {/* Contact Form Section */}
-      <ContactFormSection />
+      {/* Main Content */}
+      <main>
+        <HeroSection />
+        <LogoBar />
+        <ProblemSection />
+        <ProcessSection />
+        <SolutionsSection />
+        <FeaturedCaseStudy />
+        <DifferentiatorsSection />
+        <FAQSection faqs={homepageFAQs} />
+        <ContactFormSection />
+      </main>
 
       {/* Footer */}
       <Footer />

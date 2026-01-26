@@ -7,6 +7,9 @@ export const Integrations: CollectionConfig = {
     defaultColumns: ['name', 'category', 'order', 'updatedAt'],
     group: 'Content',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'name',

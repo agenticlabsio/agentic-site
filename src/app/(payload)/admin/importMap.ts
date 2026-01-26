@@ -1,3 +1,4 @@
-import { importMap } from '@payloadcms/next/importMap'
+// Generated import map for Payload admin
+// This file is auto-generated - do not modify manually
 
-export { importMap }
+export const importMap = {}

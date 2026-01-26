@@ -1,8 +1,12 @@
-import { buildConfig } from 'payload'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import fs from 'fs'
 import path from 'path'
+import { sqliteD1Adapter } from '@payloadcms/db-d1-sqlite'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
+import { r2Storage } from '@payloadcms/storage-r2'
+import type { CloudflareContext } from '@opennextjs/cloudflare'
+import type { GetPlatformProxyOptions } from 'wrangler'
 
 // Collections
 import { Users } from './collections/Users'
@@ -13,6 +17,7 @@ import { CaseStudies } from './collections/CaseStudies'
 import { FAQ } from './collections/FAQ'
 import { Industries } from './collections/Industries'
 import { Integrations } from './collections/Integrations'
+import { BlogPosts } from './collections/BlogPosts'
 
 // Globals
 import { SiteSettings } from './globals/SiteSettings'
@@ -20,10 +25,29 @@ import { Navigation } from './globals/Navigation'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const realpath = (value: string) => {
+  try {
+    return fs.existsSync(value) ? fs.realpathSync(value) : undefined
+  } catch {
+    return undefined
+  }
+}
+
+const isCLI = process.argv.some((value) => {
+  const resolved = realpath(value)
+  return resolved?.endsWith(path.join('payload', 'bin.js'))
+})
+const isProduction = process.env.NODE_ENV === 'production'
+
+// Get Cloudflare context - different methods for CLI vs production
+const cloudflare =
+  isCLI || !isProduction
+    ? await getCloudflareContextFromWrangler()
+    : await getCloudflareContextFromOpenNext()
 
 export default buildConfig({
   admin: {
-    user: 'users',
+    user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
     },
@@ -38,15 +62,41 @@ export default buildConfig({
     FAQ,
     Industries,
     Integrations,
+    BlogPosts,
   ],
   globals: [SiteSettings, Navigation],
   secret: process.env.PAYLOAD_SECRET || 'development-secret-change-in-production',
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || 'file:./payload.db',
-    },
-  }),
   typescript: {
-    outputFile: path.resolve(dirname, '../payload-types.ts'),
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
+
+  // Cloudflare D1 Database adapter
+  db: sqliteD1Adapter({ binding: cloudflare.env.D1 }),
+
+  // R2 Storage for media uploads
+  plugins: [
+    r2Storage({
+      // Type cast required due to version mismatch between @cloudflare/workers-types and @payloadcms/storage-r2
+      bucket: cloudflare.env.R2 as Parameters<typeof r2Storage>[0]['bucket'],
+      collections: { media: true },
+    }),
+  ],
 })
+
+// Get Cloudflare context from Wrangler (for local dev and CLI commands)
+function getCloudflareContextFromWrangler(): Promise<CloudflareContext> {
+  // Dynamic import to avoid bundling issues - the string manipulation prevents webpack from resolving it
+  return import(/* webpackIgnore: true */ `${'__wrangler'.replaceAll('_', '')}`).then(
+    ({ getPlatformProxy }) =>
+      getPlatformProxy({
+        environment: process.env.CLOUDFLARE_ENV,
+        configPath: './wrangler.jsonc',
+      } satisfies GetPlatformProxyOptions),
+  )
+}
+
+// Get Cloudflare context from OpenNext (for production)
+async function getCloudflareContextFromOpenNext(): Promise<CloudflareContext> {
+  const { getCloudflareContext } = await import('@opennextjs/cloudflare')
+  return getCloudflareContext({ async: true })
+}

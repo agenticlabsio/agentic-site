@@ -1,0 +1,41 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "agentic-site",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-01-15",
+  "compatibility_flags": [
+    // Enable Node.js API
+    "nodejs_compat",
+    // Allow to fetch URLs in your app
+    "global_fetch_strictly_public"
+  ],
+
+  // Static assets configuration
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  // D1 Database binding
+  "d1_databases": [
+    {
+      "binding": "D1",
+      "database_name": "agentic-site-db",
+      "database_id": "4b211762-0ec5-4bb3-bb5f-6fec3a598973",
+      "remote": true
+    }
+  ],
+
+  // R2 Storage binding for media uploads
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "agentic-site-media"
+    }
+  ],
+
+  // Non-sensitive environment variables
+  "vars": {
+    "NEXT_PUBLIC_SERVER_URL": "https://agentic-site.pages.dev"
+  }
+}

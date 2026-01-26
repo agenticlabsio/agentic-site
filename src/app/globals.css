@@ -1,4 +1,51 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lora:wght@400;500;600&display=swap');
+
+:root {
+  /* Pure white light theme */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F0F9FF;
+  --color-bg-tertiary: #E0F2FE;
+
+  /* Light blue brand accent - Sky/Cyan palette */
+  --color-accent: #0EA5E9;
+  --color-accent-hover: #0284C7;
+  --color-accent-light: #BAE6FD;
+  --color-accent-subtle: #E0F2FE;
+  --color-accent-dark: #0369A1;
+
+  /* Text hierarchy */
+  --color-text-primary: #0C4A6E;
+  --color-text-secondary: #0369A1;
+  --color-text-tertiary: #0284C7;
+  --color-text-muted: #7DD3FC;
+
+  /* Borders */
+  --color-border: #BAE6FD;
+  --color-border-light: #E0F2FE;
+
+  /* Legacy mappings */
+  --color-primary: #0EA5E9;
+  --color-primary-dark: #0284C7;
+
+  /* Spacing */
+  --section-padding-y: 96px;
+  --section-padding-y-mobile: 64px;
+  --container-max: 1200px;
+
+  /* Typography */
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Lora', Georgia, serif;
+  --letter-spacing-tight: -0.025em;
+
+  /* Shadows - refined */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+  --shadow-blue: 0 4px 14px rgba(14, 165, 233, 0.25);
+}
 
 html,
 body {
@@ -9,5 +56,63 @@ body {
 }
 
 body {
-  background-color: white;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings use Poppins */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* Utility classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.tracking-tight {
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Light blue gradient text */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button hover glow */
+.btn-glow:hover {
+  box-shadow: var(--shadow-blue);
 }

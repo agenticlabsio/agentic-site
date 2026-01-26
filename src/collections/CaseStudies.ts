@@ -7,6 +7,9 @@ export const CaseStudies: CollectionConfig = {
     defaultColumns: ['title', 'category', 'order', 'updatedAt'],
     group: 'Content',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'title',

@@ -1,9 +1,16 @@
-import { REST_METHODS } from '@payloadcms/next/api'
+import {
+  REST_GET,
+  REST_POST,
+  REST_DELETE,
+  REST_PATCH,
+  REST_PUT,
+  REST_OPTIONS,
+} from '@payloadcms/next/routes'
 import config from '@payload-config'
 
-export const GET = REST_METHODS.GET({ config })
-export const POST = REST_METHODS.POST({ config })
-export const DELETE = REST_METHODS.DELETE({ config })
-export const PATCH = REST_METHODS.PATCH({ config })
-export const PUT = REST_METHODS.PUT({ config })
-export const OPTIONS = REST_METHODS.OPTIONS({ config })
+export const GET = REST_GET(config)
+export const POST = REST_POST(config)
+export const DELETE = REST_DELETE(config)
+export const PATCH = REST_PATCH(config)
+export const PUT = REST_PUT(config)
+export const OPTIONS = REST_OPTIONS(config)

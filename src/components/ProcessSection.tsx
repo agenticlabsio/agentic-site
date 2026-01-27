@@ -47,11 +47,11 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section className="bg-white py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-stone-900 tracking-[-0.02em] mb-4">
             8 weeks. That&apos;s it.
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl mx-auto">
@@ -126,7 +126,9 @@ export default function ProcessSection() {
         {/* CTA */}
         <div className="text-center">
           <a
-            href="#contact"
+            href="https://calendly.com/cloud-agenticlabs/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-medium text-lg transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 hover:-translate-y-0.5"
           >
             Start Week 1

@@ -37,7 +37,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <h2 className="text-xl font-semibold text-white mb-4">Agentic Labs</h2>
+            <h2 className="text-xl font-display text-white mb-4">Agentic Labs</h2>
             <p className="text-stone-400 text-sm leading-relaxed max-w-sm mb-2">
               Enterprise AI systems. Shipped in 8 weeks.
             </p>
@@ -78,6 +78,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: 'Home', href: '/' },
+                { label: 'Portfolio', href: '/portfolio' },
                 { label: 'Solutions', href: '/solutions' },
                 { label: 'Case Studies', href: '/case-studies' },
                 { label: 'Industries', href: '/industries' },
@@ -115,7 +116,9 @@ export default function Footer() {
               ))}
             </ul>
             <a
-              href="#contact"
+              href="https://calendly.com/cloud-agenticlabs/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-medium transition-colors"
             >
               Book a Call

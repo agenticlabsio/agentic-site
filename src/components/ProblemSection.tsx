@@ -8,11 +8,11 @@ export default function ProblemSection() {
   ];
 
   return (
-    <section className="bg-stone-50 py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section className="bg-stone-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-stone-900 tracking-[-0.02em] mb-4">
             87% of AI pilots never reach production.
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl mx-auto">
@@ -61,7 +61,7 @@ export default function ProblemSection() {
                   key={index}
                   className="flex items-center gap-3 py-3 border-b border-white/20 last:border-0"
                 >
-                  <svg className="w-5 h-5 text-brand-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span className="text-white font-medium">{row.agentic}</span>

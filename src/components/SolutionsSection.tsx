@@ -1,10 +1,10 @@
 export default function SolutionsSection() {
   return (
-    <section id="solutions" className="bg-stone-50 py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section id="solutions" className="bg-stone-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-stone-900 tracking-[-0.02em] mb-4">
             AI that does the work—not just demos of it.
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl mx-auto">
@@ -22,17 +22,17 @@ export default function SolutionsSection() {
                 <span className="w-1.5 h-1.5 bg-white rounded-full" />
                 Featured Solution
               </div>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display text-white mb-4">
                 Intelligent Agents
               </h3>
-              <p className="text-white/80 text-lg mb-6 max-w-lg leading-relaxed">
+              <p className="text-white text-lg mb-6 max-w-lg leading-relaxed">
                 Deploy agents that handle your team&apos;s most tedious work—ticket
                 routing, data entry, report generation—while they focus on
                 high-value decisions.
               </p>
               <ul className="space-y-2 mb-8">
                 {['Multi-agent orchestration', 'Tool calling & function execution', '40+ hours reclaimed per team, per week'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2 text-white/90">
+                  <li key={i} className="flex items-center gap-2 text-white">
                     <svg className="w-5 h-5 text-brand-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
@@ -42,7 +42,9 @@ export default function SolutionsSection() {
               </ul>
             </div>
             <a
-              href="#contact"
+              href="https://calendly.com/cloud-agenticlabs/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-brand-700 rounded-xl font-medium hover:bg-brand-50 transition-colors w-fit"
             >
               Learn More

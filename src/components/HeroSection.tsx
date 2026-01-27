@@ -1,20 +1,20 @@
 export default function HeroSection() {
   return (
-    <section className="bg-white pt-28 pb-20 lg:pt-36 lg:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="bg-white pt-28 pb-24 lg:pt-36 lg:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text */}
           <div>
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 mb-8">
               <span className="w-2 h-2 bg-brand-600 rounded-full animate-pulse" />
               <span className="text-sm font-medium text-brand-700">
                 Trusted by Fortune 500 AI Leaders
               </span>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-stone-900 leading-[1.1] tracking-tight mb-6">
+            {/* Headline - Instrument Serif */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] text-stone-900 leading-[1.1] tracking-[-0.02em] mb-6">
               Stop piloting.{' '}
               <span className="text-brand-600">Start shipping.</span>
             </h1>
@@ -28,7 +28,9 @@ export default function HeroSection() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <a
-                href="#contact"
+                href="https://calendly.com/cloud-agenticlabs/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-medium text-lg transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 hover:-translate-y-0.5"
               >
                 Book Your Strategy Session
@@ -56,7 +58,7 @@ export default function HeroSection() {
           {/* Right Column - Visual */}
           <div className="relative">
             {/* Stats Card */}
-            <div className="bg-gradient-to-br from-stone-50 to-white rounded-2xl border border-stone-200 p-8 shadow-xl">
+            <div className="bg-gradient-to-br from-stone-50 to-white rounded-2xl border border-stone-200 p-8 shadow-lg">
               <div className="text-center mb-8">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full mb-4">
                   <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
@@ -65,26 +67,26 @@ export default function HeroSection() {
               </div>
 
               <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-4 bg-white rounded-xl border border-stone-100">
-                  <div className="text-3xl sm:text-4xl font-bold text-brand-600 mb-1">
+                <div className="text-center p-4 bg-white rounded-2xl border border-stone-200 shadow-sm">
+                  <div className="text-3xl sm:text-4xl font-display text-brand-600 mb-1">
                     $3.2M+
                   </div>
                   <div className="text-sm text-stone-600">Avg Client Savings</div>
                 </div>
-                <div className="text-center p-4 bg-white rounded-xl border border-stone-100">
-                  <div className="text-3xl sm:text-4xl font-bold text-brand-600 mb-1">
+                <div className="text-center p-4 bg-white rounded-2xl border border-stone-200 shadow-sm">
+                  <div className="text-3xl sm:text-4xl font-display text-brand-600 mb-1">
                     8 Wks
                   </div>
                   <div className="text-sm text-stone-600">To Production</div>
                 </div>
-                <div className="text-center p-4 bg-white rounded-xl border border-stone-100">
-                  <div className="text-3xl sm:text-4xl font-bold text-brand-600 mb-1">
+                <div className="text-center p-4 bg-white rounded-2xl border border-stone-200 shadow-sm">
+                  <div className="text-3xl sm:text-4xl font-display text-brand-600 mb-1">
                     50+
                   </div>
                   <div className="text-sm text-stone-600">Systems Deployed</div>
                 </div>
-                <div className="text-center p-4 bg-white rounded-xl border border-stone-100">
-                  <div className="text-3xl sm:text-4xl font-bold text-brand-600 mb-1">
+                <div className="text-center p-4 bg-white rounded-2xl border border-stone-200 shadow-sm">
+                  <div className="text-3xl sm:text-4xl font-display text-brand-600 mb-1">
                     0
                   </div>
                   <div className="text-sm text-stone-600">Failed Projects</div>

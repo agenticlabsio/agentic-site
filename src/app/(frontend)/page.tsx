@@ -20,6 +20,7 @@ export default function RootPage() {
 
   const items = [
     { label: "Home", href: "/" },
+    { label: "Portfolio", href: "/portfolio" },
     { label: "Solutions", href: "/solutions" },
     { label: "Industries", href: "/industries" },
     { label: "Case Studies", href: "/case-studies" }
@@ -35,7 +36,7 @@ export default function RootPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <a href="/" className="text-xl font-bold text-stone-900">
+            <a href="/" className="text-xl font-display text-stone-900">
               Agentic Labs
             </a>
 
@@ -51,7 +52,9 @@ export default function RootPage() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="https://calendly.com/cloud-agenticlabs/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-medium transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30"
               >
                 Book a Call
@@ -97,7 +100,9 @@ export default function RootPage() {
                   </a>
                 ))}
                 <a
-                  href="#contact"
+                  href="https://calendly.com/cloud-agenticlabs/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium text-sm text-center transition-colors"
                 >

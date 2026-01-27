@@ -5,38 +5,38 @@
  *
  * Aesthetic: Precision Intelligence
  * - Sophisticated editorial-meets-tech
- * - Deep Sapphire brand with warm stone neutrals
- * - High contrast for legibility (WCAG AA+)
+ * - Muted Slate-Blue brand with warm stone neutrals
+ * - High contrast for legibility (WCAG AAA)
  * - Premium consultancy positioning
  */
 
 /* ═══════════════════════════════════════════════
    TAILWIND 4 THEME - Brand Color Scale
-   Deep Sapphire - Distinctive, authoritative blue
+   Muted Slate-Blue - Sophisticated, calm, readable
    ═══════════════════════════════════════════════ */
 @theme {
-  --color-brand-50: #f0f4ff;
-  --color-brand-100: #dbe4ff;
-  --color-brand-200: #bac8ff;
-  --color-brand-300: #91a7ff;
-  --color-brand-400: #748ffc;
-  --color-brand-500: #5c7cfa;
-  --color-brand-600: #4c6ef5;
-  --color-brand-700: #4263eb;
-  --color-brand-800: #3b5bdb;
-  --color-brand-900: #364fc7;
+  --color-brand-50: #f8fafc;
+  --color-brand-100: #f1f5f9;
+  --color-brand-200: #e2e8f0;
+  --color-brand-300: #cbd5e1;
+  --color-brand-400: #94a3b8;
+  --color-brand-500: #64748b;
+  --color-brand-600: #475569;
+  --color-brand-700: #334155;
+  --color-brand-800: #1e293b;
+  --color-brand-900: #0f172a;
 }
 
 :root {
   /* ═══════════════════════════════════════
-     COLOR PALETTE - Deep Sapphire
+     COLOR PALETTE - Muted Slate-Blue
      ═══════════════════════════════════════ */
 
-  /* Primary Brand - Deep Sapphire (authoritative, distinctive) */
-  --color-brand: #4c6ef5;
-  --color-brand-light: #5c7cfa;
-  --color-brand-dark: #4263eb;
-  --color-brand-muted: #dbe4ff;
+  /* Primary Brand - Muted Slate-Blue (sophisticated, calm) */
+  --color-brand: #475569;
+  --color-brand-light: #64748b;
+  --color-brand-dark: #334155;
+  --color-brand-muted: #f1f5f9;
 
   /* Accent - Warm Amber (energy, CTAs) */
   --color-accent: #f59e0b;
@@ -63,11 +63,13 @@
   --color-error: #DC2626;
 
   /* ═══════════════════════════════════════
-     TYPOGRAPHY - Geist Sans Family
+     TYPOGRAPHY - Premium Enterprise System
      ═══════════════════════════════════════ */
 
-  /* Display & Body: Geist Sans - Sharp, modern, highly legible */
-  --font-display: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  /* Display: Instrument Serif - Elegant, editorial authority */
+  --font-display: var(--font-instrument-serif), Georgia, 'Times New Roman', serif;
+
+  /* Body: Geist Sans - Sharp, modern, highly legible */
   --font-body: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 
   /* Mono: Geist Mono - Technical credibility */
@@ -115,7 +117,7 @@
   --shadow-md: 0 4px 12px rgb(0 0 0 / 0.06);
   --shadow-lg: 0 12px 24px rgb(0 0 0 / 0.08);
   --shadow-xl: 0 24px 48px rgb(0 0 0 / 0.12);
-  --shadow-brand: 0 4px 14px 0 rgb(76 110 245 / 0.25);
+  --shadow-brand: 0 4px 14px 0 rgb(71 85 105 / 0.25);
 
   /* ═══════════════════════════════════════
      TRANSITIONS
@@ -156,19 +158,25 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* Typography hierarchy - Geist Sans optimized */
-h1, h2, h3, h4, h5, h6 {
+/* Typography hierarchy - Premium editorial + modern body */
+h1, h2 {
   font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-body);
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
 }
 
 h1 {
   font-size: clamp(2.5rem, 5vw, 3.75rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
 }
 h2 { font-size: clamp(1.875rem, 4vw, 2.75rem); }
 h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }

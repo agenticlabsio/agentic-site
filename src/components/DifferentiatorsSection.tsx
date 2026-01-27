@@ -39,11 +39,11 @@ export default function DifferentiatorsSection() {
   ];
 
   return (
-    <section className="bg-stone-50 py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section className="bg-stone-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-stone-900 tracking-[-0.02em] mb-4">
             We&apos;re not your typical AI consultancy.
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl mx-auto">

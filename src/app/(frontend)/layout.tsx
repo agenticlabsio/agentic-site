@@ -1,8 +1,16 @@
 import { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Instrument_Serif } from "next/font/google";
 import "../globals.css";
 import ElevenLabsVoiceWidget from "@/components/ElevenLabsVoiceWidget";
+
+const instrumentSerif = Instrument_Serif({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-instrument-serif',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://agenticlabs.io'),
@@ -82,7 +90,7 @@ export default function FrontendLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable} antialiased`}
         suppressHydrationWarning={true}
       >
         {children}

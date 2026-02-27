@@ -45,5 +45,13 @@
     "cross-env": "^10.1.0",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "sharp",
+      "esbuild",
+      "workerd"
+    ]
   }
 }

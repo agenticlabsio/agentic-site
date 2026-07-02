@@ -10,9 +10,9 @@ export function OrganizationSchema() {
     "image": "https://agenticlabs.io/og-image.png",
     "email": "contact@agenticlabs.io",
     "sameAs": [
-      "https://linkedin.com/company/agenticlabs",
+      "https://www.linkedin.com/company/agenticlabsio/",
       "https://twitter.com/agenticlabs",
-      "https://github.com/agenticlabs"
+      "https://github.com/agenticlabsio"
     ],
     "areaServed": {
       "@type": "Country",

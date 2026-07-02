@@ -26,7 +26,7 @@ export default function ContentHubSection() {
       ),
       accentClass: 'text-brand-600 bg-brand-50',
       links: [
-        { label: 'Read on LinkedIn', url: 'https://linkedin.com/company/agenticlabs' },
+        { label: 'Read on LinkedIn', url: 'https://www.linkedin.com/company/agenticlabsio/' },
         { label: 'Follow on X', url: 'https://x.com/agenticlabs' },
       ],
     },

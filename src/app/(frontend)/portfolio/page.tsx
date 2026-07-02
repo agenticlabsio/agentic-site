@@ -126,7 +126,7 @@ export default function PortfolioPage() {
                 href="#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-medium transition-all duration-200 shadow-lg shadow-brand-600/25"
               >
-                Book a Call
+                Book Strategy Call
               </a>
             </nav>
 
@@ -165,7 +165,7 @@ export default function PortfolioPage() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-medium text-sm text-center transition-colors"
                 >
-                  Book a Call
+                  Book Strategy Call
                 </a>
               </nav>
             </div>

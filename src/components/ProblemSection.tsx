@@ -1,10 +1,10 @@
 export default function ProblemSection() {
   const comparison = [
-    { typical: '12-month "discovery" phases', agentic: '8 weeks to production' },
-    { typical: 'Vague "transformation" goals', agentic: 'Defined KPIs from day 1' },
-    { typical: 'PowerPoint roadmaps', agentic: 'Working production code' },
-    { typical: 'Consultant lock-in', agentic: 'Full IP transfer to you' },
-    { typical: '"Minimal viable" demos', agentic: 'Systems that scale' },
+    { typical: '12-month discovery phases', agentic: '8 weeks to production' },
+    { typical: 'Vague transformation goals', agentic: 'Defined KPIs before code' },
+    { typical: 'PowerPoint roadmaps', agentic: 'Working production systems' },
+    { typical: 'Consultant lock-in', agentic: 'Full IP transfer' },
+    { typical: 'Demos that collect dust', agentic: 'Systems that scale' },
   ];
 
   return (
@@ -12,12 +12,11 @@ export default function ProblemSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-stone-900 tracking-[-0.02em] mb-4">
-            87% of AI pilots never reach production.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-[-0.02em] mb-4">
+            The Pilot Trap
           </h2>
-          <p className="text-xl text-stone-600 max-w-2xl mx-auto">
-            The typical enterprise AI project takes 12+ months, burns budget,
-            and delivers a demo—not a system. We do things differently.
+          <p className="text-xl font-medium text-stone-700 max-w-2xl mx-auto">
+            87% of enterprise AI initiatives never reach production. Twelve-month cycles. Burned budgets. Demos that impress but never deploy.
           </p>
         </div>
 
@@ -27,11 +26,11 @@ export default function ProblemSection() {
           <div className="bg-white rounded-2xl border border-stone-200 p-8 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-stone-900">The Old Way</h3>
+              <h3 className="text-lg font-bold text-stone-900">Old Way</h3>
             </div>
             <div className="space-y-4">
               {comparison.map((row, index) => (
@@ -39,32 +38,32 @@ export default function ProblemSection() {
                   key={index}
                   className="flex items-center gap-3 py-3 border-b border-stone-100 last:border-0"
                 >
-                  <span className="text-stone-600">{row.typical}</span>
+                  <span className="text-stone-700 font-medium">{row.typical}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Agentic Column */}
-          <div className="bg-brand-600 rounded-2xl p-8 shadow-lg shadow-brand-600/20">
+          <div className="bg-brand-400 rounded-2xl p-8 shadow-lg shadow-brand-400/20">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center">
+                <svg className="w-5 h-5 text-stone-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white">The Agentic Way</h3>
+              <h3 className="text-lg font-bold text-stone-900">The Agentic Approach</h3>
             </div>
             <div className="space-y-4">
               {comparison.map((row, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 py-3 border-b border-white/20 last:border-0"
+                  className="flex items-center gap-3 py-3 border-b border-stone-800/20 last:border-0"
                 >
-                  <svg className="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-white font-medium">{row.agentic}</span>
+                  <span className="text-stone-900 font-bold">{row.agentic}</span>
                 </div>
               ))}
             </div>

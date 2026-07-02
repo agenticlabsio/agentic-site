@@ -1,14 +1,19 @@
 import { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import { Instrument_Serif } from "next/font/google";
+import { Poppins, Lora } from "next/font/google";
 import "../globals.css";
 import ElevenLabsVoiceWidget from "@/components/ElevenLabsVoiceWidget";
 
-const instrumentSerif = Instrument_Serif({
-  weight: '400',
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-instrument-serif',
+  variable: '--font-poppins',
+  display: 'swap',
+});
+
+const lora = Lora({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-lora',
   display: 'swap',
 });
 
@@ -77,20 +82,31 @@ export const metadata: Metadata = {
   },
 };
 
+const themeScript = `
+(function(){
+  try {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+})();
+`;
+
 export default function FrontendLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable} antialiased`}
+        className={`${poppins.variable} ${lora.variable} antialiased`}
         suppressHydrationWarning={true}
       >
         {children}

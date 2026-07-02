@@ -5,10 +5,10 @@ export default function FeaturedCaseStudy() {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="text-sm font-medium text-brand-600 uppercase tracking-wider mb-3">
-            Case Study
+            Client Outcomes
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight">
-            Proof, not promises.
+            Documented results from 50+ enterprise deployments.
           </h2>
         </div>
 

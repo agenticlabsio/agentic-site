@@ -159,7 +159,7 @@ const solutionsData: Record<string, {
     metaDescription: 'Contextualize enterprise data for AI agents. Knowledge graphs, semantic indexing, and Model Context Protocol (MCP) implementation. Enable AI that understands your business.',
     heroTagline: 'AI that actually understands your business',
     description: 'Contextualize enterprise data for AI agents. Knowledge graphs, semantic indexing, and Model Context Protocol (MCP) implementation.',
-    problem: 'AI models are powerful but generic. Without business context, they produce hallucinations, irrelevant suggestions, and outputs that miss the mark. 48% of enterprises cite data searchability as their top AI challenge.',
+    problem: 'AI models are powerful but generic. Without business context, they produce hallucinations, irrelevant suggestions, and outputs that miss the mark. Many enterprises cite data searchability as a top AI challenge.',
     challenges: [
       'AI lacks understanding of your business processes and terminology',
       'Data fragmented across Salesforce, Workday, SAP, and file storage',
@@ -202,7 +202,7 @@ const solutionsData: Record<string, {
     metaDescription: 'Measure what matters: AI agent accuracy, task completion, cost-per-action, and business outcomes. Move from "Is it working?" to proven ROI in 90 days.',
     heroTagline: 'Prove AI ROI in 90 days',
     description: 'Measure what matters: AI agent accuracy, task completion, cost-per-action, and business outcomes. Move from "Is it working?" to proven ROI.',
-    problem: '2025 was AI hype. 2026 is "Is it working?" Only 19% of executives report >5% revenue increase from AI. The gap between expectations and realized benefits is massive.',
+    problem: '2025 was AI hype. 2026 is "Is it working?" Most executives haven\'t yet seen significant revenue gains from AI. The gap between expectations and realized benefits is massive.',
     challenges: [
       'No clear metrics for AI agent success',
       'Can\'t differentiate AI value from noise',
@@ -352,7 +352,7 @@ export default function SolutionDetailPage() {
                 href="/#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
-                Get In Touch
+                Book Strategy Call
               </Link>
             </nav>
             <button
@@ -374,7 +374,7 @@ export default function SolutionDetailPage() {
                   </Link>
                 ))}
                 <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
-                  Get In Touch
+                  Book Strategy Call
                 </Link>
               </nav>
             </div>

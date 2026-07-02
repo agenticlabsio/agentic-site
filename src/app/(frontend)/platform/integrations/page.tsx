@@ -102,7 +102,7 @@ export default function IntegrationsPage() {
                 href="/#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
-                Get In Touch
+                Book Strategy Call
               </Link>
             </nav>
             <button
@@ -124,7 +124,7 @@ export default function IntegrationsPage() {
                   </Link>
                 ))}
                 <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
-                  Get In Touch
+                  Book Strategy Call
                 </Link>
               </nav>
             </div>

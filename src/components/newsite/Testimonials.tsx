@@ -10,7 +10,7 @@ const testimonials = [
     company: "Goldcast.io (Series A, WestBridge Capital)",
   },
   {
-    quote: "Partnering with Agentic Labs has been instrumental for Tan90. The advanced supply chain platform they developed has significantly improved the speed and efficiency of our thermal deliveries. It has also enabled us to streamline inventory tracking, billing, and invoicing while enhancing communication across our internal teams and with customers.",
+    quote: "Partnering with Agentic Labs has been instrumental for Tan90. The platform they built significantly improved the speed and efficiency of our deliveries, and helped us tighten inventory tracking, billing, and invoicing while improving communication across our internal teams and with customers.",
     name: "Soumalya Mukherjee",
     role: "Founder",
     company: "Tan90 Thermal Solutions (Series A, NABVENTURES)",
@@ -41,9 +41,9 @@ export default function Testimonials() {
       <div className="container-main">
         <Animate type="fadeUp">
           <div style={{ textAlign: "center", maxWidth: 600, margin: "0 auto 72px" }}>
-            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 600, lineHeight: 1.15, color: "var(--text-primary)" }}>
+            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 600, lineHeight: 1.15, color: "var(--text-primary)", fontFamily: "var(--font-display)" }}>
               Trusted by{" "}
-              <span style={{ fontFamily: "'Inria Serif', serif", fontStyle: "italic", color: "var(--accent-highlight)" }}>Industry Leaders</span>
+              <span className="text-gradient" style={{ fontFamily: "var(--font-display)", fontStyle: "italic" }}>Industry Leaders</span>
             </h2>
           </div>
         </Animate>
@@ -51,14 +51,29 @@ export default function Testimonials() {
         <div className="testimonials-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
           {testimonials.map((t, i) => (
             <Animate key={i} type="fadeUp" delay={0.12 * i}>
-              <div className="card-hover" style={{
-                borderRadius: 14,
-                padding: 32,
-                background: "var(--bg-card)",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-              }}>
+              <div
+                className="card-hover"
+                style={{
+                  borderRadius: 14,
+                  padding: 32,
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border)",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  transition: "border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--border-accent)";
+                  e.currentTarget.style.background = "var(--bg-card-hover)";
+                  e.currentTarget.style.boxShadow = "0 0 0 1px var(--accent-glow), 0 20px 48px -24px var(--accent-glow)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "var(--border)";
+                  e.currentTarget.style.background = "var(--bg-card)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
                 <div style={{ marginBottom: 20 }}>
                   <QuoteIcon />
                 </div>

@@ -91,6 +91,25 @@ export async function getIntegrationsByCategory() {
   )
 }
 
+// Leads — persist a captured email (public write path for the CTA/footer forms)
+export async function createLead(data: {
+  email: string
+  source?: 'cta-section' | 'footer' | 'hero'
+  page?: string
+  consent?: boolean
+}) {
+  const payload = await getPayloadClient()
+  return payload.create({
+    collection: 'leads',
+    data: {
+      email: data.email,
+      source: data.source ?? 'cta-section',
+      page: data.page,
+      consent: data.consent ?? false,
+    },
+  })
+}
+
 // Site Settings
 export async function getSiteSettings() {
   const payload = await getPayloadClient()

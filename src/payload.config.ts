@@ -18,6 +18,7 @@ import { FAQ } from './collections/FAQ'
 import { Industries } from './collections/Industries'
 import { Integrations } from './collections/Integrations'
 import { BlogPosts } from './collections/BlogPosts'
+import { Leads } from './collections/Leads'
 
 // Globals
 import { SiteSettings } from './globals/SiteSettings'
@@ -63,6 +64,7 @@ export default buildConfig({
     Industries,
     Integrations,
     BlogPosts,
+    Leads,
   ],
   globals: [SiteSettings, Navigation],
   secret: process.env.PAYLOAD_SECRET || 'development-secret-change-in-production',

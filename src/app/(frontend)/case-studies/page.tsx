@@ -1,13 +1,13 @@
 'use client';
 import { useState } from 'react';
-import Footer from '@/components/Footer';
+import Footer from '@/components/newsite/Footer';
 
 const caseStudies = [
   {
     slug: 'document-processing',
     industry: 'Financial Services',
     title: 'Document Processing Automation',
-    subtitle: 'Fortune 500 Bank',
+    subtitle: 'Mid-Market Bank',
     metrics: [
       { value: '12→6', label: 'Days' },
       { value: '$2.4M', label: 'Savings' },
@@ -54,10 +54,10 @@ const caseStudies = [
 ];
 
 const aggregateStats = [
-  { value: '$3.2M+', label: 'Avg Savings' },
-  { value: '50+', label: 'Systems Deployed' },
-  { value: '42%', label: 'Faster Cycles' },
-  { value: '8 Weeks', label: 'Avg Delivery' },
+  { value: '6–8 wks', label: 'To Production' },
+  { value: '94%', label: 'Extraction Accuracy' },
+  { value: '60%', label: 'Faster Resolution' },
+  { value: '40%', label: 'Cost Reduction' },
 ];
 
 export default function CaseStudiesPage() {
@@ -72,12 +72,12 @@ export default function CaseStudiesPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="newsite relative min-h-screen">
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <a href="/" className="text-xl font-bold text-stone-900">
+            <a href="/" className="text-xl font-bold text-stone-50">
               Agentic Labs
             </a>
             <nav className="hidden md:flex items-center gap-8">
@@ -86,7 +86,7 @@ export default function CaseStudiesPage() {
                   key={index}
                   href={item.href}
                   className={`font-medium text-sm transition-colors ${
-                    item.href === '/case-studies' ? 'text-stone-900' : 'text-stone-600 hover:text-stone-900'
+                    item.href === '/case-studies' ? 'text-stone-50' : 'text-stone-300 hover:text-stone-50'
                   }`}
                 >
                   {item.label}
@@ -96,12 +96,12 @@ export default function CaseStudiesPage() {
                 href="#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-medium transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30"
               >
-                Book Strategy Call
+                Book a Strategy Call
               </a>
             </nav>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-stone-700 p-2"
+              className="md:hidden text-stone-300 p-2"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -110,15 +110,15 @@ export default function CaseStudiesPage() {
             </button>
           </div>
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-stone-200">
+            <div className="md:hidden py-4 border-t border-white/10">
               <nav className="flex flex-col space-y-2">
                 {items.map((item, index) => (
-                  <a key={index} href={item.href} className="text-stone-600 hover:text-stone-900 py-2 px-4 rounded-lg hover:bg-stone-50 transition-colors font-medium text-sm" onClick={() => setIsMobileMenuOpen(false)}>
+                  <a key={index} href={item.href} className="text-stone-300 hover:text-stone-50 py-2 px-4 rounded-lg hover:bg-white/5 transition-colors font-medium text-sm" onClick={() => setIsMobileMenuOpen(false)}>
                     {item.label}
                   </a>
                 ))}
                 <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium text-sm text-center transition-colors">
-                  Book Strategy Call
+                  Book a Strategy Call
                 </a>
               </nav>
             </div>
@@ -128,16 +128,17 @@ export default function CaseStudiesPage() {
 
       <main className="pt-16">
         {/* Hero */}
-        <section className="bg-white pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+        <section className="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <p className="text-sm font-medium text-brand-600 uppercase tracking-wider mb-3">
               Case Studies
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 tracking-tight mb-4">
-              Proof, not promises.
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-50 tracking-tight mb-4 font-display">
+              Proof, <span className="text-brand-400">not promises.</span>
             </h1>
-            <p className="text-xl text-stone-600 max-w-2xl">
-              Every project. Measurable outcomes. Real numbers.
+            <p className="text-xl text-stone-300 max-w-2xl">
+              Real workflows for small and mid-market teams — measurable outcomes and honest numbers,
+              not a demo that never shipped.
             </p>
           </div>
         </section>
@@ -148,7 +149,7 @@ export default function CaseStudiesPage() {
             <div className="max-w-6xl mx-auto">
               <a
                 href={`/case-studies/${featured.slug}`}
-                className="block bg-gradient-to-br from-stone-50 to-white rounded-2xl border border-stone-200 overflow-hidden shadow-lg hover:shadow-xl hover:border-brand-200 transition-all duration-300"
+                className="block bg-white/[0.02] rounded-2xl border border-white/10 overflow-hidden shadow-lg hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)] hover:border-brand-400/50 transition-all duration-300"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="p-8 md:p-10">
@@ -156,14 +157,14 @@ export default function CaseStudiesPage() {
                       <span className="px-3 py-1 bg-brand-600 text-white text-xs font-medium uppercase tracking-wider rounded-full">
                         Featured
                       </span>
-                      <span className="px-3 py-1 bg-stone-100 text-stone-600 text-xs font-medium rounded-full">
+                      <span className="px-3 py-1 bg-white/5 text-stone-300 text-xs font-medium rounded-full">
                         {featured.industry}
                       </span>
                     </div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 mb-2">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-stone-50 mb-2">
                       {featured.title}
                     </h2>
-                    <p className="text-stone-500 mb-6">{featured.subtitle}</p>
+                    <p className="text-stone-400 mb-6">{featured.subtitle}</p>
                     <div className="inline-flex items-center gap-2 text-brand-600 font-medium">
                       Read Case Study
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,23 +196,23 @@ export default function CaseStudiesPage() {
                 <a
                   key={cs.slug}
                   href={`/case-studies/${cs.slug}`}
-                  className="block bg-white rounded-2xl p-6 border border-stone-200 shadow-sm hover:shadow-md hover:border-brand-200 transition-all duration-300 group"
+                  className="block bg-white/[0.03] rounded-2xl p-6 border border-white/10 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)] hover:border-brand-400/50 transition-all duration-300 group"
                 >
-                  <div className="inline-block px-3 py-1 bg-stone-100 text-stone-600 text-xs font-medium rounded-full mb-4">
+                  <div className="inline-block px-3 py-1 bg-white/5 text-stone-300 text-xs font-medium rounded-full mb-4">
                     {cs.industry}
                   </div>
-                  <h3 className="text-xl font-semibold text-stone-900 mb-1">{cs.title}</h3>
-                  <p className="text-stone-500 text-sm mb-4">{cs.subtitle}</p>
+                  <h3 className="text-xl font-semibold text-stone-50 mb-1">{cs.title}</h3>
+                  <p className="text-stone-400 text-sm mb-4">{cs.subtitle}</p>
                   <div className="flex items-end justify-between">
                     <div className="flex gap-6">
                       {cs.metrics.map((metric, i) => (
                         <div key={i}>
                           <div className="text-lg font-bold text-brand-600">{metric.value}</div>
-                          <div className="text-xs text-stone-500">{metric.label}</div>
+                          <div className="text-xs text-stone-400">{metric.label}</div>
                         </div>
                       ))}
                     </div>
-                    <div className="w-10 h-10 bg-stone-100 group-hover:bg-brand-600 rounded-full flex items-center justify-center text-stone-600 group-hover:text-white transition-all duration-200">
+                    <div className="w-10 h-10 bg-white/5 group-hover:bg-brand-500 rounded-full flex items-center justify-center text-stone-300 group-hover:text-white transition-all duration-200">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
@@ -224,16 +225,16 @@ export default function CaseStudiesPage() {
         </section>
 
         {/* Aggregate Stats */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-stone-50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
           <div className="max-w-6xl mx-auto">
             <h3 className="text-center text-stone-400 text-sm font-medium uppercase tracking-wider mb-10">
-              Aggregate Results Across 50+ Deployments
+              Representative Outcomes From Our Builds
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {aggregateStats.map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-3xl lg:text-4xl font-bold text-stone-900 mb-1">{stat.value}</div>
-                  <div className="text-sm text-stone-500">{stat.label}</div>
+                  <div className="text-3xl lg:text-4xl font-bold text-stone-50 mb-1">{stat.value}</div>
+                  <div className="text-sm text-stone-400">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -250,7 +251,7 @@ export default function CaseStudiesPage() {
               href="mailto:contact@agenticlabs.io?subject=Discovery%20Call%20Request"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-medium text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg"
             >
-              Book Your Strategy Call
+              Book a Strategy Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

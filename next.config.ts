@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
   // Required for OpenNext/Cloudflare
   output: 'standalone',
 
+  // Type safety is enforced separately via `pnpm typecheck` (tsc --noEmit).
+  // Skip lint during build so an ESLint plugin crash can't block production deploys.
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   // Transpile Cloudflare packages
   transpilePackages: ['@opennextjs/cloudflare'],
 

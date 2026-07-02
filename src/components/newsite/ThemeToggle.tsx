@@ -6,27 +6,28 @@ export default function ThemeToggle() {
   const [dark, setDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  // Dark-first: the absence of an explicit data-theme means dark.
   useEffect(() => {
     setMounted(true);
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const isDark = document.documentElement.getAttribute("data-theme") !== "light";
     setDark(isDark);
 
     const handler = () => {
-      setDark(document.documentElement.getAttribute("data-theme") === "dark");
+      setDark(document.documentElement.getAttribute("data-theme") !== "light");
     };
     window.addEventListener("theme-change", handler);
     return () => window.removeEventListener("theme-change", handler);
   }, []);
 
   function handleClick() {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const isDark = document.documentElement.getAttribute("data-theme") !== "light";
     const next = !isDark;
 
     if (next) {
-      document.documentElement.setAttribute("data-theme", "dark");
+      document.documentElement.removeAttribute("data-theme");
       localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", "light");
       localStorage.setItem("theme", "light");
     }
 

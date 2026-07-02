@@ -63,12 +63,20 @@ Payload config dynamically gets Cloudflare context:
 - **Local dev/CLI**: Uses `wrangler.getPlatformProxy()`
 - **Production**: Uses `@opennextjs/cloudflare.getCloudflareContext()`
 
-## Styling
+## Styling — "Sapphire Nocturne" (dark-first)
 
-- Tailwind CSS 4 with PostCSS
-- Fonts: DM Sans (body), Instrument Serif (display headings)
-- Use `font-display` class for headings/nav/CTAs, `font-body` for body text
-- Brand color: `brand-600` (primary), `brand-700` (hover states)
+- Tailwind CSS 4 with PostCSS; all design tokens live in `src/app/globals.css`.
+- **Fonts** (via `next/font` in `(frontend)/layout.tsx`): Sora (`--font-display`),
+  IBM Plex Sans (`--font-body`), IBM Plex Mono (`--font-mono`, for stats/labels).
+  Use `font-display` for headings/CTAs, `font-body` for prose, `font-mono` for numbers.
+- **Palette**: electric sapphire brand scale (`brand-500` #5b8dff, `brand-600` #3b6ae0)
+  with a violet accent (#a855f7). Base element styles are in `@layer base` so Tailwind
+  text/bg utilities override them.
+- **Theme**: dark by default. The homepage (`.newsite` wrapper) reads its own scoped
+  dark tokens and flips to light via `[data-theme="light"] .newsite` (theme toggle,
+  default = dark). Interior pages also use the `newsite` wrapper for the dark canvas +
+  shared `newsite/Footer`; they style with Tailwind utilities against the sapphire scale.
+- Respect `prefers-reduced-motion` (handled globally in globals.css).
 
 ## Patterns
 

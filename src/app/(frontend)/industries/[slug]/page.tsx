@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import Footer from '@/components/Footer';
+import Footer from '@/components/newsite/Footer';
 import { FAQSchema, ServiceSchema, BreadcrumbSchema } from '@/components/SEO';
 
 // Industry data with full details for each industry page
@@ -29,7 +29,7 @@ const industriesData: Record<string, {
     icon: '🏥',
     metaTitle: 'AI Solutions for Healthcare | HIPAA Compliant | Agentic Labs',
     metaDescription: 'AI automation for healthcare: patient intake, clinical documentation, appointment scheduling. HIPAA compliant. Reduce administrative burden by 40%.',
-    heroDescription: 'AI automation that reduces administrative burden on clinical staff, streamlines patient intake, and improves care delivery—all while maintaining HIPAA compliance.',
+    heroDescription: 'AI automation that reduces administrative burden on clinical staff, speeds up patient intake, and improves care delivery—all while maintaining HIPAA compliance.',
     targetAudience: 'Health systems, large practices, healthcare IT companies ($500M-$10B)',
     marketContext: [
       { stat: '30% of healthcare spending goes to administrative tasks', source: 'McKinsey' },
@@ -130,7 +130,7 @@ const industriesData: Record<string, {
     ],
     challenges: [
       { challenge: 'Inventory optimization', description: 'Balancing overstock (carrying costs) vs stockout (lost sales) is a constant struggle.' },
-      { challenge: 'Omnichannel customer experience', description: 'Customers expect seamless experience across web, mobile, and store.' },
+      { challenge: 'Omnichannel customer experience', description: 'Customers expect a consistent experience across web, mobile, and store.' },
       { challenge: 'Order management complexity', description: 'Fulfillment from multiple locations with varying inventory levels.' },
       { challenge: 'Labor cost pressures', description: 'Rising wages require automation to maintain margins.' },
     ],
@@ -409,10 +409,10 @@ export default function IndustryDetailPage() {
 
   if (!industry) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="newsite min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">Industry Not Found</h1>
-          <Link href="/industries" className="text-brand-600 hover:underline">
+          <h1 className="text-2xl font-bold text-stone-50 mb-4">Industry Not Found</h1>
+          <Link href="/industries" className="text-brand-400 hover:underline">
             View all industries
           </Link>
         </div>
@@ -427,7 +427,7 @@ export default function IndustryDetailPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="newsite relative min-h-screen">
       {/* Schema Markup */}
       <ServiceSchema
         name={`AI Solutions for ${industry.name}`}
@@ -440,10 +440,10 @@ export default function IndustryDetailPage() {
       <BreadcrumbSchema items={breadcrumbs} />
 
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-xl font-bold text-slate-900 font-display">
+            <Link href="/" className="text-xl font-bold text-stone-50 font-display">
               Agentic Labs
             </Link>
             <nav className="hidden md:flex items-center gap-8">
@@ -452,7 +452,7 @@ export default function IndustryDetailPage() {
                   key={index}
                   href={item.href}
                   className={`font-medium text-sm transition-colors font-display ${
-                    item.href === '/industries' ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'
+                    item.href === '/industries' ? 'text-stone-50' : 'text-stone-300 hover:text-stone-50'
                   }`}
                 >
                   {item.label}
@@ -462,12 +462,12 @@ export default function IndustryDetailPage() {
                 href="/#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
-                Book Strategy Call
+                Book a Strategy Call
               </Link>
             </nav>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-slate-700 p-2"
+              className="md:hidden text-stone-300 p-2"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -476,15 +476,15 @@ export default function IndustryDetailPage() {
             </button>
           </div>
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-slate-200">
+            <div className="md:hidden py-4 border-t border-white/10">
               <nav className="flex flex-col space-y-2">
                 {navItems.map((item, index) => (
-                  <Link key={index} href={item.href} className="text-slate-600 hover:text-slate-900 py-2 px-4 rounded-lg hover:bg-slate-50 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link key={index} href={item.href} className="text-stone-300 hover:text-stone-50 py-2 px-4 rounded-lg hover:bg-white/5 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
                     {item.label}
                   </Link>
                 ))}
                 <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
-                  Book Strategy Call
+                  Book a Strategy Call
                 </Link>
               </nav>
             </div>
@@ -494,30 +494,30 @@ export default function IndustryDetailPage() {
 
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-slate-50 to-white pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+        <section className="bg-white/[0.02] pt-20 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-6">
               <ol className="flex items-center gap-2 text-sm">
-                <li><Link href="/" className="text-slate-500 hover:text-slate-700">Home</Link></li>
-                <li className="text-slate-400">/</li>
-                <li><Link href="/industries" className="text-slate-500 hover:text-slate-700">Industries</Link></li>
-                <li className="text-slate-400">/</li>
-                <li className="text-slate-900 font-medium">{industry.name}</li>
+                <li><Link href="/" className="text-stone-400 hover:text-stone-200">Home</Link></li>
+                <li className="text-stone-400">/</li>
+                <li><Link href="/industries" className="text-stone-400 hover:text-stone-200">Industries</Link></li>
+                <li className="text-stone-400">/</li>
+                <li className="text-stone-50 font-medium">{industry.name}</li>
               </ol>
             </nav>
 
             <div className="text-5xl mb-4">{industry.icon}</div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 font-display">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-50 tracking-tight mb-4 font-display">
               AI for {industry.name}
             </h1>
-            <p className="text-xl sm:text-2xl text-brand-600 font-medium mb-6 font-display">
+            <p className="text-xl sm:text-2xl text-brand-400 font-medium mb-6 font-display">
               {industry.tagline}
             </p>
-            <p className="text-lg text-slate-600 max-w-3xl mb-8 font-body">
+            <p className="text-lg text-stone-300 max-w-3xl mb-8 font-body">
               {industry.heroDescription}
             </p>
-            <p className="text-sm text-slate-500 mb-8 font-body">
+            <p className="text-sm text-stone-400 mb-8 font-body">
               <strong>Target Audience:</strong> {industry.targetAudience}
             </p>
             <div className="flex flex-wrap gap-4">
@@ -525,14 +525,14 @@ export default function IndustryDetailPage() {
                 href="/#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 font-display"
               >
-                Schedule Discovery Call
+                Book a Strategy Call
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
               <Link
                 href="/industries"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-colors font-display"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.03] border border-white/10 text-stone-300 rounded-xl font-semibold hover:bg-white/5 transition-colors font-display"
               >
                 View All Industries
               </Link>
@@ -556,15 +556,15 @@ export default function IndustryDetailPage() {
         </section>
 
         {/* Challenges Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">Industry Challenges</h2>
-            <p className="text-lg text-slate-600 mb-12 max-w-2xl font-body">The pain points AI can address in {industry.name}</p>
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">Industry Challenges</h2>
+            <p className="text-lg text-stone-300 mb-12 max-w-2xl font-body">The pain points AI can address in {industry.name}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {industry.challenges.map((ch, i) => (
-                <div key={i} className="bg-slate-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">{ch.challenge}</h3>
-                  <p className="text-slate-600 font-body">{ch.description}</p>
+                <div key={i} className="bg-white/[0.02] rounded-xl p-6">
+                  <h3 className="text-lg font-bold text-stone-50 mb-2 font-display">{ch.challenge}</h3>
+                  <p className="text-stone-300 font-body">{ch.description}</p>
                 </div>
               ))}
             </div>
@@ -572,22 +572,22 @@ export default function IndustryDetailPage() {
         </section>
 
         {/* AI Solutions Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">AI Solutions for {industry.name}</h2>
-            <p className="text-lg text-slate-600 mb-12 max-w-2xl font-body">How we help {industry.name.toLowerCase()} companies transform operations</p>
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">AI Solutions for {industry.name}</h2>
+            <p className="text-lg text-stone-300 mb-12 max-w-2xl font-body">How we help {industry.name.toLowerCase()} companies transform operations</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {industry.aiSolutions.map((sol, i) => (
-                <div key={i} className="bg-white rounded-xl p-6 border border-slate-200">
+                <div key={i} className="bg-white/[0.03] rounded-xl p-6 border border-white/10">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-lg font-bold text-slate-900 font-display">{sol.title}</h3>
+                    <h3 className="text-lg font-bold text-stone-50 font-display">{sol.title}</h3>
                     {sol.metric && (
-                      <span className="text-sm font-medium text-brand-600 bg-brand-50 px-2 py-1 rounded font-display">
+                      <span className="text-sm font-medium text-brand-300 bg-brand-500/10 px-2 py-1 rounded font-display">
                         {sol.metric}
                       </span>
                     )}
                   </div>
-                  <p className="text-slate-600 font-body">{sol.description}</p>
+                  <p className="text-stone-300 font-body">{sol.description}</p>
                 </div>
               ))}
             </div>
@@ -595,13 +595,13 @@ export default function IndustryDetailPage() {
         </section>
 
         {/* Integration Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">Integrations</h2>
-            <p className="text-lg text-slate-600 mb-8 max-w-2xl font-body">Works with your existing {industry.name.toLowerCase()} systems</p>
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">Integrations</h2>
+            <p className="text-lg text-stone-300 mb-8 max-w-2xl font-body">Works with your existing {industry.name.toLowerCase()} systems</p>
             <div className="flex flex-wrap gap-3">
               {industry.integrations.map((integration, i) => (
-                <span key={i} className="px-4 py-2 bg-slate-100 border border-slate-200 rounded-lg text-slate-700 font-medium text-sm font-display">
+                <span key={i} className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-stone-300 font-medium text-sm font-display">
                   {integration}
                 </span>
               ))}
@@ -610,15 +610,15 @@ export default function IndustryDetailPage() {
         </section>
 
         {/* Compliance Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">Compliance & Security</h2>
-            <p className="text-lg text-slate-600 mb-8 max-w-2xl font-body">Meeting {industry.name.toLowerCase()} regulatory requirements</p>
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">Compliance & Security</h2>
+            <p className="text-lg text-stone-300 mb-8 max-w-2xl font-body">Meeting {industry.name.toLowerCase()} regulatory requirements</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {industry.compliance.map((comp, i) => (
-                <div key={i} className="bg-white rounded-xl p-6 border border-slate-200">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">{comp.standard}</h3>
-                  {comp.description && <p className="text-slate-600 text-sm font-body">{comp.description}</p>}
+                <div key={i} className="bg-white/[0.03] rounded-xl p-6 border border-white/10">
+                  <h3 className="text-lg font-bold text-stone-50 mb-2 font-display">{comp.standard}</h3>
+                  {comp.description && <p className="text-stone-300 text-sm font-body">{comp.description}</p>}
                 </div>
               ))}
             </div>
@@ -643,15 +643,15 @@ export default function IndustryDetailPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">Frequently Asked Questions</h2>
-            <p className="text-lg text-slate-600 mb-12 font-body">Common questions about AI for {industry.name.toLowerCase()}</p>
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">Frequently Asked Questions</h2>
+            <p className="text-lg text-stone-300 mb-12 font-body">Common questions about AI for {industry.name.toLowerCase()}</p>
             <div className="space-y-6">
               {industry.faqs.map((faq, i) => (
-                <div key={i} className="border-b border-slate-200 pb-6">
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 font-display">{faq.question}</h3>
-                  <p className="text-slate-600 font-body">{faq.answer}</p>
+                <div key={i} className="border-b border-white/10 pb-6">
+                  <h3 className="text-lg font-bold text-stone-50 mb-3 font-display">{faq.question}</h3>
+                  <p className="text-stone-300 font-body">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -659,15 +659,15 @@ export default function IndustryDetailPage() {
         </section>
 
         {/* Related Solutions */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 font-display">Related Solutions</h2>
+            <h2 className="text-3xl font-bold text-stone-50 mb-8 font-display">Related Solutions</h2>
             <div className="flex flex-wrap gap-4">
               {industry.relatedSolutions.map((sol, i) => (
                 <Link
                   key={i}
                   href={`/solutions/${sol}`}
-                  className="px-6 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-medium hover:border-brand-200 hover:text-brand-600 transition-colors font-display"
+                  className="px-6 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-stone-300 font-medium hover:border-brand-400/50 hover:text-brand-300 transition-colors font-display"
                 >
                   {sol.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
                 </Link>
@@ -683,13 +683,13 @@ export default function IndustryDetailPage() {
               Ready to transform {industry.name.toLowerCase()} operations with AI?
             </h2>
             <p className="text-xl text-white/80 mb-8 font-body">
-              Book a 30-minute discovery call to see how AI can address your specific challenges.
+              30 minutes. We&apos;ll map your workflows and tell you where an agent pays back first.
             </p>
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-semibold text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg font-display"
             >
-              Schedule Discovery Call
+              Book a Strategy Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

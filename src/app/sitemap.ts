@@ -1,80 +1,25 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Canonical production origin. Hardcoded to match robots.txt, metadataBase, and
+  // the JSON-LD schemas — NEXT_PUBLIC_SERVER_URL resolves to localhost at build time.
   const baseUrl = 'https://agenticlabs.io'
   const currentDate = new Date().toISOString()
 
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/solutions`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/industries`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/case-studies`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/resources`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/resources/blog`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/resources/faq`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/platform`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/platform/integrations`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
+  const staticPages: { path: string; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']; priority: number }[] = [
+    { path: '', changeFrequency: 'weekly', priority: 1 },
+    { path: '/solutions', changeFrequency: 'weekly', priority: 0.9 },
+    { path: '/industries', changeFrequency: 'weekly', priority: 0.9 },
+    { path: '/case-studies', changeFrequency: 'weekly', priority: 0.8 },
+    { path: '/portfolio', changeFrequency: 'monthly', priority: 0.7 },
+    { path: '/platform', changeFrequency: 'weekly', priority: 0.8 },
+    { path: '/platform/integrations', changeFrequency: 'monthly', priority: 0.7 },
+    { path: '/resources', changeFrequency: 'weekly', priority: 0.8 },
+    { path: '/resources/blog', changeFrequency: 'weekly', priority: 0.8 },
+    { path: '/resources/faq', changeFrequency: 'weekly', priority: 0.8 },
   ]
 
-  // Solution pages
+  // Solution detail pages (see solutions/[slug]/seo.ts)
   const solutions = [
     'intelligent-agents',
     'customer-service-automation',
@@ -84,14 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'ai-governance-security',
   ]
 
-  const solutionPages: MetadataRoute.Sitemap = solutions.map((slug) => ({
-    url: `${baseUrl}/solutions/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }))
-
-  // Industry pages
+  // Industry detail pages (see industries/[slug]/seo.ts)
   const industries = [
     'healthcare',
     'manufacturing',
@@ -103,33 +41,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'biotech-pharma-logistics',
   ]
 
-  const industryPages: MetadataRoute.Sitemap = industries.map((slug) => ({
-    url: `${baseUrl}/industries/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }))
-
-  // Integration pages
-  const integrations = [
-    'salesforce',
-    'workday',
-    'databricks',
-    'sap',
-    'netsuite',
+  // Case study detail pages (see case-studies/[slug]/page.tsx generateStaticParams)
+  const caseStudies = [
+    'document-processing',
+    'patient-intake',
+    'inventory-forecasting',
+    'predictive-maintenance',
+    'claims-processing',
   ]
 
-  const integrationPages: MetadataRoute.Sitemap = integrations.map((slug) => ({
-    url: `${baseUrl}/platform/integrations/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-
-  return [
-    ...staticPages,
-    ...solutionPages,
-    ...industryPages,
-    ...integrationPages,
+  const entries: MetadataRoute.Sitemap = [
+    ...staticPages.map((p) => ({
+      url: `${baseUrl}${p.path}`,
+      lastModified: currentDate,
+      changeFrequency: p.changeFrequency,
+      priority: p.priority,
+    })),
+    ...solutions.map((slug) => ({
+      url: `${baseUrl}/solutions/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
+    ...industries.map((slug) => ({
+      url: `${baseUrl}/industries/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
+    ...caseStudies.map((slug) => ({
+      url: `${baseUrl}/case-studies/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
   ]
+
+  return entries
 }

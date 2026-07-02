@@ -2,6 +2,7 @@ export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://agenticlabs.io/#organization",
     "name": "Agentic Labs",
     "legalName": "Agentic Labs Solutions LLC",
     "description": "Enterprise AI consulting firm building agentic systems that replace fragmented SaaS with intelligent automation. Production-ready in 6-8 weeks.",

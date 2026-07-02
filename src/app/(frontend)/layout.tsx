@@ -1,29 +1,39 @@
 import { Metadata } from "next";
-import { Poppins, Lora } from "next/font/google";
+import { Sora, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { OrganizationSchema, WebSiteSchema } from "@/components/SEO";
 import "../globals.css";
-import ElevenLabsVoiceWidget from "@/components/ElevenLabsVoiceWidget";
 
-const poppins = Poppins({
-  weight: ['400', '500', '600', '700'],
+// Sapphire Nocturne type system:
+// Display = Sora (geometric grotesque), Body = IBM Plex Sans (technical),
+// Mono = IBM Plex Mono (stats / labels).
+const sora = Sora({
+  weight: ['400', '500', '600', '700', '800'],
   subsets: ['latin'],
-  variable: '--font-poppins',
+  variable: '--font-sora',
   display: 'swap',
 });
 
-const lora = Lora({
+const plexSans = IBM_Plex_Sans({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-lora',
+  variable: '--font-plex-sans',
+  display: 'swap',
+});
+
+const plexMono = IBM_Plex_Mono({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  variable: '--font-plex-mono',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://agenticlabs.io'),
   title: {
-    default: 'Agentic Labs | Enterprise AI Systems Shipped in 8 Weeks',
+    default: 'Agentic Labs | Custom AI Agents for SMEs, Shipped in Weeks',
     template: '%s | Agentic Labs'
   },
-  description: 'Enterprise AI systems in production in 8 weeks. $3.2M average client savings. 50+ successful deployments. Book your free strategy session.',
+  description: 'Custom AI agents for small and medium enterprises. In production in 6-8 weeks, on infrastructure you control, built to pay back. Book a strategy call.',
   keywords: [
     'agentic AI',
     'enterprise AI agents',
@@ -44,21 +54,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://agenticlabs.io',
     siteName: 'Agentic Labs',
-    title: 'Agentic Labs | Enterprise AI Systems Shipped in 8 Weeks',
-    description: 'Enterprise AI systems in production in 8 weeks. $3.2M average client savings. 50+ successful deployments.',
+    title: 'Agentic Labs | Custom AI Agents for SMEs, Shipped in Weeks',
+    description: 'Custom AI agents for small and medium enterprises. In production in 6-8 weeks, on infrastructure you control, built to pay back.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Agentic Labs - Enterprise AI Systems',
+        alt: 'Agentic Labs - Custom AI Agents for SMEs',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Agentic Labs | Enterprise AI Systems in 8 Weeks',
-    description: 'Enterprise AI systems in production in 8 weeks. $3.2M average savings. 50+ deployments.',
+    title: 'Agentic Labs | Custom AI Agents for SMEs',
+    description: 'Custom AI agents for small and medium enterprises. In production in 6-8 weeks, on infrastructure you control, built to pay back.',
     creator: '@agenticlabs',
     images: ['/og-image.png'],
   },
@@ -82,11 +92,13 @@ export const metadata: Metadata = {
   },
 };
 
+// Sapphire Nocturne is dark-first: the homepage (.newsite) renders dark by
+// default and only switches to light when the visitor explicitly opts in.
 const themeScript = `
 (function(){
   try {
-    if (localStorage.getItem('theme') === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
     }
   } catch (e) {}
 })();
@@ -106,11 +118,12 @@ export default function FrontendLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className={`${poppins.variable} ${lora.variable} antialiased`}
+        className={`${sora.variable} ${plexSans.variable} ${plexMono.variable} antialiased`}
         suppressHydrationWarning={true}
       >
+        <OrganizationSchema />
+        <WebSiteSchema />
         {children}
-        <ElevenLabsVoiceWidget />
       </body>
     </html>
   );

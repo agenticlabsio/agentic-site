@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import Footer from '@/components/Footer';
+import Footer from '@/components/newsite/Footer';
 import ContactFormSection from '@/components/ContactFormSection';
 
 const solutions = [
@@ -79,10 +79,10 @@ const solutions = [
 ];
 
 const caseStudyMetrics = [
-  { value: '$3.2M+', label: 'Average First-Year Savings' },
-  { value: '50+', label: 'Systems Deployed' },
-  { value: '8 Weeks', label: 'To Production' },
-  { value: '0', label: 'Failed Projects' },
+  { value: '6–8 wks', label: 'To Production' },
+  { value: '94%', label: 'Extraction Accuracy' },
+  { value: '60%', label: 'Faster Resolution' },
+  { value: '40%', label: 'Cost Reduction' },
 ];
 
 export default function PortfolioPage() {
@@ -97,13 +97,13 @@ export default function PortfolioPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="newsite relative min-h-screen">
       {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <a href="/" className="text-xl font-display text-stone-900">
+            <a href="/" className="text-xl font-display text-stone-50">
               Agentic Labs
             </a>
 
@@ -116,7 +116,7 @@ export default function PortfolioPage() {
                   className={`text-sm font-medium transition-colors ${
                     item.href === '/portfolio'
                       ? 'text-brand-600'
-                      : 'text-stone-600 hover:text-stone-900'
+                      : 'text-stone-300 hover:text-stone-50'
                   }`}
                 >
                   {item.label}
@@ -126,14 +126,14 @@ export default function PortfolioPage() {
                 href="#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-medium transition-all duration-200 shadow-lg shadow-brand-600/25"
               >
-                Book Strategy Call
+                Book a Strategy Call
               </a>
             </nav>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-stone-700 p-2"
+              className="md:hidden text-stone-300 p-2"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,13 +148,13 @@ export default function PortfolioPage() {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-stone-200">
+            <div className="md:hidden py-4 border-t border-white/10">
               <nav className="flex flex-col space-y-2">
                 {navItems.map((item, index) => (
                   <a
                     key={index}
                     href={item.href}
-                    className="text-stone-600 hover:text-stone-900 py-2 px-4 rounded-lg hover:bg-stone-50 transition-colors font-medium text-sm"
+                    className="text-stone-300 hover:text-stone-50 py-2 px-4 rounded-lg hover:bg-white/5 transition-colors font-medium text-sm"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -165,7 +165,7 @@ export default function PortfolioPage() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-medium text-sm text-center transition-colors"
                 >
-                  Book Strategy Call
+                  Book a Strategy Call
                 </a>
               </nav>
             </div>
@@ -176,34 +176,34 @@ export default function PortfolioPage() {
       {/* Main Content */}
       <main>
         {/* Hero Section */}
-        <section className="bg-white pt-28 pb-16 lg:pt-36 lg:pb-24 px-4 sm:px-6 lg:px-8">
+        <section className="pt-28 pb-16 lg:pt-36 lg:pb-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-400/20 mb-8">
               <span className="w-2 h-2 bg-brand-600 rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-brand-700">
-                Enterprise AI Solutions
+              <span className="text-sm font-medium text-brand-300">
+                AI for Small &amp; Medium Enterprises
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl text-stone-900 tracking-[-0.02em] mb-6 max-w-4xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl text-stone-50 tracking-[-0.02em] mb-6 max-w-4xl mx-auto font-display">
               Our Work
             </h1>
 
-            <p className="text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
-              Production-ready AI systems deployed across Fortune 500 enterprises.
-              Every solution ships in 8 weeks with full IP transfer.
+            <p className="text-xl text-stone-300 max-w-2xl mx-auto leading-relaxed">
+              Production AI for small and medium enterprises — shipped in 6&ndash;8 weeks, running on
+              infrastructure you own, with full IP transfer.
             </p>
           </div>
         </section>
 
         {/* Solutions Grid */}
-        <section className="bg-stone-50 py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+        <section className="bg-white/[0.02] py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl text-stone-900 tracking-[-0.02em] mb-4">
+              <h2 className="text-3xl sm:text-4xl text-stone-50 tracking-[-0.02em] mb-4 font-display">
                 Solutions We Build
               </h2>
-              <p className="text-xl text-stone-600 max-w-2xl mx-auto">
+              <p className="text-xl text-stone-300 max-w-2xl mx-auto">
                 End-to-end AI systems that integrate with your existing infrastructure.
               </p>
             </div>
@@ -213,18 +213,18 @@ export default function PortfolioPage() {
                 <a
                   key={index}
                   href={solution.href}
-                  className="group bg-white rounded-2xl border border-stone-200 p-6 shadow-sm hover:shadow-md hover:border-brand-200 transition-all duration-300"
+                  className="group bg-white/[0.03] rounded-2xl border border-white/10 p-6 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)] hover:border-brand-400/50 transition-all duration-300"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 mb-5 group-hover:bg-brand-100 transition-colors">
+                  <div className="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center text-brand-300 mb-5 group-hover:bg-brand-500/20 transition-colors">
                     {solution.icon}
                   </div>
 
-                  <h3 className="text-lg font-semibold text-stone-900 mb-2 group-hover:text-brand-600 transition-colors">
+                  <h3 className="text-lg font-semibold text-stone-50 mb-2 group-hover:text-brand-300 transition-colors">
                     {solution.title}
                   </h3>
 
-                  <p className="text-stone-600 text-sm leading-relaxed mb-4">
+                  <p className="text-stone-300 text-sm leading-relaxed mb-4">
                     {solution.description}
                   </p>
 
@@ -232,7 +232,7 @@ export default function PortfolioPage() {
                     <span className="text-2xl font-display text-brand-600">
                       {solution.metric}
                     </span>
-                    <span className="text-sm text-stone-500">
+                    <span className="text-sm text-stone-400">
                       {solution.metricLabel}
                     </span>
                   </div>
@@ -250,14 +250,14 @@ export default function PortfolioPage() {
         </section>
 
         {/* Case Studies Metrics */}
-        <section className="bg-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+        <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl text-stone-900 tracking-[-0.02em] mb-4">
+              <h2 className="text-3xl sm:text-4xl text-stone-50 tracking-[-0.02em] mb-4 font-display">
                 Proven Results
               </h2>
-              <p className="text-xl text-stone-600 max-w-2xl mx-auto">
-                Real outcomes from real deployments across enterprise clients.
+              <p className="text-xl text-stone-300 max-w-2xl mx-auto">
+                Real outcomes from real deployments &mdash; sized for SME budgets, not enterprise ones.
               </p>
             </div>
 
@@ -265,12 +265,12 @@ export default function PortfolioPage() {
               {caseStudyMetrics.map((metric, index) => (
                 <div
                   key={index}
-                  className="bg-stone-50 rounded-2xl border border-stone-200 p-6 text-center"
+                  className="bg-white/[0.03] rounded-2xl border border-white/10 p-6 text-center"
                 >
                   <div className="text-3xl sm:text-4xl font-display text-brand-600 mb-2">
                     {metric.value}
                   </div>
-                  <div className="text-sm text-stone-600">
+                  <div className="text-sm text-stone-300">
                     {metric.label}
                   </div>
                 </div>
@@ -280,7 +280,7 @@ export default function PortfolioPage() {
             <div className="text-center">
               <a
                 href="/case-studies"
-                className="inline-flex items-center gap-2 px-7 py-4 bg-white hover:bg-stone-50 border-2 border-stone-200 hover:border-stone-300 text-stone-700 rounded-xl font-medium text-lg transition-all duration-200"
+                className="inline-flex items-center gap-2 px-7 py-4 bg-white/[0.03] hover:bg-white/[0.06] border-2 border-white/10 hover:border-white/20 text-stone-300 rounded-xl font-medium text-lg transition-all duration-200"
               >
                 View Case Studies
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

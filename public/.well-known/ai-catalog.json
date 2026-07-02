@@ -1,0 +1,31 @@
+{
+  "version": "0.1",
+  "name": "Agentic Labs",
+  "description": "Enterprise AI consulting firm building and running custom autonomous AI agents integrated with enterprise systems of record. Production-ready in 6-8 weeks.",
+  "url": "https://agenticlabs.io",
+  "logo": "https://agenticlabs.io/logo.png",
+  "contact": {
+    "email": "contact@agenticlabs.io",
+    "scheduling": "https://calendly.com/cloud-agenticlabs/30min"
+  },
+  "resources": {
+    "llms_txt": "https://agenticlabs.io/llms.txt",
+    "sitemap": "https://agenticlabs.io/sitemap.xml",
+    "robots": "https://agenticlabs.io/robots.txt",
+    "agents": "https://agenticlabs.io/agents.json"
+  },
+  "mcp_servers": [],
+  "a2a_agents": [],
+  "apis": [
+    {
+      "name": "Newsletter subscribe",
+      "description": "Submit an email address to be contacted by Agentic Labs.",
+      "method": "POST",
+      "endpoint": "https://agenticlabs.io/api/subscribe",
+      "request_body": {
+        "email": "string (required)",
+        "source": "string (optional: cta-section | footer | hero)"
+      }
+    }
+  ]
+}

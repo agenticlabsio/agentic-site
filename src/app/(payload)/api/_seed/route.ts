@@ -268,7 +268,9 @@ export async function GET() {
   // Seed Solutions
   for (const solution of seedSolutions) {
     try {
-      await payload.create({ collection: 'solutions', data: solution })
+      // Seed categories predate the stricter collection union; cast for this dev-only seed route.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await payload.create({ collection: 'solutions', data: solution as any })
       results.push(`Created solution: ${solution.name}`)
     } catch {
       results.push(`Solution ${solution.name} may already exist, skipping...`)
@@ -278,7 +280,9 @@ export async function GET() {
   // Seed FAQ
   for (const faq of seedFAQ) {
     try {
-      await payload.create({ collection: 'faq', data: faq })
+      // Minimal Lexical root literal doesn't include every field the generated type wants.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await payload.create({ collection: 'faq', data: faq as any })
       results.push(`Created FAQ: ${faq.question}`)
     } catch {
       results.push(`FAQ "${faq.question}" may already exist, skipping...`)
@@ -288,7 +292,9 @@ export async function GET() {
   // Seed Industries
   for (const industry of seedIndustries) {
     try {
-      await payload.create({ collection: 'industries', data: industry })
+      // Industries has drafts enabled; the partial seed literal needs a loose cast here.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await payload.create({ collection: 'industries', data: industry as any })
       results.push(`Created industry: ${industry.name}`)
     } catch {
       results.push(`Industry ${industry.name} may already exist, skipping...`)

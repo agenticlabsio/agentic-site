@@ -1,55 +1,36 @@
 "use client";
 
-import Image from "next/image";
 import Animate from "./Animate";
+import { TargetIcon, CodeAgentIcon, RocketIcon, SupportAgentIcon } from "./icons/AgentIcons";
 
 const steps = [
   {
-    num: "1",
-    title: "Set a strategy",
-    description:
-      "We survey your AI baseline, defining company-wide proficiency and use cases.",
-    bgLight: "#fce4ec",
-    bgDark: "#310f1f",
-    img: "/images/process/strategy.png",
-    imgW: 188,
-    imgH: 188,
-    imgTop: 0,
+    icon: <TargetIcon size={40} />,
+    title: "Discovery & Mapping",
+    description: "We analyze your workflows, identify automation opportunities, and design the agent architecture.",
+    duration: "Week 1",
+    accent: "var(--accent)",
   },
   {
-    num: "2",
-    title: "Build workflows",
-    description:
-      "We build you tools and workflows that automate your business.",
-    bgLight: "#fff3e0",
-    bgDark: "#3d1d11",
-    img: "/images/process/workflows.png",
-    imgW: 145,
-    imgH: 145,
-    imgTop: 5,
+    icon: <CodeAgentIcon size={40} />,
+    title: "Agent Development",
+    description: "Our AI-native engineers build custom agents with governance and compliance baked in.",
+    duration: "Week 2-3",
+    accent: "var(--accent-secondary)",
   },
   {
-    num: "3",
-    title: "Train teams",
-    description:
-      "We train your team and help you build an AI-powered workforce.",
-    bgLight: "#e0f2f1",
-    bgDark: "#102325",
-    img: "/images/process/train.png",
-    imgW: 120,
-    imgH: 153,
-    imgTop: -11,
+    icon: <RocketIcon size={40} />,
+    title: "Production Launch",
+    description: "Deploy to your infrastructure with full observability, audit trails, and rollback capabilities.",
+    duration: "Week 4",
+    accent: "var(--accent-light)",
   },
   {
-    num: "4",
-    title: "Support",
-    description: "We stick around as your chief AI officer.",
-    bgLight: "#e8f5e9",
-    bgDark: "#192e23",
-    img: "/images/process/support.png",
-    imgW: 254,
-    imgH: 254,
-    imgTop: -40,
+    icon: <SupportAgentIcon size={40} />,
+    title: "Continuous Optimization",
+    description: "We monitor, tune, and expand your agent capabilities as your needs evolve.",
+    duration: "Ongoing",
+    accent: "var(--accent-dark)",
   },
 ];
 
@@ -58,172 +39,209 @@ export default function Process() {
     <section
       id="process"
       style={{
-        background: "var(--pastel-green)",
-        minHeight: "100vh",
-        padding: "80px 16px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        background: "var(--bg-primary)",
+        padding: "100px 16px",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div style={{ width: "100%", maxWidth: 1140, display: "flex", flexDirection: "column", gap: 24 }}>
+      {/* Background decoration */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "120%",
+          height: "120%",
+          background: "radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 60%)",
+          opacity: 0.3,
+          pointerEvents: "none",
+        }}
+      />
+
+      <div style={{ width: "100%", maxWidth: 1140, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <Animate type="fadeUp">
-          <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 16, alignItems: "center", textAlign: "center" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 64, textAlign: "center" }}>
+            <span
+              className="font-display"
+              style={{
+                fontSize: "0.8rem",
+                color: "var(--accent)",
+                fontWeight: 600,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+              }}
+            >
+              Our Process
+            </span>
             <h2
               style={{
                 fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: 600,
-                lineHeight: 1.17,
+                fontWeight: 700,
+                lineHeight: 1.12,
                 color: "var(--text-primary)",
+                fontFamily: "var(--font-display)",
               }}
             >
-              <span
-                className="process-10x"
-                style={{
-                  fontFamily: "'Inria Serif', serif",
-                  fontStyle: "italic",
-                }}
-              >
-                10x
-              </span>{" "}
-              Speed To Production. By Design.
+              From Concept to Production in{" "}
+              <span className="text-gradient" style={{ fontFamily: "var(--font-display)" }}>
+                4 Weeks
+              </span>
             </h2>
             <p
               style={{
                 color: "var(--text-secondary)",
-                fontSize: "clamp(0.9rem, 1.2vw, 1.05rem)",
+                fontSize: "clamp(0.95rem, 1.3vw, 1.1rem)",
                 lineHeight: 1.7,
-                maxWidth: 640,
+                maxWidth: 600,
+                margin: "0 auto",
               }}
             >
-              We use an outcome-driven delivery model where AI-native engineers and internal agent systems work in parallel, compressing the path from problem definition to a running production system.
+              A proven methodology that combines AI-native engineering with enterprise-grade delivery.
             </p>
           </div>
         </Animate>
 
-        <div className="process-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
+        {/* Timeline layout */}
+        <div className="process-timeline">
           {steps.map((step, i) => (
-            <Animate key={i} type="fadeUp" delay={0.1 * i}>
+            <Animate key={i} type="fadeUp" delay={0.15 * i}>
               <div
-                className="process-card"
+                className="process-step"
                 style={{
-                  height: 340,
-                  padding: "24px 20px",
-                  borderRadius: 8,
                   display: "flex",
-                  flexDirection: "column",
                   gap: 24,
-                  overflow: "hidden",
-                  ["--bg-light" as string]: step.bgLight,
-                  ["--bg-dark" as string]: step.bgDark,
+                  position: "relative",
+                  ["--step-accent" as string]: step.accent,
                 }}
               >
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  <span
-                    className="process-num"
+                {/* Timeline connector */}
+                <div className="timeline-line" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                  <div
+                    className="timeline-dot"
                     style={{
-                      alignSelf: "flex-start",
-                      padding: "4px 8px",
-                      fontSize: "0.75rem",
-                      fontWeight: 500,
-                      lineHeight: 1,
+                      width: 56,
+                      height: 56,
+                      borderRadius: 14,
+                      background: `color-mix(in srgb, ${step.accent} 15%, var(--bg-card))`,
+                      border: `2px solid color-mix(in srgb, ${step.accent} 40%, transparent)`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: step.accent,
+                      flexShrink: 0,
+                      transition: "all 0.3s ease",
                     }}
                   >
-                    {step.num}
-                  </span>
+                    {step.icon}
+                  </div>
+                  {i < steps.length - 1 && (
+                    <div
+                      style={{
+                        width: 2,
+                        flex: 1,
+                        minHeight: 40,
+                        background: `linear-gradient(to bottom, ${step.accent}, var(--border))`,
+                        borderRadius: 1,
+                      }}
+                    />
+                  )}
+                </div>
+
+                {/* Content */}
+                <div
+                  className="process-content"
+                  style={{
+                    flex: 1,
+                    padding: "8px 0 40px",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                    <h3
+                      style={{
+                        fontSize: "1.25rem",
+                        fontWeight: 600,
+                        color: "var(--text-primary)",
+                        fontFamily: "var(--font-display)",
+                      }}
+                    >
+                      {step.title}
+                    </h3>
+                    <span
+                      style={{
+                        padding: "4px 12px",
+                        borderRadius: 999,
+                        background: `color-mix(in srgb, ${step.accent} 12%, transparent)`,
+                        border: `1px solid color-mix(in srgb, ${step.accent} 30%, transparent)`,
+                        fontSize: "0.72rem",
+                        fontWeight: 600,
+                        color: step.accent,
+                        fontFamily: "var(--font-mono)",
+                      }}
+                    >
+                      {step.duration}
+                    </span>
+                  </div>
                   <p
-                    className="process-title"
                     style={{
-                      fontSize: "clamp(1rem, 1.2vw, 1.125rem)",
-                      fontFamily: "'Inria Serif', serif",
-                      lineHeight: 1.55,
-                    }}
-                  >
-                    {step.title}
-                  </p>
-                  <p
-                    className="process-desc"
-                    style={{
-                      fontSize: "clamp(0.82rem, 1vw, 0.875rem)",
-                      lineHeight: 1.55,
+                      color: "var(--text-secondary)",
+                      fontSize: "0.95rem",
+                      lineHeight: 1.7,
+                      maxWidth: 480,
                     }}
                   >
                     {step.description}
                   </p>
                 </div>
-                <div
-                  style={{
-                    flex: 1,
-                    position: "relative",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Image
-                    src={step.img}
-                    alt={step.title}
-                    width={step.imgW}
-                    height={step.imgH}
-                    style={{
-                      position: "absolute",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      top: step.imgTop,
-                      objectFit: "contain",
-                      width: step.imgW,
-                      height: step.imgH,
-                    }}
-                  />
-                </div>
               </div>
             </Animate>
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <Animate type="fadeUp" delay={0.6}>
+          <div
+            style={{
+              marginTop: 48,
+              textAlign: "center",
+              padding: "32px",
+              borderRadius: 16,
+              background: "var(--bg-card)",
+              border: "1px solid var(--border)",
+            }}
+          >
+            <p style={{ fontSize: "1.1rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: 16 }}>
+              Ready to accelerate your AI journey?
+            </p>
+            <a href="#contact" className="btn-primary" style={{ padding: "12px 24px" }}>
+              Schedule Discovery Call
+            </a>
+          </div>
+        </Animate>
       </div>
 
       <style>{`
-        .process-10x { color: var(--accent-highlight); }
-
-        .process-card {
-          background: var(--bg-light);
-          color: var(--text-primary);
-        }
-        .process-num {
-          border: 1px solid rgba(0,0,0,0.1);
-          color: var(--text-primary);
-        }
-        .process-title {
-          color: var(--text-primary);
-        }
-        .process-desc {
-          color: var(--text-secondary);
+        .process-timeline {
+          display: flex;
+          flex-direction: column;
         }
 
-        [data-theme="dark"] .process-card {
-          background: var(--bg-dark);
-          color: #ffffff;
-        }
-        [data-theme="dark"] .process-num {
-          border: 1px solid rgba(255,255,255,0.1);
-          color: #ffffff;
-        }
-        [data-theme="dark"] .process-title {
-          color: #ffffff;
-        }
-        [data-theme="dark"] .process-desc {
-          color: #cbcbcb;
+        .process-step:hover .timeline-dot {
+          transform: scale(1.08);
+          box-shadow: 0 0 24px var(--step-accent);
         }
 
-        @media (max-width: 1024px) {
-          .process-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
         @media (max-width: 640px) {
-          .process-grid {
-            grid-template-columns: 1fr !important;
+          .timeline-line {
+            display: none !important;
+          }
+          .process-content {
+            padding: 24px !important;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 16px;
           }
         }
       `}</style>

@@ -22,12 +22,12 @@ const faqs = [
   {
     question: "How is Agentic Labs different from a traditional dev shop or agency?",
     answer:
-      "We use proprietary AI agents alongside elite engineers to deliver at 10x speed. Our internal agent system accelerates specs, code, testing, and deployment in parallel — something traditional shops can't match.",
+      "We pair proprietary AI agents with senior engineers to design and ship custom agents that reach production — governed, compliant, and instrumented for ROI. A dev shop hands off a demo; we deliver a running system and keep operating it.",
   },
   {
     question: "Can Agentic Labs integrate with existing enterprise systems securely?",
     answer:
-      "Absolutely. Systems run in your approved infrastructure. We maintain zero client data retention, full audit trails, and work within your security boundaries — not around them.",
+      "Yes. Agents run in your approved infrastructure — or on compute you control. We keep zero client data retention, full audit trails, and design to your compliance requirements from day one.",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function FAQ() {
     <section
       id="faq"
       style={{
-        background: "var(--pastel-grey)",
+        background: "var(--bg-secondary)",
         padding: "100px 16px",
         display: "flex",
         flexDirection: "column",
@@ -64,10 +64,10 @@ export default function FAQ() {
             >
               Frequently Asked{" "}
               <span
+                className="text-gradient"
                 style={{
-                  fontFamily: "'Inria Serif', serif",
+                  fontFamily: "var(--font-display)",
                   fontStyle: "italic",
-                  color: "var(--accent-highlight)",
                 }}
               >
                 Questions
@@ -109,6 +109,8 @@ export default function FAQ() {
                 >
                   <button
                     onClick={() => toggle(i)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${i}`}
                     style={{
                       width: "100%",
                       display: "flex",
@@ -160,7 +162,7 @@ export default function FAQ() {
                       >
                         <path
                           d="M3 5.5L7 9.5L11 5.5"
-                          stroke="#5a9cb8"
+                          stroke="var(--accent)"
                           strokeWidth="1.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -169,6 +171,8 @@ export default function FAQ() {
                     </span>
                   </button>
                   <div
+                    id={`faq-answer-${i}`}
+                    role="region"
                     style={{
                       overflow: "hidden",
                       maxHeight: isOpen ? 200 : 0,

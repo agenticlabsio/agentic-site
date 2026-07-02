@@ -5,15 +5,14 @@ import Process from '@/components/newsite/Process';
 import Problem from '@/components/newsite/Problem';
 import Testimonials from '@/components/newsite/Testimonials';
 import Differentiation from '@/components/newsite/Differentiation';
+import Security from '@/components/newsite/Security';
 import CTA from '@/components/newsite/CTA';
 import FAQ from '@/components/newsite/FAQ';
 import Footer from '@/components/newsite/Footer';
-import { OrganizationSchema } from '@/components/SEO';
 
 export default function RootPage() {
   return (
     <div className="newsite">
-      <OrganizationSchema />
       <Navbar />
       <Hero />
       <Comparison />
@@ -21,6 +20,7 @@ export default function RootPage() {
       <Problem />
       <Testimonials />
       <Differentiation />
+      <Security />
       <CTA />
       <FAQ />
       <Footer />

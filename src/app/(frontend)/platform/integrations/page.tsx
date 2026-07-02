@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import Footer from '@/components/Footer';
+import Footer from '@/components/newsite/Footer';
 
 const integrations = [
   {
@@ -80,12 +80,12 @@ export default function IntegrationsPage() {
     : integrations.filter(i => i.category === activeCategory);
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="newsite relative min-h-screen">
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-xl font-bold text-slate-900 font-display">
+            <Link href="/" className="text-xl font-bold text-stone-50 font-display">
               Agentic Labs
             </Link>
             <nav className="hidden md:flex items-center gap-8">
@@ -93,7 +93,7 @@ export default function IntegrationsPage() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors font-display"
+                  className="text-stone-300 hover:text-stone-50 font-medium text-sm transition-colors font-display"
                 >
                   {item.label}
                 </Link>
@@ -102,12 +102,12 @@ export default function IntegrationsPage() {
                 href="/#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
-                Book Strategy Call
+                Book a Strategy Call
               </Link>
             </nav>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-slate-700 p-2"
+              className="md:hidden text-stone-300 p-2"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -116,15 +116,15 @@ export default function IntegrationsPage() {
             </button>
           </div>
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-slate-200">
+            <div className="md:hidden py-4 border-t border-white/10">
               <nav className="flex flex-col space-y-2">
                 {navItems.map((item, index) => (
-                  <Link key={index} href={item.href} className="text-slate-600 hover:text-slate-900 py-2 px-4 rounded-lg hover:bg-slate-50 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link key={index} href={item.href} className="text-stone-300 hover:text-stone-50 py-2 px-4 rounded-lg hover:bg-white/5 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
                     {item.label}
                   </Link>
                 ))}
                 <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
-                  Book Strategy Call
+                  Book a Strategy Call
                 </Link>
               </nav>
             </div>
@@ -134,25 +134,25 @@ export default function IntegrationsPage() {
 
       <main className="pt-16">
         {/* Hero */}
-        <section className="bg-white pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+        <section className="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-6">
               <ol className="flex items-center gap-2 text-sm">
-                <li><Link href="/" className="text-slate-500 hover:text-slate-700">Home</Link></li>
-                <li className="text-slate-400">/</li>
-                <li><Link href="/platform" className="text-slate-500 hover:text-slate-700">Platform</Link></li>
-                <li className="text-slate-400">/</li>
-                <li className="text-slate-900 font-medium">Integrations</li>
+                <li><Link href="/" className="text-stone-400 hover:text-stone-300">Home</Link></li>
+                <li className="text-stone-400">/</li>
+                <li><Link href="/platform" className="text-stone-400 hover:text-stone-300">Platform</Link></li>
+                <li className="text-stone-400">/</li>
+                <li className="text-stone-50 font-medium">Integrations</li>
               </ol>
             </nav>
 
             <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">Integrations</p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight mb-4 font-display">
-              Enterprise Integrations
+            <h1 className="text-4xl sm:text-5xl font-bold text-stone-50 tracking-tight mb-4 font-display">
+              Plug into what you <span className="text-brand-400">already run.</span>
             </h1>
-            <p className="text-xl text-slate-600 max-w-2xl font-body">
-              Native connectors to your systems of record. Zero-copy data access—your data stays where it lives.
+            <p className="text-xl text-stone-300 max-w-2xl font-body">
+              Native connectors to your systems of record. Zero-copy access &mdash; your data stays where it lives. No migration.
             </p>
           </div>
         </section>
@@ -168,7 +168,7 @@ export default function IntegrationsPage() {
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-display ${
                     activeCategory === category
                       ? 'bg-brand-600 text-white shadow-lg shadow-brand-600/25'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                      : 'bg-white/5 text-stone-300 hover:bg-white/10 hover:text-stone-50'
                   }`}
                 >
                   {category}
@@ -185,18 +185,18 @@ export default function IntegrationsPage() {
               {filteredIntegrations.map((integration) => (
                 <div
                   key={integration.slug}
-                  className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-200 transition-all duration-300"
+                  className="bg-white/[0.03] rounded-2xl p-6 border border-white/10 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)] hover:border-brand-400/50 transition-all duration-300"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-slate-900 font-display">{integration.name}</h3>
+                      <h3 className="text-xl font-bold text-stone-50 font-display">{integration.name}</h3>
                       <span className="text-sm text-brand-600 font-medium font-display">{integration.category}</span>
                     </div>
                   </div>
-                  <p className="text-slate-600 mb-4 font-body">{integration.description}</p>
+                  <p className="text-stone-300 mb-4 font-body">{integration.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {integration.features.map((feature, i) => (
-                      <span key={i} className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-full font-display">
+                      <span key={i} className="px-3 py-1 bg-white/5 text-stone-300 text-xs font-medium rounded-full font-display">
                         {feature}
                       </span>
                     ))}
@@ -208,11 +208,11 @@ export default function IntegrationsPage() {
         </section>
 
         {/* Custom Integration */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
           <div className="max-w-6xl mx-auto">
-            <div className="bg-white rounded-2xl p-8 border border-slate-200 text-center">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4 font-display">Need a custom integration?</h2>
-              <p className="text-slate-600 mb-6 max-w-2xl mx-auto font-body">
+            <div className="bg-white/[0.03] rounded-2xl p-8 border border-white/10 text-center">
+              <h2 className="text-2xl font-bold text-stone-50 mb-4 font-display">Need a custom integration?</h2>
+              <p className="text-stone-300 mb-6 max-w-2xl mx-auto font-body">
                 We build custom connectors for proprietary systems as part of our implementation.
                 If it has an API, we can integrate it.
               </p>
@@ -230,14 +230,14 @@ export default function IntegrationsPage() {
         </section>
 
         {/* MCP Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">
+                <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">
                   Powered by Model Context Protocol
                 </h2>
-                <p className="text-lg text-slate-600 mb-6 font-body">
+                <p className="text-lg text-stone-300 mb-6 font-body">
                   MCP is the USB-C of AI connectivity. Instead of building custom integrations for each data source,
                   we implement a universal protocol that provides secure, standardized access.
                 </p>
@@ -246,9 +246,9 @@ export default function IntegrationsPage() {
                     'Universal interface for all data sources',
                     'Zero-copy access—data stays where it lives',
                     'Secure, audited data access',
-                    'Future-proof your AI infrastructure',
+                    'No lock-in — swap models and tools without a rebuild',
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-slate-600 font-body">
+                    <li key={i} className="flex items-start gap-3 text-stone-300 font-body">
                       <svg className="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -257,11 +257,11 @@ export default function IntegrationsPage() {
                   ))}
                 </ul>
               </div>
-              <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+              <div className="bg-white/[0.03] rounded-2xl p-8 border border-white/10">
                 <div className="text-center">
                   <div className="text-6xl mb-4">🔌</div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 font-display">MCP-Ready</h3>
-                  <p className="text-slate-600 font-body">
+                  <h3 className="text-xl font-bold text-stone-50 mb-2 font-display">MCP-Ready</h3>
+                  <p className="text-stone-300 font-body">
                     All our integrations are built on MCP, ensuring compatibility with the emerging standard
                     for AI-to-data connectivity.
                   </p>
@@ -278,13 +278,13 @@ export default function IntegrationsPage() {
               Ready to connect your systems?
             </h2>
             <p className="text-xl text-white/80 mb-8 font-body">
-              Book a discovery call to discuss your integration requirements.
+              30 minutes. Tell us your stack and we&apos;ll show you what an agent can reach.
             </p>
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-semibold text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg font-display"
             >
-              Schedule Discovery Call
+              Book a Strategy Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

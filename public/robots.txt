@@ -10,6 +10,8 @@ Sitemap: https://agenticlabs.io/sitemap.xml
 # Disallow admin routes
 Disallow: /admin
 Disallow: /api/
+# Public agent action endpoint (declared in /agents.json)
+Allow: /api/subscribe
 
 # Allow search engine crawlers
 User-agent: Googlebot

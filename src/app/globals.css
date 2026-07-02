@@ -1,155 +1,139 @@
-@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 /*
- * AGENTIC LABS DESIGN SYSTEM
+ * AGENTIC LABS DESIGN SYSTEM — "SAPPHIRE NOCTURNE"
  *
- * Aesthetic: Anthropic Brand Guidelines
- * - Warm, sophisticated palette
- * - Orange primary with blue/green accents
- * - High contrast for legibility (WCAG AAA)
- * - Premium consultancy positioning
+ * Dark-first, premium-technical.
+ * - Deep ink-sapphire canvas, luminous electric-blue → violet accents
+ * - Fine grain + radial glow for atmosphere
+ * - Display: Sora (geometric grotesque) · Body: IBM Plex Sans · Mono: IBM Plex Mono
+ *
+ * One token system drives everything:
+ *   - Interior pages read the light-sapphire `:root` tokens (Tailwind utilities).
+ *   - The homepage (`.newsite`) is dark by default and flips to light via
+ *     `[data-theme="light"] .newsite` (the theme toggle).
  */
 
 /* ═══════════════════════════════════════════════
-   TAILWIND 4 THEME - Anthropic Brand Colors
-   Orange primary - Warm, approachable, professional
+   TAILWIND 4 THEME — Sapphire brand + cool neutrals
    ═══════════════════════════════════════════════ */
 @theme {
-  /* Brand Orange Scale - Lighter Pastels */
-  --color-brand-50: #fef8f6;
-  --color-brand-100: #fdf0ec;
-  --color-brand-200: #fbe1d9;
-  --color-brand-300: #f7cfc2;
-  --color-brand-400: #f2b8a6;
-  --color-brand-500: #eca28a;
-  --color-brand-600: #e08c70;
-  --color-brand-700: #d4765a;
-  --color-brand-800: #b86348;
-  --color-brand-900: #8f4d38;
+  /* Brand — electric sapphire scale */
+  --color-brand-50: #eef3ff;
+  --color-brand-100: #dce6ff;
+  --color-brand-200: #bcccff;
+  --color-brand-300: #93abff;
+  --color-brand-400: #7da5ff;
+  --color-brand-500: #5b8dff;
+  --color-brand-600: #3b6ae0;
+  --color-brand-700: #2a52b8;
+  --color-brand-800: #213f8f;
+  --color-brand-900: #1b3470;
 
-  /* Override stone scale with Anthropic neutrals */
-  --color-stone-50: #faf9f5;
-  --color-stone-100: #f5f3ed;
-  --color-stone-200: #e8e6dc;
-  --color-stone-300: #d4d1c4;
-  --color-stone-400: #b0aea5;
-  --color-stone-500: #8a877d;
-  --color-stone-600: #6b6860;
-  --color-stone-700: #504e48;
-  --color-stone-800: #2d2c28;
-  --color-stone-900: #141413;
+  /* Violet accent (gradient partner) */
+  --color-violet-400: #c4b5fd;
+  --color-violet-500: #a855f7;
+  --color-violet-600: #8b3ce0;
+
+  /* Cool slate neutrals */
+  --color-stone-50: #f6f8fd;
+  --color-stone-100: #eef2fb;
+  --color-stone-200: #dbe2f0;
+  --color-stone-300: #b9c3d8;
+  --color-stone-400: #8a94ab;
+  --color-stone-500: #5c6478;
+  --color-stone-600: #3a4258;
+  --color-stone-700: #232a3d;
+  --color-stone-800: #131828;
+  --color-stone-900: #0a0e1a;
 }
 
 :root {
   /* ═══════════════════════════════════════
-     COLOR PALETTE - Anthropic Brand
+     COLOR — Sapphire (interior pages default: light)
      ═══════════════════════════════════════ */
+  --color-brand: #3b6ae0;
+  --color-brand-light: #5b8dff;
+  --color-brand-dark: #2a52b8;
+  --color-brand-muted: #eef3ff;
 
-  /* Primary Brand - Soft Pastel Orange */
-  --color-brand: #eca28a;
-  --color-brand-light: #f2b8a6;
-  --color-brand-dark: #e08c70;
-  --color-brand-muted: #fef8f6;
+  --color-accent: #5b8dff;
+  --color-accent-light: #7da5ff;
+  --color-accent-dark: #3b6ae0;
 
-  /* Secondary Accent - Soft Pastel Blue */
-  --color-accent: #a8c8e4;
-  --color-accent-light: #c4daf0;
-  --color-accent-dark: #8cb6d8;
+  --color-violet: #8b3ce0;
+  --color-violet-light: #a855f7;
 
-  /* Tertiary Accent - Soft Pastel Green */
-  --color-tertiary: #a8be8a;
-  --color-tertiary-light: #c2d4a8;
-  --color-tertiary-dark: #8fa870;
+  --color-tertiary: #8b5cf6;
+  --color-tertiary-light: #c4b5fd;
+  --color-tertiary-dark: #6d28d9;
 
-  /* Neutrals - Anthropic Warm Tones */
-  --color-white: #FFFFFF;
-  --color-gray-50: #faf9f5;
-  --color-gray-100: #f5f3ed;
-  --color-gray-200: #e8e6dc;
-  --color-gray-300: #d4d1c4;
-  --color-gray-400: #b0aea5;
-  --color-gray-500: #8a877d;
-  --color-gray-600: #6b6860;
-  --color-gray-700: #504e48;
-  --color-gray-800: #2d2c28;
-  --color-gray-900: #141413;
+  /* Neutrals — cool slate */
+  --color-white: #ffffff;
+  --color-gray-50: #f6f8fd;
+  --color-gray-100: #eef2fb;
+  --color-gray-200: #dbe2f0;
+  --color-gray-300: #b9c3d8;
+  --color-gray-400: #8a94ab;
+  --color-gray-500: #5c6478;
+  --color-gray-600: #3a4258;
+  --color-gray-700: #232a3d;
+  --color-gray-800: #131828;
+  --color-gray-900: #0a0e1a;
 
-  /* Semantic Colors */
-  --color-success: #788c5d;
-  --color-success-light: #e8eddf;
-  --color-warning: #d97757;
-  --color-error: #DC2626;
+  /* Semantic */
+  --color-success: #2f9e6e;
+  --color-success-light: #dcf3e8;
+  --color-warning: #e0a13b;
+  --color-error: #e5484d;
 
   /* ═══════════════════════════════════════
-     TYPOGRAPHY - Anthropic Brand System
+     TYPOGRAPHY — Sapphire Nocturne
      ═══════════════════════════════════════ */
-
-  /* Display: Poppins - Modern, clean headings */
-  --font-display: var(--font-poppins), system-ui, -apple-system, sans-serif;
-
-  /* Body: Lora - Elegant, readable serif */
-  --font-body: var(--font-lora), Georgia, 'Times New Roman', serif;
-
-  /* Mono: System monospace */
-  --font-mono: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+  --font-display: var(--font-sora), system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-plex-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* ═══════════════════════════════════════
-     SEMANTIC TOKENS
+     SEMANTIC TOKENS (interior, light)
      ═══════════════════════════════════════ */
-
-  /* Backgrounds */
   --bg-primary: var(--color-white);
   --bg-secondary: var(--color-gray-50);
   --bg-tertiary: var(--color-gray-100);
   --bg-inverse: var(--color-gray-900);
   --bg-brand: var(--color-brand);
 
-  /* Text - Bold, dark, legible */
-  --text-primary: var(--color-gray-900);      /* High contrast on white */
-  --text-secondary: var(--color-gray-700);    /* Body text - darker for legibility */
-  --text-tertiary: var(--color-gray-600);     /* Muted text - still readable */
+  --text-primary: var(--color-gray-900);
+  --text-secondary: var(--color-gray-600);
+  --text-tertiary: var(--color-gray-500);
   --text-inverse: var(--color-white);
   --text-brand: var(--color-brand);
   --text-link: var(--color-brand);
   --text-link-hover: var(--color-brand-dark);
 
-  /* Borders */
   --border-light: var(--color-gray-200);
   --border-default: var(--color-gray-300);
   --border-focus: var(--color-brand);
 
-  /* ═══════════════════════════════════════
-     SPACING & SIZING
-     ═══════════════════════════════════════ */
-
+  /* Spacing & sizing */
   --section-py: clamp(4rem, 8vw, 7rem);
   --container-max: 72rem;
   --container-px: clamp(1rem, 4vw, 2rem);
 
-  /* ═══════════════════════════════════════
-     SHADOWS - Softer, more refined
-     ═══════════════════════════════════════ */
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgb(10 14 26 / 0.04);
+  --shadow-sm: 0 1px 2px rgb(10 14 26 / 0.05);
+  --shadow-md: 0 4px 12px rgb(10 14 26 / 0.08);
+  --shadow-lg: 0 12px 24px rgb(10 14 26 / 0.10);
+  --shadow-xl: 0 24px 48px rgb(10 14 26 / 0.14);
+  --shadow-brand: 0 4px 20px 0 rgb(59 106 224 / 0.30);
 
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.03);
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.04);
-  --shadow-md: 0 4px 12px rgb(0 0 0 / 0.06);
-  --shadow-lg: 0 12px 24px rgb(0 0 0 / 0.08);
-  --shadow-xl: 0 24px 48px rgb(0 0 0 / 0.12);
-  --shadow-brand: 0 4px 14px 0 rgb(217 119 87 / 0.25);
-
-  /* ═══════════════════════════════════════
-     TRANSITIONS
-     ═══════════════════════════════════════ */
-
+  /* Transitions */
   --transition-fast: 150ms ease-out;
   --transition-base: 200ms ease-out;
   --transition-slow: 300ms ease-out;
 
-  /* ═══════════════════════════════════════
-     RADII - Standardized scale
-     ═══════════════════════════════════════ */
-
+  /* Radii */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
@@ -159,9 +143,10 @@
 }
 
 /* ═══════════════════════════════════════════════
-   BASE STYLES
+   BASE STYLES  (in @layer base so Tailwind utilities override them,
+   e.g. text-white on a <Link> button beats the base `a` color)
    ═══════════════════════════════════════════════ */
-
+@layer base {
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -170,86 +155,63 @@ html {
 
 body {
   background-color: var(--bg-primary);
-  color: var(--color-gray-800);
+  color: var(--text-secondary);
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  font-weight: 500;
+  font-weight: 400;
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* Typography hierarchy - Bold, legible fonts */
 h1, h2 {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--color-gray-900);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
 }
 
 h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  color: var(--color-gray-900);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
-h1 {
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
-}
+h1 { font-size: clamp(2.5rem, 5vw, 3.75rem); }
 h2 { font-size: clamp(1.875rem, 4vw, 2.75rem); }
 h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 h4 { font-size: clamp(1.125rem, 2vw, 1.25rem); }
 
-p {
-  color: var(--text-secondary);
-}
+p { color: var(--text-secondary); }
 
-/* Links */
 a {
   color: var(--text-link);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
+a:hover { color: var(--text-link-hover); }
 
-a:hover {
-  color: var(--text-link-hover);
-}
-
-/* Selection */
 ::selection {
-  background-color: var(--color-brand);
-  color: var(--color-white);
+  background-color: var(--color-accent);
+  color: #ffffff;
 }
 
-/* Focus states - accessibility */
 :focus-visible {
   outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
-
-:focus:not(:focus-visible) {
-  outline: none;
+:focus:not(:focus-visible) { outline: none; }
 }
 
 /* ═══════════════════════════════════════════════
-   UTILITY CLASSES
+   UTILITY CLASSES (interior)
    ═══════════════════════════════════════════════ */
+.font-display { font-family: var(--font-display); }
+.font-body { font-family: var(--font-body); }
+.font-mono { font-family: var(--font-mono); }
 
-.font-display {
-  font-family: var(--font-display);
-}
-
-.font-body {
-  font-family: var(--font-body);
-}
-
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-/* Container */
 .container-narrow {
   max-width: var(--container-max);
   margin-left: auto;
@@ -258,49 +220,40 @@ a:hover {
   padding-right: var(--container-px);
 }
 
-/* Section spacing */
 .section-padding {
   padding-top: var(--section-py);
   padding-bottom: var(--section-py);
 }
 
-/* Text gradient */
 .text-gradient-brand {
-  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-brand-light) 100%);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-violet) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Brand button - Primary CTA */
 .btn-brand {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
-  background-color: var(--color-brand);
-  color: var(--color-gray-900);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-brand));
+  color: #ffffff;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.9375rem;
   border-radius: var(--radius-lg);
   transition: all var(--transition-base);
   box-shadow: var(--shadow-sm);
 }
-
 .btn-brand:hover {
-  background-color: var(--color-brand-dark);
-  color: var(--color-gray-900);
+  color: #ffffff;
   box-shadow: var(--shadow-brand);
   transform: translateY(-2px);
 }
+.btn-brand:active { transform: translateY(0) scale(0.98); }
 
-.btn-brand:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* Secondary button */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -308,7 +261,7 @@ a:hover {
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
   background-color: var(--bg-primary);
-  color: var(--color-gray-900);
+  color: var(--text-primary);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.9375rem;
@@ -316,19 +269,13 @@ a:hover {
   border-radius: var(--radius-lg);
   transition: all var(--transition-base);
 }
-
 .btn-secondary:hover {
-  background-color: var(--bg-secondary);
-  border-color: var(--color-gray-400);
-  color: var(--text-primary);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
   transform: translateY(-2px);
 }
+.btn-secondary:active { transform: translateY(0) scale(0.98); }
 
-.btn-secondary:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* Card base */
 .card {
   background-color: var(--bg-primary);
   border: 1px solid var(--border-light);
@@ -336,21 +283,19 @@ a:hover {
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-base);
 }
-
 .card:hover {
   box-shadow: var(--shadow-md);
   border-color: var(--border-default);
   transform: translateY(-2px);
 }
 
-/* Badge */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
   padding: 0.5rem 1rem;
   background-color: var(--color-brand-muted);
-  color: var(--color-gray-800);
+  color: var(--color-brand-dark);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.8125rem;
@@ -358,85 +303,73 @@ a:hover {
   letter-spacing: -0.01em;
 }
 
-/* Prose for body content */
 .prose {
   font-family: var(--font-body);
   color: var(--text-secondary);
   line-height: 1.75;
 }
+.prose strong { color: var(--text-primary); font-weight: 600; }
 
-.prose strong {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-/* Dark section */
 .section-dark {
   background-color: var(--bg-inverse);
   color: var(--text-inverse);
 }
-
 .section-dark h1,
 .section-dark h2,
 .section-dark h3,
-.section-dark h4 {
-  color: var(--color-white);
-}
-
-.section-dark p {
-  color: var(--color-gray-300);
-}
+.section-dark h4 { color: var(--color-white); }
+.section-dark p { color: var(--color-gray-300); }
 
 /* ═══════════════════════════════════════════════
-   NEW-VERSION REDESIGN ("Coral Bloom" green system)
-   Scoped to .newsite so the homepage redesign does not
-   affect the existing interior pages / Tailwind brand system.
+   HOMEPAGE — "SAPPHIRE NOCTURNE" (dark-first, scoped to .newsite)
    ═══════════════════════════════════════════════ */
 .newsite {
-  --bg-primary: #ffffff;
-  --bg-secondary: #ffffff;
-  --accent: #2e7d52;
-  --accent-light: #4a9e6e;
-  --accent-dark: #1b5e3a;
-  --accent-glow: rgba(46,125,82,0.18);
-  --accent-highlight: #1b5e3a;
-  --accent-secondary: #6abf8a;
-  --accent-secondary-light: #b2dfcc;
-  --bg-card: rgba(46,125,82,0.05);
-  --bg-card-hover: rgba(46,125,82,0.10);
-  --text-primary: #000000;
-  --text-secondary: #1a1a1a;
-  --text-muted: #3a3a3a;
-  --border: rgba(46,125,82,0.12);
-  --border-accent: rgba(46,125,82,0.35);
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #0b1120;
+  --bg-elevated: #111a2e;
+  --accent: #5b8dff;
+  --accent-light: #7da5ff;
+  --accent-dark: #3b6ae0;
+  --accent-glow: rgba(91,141,255,0.28);
+  --accent-highlight: #7da5ff;
+  --accent-secondary: #a855f7;
+  --accent-secondary-light: #c4b5fd;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --text-primary: #eef1f8;
+  --text-secondary: #9aa3b8;
+  --text-muted: #5c6478;
+  --border: rgba(124,152,255,0.12);
+  --border-accent: rgba(124,152,255,0.34);
+  --font-display: var(--font-sora), sans-serif;
+  --font-body: var(--font-plex-sans), sans-serif;
   --hero-bg-gradient:
-    radial-gradient(ellipse at 22% 18%, rgba(46,125,82,0.06) 0%, transparent 55%),
-    radial-gradient(ellipse at 78% 35%, rgba(106,191,138,0.04) 0%, transparent 50%),
-    linear-gradient(180deg, #ffffff 0%, #fefefe 100%);
-  --grid-line: rgba(46,125,82,0.07);
-  --nav-bg: rgba(255,255,255,0.93);
-  --nav-border: rgba(46,125,82,0.10);
-  --partner-text: rgba(26,26,46,0.25);
-  --cta-btn-bg: #1a1a2e;
-  --cta-btn-color: #ffffff;
-  --cta-btn-arrow: #4a9e6e;
-  --card-blue-bg: rgba(46,125,82,0.05);
-  --card-blue-border: rgba(46,125,82,0.18);
-  --card-blue-bg-hover: rgba(46,125,82,0.10);
-  --card-blue-border-hover: rgba(46,125,82,0.35);
-  --tag-bg: rgba(46,125,82,0.07);
-  --tag-border: rgba(46,125,82,0.22);
-  --faq-bg: rgba(46,125,82,0.03);
-  --faq-border: rgba(46,125,82,0.12);
-  --faq-bg-open: rgba(46,125,82,0.07);
-  --faq-border-open: rgba(46,125,82,0.28);
-  --footer-bg: #ffffff;
-  --grain-opacity: 0.06;
-  --pastel-white: #ffffff;
-  --pastel-grey:  #ffffff;
-  --pastel-green: #ffffff;
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(91,141,255,0.20) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 25%, rgba(168,85,247,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 40% at 12% 55%, rgba(59,106,224,0.10) 0%, transparent 55%),
+    linear-gradient(180deg, #0a0e1a 0%, #090c16 100%);
+  --grid-line: rgba(124,152,255,0.08);
+  --nav-bg: rgba(10,14,26,0.72);
+  --nav-border: rgba(124,152,255,0.10);
+  --partner-text: rgba(238,241,248,0.32);
+  --cta-btn-bg: #eef1f8;
+  --cta-btn-color: #0a0e1a;
+  --cta-btn-arrow: #3b6ae0;
+  --card-blue-bg: rgba(124,152,255,0.05);
+  --card-blue-border: rgba(124,152,255,0.14);
+  --card-blue-bg-hover: rgba(124,152,255,0.09);
+  --card-blue-border-hover: rgba(124,152,255,0.34);
+  --tag-bg: rgba(124,152,255,0.08);
+  --tag-border: rgba(124,152,255,0.22);
+  --faq-bg: rgba(124,152,255,0.03);
+  --faq-border: rgba(124,152,255,0.12);
+  --faq-bg-open: rgba(124,152,255,0.07);
+  --faq-border-open: rgba(124,152,255,0.30);
+  --footer-bg: #090c16;
+  --grain-opacity: 0.05;
+  --pastel-white: #0a0e1a;
+  --pastel-grey: #0b1120;
+  --pastel-green: #0b1424;
 
   background: var(--bg-primary);
   color: var(--text-primary);
@@ -444,56 +377,63 @@ a:hover {
   min-height: 100vh;
 }
 
-/* Dark theme — scoped to the homepage so toggling never affects interior pages */
-html[data-theme="dark"] .newsite {
-  --bg-primary: #07080c;
-  --bg-secondary: #0d0f14;
-  --bg-card: rgba(255,255,255,0.03);
-  --bg-card-hover: rgba(255,255,255,0.06);
-  --text-primary: #f0f2f5;
-  --text-secondary: #8a919e;
-  --text-muted: #555d6b;
-  --accent: #5a9cb8;
-  --accent-light: #6db3cf;
-  --accent-dark: #30647e;
-  --accent-glow: rgba(48,100,126,0.08);
-  --accent-secondary: #0891b2;
-  --accent-secondary-light: #22d3ee;
-  --accent-highlight: #5a9cb8;
-  --border: rgba(255,255,255,0.06);
-  --border-accent: rgba(90,156,184,0.25);
-  --hero-bg-gradient: radial-gradient(ellipse at 50% 30%, rgba(48,100,126,0.15) 0%, rgba(7,8,12,0.95) 60%, #07080c 100%);
-  --grid-line: rgba(255,255,255,0.08);
-  --nav-bg: rgba(7,8,12,0.85);
-  --nav-border: rgba(255,255,255,0.06);
-  --partner-text: rgba(255,255,255,0.15);
-  --cta-btn-bg: #ffffff;
-  --cta-btn-color: #07080c;
-  --cta-btn-arrow: #30647e;
-  --card-blue-bg: rgba(48,100,126,0.06);
-  --card-blue-border: rgba(90,156,184,0.12);
-  --card-blue-bg-hover: rgba(48,100,126,0.1);
-  --card-blue-border-hover: rgba(90,156,184,0.3);
-  --tag-bg: rgba(48,100,126,0.1);
-  --tag-border: rgba(90,156,184,0.15);
-  --faq-bg: rgba(48,100,126,0.03);
-  --faq-border: rgba(90,156,184,0.08);
-  --faq-bg-open: rgba(48,100,126,0.08);
-  --faq-border-open: rgba(90,156,184,0.2);
-  --footer-bg: #0d0f14;
-  --grain-opacity: 0.4;
-  --pastel-white: #07080c;
-  --pastel-grey:  #0d0f14;
-  --pastel-green: #07080c;
-  color-scheme: dark;
+/* Light variant of the homepage — opt-in via the theme toggle */
+html[data-theme="light"] .newsite {
+  --bg-primary: #f6f8fd;
+  --bg-secondary: #eef2fb;
+  --bg-elevated: #ffffff;
+  --accent: #3b6ae0;
+  --accent-light: #5b8dff;
+  --accent-dark: #2a52b8;
+  --accent-glow: rgba(59,106,224,0.16);
+  --accent-highlight: #2a52b8;
+  --accent-secondary: #8b3ce0;
+  --accent-secondary-light: #a855f7;
+  --bg-card: rgba(59,106,224,0.04);
+  --bg-card-hover: rgba(59,106,224,0.08);
+  --text-primary: #0a0e1a;
+  --text-secondary: #3a4258;
+  --text-muted: #6b7488;
+  --border: rgba(59,106,224,0.14);
+  --border-accent: rgba(59,106,224,0.34);
+  --hero-bg-gradient:
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(91,141,255,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 25%, rgba(168,85,247,0.07) 0%, transparent 55%),
+    linear-gradient(180deg, #f6f8fd 0%, #eef2fb 100%);
+  --grid-line: rgba(59,106,224,0.08);
+  --nav-bg: rgba(246,248,253,0.80);
+  --nav-border: rgba(59,106,224,0.10);
+  --partner-text: rgba(10,14,26,0.30);
+  --cta-btn-bg: #0a0e1a;
+  --cta-btn-color: #ffffff;
+  --cta-btn-arrow: #5b8dff;
+  --card-blue-bg: rgba(59,106,224,0.05);
+  --card-blue-border: rgba(59,106,224,0.16);
+  --card-blue-bg-hover: rgba(59,106,224,0.10);
+  --card-blue-border-hover: rgba(59,106,224,0.34);
+  --tag-bg: rgba(59,106,224,0.07);
+  --tag-border: rgba(59,106,224,0.22);
+  --faq-bg: rgba(59,106,224,0.03);
+  --faq-border: rgba(59,106,224,0.12);
+  --faq-bg-open: rgba(59,106,224,0.07);
+  --faq-border-open: rgba(59,106,224,0.28);
+  --footer-bg: #eef2fb;
+  --grain-opacity: 0.03;
+  --pastel-white: #f6f8fd;
+  --pastel-grey: #eef2fb;
+  --pastel-green: #f0f4fd;
+  color-scheme: light;
 }
 
-/* Display font inside the redesign */
+/* Dark is the default color-scheme for the homepage */
+.newsite { color-scheme: dark; }
+
 .newsite h1, .newsite h2, .newsite h3, .newsite h4, .newsite h5, .newsite h6 { font-family: var(--font-display); }
 .newsite .font-display { font-family: var(--font-display); }
+.newsite .font-mono { font-family: var(--font-mono); }
 
 .newsite .text-gradient {
-  background: linear-gradient(135deg, var(--accent-light), var(--accent), var(--accent-dark));
+  background: linear-gradient(135deg, var(--accent-light), var(--accent), var(--accent-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -515,12 +455,25 @@ html[data-theme="dark"] .newsite {
 .newsite .section-padding { padding: 100px 0; }
 @media (min-width: 768px) { .newsite .section-padding { padding: 120px 0; } }
 
+/* Visually-hidden but available to screen readers and accessibility trees */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: #ffffff;
   padding: 14px 32px;
   border-radius: 10px;
@@ -534,11 +487,11 @@ html[data-theme="dark"] .newsite {
   text-decoration: none;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(124,152,255,0.20), 0 8px 30px -10px var(--accent-glow);
 }
 .btn-primary:hover {
-  background: var(--accent-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px -6px var(--accent-glow);
+  box-shadow: 0 0 0 1px rgba(124,152,255,0.35), 0 12px 40px -8px var(--accent-glow);
 }
 .btn-primary::after {
   content: '';
@@ -547,7 +500,7 @@ html[data-theme="dark"] .newsite {
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
   transition: left 0.6s ease;
 }
 .btn-primary:hover::after { left: 120%; }
@@ -564,13 +517,13 @@ html[data-theme="dark"] .newsite {
   font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.3s ease;
-  border: 1.5px solid var(--border);
+  border: 1.5px solid var(--border-accent);
   cursor: pointer;
   text-decoration: none;
 }
 .btn-outline:hover {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent-light);
   transform: translateY(-2px);
   box-shadow: 0 0 24px -4px var(--accent-glow);
 }
@@ -594,7 +547,7 @@ html[data-theme="dark"] .newsite {
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: 2px;
 }
@@ -624,9 +577,9 @@ html[data-theme="dark"] .newsite {
 .hero-border-line { border-color: var(--grid-line); }
 
 .hero-light-speed {
-  font-family: 'Inria Serif', serif;
-  font-style: italic;
-  color: #30647e;
+  font-family: var(--font-display);
+  font-style: normal;
+  color: var(--accent-highlight);
   white-space: nowrap;
   position: relative;
   z-index: 0;
@@ -637,7 +590,7 @@ html[data-theme="dark"] .newsite {
   top: 0.04em;
   left: 0.04em;
   z-index: -1;
-  background: linear-gradient(45deg, transparent 45%, #458fb4 45%, #458fb4 55%, transparent 0);
+  background: linear-gradient(45deg, transparent 45%, var(--accent-secondary) 45%, var(--accent-secondary) 55%, transparent 0);
   background-size: 0.06em 0.06em;
   -webkit-background-clip: text;
   background-clip: text;
@@ -730,4 +683,23 @@ html[data-theme="dark"] .newsite {
 @keyframes lineShadow {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+/* ═══════════════════════════════════════════════
+   ACCESSIBILITY — respect reduced motion
+   ═══════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

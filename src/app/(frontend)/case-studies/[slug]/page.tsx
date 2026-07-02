@@ -1,5 +1,7 @@
-import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+import Footer from '@/components/newsite/Footer';
 import { notFound } from 'next/navigation';
+import { ArticleSchema, BreadcrumbSchema } from '@/components/SEO';
 
 const caseStudiesData: Record<string, {
   industry: string;
@@ -27,7 +29,7 @@ const caseStudiesData: Record<string, {
   'document-processing': {
     industry: 'Financial Services',
     title: 'Document Processing Automation',
-    subtitle: 'for a Fortune 500 Bank',
+    subtitle: 'for a Mid-Market Bank',
     metrics: [
       { value: '12 → 6', label: 'Days', description: 'Processing Time' },
       { value: '$2.4M', label: 'Annual', description: 'Savings' },
@@ -210,6 +212,40 @@ export function generateStaticParams() {
   return Object.keys(caseStudiesData).map((slug) => ({ slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const caseStudy = caseStudiesData[slug];
+  const path = `/case-studies/${slug}`;
+
+  if (!caseStudy) {
+    return { alternates: { canonical: path } };
+  }
+
+  const title = `${caseStudy.title} ${caseStudy.subtitle} | Case Study`;
+  const description = caseStudy.challenge.intro;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: 'article',
+      url: path,
+      title: `${caseStudy.title} ${caseStudy.subtitle}`,
+      description,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${caseStudy.title} ${caseStudy.subtitle}`,
+      description,
+    },
+  };
+}
+
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const caseStudy = caseStudiesData[slug];
@@ -218,30 +254,45 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     notFound();
   }
 
+  const canonicalUrl = `https://agenticlabs.io/case-studies/${slug}`;
+
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="newsite relative min-h-screen">
+      <ArticleSchema
+        headline={`${caseStudy.title} ${caseStudy.subtitle}`}
+        description={caseStudy.challenge.intro}
+        url={canonicalUrl}
+        datePublished="2026-01-01"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://agenticlabs.io' },
+          { name: 'Case Studies', url: 'https://agenticlabs.io/case-studies' },
+          { name: caseStudy.title, url: canonicalUrl },
+        ]}
+      />
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <a href="/" className="text-xl font-bold text-slate-900 font-display">
+            <a href="/" className="text-xl font-bold text-stone-50 font-display">
               Agentic Labs
             </a>
             <nav className="hidden md:flex items-center gap-8">
-              <a href="/" className="text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors font-display">
+              <a href="/" className="text-stone-300 hover:text-stone-50 font-medium text-sm transition-colors font-display">
                 Home
               </a>
-              <a href="/solutions" className="text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors font-display">
+              <a href="/solutions" className="text-stone-300 hover:text-stone-50 font-medium text-sm transition-colors font-display">
                 Solutions
               </a>
-              <a href="/case-studies" className="text-slate-900 font-medium text-sm font-display">
+              <a href="/case-studies" className="text-stone-50 font-medium text-sm font-display">
                 Case Studies
               </a>
               <a
                 href="#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
-                Book Strategy Call
+                Book a Strategy Call
               </a>
             </nav>
           </div>
@@ -254,7 +305,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           <div className="max-w-6xl mx-auto">
             <a
               href="/case-studies"
-              className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 text-sm transition-colors font-display"
+              className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-50 text-sm transition-colors font-display"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -267,30 +318,30 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         {/* Header */}
         <section className="pt-8 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="inline-block px-3 py-1 bg-brand-50 text-brand-700 text-xs font-medium rounded-full mb-4 font-display">
+            <div className="inline-block px-3 py-1 bg-brand-500/10 text-brand-300 text-xs font-medium rounded-full mb-4 font-display">
               {caseStudy.industry}
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight mb-2 font-display">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-50 tracking-tight mb-2 font-display">
               {caseStudy.title}
             </h1>
-            <p className="text-xl text-slate-500 font-body">{caseStudy.subtitle}</p>
+            <p className="text-xl text-stone-400 font-body">{caseStudy.subtitle}</p>
           </div>
         </section>
 
         {/* Key Results */}
         <section className="pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-6 font-display">
+            <h2 className="text-sm font-semibold text-stone-400 uppercase tracking-wider mb-6 font-display">
               Key Results
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {caseStudy.metrics.map((metric, i) => (
-                <div key={i} className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div key={i} className="bg-white/[0.03] rounded-2xl p-6 border border-white/10">
                   <div className="text-3xl sm:text-4xl font-bold text-brand-600 mb-1 font-display">
                     {metric.value}
                   </div>
-                  <div className="text-sm text-slate-900 font-medium font-display">{metric.label}</div>
-                  <div className="text-sm text-slate-500 font-body">{metric.description}</div>
+                  <div className="text-sm text-stone-50 font-medium font-display">{metric.label}</div>
+                  <div className="text-sm text-stone-400 font-body">{metric.description}</div>
                 </div>
               ))}
             </div>
@@ -300,17 +351,17 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         {/* The Challenge */}
         <section className="pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 font-display">The Challenge</h2>
-            <p className="text-slate-600 leading-relaxed mb-6 font-body text-lg">
+            <h2 className="text-2xl font-bold text-stone-50 mb-6 font-display">The Challenge</h2>
+            <p className="text-stone-300 leading-relaxed mb-6 font-body text-lg">
               {caseStudy.challenge.intro}
             </p>
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
-              <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4 font-display">
+            <div className="bg-white/[0.03] rounded-2xl p-6 border border-white/10">
+              <h3 className="text-sm font-semibold text-stone-400 uppercase tracking-wider mb-4 font-display">
                 Pain Points
               </h3>
               <ul className="space-y-3">
                 {caseStudy.challenge.painPoints.map((point, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-600 font-body">
+                  <li key={i} className="flex items-start gap-3 text-stone-300 font-body">
                     <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -325,27 +376,27 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         {/* The Solution */}
         <section className="pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 font-display">The Solution</h2>
-            <p className="text-slate-600 leading-relaxed mb-6 font-body text-lg">
+            <h2 className="text-2xl font-bold text-stone-50 mb-6 font-display">The Solution</h2>
+            <p className="text-stone-300 leading-relaxed mb-6 font-body text-lg">
               {caseStudy.solution.intro}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               {caseStudy.solution.components.map((component, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-200 transition-all duration-300">
-                  <div className="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 font-bold text-sm mb-4 font-display">
+                <div key={i} className="bg-white/[0.03] rounded-2xl p-6 border border-white/10 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)] hover:border-brand-400/50 transition-all duration-300">
+                  <div className="w-8 h-8 bg-brand-500/10 rounded-lg flex items-center justify-center text-brand-300 font-bold text-sm mb-4 font-display">
                     {i + 1}
                   </div>
-                  <div className="text-slate-900 font-semibold mb-2 font-display">{component.title}</div>
-                  <p className="text-slate-500 text-sm font-body">{component.description}</p>
+                  <div className="text-stone-50 font-semibold mb-2 font-display">{component.title}</div>
+                  <p className="text-stone-400 text-sm font-body">{component.description}</p>
                 </div>
               ))}
             </div>
-            <div className="flex items-center gap-2 text-slate-600">
+            <div className="flex items-center gap-2 text-stone-300">
               <svg className="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span className="font-body">
-                <span className="font-semibold text-slate-900 font-display">Timeline:</span> {caseStudy.solution.timeline}
+                <span className="font-semibold text-stone-50 font-display">Timeline:</span> {caseStudy.solution.timeline}
               </span>
             </div>
           </div>
@@ -354,26 +405,26 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         {/* The Results */}
         <section className="pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 font-display">The Results</h2>
-            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-lg">
+            <h2 className="text-2xl font-bold text-stone-50 mb-6 font-display">The Results</h2>
+            <div className="bg-white/[0.03] rounded-2xl border border-white/10 overflow-hidden shadow-lg">
               <div className="grid grid-cols-2">
-                <div className="p-6 border-r border-slate-200">
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4 font-display">
+                <div className="p-6 border-r border-white/10">
+                  <h3 className="text-sm font-semibold text-stone-400 uppercase tracking-wider mb-4 font-display">
                     Before
                   </h3>
                   <ul className="space-y-3">
                     {caseStudy.results.before.map((item, i) => (
-                      <li key={i} className="text-slate-500 text-sm font-body">{item}</li>
+                      <li key={i} className="text-stone-400 text-sm font-body">{item}</li>
                     ))}
                   </ul>
                 </div>
-                <div className="p-6 bg-brand-50">
-                  <h3 className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-4 font-display">
+                <div className="p-6 bg-brand-500/10">
+                  <h3 className="text-sm font-semibold text-brand-300 uppercase tracking-wider mb-4 font-display">
                     After
                   </h3>
                   <ul className="space-y-3">
                     {caseStudy.results.after.map((item, i) => (
-                      <li key={i} className="text-slate-900 text-sm font-medium font-body">{item}</li>
+                      <li key={i} className="text-stone-50 text-sm font-medium font-body">{item}</li>
                     ))}
                   </ul>
                 </div>
@@ -386,10 +437,10 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         <section className="pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <blockquote className="border-l-4 border-brand-600 pl-6">
-              <p className="text-xl text-slate-700 italic mb-4 font-body">
+              <p className="text-xl text-stone-300 italic mb-4 font-body">
                 &quot;{caseStudy.quote.text}&quot;
               </p>
-              <footer className="text-slate-500 font-display font-medium">
+              <footer className="text-stone-400 font-display font-medium">
                 — {caseStudy.quote.author}
               </footer>
             </blockquote>
@@ -406,7 +457,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               href="mailto:contact@agenticlabs.io?subject=Discovery%20Call%20Request"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-semibold text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg font-display"
             >
-              Schedule Discovery Call
+              Book a Strategy Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

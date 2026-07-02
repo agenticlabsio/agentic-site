@@ -34,8 +34,16 @@
     }
   ],
 
+  // Zone routes on the existing (already-proxied) agenticlabs.io DNS records.
+  // Using routes rather than custom_domain avoids overwriting the zone's
+  // existing DNS records — the proxied A records route edge traffic to this Worker.
+  "routes": [
+    { "pattern": "agenticlabs.io/*", "zone_name": "agenticlabs.io" },
+    { "pattern": "www.agenticlabs.io/*", "zone_name": "agenticlabs.io" }
+  ],
+
   // Non-sensitive environment variables
   "vars": {
-    "NEXT_PUBLIC_SERVER_URL": "https://agentic-site.cloud-d71.workers.dev"
+    "NEXT_PUBLIC_SERVER_URL": "https://agenticlabs.io"
   }
 }

@@ -1,0 +1,38 @@
+{
+  "version": "0.1",
+  "name": "Agentic Labs",
+  "description": "Actions available to AI agents on agenticlabs.io.",
+  "actions": [
+    {
+      "name": "subscribe",
+      "description": "Submit an email address to receive briefings and be contacted by Agentic Labs.",
+      "method": "POST",
+      "url": "https://agenticlabs.io/api/subscribe",
+      "content_type": "application/json",
+      "parameters": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "required": true,
+          "description": "The email address to register."
+        },
+        "source": {
+          "type": "string",
+          "required": false,
+          "enum": ["cta-section", "footer", "hero"],
+          "description": "Where the submission originated."
+        }
+      },
+      "returns": {
+        "ok": "boolean",
+        "error": "string (present when ok is false)"
+      }
+    },
+    {
+      "name": "book_strategy_call",
+      "description": "Schedule a 30-minute enterprise AI strategy call.",
+      "method": "GET",
+      "url": "https://calendly.com/cloud-agenticlabs/30min"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import Footer from '@/components/Footer';
+import Footer from '@/components/newsite/Footer';
 import { FAQSchema, ServiceSchema, BreadcrumbSchema } from '@/components/SEO';
 
 // Solution data with full details for each solution page
@@ -64,7 +64,7 @@ const solutionsData: Record<string, {
       { question: 'How do you ensure agent actions are auditable?', answer: 'Every agent action is logged with complete audit trails—what was done, when, why, and by which agent. This supports SOC 2 compliance and internal governance requirements.' },
       { question: 'Can agents work with our proprietary systems?', answer: 'Yes. We build custom connectors for proprietary systems as part of our implementation. If it has an API, we can integrate it.' },
     ],
-    cta: { headline: 'Ready to deploy intelligent agents?', description: 'Book a 30-minute discovery call to see how autonomous AI agents can streamline your operations.' },
+    cta: { headline: 'Ready to deploy intelligent agents?', description: 'Book a 30-minute discovery call to see how autonomous AI agents can run your operations.' },
   },
   'customer-service-automation': {
     name: 'Customer Service Automation',
@@ -141,7 +141,7 @@ const solutionsData: Record<string, {
     results: [
       { metric: '94%', label: 'extraction accuracy', description: 'Across invoice, contract, and form processing' },
       { metric: '80%', label: 'time savings', description: 'Reduction in manual document handling' },
-      { metric: '$2.4M', label: 'annual savings', description: 'Fortune 500 client case study' },
+      { metric: '$2.4M', label: 'annual savings', description: 'Mid-market document-processing case' },
     ],
     faqs: [
       { question: 'What document formats do you support?', answer: 'We process PDFs, scanned images, Word documents, Excel files, emails, and even handwritten forms. Our AI adapts to poor scan quality and inconsistent formatting.' },
@@ -171,7 +171,7 @@ const solutionsData: Record<string, {
     capabilities: [
       { title: 'Knowledge Graph Construction', description: 'Map relationships between customers, products, processes, and systems into a queryable graph.', metric: 'Relationship mapping' },
       { title: 'Semantic Indexing for RAG', description: 'Index your documents and data for retrieval-augmented generation with high relevance.', metric: 'High-precision retrieval' },
-      { title: 'Model Context Protocol (MCP)', description: 'Implement the emerging standard for AI-to-data connectivity—future-proof your AI infrastructure.', metric: 'MCP-ready' },
+      { title: 'Model Context Protocol (MCP)', description: 'Implement the emerging standard for AI-to-data connectivity—no lock-in when the standard shifts.', metric: 'MCP-ready' },
       { title: 'Zero-Copy Data Access', description: 'Agents access data in place—no migration, no duplication, no data sprawl.', metric: 'No data movement' },
     ],
     howItWorks: [
@@ -299,9 +299,9 @@ export default function SolutionDetailPage() {
 
   if (!solution) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="newsite min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">Solution Not Found</h1>
+          <h1 className="text-2xl font-bold text-stone-50 mb-4">Solution Not Found</h1>
           <Link href="/solutions" className="text-brand-600 hover:underline">
             View all solutions
           </Link>
@@ -317,7 +317,7 @@ export default function SolutionDetailPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="newsite relative min-h-screen">
       {/* Schema Markup */}
       <ServiceSchema
         name={solution.name}
@@ -330,10 +330,10 @@ export default function SolutionDetailPage() {
       <BreadcrumbSchema items={breadcrumbs} />
 
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-xl font-bold text-slate-900 font-display">
+            <Link href="/" className="text-xl font-bold text-stone-50 font-display">
               Agentic Labs
             </Link>
             <nav className="hidden md:flex items-center gap-8">
@@ -342,7 +342,7 @@ export default function SolutionDetailPage() {
                   key={index}
                   href={item.href}
                   className={`font-medium text-sm transition-colors font-display ${
-                    item.href === '/solutions' ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'
+                    item.href === '/solutions' ? 'text-stone-50' : 'text-stone-300 hover:text-stone-50'
                   }`}
                 >
                   {item.label}
@@ -352,12 +352,12 @@ export default function SolutionDetailPage() {
                 href="/#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
-                Book Strategy Call
+                Book a Strategy Call
               </Link>
             </nav>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-slate-700 p-2"
+              className="md:hidden text-stone-300 p-2"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -366,15 +366,15 @@ export default function SolutionDetailPage() {
             </button>
           </div>
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-slate-200">
+            <div className="md:hidden py-4 border-t border-white/10">
               <nav className="flex flex-col space-y-2">
                 {navItems.map((item, index) => (
-                  <Link key={index} href={item.href} className="text-slate-600 hover:text-slate-900 py-2 px-4 rounded-lg hover:bg-slate-50 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link key={index} href={item.href} className="text-stone-300 hover:text-stone-50 py-2 px-4 rounded-lg hover:bg-white/5 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
                     {item.label}
                   </Link>
                 ))}
                 <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
-                  Book Strategy Call
+                  Book a Strategy Call
                 </Link>
               </nav>
             </div>
@@ -384,29 +384,29 @@ export default function SolutionDetailPage() {
 
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-slate-50 to-white pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+        <section className="bg-white/[0.02] pt-20 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             {/* Breadcrumb */}
             <nav className="mb-6">
               <ol className="flex items-center gap-2 text-sm">
-                <li><Link href="/" className="text-slate-500 hover:text-slate-700">Home</Link></li>
-                <li className="text-slate-400">/</li>
-                <li><Link href="/solutions" className="text-slate-500 hover:text-slate-700">Solutions</Link></li>
-                <li className="text-slate-400">/</li>
-                <li className="text-slate-900 font-medium">{solution.name}</li>
+                <li><Link href="/" className="text-stone-400 hover:text-stone-200">Home</Link></li>
+                <li className="text-stone-400">/</li>
+                <li><Link href="/solutions" className="text-stone-400 hover:text-stone-200">Solutions</Link></li>
+                <li className="text-stone-400">/</li>
+                <li className="text-stone-50 font-medium">{solution.name}</li>
               </ol>
             </nav>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-50 text-brand-700 text-sm font-medium rounded-full mb-4 font-display">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 text-brand-300 text-sm font-medium rounded-full mb-4 font-display">
               {solution.category}
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 font-display">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-50 tracking-tight mb-4 font-display">
               {solution.name}
             </h1>
             <p className="text-xl sm:text-2xl text-brand-600 font-medium mb-6 font-display">
               {solution.heroTagline}
             </p>
-            <p className="text-lg text-slate-600 max-w-3xl mb-8 font-body">
+            <p className="text-lg text-stone-300 max-w-3xl mb-8 font-body">
               {solution.description}
             </p>
             <div className="flex flex-wrap gap-4">
@@ -414,14 +414,14 @@ export default function SolutionDetailPage() {
                 href="/#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 font-display"
               >
-                Schedule Discovery Call
+                Book a Strategy Call
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
               <Link
                 href="/solutions"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-colors font-display"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.03] border border-white/10 text-stone-300 rounded-xl font-semibold hover:bg-white/5 transition-colors font-display"
               >
                 View All Solutions
               </Link>
@@ -430,15 +430,15 @@ export default function SolutionDetailPage() {
         </section>
 
         {/* Problem Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-6 font-display">The Challenge</h2>
-                <p className="text-lg text-slate-600 mb-8 font-body">{solution.problem}</p>
+                <h2 className="text-3xl font-bold text-stone-50 mb-6 font-display">The Challenge</h2>
+                <p className="text-lg text-stone-300 mb-8 font-body">{solution.problem}</p>
                 <ul className="space-y-4">
                   {solution.challenges.map((challenge, i) => (
-                    <li key={i} className="flex items-start gap-3 text-slate-600 font-body">
+                    <li key={i} className="flex items-start gap-3 text-stone-300 font-body">
                       <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                       </svg>
@@ -447,31 +447,31 @@ export default function SolutionDetailPage() {
                   ))}
                 </ul>
               </div>
-              <div className="bg-slate-50 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-4 font-display">Our Solution</h3>
-                <p className="text-slate-600 font-body">{solution.solutionOverview}</p>
+              <div className="bg-white/[0.02] rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-stone-50 mb-4 font-display">Our Solution</h3>
+                <p className="text-stone-300 font-body">{solution.solutionOverview}</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Capabilities Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">Key Capabilities</h2>
-            <p className="text-lg text-slate-600 mb-12 max-w-2xl font-body">What you get with {solution.name}</p>
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">Key Capabilities</h2>
+            <p className="text-lg text-stone-300 mb-12 max-w-2xl font-body">What you get with {solution.name}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {solution.capabilities.map((cap, i) => (
-                <div key={i} className="bg-white rounded-xl p-6 border border-slate-200">
+                <div key={i} className="bg-white/[0.03] rounded-xl p-6 border border-white/10">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-lg font-bold text-slate-900 font-display">{cap.title}</h3>
+                    <h3 className="text-lg font-bold text-stone-50 font-display">{cap.title}</h3>
                     {cap.metric && (
-                      <span className="text-sm font-medium text-brand-700 bg-brand-50 px-2 py-1 rounded font-display">
+                      <span className="text-sm font-medium text-brand-300 bg-brand-500/10 px-2 py-1 rounded font-display">
                         {cap.metric}
                       </span>
                     )}
                   </div>
-                  <p className="text-slate-600 font-body">{cap.description}</p>
+                  <p className="text-stone-300 font-body">{cap.description}</p>
                 </div>
               ))}
             </div>
@@ -479,19 +479,19 @@ export default function SolutionDetailPage() {
         </section>
 
         {/* How It Works Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">How It Works</h2>
-            <p className="text-lg text-slate-600 mb-12 max-w-2xl font-body">Our implementation process</p>
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">How It Works</h2>
+            <p className="text-lg text-stone-300 mb-12 max-w-2xl font-body">Our implementation process</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {solution.howItWorks.map((step) => (
                 <div key={step.step} className="relative">
-                  <div className="text-5xl font-bold text-brand-100 absolute -top-2 -left-2 font-display">
+                  <div className="text-5xl font-bold text-brand-500/25 absolute -top-2 -left-2 font-display">
                     {step.step}
                   </div>
                   <div className="relative pt-8 pl-4">
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">{step.title}</h3>
-                    <p className="text-slate-600 text-sm font-body">{step.description}</p>
+                    <h3 className="text-lg font-bold text-stone-50 mb-2 font-display">{step.title}</h3>
+                    <p className="text-stone-300 text-sm font-body">{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -500,13 +500,13 @@ export default function SolutionDetailPage() {
         </section>
 
         {/* Integration Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">Integrations</h2>
-            <p className="text-lg text-slate-600 mb-8 max-w-2xl font-body">Works with your existing systems of record</p>
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">Integrations</h2>
+            <p className="text-lg text-stone-300 mb-8 max-w-2xl font-body">Works with your existing systems of record</p>
             <div className="flex flex-wrap gap-3">
               {solution.integrations.map((integration, i) => (
-                <span key={i} className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-slate-700 font-medium text-sm font-display">
+                <span key={i} className="px-4 py-2 bg-white/[0.03] border border-white/10 rounded-lg text-stone-300 font-medium text-sm font-display">
                   {integration}
                 </span>
               ))}
@@ -531,15 +531,15 @@ export default function SolutionDetailPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">Frequently Asked Questions</h2>
-            <p className="text-lg text-slate-600 mb-12 font-body">Common questions about {solution.name}</p>
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">Frequently Asked Questions</h2>
+            <p className="text-lg text-stone-300 mb-12 font-body">Common questions about {solution.name}</p>
             <div className="space-y-6">
               {solution.faqs.map((faq, i) => (
-                <div key={i} className="border-b border-slate-200 pb-6">
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 font-display">{faq.question}</h3>
-                  <p className="text-slate-600 font-body">{faq.answer}</p>
+                <div key={i} className="border-b border-white/10 pb-6">
+                  <h3 className="text-lg font-bold text-stone-50 mb-3 font-display">{faq.question}</h3>
+                  <p className="text-stone-300 font-body">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -552,14 +552,14 @@ export default function SolutionDetailPage() {
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4 font-display">
               {solution.cta.headline}
             </h2>
-            <p className="text-xl text-slate-300 mb-8 font-body">
+            <p className="text-xl text-stone-300 mb-8 font-body">
               {solution.cta.description}
             </p>
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg font-display"
             >
-              Schedule Discovery Call
+              Book a Strategy Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

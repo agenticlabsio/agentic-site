@@ -1,11 +1,17 @@
 "use client";
 
-import Image from "next/image";
+import { NeuralNetworkIcon, DataFlowIcon, AgentBrainIcon } from "./icons/AgentIcons";
 
 const partners = [
   { name: "ITC", height: 64 },
   { name: "HUL", height: 56 },
   { name: "DHL", height: 68 },
+];
+
+const metrics = [
+  { value: "10x", label: "Faster Deployment" },
+  { value: "90%", label: "Cost Reduction" },
+  { value: "24/7", label: "Autonomous Ops" },
 ];
 
 export default function Hero() {
@@ -16,12 +22,13 @@ export default function Hero() {
         position: "relative",
         display: "flex",
         flexDirection: "column",
-        height: "100dvh",
+        minHeight: "100dvh",
         width: "100%",
         background: "var(--pastel-white)",
         overflow: "hidden",
       }}
     >
+      {/* Animated background gradient orbs */}
       <div
         style={{
           position: "absolute",
@@ -30,11 +37,26 @@ export default function Hero() {
           background: "var(--hero-bg-gradient)",
         }}
       />
+      
+      {/* Floating geometric shapes */}
+      <div className="hero-shapes" style={{ position: "absolute", inset: 0, zIndex: 1, overflow: "hidden", pointerEvents: "none" }}>
+        <div className="hero-shape shape-1" style={{ position: "absolute", top: "15%", left: "8%", opacity: 0.08 }}>
+          <NeuralNetworkIcon size={120} />
+        </div>
+        <div className="hero-shape shape-2" style={{ position: "absolute", top: "25%", right: "10%", opacity: 0.06 }}>
+          <DataFlowIcon size={100} />
+        </div>
+        <div className="hero-shape shape-3" style={{ position: "absolute", bottom: "20%", left: "15%", opacity: 0.05 }}>
+          <AgentBrainIcon size={80} />
+        </div>
+      </div>
+
+      {/* Grain texture */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          zIndex: 1,
+          zIndex: 2,
           opacity: "var(--grain-opacity, 0.15)" as any,
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")`,
           backgroundRepeat: "repeat",
@@ -54,247 +76,227 @@ export default function Hero() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: 16,
+            gap: 24,
             padding: "0 16px",
             textAlign: "center",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12 }}>
+          {/* Badge */}
+          <div
+            className="hero-badge-in"
+            style={{
+              animationDelay: "0.2s",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "8px 16px",
+              borderRadius: 999,
+              background: "var(--tag-bg)",
+              border: "1px solid var(--tag-border)",
+            }}
+          >
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent)", animation: "glowPulse 2s ease-in-out infinite" }} />
+            <span style={{ fontSize: "0.8rem", fontWeight: 500, color: "var(--accent-highlight)", letterSpacing: "0.02em" }}>
+              AI Agents for Enterprise
+            </span>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 16 }}>
             <h1
               style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 gap: 8,
-                fontSize: "clamp(2.2rem, 5.5vw, 3.75rem)",
-                fontWeight: 600,
-                lineHeight: 1.1,
+                fontSize: "clamp(2.4rem, 6vw, 4rem)",
+                fontWeight: 700,
+                lineHeight: 1.08,
                 color: "var(--text-primary)",
+                letterSpacing: "-0.03em",
               }}
             >
-              <span className="hero-text-reveal" style={{ animationDelay: "0.3s" }}>Code Moves Fast.</span>
-              <span
-                className="hero-light-speed hero-text-reveal hero-speed-text"
-                data-text="We Move Faster."
-                style={{
-                  animationDelay: "0.5s",
-                  fontSize: "clamp(2.4rem, 6vw, 4.2rem)",
-                }}
-              >
-                We Move Faster.
+              <span className="hero-text-reveal" style={{ animationDelay: "0.3s" }}>
+                Deploy AI Agents
+              </span>
+              <span className="hero-text-reveal" style={{ animationDelay: "0.45s" }}>
+                That{" "}
+                <span
+                  className="text-gradient"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                  }}
+                >
+                  Actually Ship
+                </span>
               </span>
             </h1>
 
+            {/* Animated accent line */}
             <div
               className="hero-animate"
               style={{
-                animationDelay: "0.7s",
+                animationDelay: "0.6s",
                 position: "relative",
-                height: 4,
-                width: 320,
-                maxWidth: "80vw",
+                height: 3,
+                width: 280,
+                maxWidth: "70vw",
                 overflow: "hidden",
                 borderRadius: 4,
+                background: "var(--border)",
               }}
             >
-              <div className="laser-base" />
-              <div className="laser-pulse" style={{ opacity: 0.6, animation: "pulseRing 2s ease-in-out infinite" }} />
-              <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: 64, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent)", animation: "laser 2s ease-in-out infinite" }} />
-              <div className="laser-sweep" style={{ animation: "laser 2s ease-in-out infinite 0.5s" }} />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(90deg, var(--accent), var(--accent-secondary), var(--accent))",
+                  backgroundSize: "200% 100%",
+                  animation: "gradientTextShift 3s linear infinite",
+                }}
+              />
             </div>
           </div>
 
           <p
             className="hero-text-reveal"
             style={{
-              animationDelay: "0.9s",
+              animationDelay: "0.75s",
               color: "var(--text-secondary)",
-              fontSize: "clamp(1rem, 2vw, 1.35rem)",
-              maxWidth: 600,
-              lineHeight: 1.6,
+              fontSize: "clamp(1rem, 2vw, 1.25rem)",
+              maxWidth: 580,
+              lineHeight: 1.65,
             }}
           >
-            AI + Humans. Production-grade software. 10x faster.
+            Custom AI agents engineered for production. Built for ROI, governed for compliance, deployed on your infrastructure.
           </p>
 
-          <div className="hero-cta-in" style={{ animationDelay: "1.1s" }}>
+          {/* CTA Buttons */}
+          <div className="hero-cta-in" style={{ animationDelay: "0.9s", display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
             <a
               href="#contact"
+              className="btn-primary"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                background: "var(--cta-btn-bg)",
-                color: "var(--cta-btn-color)",
-                padding: "10px 24px",
-                borderRadius: 8,
-                fontSize: "0.9rem",
-                fontWeight: 500,
-                textDecoration: "none",
-                transition: "all 0.2s ease",
-                cursor: "pointer",
+                padding: "14px 28px",
+                fontSize: "0.95rem",
               }}
             >
-              <span style={{ marginTop: 1 }}>Book a Strategy Call</span>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ color: "var(--cta-btn-arrow)" }}
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
+              <span>Start Building</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
-          </div>
-        </div>
-
-        <div
-          className="hero-bottom-section"
-          style={{
-            display: "flex",
-            width: "100%",
-            alignItems: "flex-start",
-            borderTop: "1px solid var(--grid-line)",
-            borderBottom: "1px solid var(--grid-line)",
-          }}
-        >
-          <div className="hero-side-spacer" style={{ width: 80, height: 32, borderBottom: "1px solid var(--grid-line)" }} />
-
-          <div className="hero-trust-grid" style={{ display: "flex", flex: 1 }}>
-            <div
-              className="hero-trusted-col"
+            <a
+              href="#process"
+              className="btn-outline"
               style={{
-                flex: 2,
-                display: "flex",
-                flexDirection: "column",
-                borderRight: "1px solid var(--grid-line)",
+                padding: "14px 28px",
+                fontSize: "0.95rem",
               }}
             >
-              <div
-                style={{
-                  height: 32,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderBottom: "1px solid var(--grid-line)",
-                  fontSize: "0.82rem",
-                  fontWeight: 500,
-                  color: "var(--text-secondary)",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                Trusted by Leading Enterprises
-              </div>
-              <div style={{ display: "flex", flex: 1, alignItems: "center" }}>
-                {partners.map((p, i) => (
-                  <div
-                    key={p.name}
-                    style={{
-                      flex: 1,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: 12,
-                      height: 112,
-                      borderRight: i < partners.length - 1 ? "1px solid var(--grid-line)" : "none",
-                    }}
-                  >
-                    <span
-                      className="font-display"
-                      style={{
-                        fontSize: "1.4rem",
-                        fontWeight: 700,
-                        color: "var(--partner-text)",
-                        letterSpacing: "0.08em",
-                        filter: "grayscale(1)",
-                      }}
-                    >
-                      {p.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+              See How It Works
+            </a>
+          </div>
 
-            <div className="hero-backed-col" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-              <div
-                style={{
-                  height: 32,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderBottom: "1px solid var(--grid-line)",
-                  fontSize: "0.82rem",
-                  fontWeight: 500,
-                  color: "var(--text-secondary)",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                Backed By
-              </div>
-              <div style={{ display: "flex", flex: 1, alignItems: "center", justifyContent: "center", padding: 12, height: 112 }}>
+          {/* Quick metrics */}
+          <div
+            className="hero-animate hero-metrics"
+            style={{
+              animationDelay: "1.1s",
+              display: "flex",
+              gap: 32,
+              marginTop: 24,
+              padding: "20px 32px",
+              borderRadius: 12,
+              background: "var(--bg-card)",
+              border: "1px solid var(--border)",
+            }}
+          >
+            {metrics.map((m, i) => (
+              <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
                 <span
                   className="font-display"
                   style={{
-                    fontSize: "1.2rem",
+                    fontSize: "1.5rem",
                     fontWeight: 700,
-                    color: "var(--partner-text)",
-                    letterSpacing: "0.06em",
-                    filter: "grayscale(1)",
+                    color: "var(--accent-highlight)",
                   }}
                 >
-                  Titan Capital
+                  {m.value}
+                </span>
+                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  {m.label}
                 </span>
               </div>
-            </div>
+            ))}
           </div>
+        </div>
 
-          <div className="hero-side-spacer" style={{ width: 80, height: 32, borderBottom: "1px solid var(--grid-line)" }} />
+        {/* Trust section */}
+        <div
+          className="hero-trust"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            padding: "32px 16px",
+            borderTop: "1px solid var(--grid-line)",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 500,
+              color: "var(--text-muted)",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              marginBottom: 20,
+            }}
+          >
+            Trusted by Industry Leaders
+          </p>
+          <div style={{ display: "flex", gap: 48, flexWrap: "wrap", justifyContent: "center" }}>
+            {partners.map((p) => (
+              <span
+                key={p.name}
+                className="font-display"
+                style={{
+                  fontSize: "1.3rem",
+                  fontWeight: 700,
+                  color: "var(--partner-text)",
+                  letterSpacing: "0.06em",
+                }}
+              >
+                {p.name}
+              </span>
+            ))}
+            <span className="font-display" style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--partner-text)", letterSpacing: "0.06em" }}>
+              Titan Capital
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="hero-side-borders" style={{ position: "absolute", top: 96, bottom: 0, left: 80, width: 1, background: "var(--grid-line)", zIndex: 5, pointerEvents: "none" }} />
-      <div className="hero-side-borders" style={{ position: "absolute", top: 96, bottom: 0, right: 80, width: 1, background: "var(--grid-line)", zIndex: 5, pointerEvents: "none" }} />
-
       <style>{`
-        /* "We Move Faster." text — theme-aware via --accent-highlight */
-        .hero-speed-text { color: var(--accent-highlight); }
+        .hero-shape {
+          color: var(--accent);
+          animation: floatShape 8s ease-in-out infinite;
+        }
+        .shape-1 { animation-delay: 0s; }
+        .shape-2 { animation-delay: -2s; }
+        .shape-3 { animation-delay: -4s; }
 
-        /* Laser bar — dark pastel green in light, original teal in dark */
-        .laser-base  { position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(46,125,82,0.50), rgba(106,191,138,0.30), transparent); }
-        .laser-pulse { position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(46,125,82,0.55), transparent); }
-        .laser-sweep { position: absolute; top: 0; left: 0; height: 100%; width: 128px; background: linear-gradient(90deg, transparent, rgba(74,158,110,0.65), transparent); }
-        [data-theme="dark"] .laser-base  { background: linear-gradient(90deg, transparent, rgba(48,100,126,0.50), transparent); }
-        [data-theme="dark"] .laser-pulse { background: linear-gradient(90deg, transparent, rgba(48,100,126,0.60), transparent); }
-        [data-theme="dark"] .laser-sweep { background: linear-gradient(90deg, transparent, rgba(48,100,126,0.70), transparent); }
-
-        .hero-side-spacer { display: block; }
-        .hero-side-borders { display: block; }
-        .hero-trust-grid { flex-direction: row; }
-        .hero-trusted-col { border-left: 1px solid var(--grid-line); }
-        .hero-backed-col { border-right: 1px solid var(--grid-line); }
-
-        @media (max-width: 1024px) {
-          .hero-side-spacer { display: none !important; }
-          .hero-side-borders { display: none !important; }
-          .hero-trusted-col { border-left: none !important; }
-          .hero-backed-col { border-right: none !important; }
+        @keyframes floatShape {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         @media (max-width: 768px) {
-          .hero-trust-grid {
+          .hero-metrics {
             flex-direction: column !important;
+            gap: 16px !important;
+            padding: 16px 24px !important;
           }
-          .hero-trusted-col {
-            border-right: none !important;
-            border-bottom: 1px solid var(--grid-line);
-          }
+          .hero-shapes { display: none; }
         }
       `}</style>
     </section>

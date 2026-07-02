@@ -5,8 +5,9 @@ import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { label: "How We Work", href: "#process" },
-  { label: "Solutions", href: "#problem" },
+  { label: "Capabilities", href: "#problem" },
+  { label: "Process", href: "#process" },
+  { label: "Solutions", href: "#services" },
   { label: "Testimonials", href: "#results" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -23,7 +24,9 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   return (
@@ -39,9 +42,7 @@ export default function Navbar() {
           background: scrolled ? "var(--nav-bg)" : "transparent",
           backdropFilter: scrolled ? "blur(20px) saturate(1.4)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(20px) saturate(1.4)" : "none",
-          borderBottom: scrolled
-            ? "1px solid var(--nav-border)"
-            : "1px solid transparent",
+          borderBottom: scrolled ? "1px solid var(--nav-border)" : "1px solid transparent",
         }}
       >
         <div
@@ -53,41 +54,32 @@ export default function Navbar() {
             height: 72,
           }}
         >
-          <a href="#" style={{ flexShrink: 0 }}>
+          <a href="#" style={{ flexShrink: 0, display: "flex", alignItems: "center", gap: 12 }}>
             <Image
               src="/logo.png"
               alt="Agentic Labs"
               width={180}
               height={40}
-              style={{ height: 56, width: "auto" }}
+              style={{ height: 48, width: "auto" }}
               priority
             />
           </a>
 
-          <div
-            className="nav-desktop"
-            style={{ alignItems: "center", gap: 4 }}
-          >
+          <div className="nav-desktop" style={{ alignItems: "center", gap: 4 }}>
             {navLinks.map((l) => (
               <a
                 key={l.label}
                 href={l.href}
-                className="font-display"
+                className="font-display nav-link"
                 style={{
-                  padding: "8px 18px",
-                  fontSize: "1rem",
-                  color: "var(--text-secondary)",
+                  padding: "8px 16px",
+                  fontSize: "0.9rem",
                   fontWeight: 500,
                   textDecoration: "none",
-                  transition: "color 0.25s ease",
                   letterSpacing: "0.01em",
+                  borderRadius: 8,
+                  transition: "all 0.2s ease",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "var(--text-primary)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "var(--text-secondary)")
-                }
               >
                 {l.label}
               </a>
@@ -98,13 +90,14 @@ export default function Navbar() {
             <ThemeToggle />
             <a
               href="#contact"
+              className="nav-cta"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 8,
                 background: "var(--cta-btn-bg)",
                 color: "var(--cta-btn-color)",
-                padding: "10px 24px",
+                padding: "10px 20px",
                 borderRadius: 8,
                 fontSize: "0.88rem",
                 fontWeight: 500,
@@ -113,31 +106,21 @@ export default function Navbar() {
                 cursor: "pointer",
               }}
             >
-              <span>Book a Strategy Call</span>
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 16 16"
-                fill="none"
-              >
-                <path
-                  d="M3 8h10M9 4l4 4-4 4"
-                  stroke="var(--cta-btn-arrow)"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+              <span>Get Started</span>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="var(--cta-btn-arrow)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </div>
 
-          {/* Mobile right side */}
           <div className="nav-mobile-right" style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <ThemeToggle />
             <button
               className="nav-mobile-toggle"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
+              aria-expanded={mobileOpen}
+              aria-controls="nav-mobile-menu"
               style={{
                 background: "none",
                 border: "none",
@@ -147,26 +130,54 @@ export default function Navbar() {
                 padding: 8,
               }}
             >
-              <span style={{ display: "block", width: 22, height: 2, background: "var(--text-primary)", borderRadius: 2, transition: "all 0.3s ease", transform: mobileOpen ? "rotate(45deg) translate(3px,3px)" : "none" }} />
-              <span style={{ display: "block", width: 22, height: 2, background: "var(--text-primary)", borderRadius: 2, transition: "all 0.3s ease", opacity: mobileOpen ? 0 : 1 }} />
-              <span style={{ display: "block", width: 22, height: 2, background: "var(--text-primary)", borderRadius: 2, transition: "all 0.3s ease", transform: mobileOpen ? "rotate(-45deg) translate(3px,-3px)" : "none" }} />
+              <span
+                style={{
+                  display: "block",
+                  width: 22,
+                  height: 2,
+                  background: "var(--text-primary)",
+                  borderRadius: 2,
+                  transition: "all 0.3s ease",
+                  transform: mobileOpen ? "rotate(45deg) translate(3px,3px)" : "none",
+                }}
+              />
+              <span
+                style={{
+                  display: "block",
+                  width: 22,
+                  height: 2,
+                  background: "var(--text-primary)",
+                  borderRadius: 2,
+                  transition: "all 0.3s ease",
+                  opacity: mobileOpen ? 0 : 1,
+                }}
+              />
+              <span
+                style={{
+                  display: "block",
+                  width: 22,
+                  height: 2,
+                  background: "var(--text-primary)",
+                  borderRadius: 2,
+                  transition: "all 0.3s ease",
+                  transform: mobileOpen ? "rotate(-45deg) translate(3px,-3px)" : "none",
+                }}
+              />
             </button>
           </div>
         </div>
 
-        {/* Mobile menu */}
         <div
+          id="nav-mobile-menu"
           className="nav-mobile-menu"
           style={{
-            maxHeight: mobileOpen ? 400 : 0,
+            maxHeight: mobileOpen ? 500 : 0,
             overflow: "hidden",
             transition: "max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
             background: "var(--nav-bg)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            borderBottom: mobileOpen
-              ? "1px solid var(--nav-border)"
-              : "1px solid transparent",
+            borderBottom: mobileOpen ? "1px solid var(--nav-border)" : "1px solid transparent",
           }}
         >
           <div style={{ padding: "8px 24px 24px" }}>
@@ -209,7 +220,7 @@ export default function Navbar() {
                 textDecoration: "none",
               }}
             >
-              <span>Book a Strategy Call</span>
+              <span>Get Started</span>
             </a>
           </div>
         </div>
@@ -220,6 +231,20 @@ export default function Navbar() {
         .nav-mobile-toggle { display: flex; }
         .nav-mobile-menu { display: block; }
         .nav-mobile-right { display: flex; }
+
+        .nav-link {
+          color: var(--text-secondary);
+          transition: color 0.25s ease, background 0.25s ease;
+        }
+        .nav-link:hover, .nav-link:focus-visible {
+          color: var(--text-primary);
+          background: var(--bg-card);
+        }
+
+        .nav-cta:hover, .nav-cta:focus-visible {
+          box-shadow: 0 0 0 1px var(--border-accent), 0 8px 28px var(--accent-glow);
+          transform: translateY(-1px);
+        }
 
         @media (min-width: 768px) {
           .nav-desktop { display: flex !important; }

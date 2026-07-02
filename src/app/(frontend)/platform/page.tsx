@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import Footer from '@/components/Footer';
+import Footer from '@/components/newsite/Footer';
 
 const capabilities = [
   {
@@ -55,12 +55,12 @@ export default function PlatformPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="newsite relative min-h-screen">
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-sm border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-xl font-bold text-slate-900 font-display">
+            <Link href="/" className="text-xl font-bold text-stone-50 font-display">
               Agentic Labs
             </Link>
             <nav className="hidden md:flex items-center gap-8">
@@ -68,7 +68,7 @@ export default function PlatformPage() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors font-display"
+                  className="text-stone-300 hover:text-stone-50 font-medium text-sm transition-colors font-display"
                 >
                   {item.label}
                 </Link>
@@ -77,12 +77,12 @@ export default function PlatformPage() {
                 href="/#contact"
                 className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
               >
-                Book Strategy Call
+                Book a Strategy Call
               </Link>
             </nav>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-slate-700 p-2"
+              className="md:hidden text-stone-300 p-2"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -91,15 +91,15 @@ export default function PlatformPage() {
             </button>
           </div>
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-slate-200">
+            <div className="md:hidden py-4 border-t border-white/10">
               <nav className="flex flex-col space-y-2">
                 {navItems.map((item, index) => (
-                  <Link key={index} href={item.href} className="text-slate-600 hover:text-slate-900 py-2 px-4 rounded-lg hover:bg-slate-50 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link key={index} href={item.href} className="text-stone-300 hover:text-stone-50 py-2 px-4 rounded-lg hover:bg-white/5 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
                     {item.label}
                   </Link>
                 ))}
                 <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
-                  Book Strategy Call
+                  Book a Strategy Call
                 </Link>
               </nav>
             </div>
@@ -109,29 +109,29 @@ export default function PlatformPage() {
 
       <main className="pt-16">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-slate-50 to-white pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+        <section className="bg-white/[0.02] pt-20 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">Platform</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 font-display">
-              Enterprise AI Platform
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-50 tracking-tight mb-4 font-display">
+              Production infrastructure for <span className="text-brand-400">agents that act.</span>
             </h1>
-            <p className="text-xl text-slate-600 max-w-2xl mb-8 font-body">
-              Production-ready infrastructure for autonomous AI agents.
-              Built for governance, integration, and measurable outcomes.
+            <p className="text-xl text-stone-300 max-w-2xl mb-8 font-body">
+              The governance, integration, and control layer behind every agent we ship — running in
+              your VPC or on your own hardware, plugged into the systems you already run. No migration.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 font-display"
               >
-                Book Strategy Call
+                Book a Strategy Call
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
               <Link
                 href="/platform/integrations"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-colors font-display"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.03] border border-white/10 text-stone-300 rounded-xl font-semibold hover:bg-white/5 transition-colors font-display"
               >
                 View Integrations
               </Link>
@@ -140,18 +140,18 @@ export default function PlatformPage() {
         </section>
 
         {/* Capabilities */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">Platform Capabilities</h2>
-            <p className="text-lg text-slate-600 mb-12 max-w-2xl font-body">
-              The building blocks for enterprise-grade AI automation
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">Platform Capabilities</h2>
+            <p className="text-lg text-stone-300 mb-12 max-w-2xl font-body">
+              The building blocks behind agents that reach production and stay governed.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {capabilities.map((cap, index) => (
-                <div key={index} className="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                <div key={index} className="bg-white/[0.03] rounded-xl p-6 border border-white/10">
                   <div className="text-3xl mb-4">{cap.icon}</div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">{cap.title}</h3>
-                  <p className="text-slate-600 font-body">{cap.description}</p>
+                  <h3 className="text-lg font-bold text-stone-50 mb-2 font-display">{cap.title}</h3>
+                  <p className="text-stone-300 font-body">{cap.description}</p>
                 </div>
               ))}
             </div>
@@ -159,12 +159,12 @@ export default function PlatformPage() {
         </section>
 
         {/* Integration Preview */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-2 font-display">Integrations</h2>
-                <p className="text-lg text-slate-600 font-body">Native connectors to your systems of record</p>
+                <h2 className="text-3xl font-bold text-stone-50 mb-2 font-display">Integrations</h2>
+                <p className="text-lg text-stone-300 font-body">Native connectors to your systems of record</p>
               </div>
               <Link
                 href="/platform/integrations"
@@ -181,12 +181,12 @@ export default function PlatformPage() {
                 <Link
                   key={index}
                   href={integration.href}
-                  className="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-200 hover:shadow-md transition-all text-center group"
+                  className="bg-white/[0.03] rounded-xl p-6 border border-white/10 hover:border-brand-400/50 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)] transition-all text-center group"
                 >
-                  <div className="text-xl font-bold text-slate-900 mb-1 font-display group-hover:text-brand-600 transition-colors">
+                  <div className="text-xl font-bold text-stone-50 mb-1 font-display group-hover:text-brand-300 transition-colors">
                     {integration.name}
                   </div>
-                  <div className="text-sm text-slate-500 font-body">{integration.category}</div>
+                  <div className="text-sm text-stone-400 font-body">{integration.category}</div>
                 </Link>
               ))}
             </div>
@@ -203,38 +203,38 @@ export default function PlatformPage() {
         </section>
 
         {/* Architecture Overview */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display">How It Works</h2>
-            <p className="text-lg text-slate-600 mb-12 max-w-2xl font-body">
+            <h2 className="text-3xl font-bold text-stone-50 mb-4 font-display">How It Works</h2>
+            <p className="text-lg text-stone-300 mb-12 max-w-2xl font-body">
               AI agents layer on top of your existing infrastructure
             </p>
-            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+            <div className="bg-white/[0.03] rounded-2xl p-8 border border-white/10">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">📊</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">Your Data</h3>
-                  <p className="text-slate-600 text-sm font-body">
+                  <h3 className="text-lg font-bold text-stone-50 mb-2 font-display">Your Data</h3>
+                  <p className="text-stone-300 text-sm font-body">
                     Salesforce, Workday, Databricks, SAP, and your existing systems
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">🔌</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">MCP Layer</h3>
-                  <p className="text-slate-600 text-sm font-body">
+                  <h3 className="text-lg font-bold text-stone-50 mb-2 font-display">MCP Layer</h3>
+                  <p className="text-stone-300 text-sm font-body">
                     Model Context Protocol provides secure, standardized access
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-brand-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">🤖</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 font-display">AI Agents</h3>
-                  <p className="text-slate-600 text-sm font-body">
+                  <h3 className="text-lg font-bold text-stone-50 mb-2 font-display">AI Agents</h3>
+                  <p className="text-stone-300 text-sm font-body">
                     Autonomous agents with bounded autonomy and audit trails
                   </p>
                 </div>
@@ -247,16 +247,17 @@ export default function PlatformPage() {
         <section className="bg-slate-900 py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4 font-display">
-              Ready to see the platform in action?
+              See it running on your stack.
             </h2>
             <p className="text-xl text-slate-300 mb-8 font-body">
-              Book a 30-minute demo to see how enterprise AI agents work with your systems.
+              30 minutes. We&apos;ll show you how agents plug into the systems you already run —
+              and where one pays back first.
             </p>
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold text-lg transition-all duration-200 shadow-lg font-display"
             >
-              Schedule Platform Demo
+              Book a Strategy Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

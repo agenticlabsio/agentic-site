@@ -1,6 +1,5 @@
-import { getPayload } from 'payload'
-import config from '@payload-config'
 import { NextResponse } from 'next/server'
+import { getPayloadClient } from '@/lib/payload'
 import {
   seedSolutions,
   seedIndustries,
@@ -10,13 +9,19 @@ import {
   seedSiteSettings,
 } from '@/seed'
 
-export async function GET() {
-  // Only allow in development
+export async function GET(request: Request) {
+  // In development this is open. In production it requires a matching
+  // x-seed-secret header (set via `wrangler secret put SEED_SECRET`) so the
+  // canonical content in src/content can be (re-)synced to prod on demand
+  // without leaving an open re-seed endpoint on the public site.
   if (process.env.NODE_ENV === 'production') {
-    return NextResponse.json({ error: 'Seeding is disabled in production' }, { status: 403 })
+    const provided = request.headers.get('x-seed-secret')
+    if (!process.env.SEED_SECRET || provided !== process.env.SEED_SECRET) {
+      return NextResponse.json({ error: 'Seeding is disabled' }, { status: 403 })
+    }
   }
 
-  const payload = await getPayload({ config })
+  const payload = await getPayloadClient()
   const results: string[] = []
 
   // Seed the marketing collections from the canonical content modules.

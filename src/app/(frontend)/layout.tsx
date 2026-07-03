@@ -114,6 +114,13 @@ export default async function FrontendLayout({
   children: React.ReactNode
 }) {
   const siteSettings = await getSiteSettings();
+  // Payload returns an empty group ({}) for ctaButton when the site-settings
+  // global has never been saved (e.g. a freshly provisioned database before
+  // the first seed/edit) — fall back rather than pass an undefined href to
+  // <Link>, which throws inside Next's URL formatter.
+  const cta = siteSettings.ctaButton?.href
+    ? siteSettings.ctaButton
+    : { label: 'Book a Strategy Call', href: '/#contact' };
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -130,7 +137,7 @@ export default async function FrontendLayout({
         <OrganizationSchema />
         <WebSiteSchema />
         <div className="newsite">
-          <SiteHeader navItems={siteSettings.navItems ?? []} cta={siteSettings.ctaButton} />
+          <SiteHeader navItems={siteSettings.navItems ?? []} cta={cta} />
           {children}
           <Footer
             tagline={siteSettings.brandTagline}

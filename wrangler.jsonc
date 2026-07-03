@@ -22,7 +22,7 @@
       "binding": "D1",
       "database_name": "agentic-site-db",
       "database_id": "4b211762-0ec5-4bb3-bb5f-6fec3a598973",
-      "remote": false
+      "remote": true
     }
   ],
 

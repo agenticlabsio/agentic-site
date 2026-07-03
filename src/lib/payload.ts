@@ -1,11 +1,22 @@
-import { getPayload } from 'payload'
 import { cache } from 'react'
 import { unstable_cache } from 'next/cache'
-import config from '@payload-config'
+import { installMessageChannelPolyfill } from './messagechannel-polyfill'
 
 // Request-scoped singleton: React.cache dedupes the (heavy) Payload init so all
 // fetchers in a single render share one instance.
-export const getPayloadClient = cache(async () => getPayload({ config }))
+//
+// The polyfill must run, and @payload-config must be imported, *after* that —
+// a static top-level `import config from '@payload-config'` would get evaluated
+// before this function ever runs, defeating the polyfill (see
+// messagechannel-polyfill.ts). Dynamic imports defer evaluation until here.
+export const getPayloadClient = cache(async () => {
+  await installMessageChannelPolyfill()
+  const [{ getPayload }, { default: config }] = await Promise.all([
+    import('payload'),
+    import('@payload-config'),
+  ])
+  return getPayload({ config })
+})
 
 // Cross-request persisted cache, tagged per collection so a Payload afterChange/
 // afterDelete hook can call revalidateTag(<collection>) to purge just that data.

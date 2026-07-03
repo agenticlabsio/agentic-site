@@ -35,6 +35,8 @@ export async function seedSolutions(payload: Payload): Promise<string[]> {
       seo: s.seo,
       featured: s.featured ?? false,
       order: i,
+      // Publish immediately — these collections have drafts/versioning enabled.
+      _status: 'published' as const,
     }
     const existing = await payload.find({
       collection: 'solutions',
@@ -75,6 +77,8 @@ export async function seedIndustries(payload: Payload): Promise<string[]> {
       seo: ind.seo,
       featured: ind.featured ?? false,
       order: i,
+      // Publish immediately — these collections have drafts/versioning enabled.
+      _status: 'published' as const,
     }
     const existing = await payload.find({
       collection: 'industries',
@@ -116,6 +120,8 @@ export async function seedCaseStudies(payload: Payload): Promise<string[]> {
       seo: cs.seo,
       featured: cs.featured ?? false,
       order: i,
+      // Publish immediately — these collections have drafts/versioning enabled.
+      _status: 'published' as const,
     }
     const existing = await payload.find({
       collection: 'case-studies',

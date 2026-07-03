@@ -17,6 +17,7 @@ export const Industries: CollectionConfig = {
     delete: ({ req }) => Boolean(req.user),
   },
   hooks: revalidateContentHooks('industries'),
+  versions: { drafts: true },
   fields: [
     {
       type: 'row',

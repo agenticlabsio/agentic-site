@@ -17,6 +17,7 @@ export const Solutions: CollectionConfig = {
     delete: ({ req }) => Boolean(req.user),
   },
   hooks: revalidateContentHooks('solutions'),
+  versions: { drafts: true },
   fields: [
     {
       type: 'row',

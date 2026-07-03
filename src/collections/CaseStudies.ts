@@ -17,6 +17,7 @@ export const CaseStudies: CollectionConfig = {
     delete: ({ req }) => Boolean(req.user),
   },
   hooks: revalidateContentHooks('case-studies'),
+  versions: { drafts: true },
   fields: [
     {
       type: 'row',

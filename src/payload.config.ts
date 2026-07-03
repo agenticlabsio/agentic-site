@@ -11,7 +11,6 @@ import type { GetPlatformProxyOptions } from 'wrangler'
 // Collections
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import { Products } from './collections/Products'
 import { Solutions } from './collections/Solutions'
 import { CaseStudies } from './collections/CaseStudies'
 import { FAQ } from './collections/FAQ'
@@ -19,10 +18,6 @@ import { Industries } from './collections/Industries'
 import { Integrations } from './collections/Integrations'
 import { BlogPosts } from './collections/BlogPosts'
 import { Leads } from './collections/Leads'
-
-// Globals
-import { SiteSettings } from './globals/SiteSettings'
-import { Navigation } from './globals/Navigation'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -67,7 +62,6 @@ export default buildConfig({
   collections: [
     Users,
     Media,
-    Products,
     Solutions,
     CaseStudies,
     FAQ,
@@ -76,7 +70,6 @@ export default buildConfig({
     BlogPosts,
     Leads,
   ],
-  globals: [SiteSettings, Navigation],
   secret: payloadSecret || 'development-secret-change-in-production',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

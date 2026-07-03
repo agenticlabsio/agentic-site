@@ -60,6 +60,7 @@ export const Leads: CollectionConfig = {
       type: 'email',
       required: true,
       index: true,
+      unique: true,
     },
     {
       name: 'source',

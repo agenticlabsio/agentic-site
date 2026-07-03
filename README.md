@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agentic Site
 
-## Getting Started
+Marketing website for Agentic Labs, built with Next.js 15, Payload CMS 3, and Cloudflare infrastructure.
 
-First, run the development server:
+## Stack
+
+- Next.js 15 App Router
+- Payload CMS 3
+- Cloudflare Pages through OpenNext
+- Cloudflare D1 for SQLite data
+- Cloudflare R2 for media storage
+- Tailwind CSS 4
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The first `/admin` request may take 10-30 seconds while Payload compiles and syncs the local schema.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Commands
 
-## Learn More
+```bash
+pnpm dev                    # Start the Next.js dev server
+pnpm build                  # Build the Next.js app
+pnpm build:cloudflare       # Build for Cloudflare with OpenNext
+pnpm deploy                 # Build and deploy to Cloudflare
+pnpm deploy:database        # Apply production D1 migrations
+pnpm lint                   # Run ESLint
+pnpm format                 # Format source files
+pnpm typecheck              # Run TypeScript checks
+pnpm test:run               # Run tests once
+pnpm payload migrate        # Run Payload migrations
+pnpm payload migrate:create # Create a Payload migration
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+src/app/(frontend)/   Public marketing routes
+src/app/(payload)/    Payload admin and API routes
+src/collections/      Payload collection definitions
+src/components/       Shared UI and SEO components
+src/globals/          Payload global settings
+src/lib/              Shared application utilities
+src/migrations/       Payload database migrations
+public/               Static assets and crawler metadata
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Payload CMS
 
-## Deploy on Vercel
+Collections live in `src/collections/`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Users
+- Media
+- Products
+- Solutions
+- CaseStudies
+- FAQ
+- Industries
+- Integrations
+- BlogPosts
+- Leads
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Globals live in `src/globals/`:
+
+- Navigation
+- SiteSettings
+
+Use `src/lib/payload.ts` for CMS data fetching.
+
+## Configuration
+
+- `src/payload.config.ts` configures Payload and Cloudflare context handling.
+- `wrangler.jsonc` defines Cloudflare D1, R2, and worker bindings.
+- `open-next.config.ts` configures the OpenNext Cloudflare adapter.
+- `next.config.ts` wraps Next.js with Payload.
+- `cloudflare-env.d.ts` contains generated Cloudflare binding types.
+
+## Validation
+
+Before committing non-trivial changes, run:
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test:run
+```

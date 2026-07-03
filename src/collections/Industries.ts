@@ -1,80 +1,73 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateContentHooks } from './hooks/revalidateContent'
 
+// Industries collection — mirrors the Industry shape in src/content/industries.ts so the
+// seed script, the CMS, and the RSC detail/list pages all share one source of truth.
 export const Industries: CollectionConfig = {
   slug: 'industries',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'slug', 'order', 'updatedAt'],
-    group: 'Content',
+    defaultColumns: ['name', 'slug', 'tagline', 'order', 'updatedAt'],
+    group: 'Marketing Content',
   },
   access: {
     read: () => true,
+    create: ({ req }) => Boolean(req.user),
+    update: ({ req }) => Boolean(req.user),
+    delete: ({ req }) => Boolean(req.user),
   },
+  hooks: revalidateContentHooks('industries'),
+  versions: { drafts: true },
   fields: [
     {
-      name: 'name',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      admin: {
-        description: 'URL-friendly identifier (e.g., "dealers-distributors")',
-      },
-    },
-    {
-      name: 'tagline',
-      type: 'text',
-      required: true,
-      admin: {
-        description: 'Short tagline (e.g., "80% Faster Order Entry")',
-      },
-    },
-    {
-      name: 'category',
-      type: 'select',
-      required: true,
-      options: [
-        { label: 'Healthcare', value: 'healthcare' },
-        { label: 'Manufacturing', value: 'manufacturing' },
-        { label: 'Retail', value: 'retail' },
-        { label: 'Energy', value: 'energy' },
-        { label: 'Dealers & Distributors', value: 'dealers-distributors' },
-        { label: 'Power Electronics & FPGA', value: 'power-electronics-fpga' },
-        { label: 'Autonomy & Robotics', value: 'autonomy-robotics' },
-        { label: 'Biotech & Pharma Logistics', value: 'biotech-pharma-logistics' },
+      type: 'row',
+      fields: [
+        { name: 'name', type: 'text', required: true, index: true },
+        {
+          name: 'slug',
+          type: 'text',
+          required: true,
+          unique: true,
+          admin: { description: 'URL-friendly identifier (e.g., "dealers-distributors")' },
+        },
       ],
     },
     {
-      name: 'shortDescription',
+      type: 'row',
+      fields: [
+        {
+          name: 'tagline',
+          type: 'text',
+          required: true,
+          admin: { description: 'Short headline metric, e.g. "80% Faster Order Entry"' },
+        },
+        {
+          name: 'icon',
+          type: 'text',
+          required: true,
+          admin: { description: 'Emoji icon shown on cards and the detail hero, e.g. "📦"' },
+        },
+      ],
+    },
+    {
+      name: 'cardDescription',
       type: 'textarea',
       required: true,
-      admin: {
-        description: 'Short description for cards (150-200 chars)',
-      },
+      admin: { description: 'Short description used on the industries list card (150–200 chars)' },
     },
     {
-      name: 'fullDescription',
-      type: 'richText',
+      name: 'heroDescription',
+      type: 'textarea',
+      required: true,
+      admin: { description: 'Longer description shown under the title on the detail page hero' },
+    },
+    {
+      name: 'targetAudience',
+      type: 'text',
       required: true,
       admin: {
-        description: 'Full description for the industry page',
-      },
-    },
-    {
-      name: 'icon',
-      type: 'upload',
-      relationTo: 'media',
-    },
-    {
-      name: 'heroImage',
-      type: 'upload',
-      relationTo: 'media',
-      admin: {
-        description: 'Hero image for the industry detail page',
+        description:
+          'Target audience description (e.g., "Utilities, energy producers, grid operators ($500M-$10B)")',
       },
     },
     // Market Context
@@ -82,25 +75,15 @@ export const Industries: CollectionConfig = {
       name: 'marketContext',
       type: 'array',
       label: 'Market Context',
-      admin: {
-        description: 'Market statistics and trends for this industry',
-      },
+      admin: { description: 'Market statistics and trends for this industry' },
       fields: [
         {
           name: 'stat',
           type: 'text',
           required: true,
-          admin: {
-            description: 'e.g., "65% of energy CEOs rank AI as top investment"',
-          },
+          admin: { description: 'e.g., "65% of energy CEOs rank AI as top investment priority"' },
         },
-        {
-          name: 'source',
-          type: 'text',
-          admin: {
-            description: 'Source of the statistic',
-          },
-        },
+        { name: 'source', type: 'text', admin: { description: 'Source of the statistic' } },
       ],
     },
     // Industry Challenges
@@ -109,15 +92,8 @@ export const Industries: CollectionConfig = {
       type: 'array',
       label: 'Industry Challenges',
       fields: [
-        {
-          name: 'challenge',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-        },
+        { name: 'challenge', type: 'text', required: true },
+        { name: 'description', type: 'textarea', required: true },
       ],
     },
     // AI Solutions for this industry
@@ -126,92 +102,37 @@ export const Industries: CollectionConfig = {
       type: 'array',
       label: 'AI Solutions',
       fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          required: true,
-        },
+        { name: 'title', type: 'text', required: true },
+        { name: 'description', type: 'textarea', required: true },
         {
           name: 'metric',
           type: 'text',
-          admin: {
-            description: 'Key metric (e.g., "35% reduction in downtime")',
-          },
+          admin: { description: 'Key metric (e.g., "35% reduction in downtime")' },
         },
       ],
+    },
+    {
+      name: 'integrations',
+      type: 'array',
+      label: 'Integrations',
+      admin: { description: 'Systems this industry commonly runs on' },
+      fields: [{ name: 'name', type: 'text', required: true }],
     },
     // Compliance requirements
     {
       name: 'compliance',
       type: 'array',
       label: 'Compliance Requirements',
-      admin: {
-        description: 'Industry-specific compliance standards',
-      },
+      admin: { description: 'Industry-specific compliance standards' },
       fields: [
         {
           name: 'standard',
           type: 'text',
           required: true,
-          admin: {
-            description: 'e.g., "HIPAA", "NERC CIP", "GxP"',
-          },
+          admin: { description: 'e.g., "HIPAA", "NERC CIP", "GxP"' },
         },
-        {
-          name: 'description',
-          type: 'textarea',
-        },
+        { name: 'description', type: 'textarea' },
       ],
-    },
-    // Target Audience
-    {
-      name: 'targetAudience',
-      type: 'text',
-      admin: {
-        description: 'Target audience description (e.g., "Utilities, energy producers, grid operators ($500M-$10B)")',
-      },
-    },
-    // Related Solutions
-    {
-      name: 'solutions',
-      type: 'relationship',
-      relationTo: 'solutions',
-      hasMany: true,
-      admin: {
-        description: 'Related solutions for this industry',
-      },
-    },
-    // Related Integrations
-    {
-      name: 'integrations',
-      type: 'relationship',
-      relationTo: 'integrations',
-      hasMany: true,
-      admin: {
-        description: 'Key integrations for this industry',
-      },
-    },
-    // Related FAQ
-    {
-      name: 'faqs',
-      type: 'relationship',
-      relationTo: 'faq',
-      hasMany: true,
-      admin: {
-        description: 'Related FAQs for this industry',
-      },
-    },
-    // Related Case Studies
-    {
-      name: 'caseStudies',
-      type: 'relationship',
-      relationTo: 'case-studies',
-      hasMany: true,
     },
     // ROI Metrics
     {
@@ -223,50 +144,50 @@ export const Industries: CollectionConfig = {
           name: 'metric',
           type: 'text',
           required: true,
-          admin: {
-            description: 'e.g., "$50M distributor: $75K-$180K annual labor savings"',
-          },
+          admin: { description: 'e.g., "$50M distributor: $75K-$180K annual labor savings"' },
         },
       ],
     },
-    // SEO Fields
+    // FAQ (inline — distinct from the general /resources/faq collection)
+    {
+      name: 'faqs',
+      type: 'array',
+      label: 'FAQ',
+      fields: [
+        { name: 'question', type: 'text', required: true },
+        { name: 'answer', type: 'textarea', required: true },
+      ],
+    },
+    // Related Solutions (slugs → /solutions/[slug])
+    {
+      name: 'relatedSolutions',
+      type: 'array',
+      label: 'Related Solutions',
+      admin: { description: 'Slugs of related solutions, e.g. "document-processing"' },
+      fields: [{ name: 'slug', type: 'text', required: true }],
+    },
+    // SEO
     {
       name: 'seo',
       type: 'group',
       label: 'SEO Settings',
-      admin: {
-        description: 'Search engine optimization settings',
-      },
       fields: [
         {
           name: 'metaTitle',
           type: 'text',
-          admin: {
-            description: 'Page title for search engines (50-60 chars)',
-          },
+          admin: { description: 'Page title for search engines (50–60 chars)' },
         },
         {
           name: 'metaDescription',
           type: 'textarea',
-          admin: {
-            description: 'Page description for search engines (150-160 chars)',
-          },
+          admin: { description: 'Page description for search engines (150–160 chars)' },
         },
-        {
-          name: 'ogImage',
-          type: 'upload',
-          relationTo: 'media',
-          admin: {
-            description: 'Image for social media sharing',
-          },
-        },
+        { name: 'ogImage', type: 'upload', relationTo: 'media' },
         {
           name: 'noIndex',
           type: 'checkbox',
           defaultValue: false,
-          admin: {
-            description: 'Prevent this page from being indexed by search engines',
-          },
+          admin: { description: 'Prevent this page from being indexed by search engines' },
         },
       ],
     },
@@ -280,10 +201,7 @@ export const Industries: CollectionConfig = {
       name: 'featured',
       type: 'checkbox',
       defaultValue: false,
-      admin: {
-        position: 'sidebar',
-        description: 'Feature this industry on the homepage',
-      },
+      admin: { position: 'sidebar', description: 'Feature this industry on the industries list' },
     },
   ],
   defaultSort: 'order',

@@ -69,7 +69,6 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    products: Product;
     solutions: Solution;
     'case-studies': CaseStudy;
     faq: Faq;
@@ -86,7 +85,6 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    products: ProductsSelect<false> | ProductsSelect<true>;
     solutions: SolutionsSelect<false> | SolutionsSelect<true>;
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
     faq: FaqSelect<false> | FaqSelect<true>;
@@ -103,14 +101,8 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {
-    'site-settings': SiteSetting;
-    navigation: Navigation;
-  };
-  globalsSelect: {
-    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
-    navigation: NavigationSelect<false> | NavigationSelect<true>;
-  };
+  globals: {};
+  globalsSelect: {};
   locale: null;
   user: User & {
     collection: 'users';
@@ -212,28 +204,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "products".
- */
-export interface Product {
-  id: number;
-  name: string;
-  category: 'agents' | 'ai-tools' | 'platform' | 'data' | 'integration';
-  categoryColor: 'blue' | 'purple' | 'cyan' | 'teal' | 'amber' | 'red';
-  description: string;
-  tagline?: string | null;
-  features?:
-    | {
-        feature: string;
-        id?: string | null;
-      }[]
-    | null;
-  icon?: (number | null) | Media;
-  order?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "solutions".
  */
 export interface Solution {
@@ -243,54 +213,40 @@ export interface Solution {
    * URL-friendly identifier (e.g., "intelligent-agents")
    */
   slug: string;
+  category: 'Core' | 'Operations' | 'Platform' | 'Governance';
   /**
-   * Short tagline for the solution (e.g., "60% Faster Resolution")
+   * Short description used on cards and as the SEO fallback (150–200 chars)
    */
-  tagline: string;
-  category:
-    | 'agents'
-    | 'customer-service'
-    | 'document-processing'
-    | 'context-management'
-    | 'agentic-evaluation'
-    | 'ai-governance';
-  categoryColor: 'blue' | 'purple' | 'cyan' | 'teal' | 'amber' | 'red';
+  description: string;
   /**
-   * Short description for cards (150-200 chars)
+   * One-line headline under the title on the detail page
    */
-  shortDescription: string;
+  heroTagline: string;
   /**
-   * Full description for the solution page
+   * Card headline metric, e.g. "60%"
    */
-  fullDescription: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  icon?: (number | null) | Media;
+  cardMetric: string;
   /**
-   * Hero image for the solution detail page
+   * Card metric label, e.g. "faster resolution"
    */
-  heroImage?: (number | null) | Media;
+  cardMetricLabel: string;
   /**
-   * List of challenges this solution addresses
+   * Four short capability bullets shown on the solutions list card
    */
-  challenges?:
+  features?:
     | {
-        challenge: string;
+        text: string;
         id?: string | null;
       }[]
     | null;
+  problem: string;
+  challenges?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  solutionOverview: string;
   capabilities?:
     | {
         title: string;
@@ -302,7 +258,7 @@ export interface Solution {
         id?: string | null;
       }[]
     | null;
-  processSteps?:
+  howItWorks?:
     | {
         step: number;
         title: string;
@@ -311,29 +267,46 @@ export interface Solution {
       }[]
     | null;
   /**
-   * Related integrations for this solution
+   * Systems this solution integrates with
    */
-  integrations?: (number | Integration)[] | null;
+  integrations?:
+    | {
+        name: string;
+        id?: string | null;
+      }[]
+    | null;
+  results?:
+    | {
+        metric: string;
+        label: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  cta: {
+    headline: string;
+    description: string;
+  };
   /**
-   * Related FAQs for this solution
+   * Optional path to a related case study, e.g. /case-studies/customer-service
    */
-  faqs?: (number | Faq)[] | null;
-  caseStudies?: (number | CaseStudy)[] | null;
-  /**
-   * Search engine optimization settings
-   */
+  caseStudyLink?: string | null;
   seo?: {
     /**
-     * Page title for search engines (50-60 chars)
+     * Page title for search engines (50–60 chars)
      */
     metaTitle?: string | null;
     /**
-     * Page description for search engines (150-160 chars)
+     * Page description for search engines (150–160 chars)
      */
     metaDescription?: string | null;
-    /**
-     * Image for social media sharing
-     */
     ogImage?: (number | null) | Media;
     /**
      * Prevent this page from being indexed by search engines
@@ -342,74 +315,12 @@ export interface Solution {
   };
   order?: number | null;
   /**
-   * Feature this solution on the homepage
+   * Feature this solution on the solutions list
    */
   featured?: boolean | null;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "integrations".
- */
-export interface Integration {
-  id: number;
-  name: string;
-  category: 'sales-crm' | 'communication' | 'productivity' | 'support' | 'bi' | 'storage';
-  logo: number | Media;
-  url?: string | null;
-  order?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "faq".
- */
-export interface Faq {
-  id: number;
-  question: string;
-  answer: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Plain text version of the answer for FAQ schema (no formatting)
-   */
-  answerPlainText: string;
-  category:
-    | 'agentic-ai'
-    | 'saas-replacement'
-    | 'industry-healthcare'
-    | 'industry-manufacturing'
-    | 'industry-retail'
-    | 'industry-energy'
-    | 'industry-distribution'
-    | 'industry-fpga'
-    | 'industry-robotics'
-    | 'industry-pharma'
-    | 'service-process'
-    | 'integration'
-    | 'security-governance'
-    | 'general';
-  /**
-   * Show this FAQ on the homepage
-   */
-  featured?: boolean | null;
-  order?: number | null;
-  updatedAt: string;
-  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -418,16 +329,114 @@ export interface Faq {
 export interface CaseStudy {
   id: number;
   title: string;
-  category: string;
-  description: string;
+  /**
+   * URL-friendly identifier (e.g., "document-processing")
+   */
+  slug: string;
+  industry: string;
+  /**
+   * Detail-page subtitle, e.g. "for a Mid-Market Bank"
+   */
+  subtitle: string;
+  card: {
+    /**
+     * Card title on the list page (may differ from the detail title)
+     */
+    title: string;
+    /**
+     * Shorter card subtitle, e.g. "Mid-Market Bank"
+     */
+    subtitle: string;
+    /**
+     * Metrics shown on the list card (value + label only)
+     */
+    metrics?:
+      | {
+          value: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   metrics?:
     | {
         value: string;
         label: string;
+        description: string;
         id?: string | null;
       }[]
     | null;
-  image?: (number | null) | Media;
+  challenge: {
+    intro: string;
+    painPoints?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  solution: {
+    intro: string;
+    components?:
+      | {
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+    timeline: string;
+  };
+  results?: {
+    before?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    after?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  quote: {
+    text: string;
+    author: string;
+  };
+  seo?: {
+    /**
+     * Page title for search engines (50–60 chars)
+     */
+    metaTitle?: string | null;
+    /**
+     * Page description for search engines (150–160 chars)
+     */
+    metaDescription?: string | null;
+    ogImage?: (number | null) | Media;
+    /**
+     * Prevent this page from being indexed by search engines
+     */
+    noIndex?: boolean | null;
+  };
+  order?: number | null;
+  /**
+   * Feature this case study on the list page
+   */
+  featured?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq".
+ */
+export interface Faq {
+  id: number;
+  question: string;
+  answer: string;
+  category?: ('agentic-ai' | 'saas-replacement' | 'service-process' | 'security-governance') | null;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -444,52 +453,32 @@ export interface Industry {
    */
   slug: string;
   /**
-   * Short tagline (e.g., "80% Faster Order Entry")
+   * Short headline metric, e.g. "80% Faster Order Entry"
    */
   tagline: string;
-  category:
-    | 'healthcare'
-    | 'manufacturing'
-    | 'retail'
-    | 'energy'
-    | 'dealers-distributors'
-    | 'power-electronics-fpga'
-    | 'autonomy-robotics'
-    | 'biotech-pharma-logistics';
   /**
-   * Short description for cards (150-200 chars)
+   * Emoji icon shown on cards and the detail hero, e.g. "📦"
    */
-  shortDescription: string;
+  icon: string;
   /**
-   * Full description for the industry page
+   * Short description used on the industries list card (150–200 chars)
    */
-  fullDescription: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  icon?: (number | null) | Media;
+  cardDescription: string;
   /**
-   * Hero image for the industry detail page
+   * Longer description shown under the title on the detail page hero
    */
-  heroImage?: (number | null) | Media;
+  heroDescription: string;
+  /**
+   * Target audience description (e.g., "Utilities, energy producers, grid operators ($500M-$10B)")
+   */
+  targetAudience: string;
   /**
    * Market statistics and trends for this industry
    */
   marketContext?:
     | {
         /**
-         * e.g., "65% of energy CEOs rank AI as top investment"
+         * e.g., "65% of energy CEOs rank AI as top investment priority"
          */
         stat: string;
         /**
@@ -502,7 +491,7 @@ export interface Industry {
   challenges?:
     | {
         challenge: string;
-        description?: string | null;
+        description: string;
         id?: string | null;
       }[]
     | null;
@@ -514,6 +503,15 @@ export interface Industry {
          * Key metric (e.g., "35% reduction in downtime")
          */
         metric?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Systems this industry commonly runs on
+   */
+  integrations?:
+    | {
+        name: string;
         id?: string | null;
       }[]
     | null;
@@ -530,23 +528,6 @@ export interface Industry {
         id?: string | null;
       }[]
     | null;
-  /**
-   * Target audience description (e.g., "Utilities, energy producers, grid operators ($500M-$10B)")
-   */
-  targetAudience?: string | null;
-  /**
-   * Related solutions for this industry
-   */
-  solutions?: (number | Solution)[] | null;
-  /**
-   * Key integrations for this industry
-   */
-  integrations?: (number | Integration)[] | null;
-  /**
-   * Related FAQs for this industry
-   */
-  faqs?: (number | Faq)[] | null;
-  caseStudies?: (number | CaseStudy)[] | null;
   roiMetrics?:
     | {
         /**
@@ -556,21 +537,31 @@ export interface Industry {
         id?: string | null;
       }[]
     | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
   /**
-   * Search engine optimization settings
+   * Slugs of related solutions, e.g. "document-processing"
    */
+  relatedSolutions?:
+    | {
+        slug: string;
+        id?: string | null;
+      }[]
+    | null;
   seo?: {
     /**
-     * Page title for search engines (50-60 chars)
+     * Page title for search engines (50–60 chars)
      */
     metaTitle?: string | null;
     /**
-     * Page description for search engines (150-160 chars)
+     * Page description for search engines (150–160 chars)
      */
     metaDescription?: string | null;
-    /**
-     * Image for social media sharing
-     */
     ogImage?: (number | null) | Media;
     /**
      * Prevent this page from being indexed by search engines
@@ -579,9 +570,24 @@ export interface Industry {
   };
   order?: number | null;
   /**
-   * Feature this industry on the homepage
+   * Feature this industry on the industries list
    */
   featured?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "integrations".
+ */
+export interface Integration {
+  id: number;
+  name: string;
+  category: 'sales-crm' | 'communication' | 'productivity' | 'support' | 'bi' | 'storage';
+  logo: number | Media;
+  url?: string | null;
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -713,10 +719,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
-      } | null)
-    | ({
-        relationTo: 'products';
-        value: number | Product;
       } | null)
     | ({
         relationTo: 'solutions';
@@ -867,45 +869,30 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "products_select".
- */
-export interface ProductsSelect<T extends boolean = true> {
-  name?: T;
-  category?: T;
-  categoryColor?: T;
-  description?: T;
-  tagline?: T;
-  features?:
-    | T
-    | {
-        feature?: T;
-        id?: T;
-      };
-  icon?: T;
-  order?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "solutions_select".
  */
 export interface SolutionsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
-  tagline?: T;
   category?: T;
-  categoryColor?: T;
-  shortDescription?: T;
-  fullDescription?: T;
-  icon?: T;
-  heroImage?: T;
+  description?: T;
+  heroTagline?: T;
+  cardMetric?: T;
+  cardMetricLabel?: T;
+  features?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  problem?: T;
   challenges?:
     | T
     | {
-        challenge?: T;
+        text?: T;
         id?: T;
       };
+  solutionOverview?: T;
   capabilities?:
     | T
     | {
@@ -914,7 +901,7 @@ export interface SolutionsSelect<T extends boolean = true> {
         metric?: T;
         id?: T;
       };
-  processSteps?:
+  howItWorks?:
     | T
     | {
         step?: T;
@@ -922,9 +909,34 @@ export interface SolutionsSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
-  integrations?: T;
-  faqs?: T;
-  caseStudies?: T;
+  integrations?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  results?:
+    | T
+    | {
+        metric?: T;
+        label?: T;
+        description?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  cta?:
+    | T
+    | {
+        headline?: T;
+        description?: T;
+      };
+  caseStudyLink?: T;
   seo?:
     | T
     | {
@@ -937,6 +949,7 @@ export interface SolutionsSelect<T extends boolean = true> {
   featured?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -944,19 +957,89 @@ export interface SolutionsSelect<T extends boolean = true> {
  */
 export interface CaseStudiesSelect<T extends boolean = true> {
   title?: T;
-  category?: T;
-  description?: T;
+  slug?: T;
+  industry?: T;
+  subtitle?: T;
+  card?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        metrics?:
+          | T
+          | {
+              value?: T;
+              label?: T;
+              id?: T;
+            };
+      };
   metrics?:
     | T
     | {
         value?: T;
         label?: T;
+        description?: T;
         id?: T;
       };
-  image?: T;
+  challenge?:
+    | T
+    | {
+        intro?: T;
+        painPoints?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  solution?:
+    | T
+    | {
+        intro?: T;
+        components?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        timeline?: T;
+      };
+  results?:
+    | T
+    | {
+        before?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        after?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  quote?:
+    | T
+    | {
+        text?: T;
+        author?: T;
+      };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        noIndex?: T;
+      };
   order?: T;
+  featured?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -965,9 +1048,7 @@ export interface CaseStudiesSelect<T extends boolean = true> {
 export interface FaqSelect<T extends boolean = true> {
   question?: T;
   answer?: T;
-  answerPlainText?: T;
   category?: T;
-  featured?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -980,11 +1061,10 @@ export interface IndustriesSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   tagline?: T;
-  category?: T;
-  shortDescription?: T;
-  fullDescription?: T;
   icon?: T;
-  heroImage?: T;
+  cardDescription?: T;
+  heroDescription?: T;
+  targetAudience?: T;
   marketContext?:
     | T
     | {
@@ -1007,6 +1087,12 @@ export interface IndustriesSelect<T extends boolean = true> {
         metric?: T;
         id?: T;
       };
+  integrations?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
   compliance?:
     | T
     | {
@@ -1014,15 +1100,23 @@ export interface IndustriesSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
-  targetAudience?: T;
-  solutions?: T;
-  integrations?: T;
-  faqs?: T;
-  caseStudies?: T;
   roiMetrics?:
     | T
     | {
         metric?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  relatedSolutions?:
+    | T
+    | {
+        slug?: T;
         id?: T;
       };
   seo?:
@@ -1037,6 +1131,7 @@ export interface IndustriesSelect<T extends boolean = true> {
   featured?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1149,148 +1244,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "site-settings".
- */
-export interface SiteSetting {
-  id: number;
-  hero: {
-    headline: string;
-    subheadline?: string | null;
-    ctaPrimaryText?: string | null;
-    ctaPrimaryLink?: string | null;
-    ctaSecondaryText?: string | null;
-    ctaSecondaryLink?: string | null;
-  };
-  stats?:
-    | {
-        value: string;
-        label: string;
-        id?: string | null;
-      }[]
-    | null;
-  trustMetrics?:
-    | {
-        value: string;
-        label: string;
-        id?: string | null;
-      }[]
-    | null;
-  siteTitle: string;
-  siteDescription?: string | null;
-  ogImage?: (number | null) | Media;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "navigation".
- */
-export interface Navigation {
-  id: number;
-  mainNav?:
-    | {
-        label: string;
-        href: string;
-        id?: string | null;
-      }[]
-    | null;
-  footerNav?:
-    | {
-        label: string;
-        href: string;
-        id?: string | null;
-      }[]
-    | null;
-  socialLinks?:
-    | {
-        platform: 'twitter' | 'linkedin' | 'github' | 'youtube';
-        url: string;
-        id?: string | null;
-      }[]
-    | null;
-  contactInfo?: {
-    email?: string | null;
-    phone?: string | null;
-    address?: string | null;
-  };
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "site-settings_select".
- */
-export interface SiteSettingsSelect<T extends boolean = true> {
-  hero?:
-    | T
-    | {
-        headline?: T;
-        subheadline?: T;
-        ctaPrimaryText?: T;
-        ctaPrimaryLink?: T;
-        ctaSecondaryText?: T;
-        ctaSecondaryLink?: T;
-      };
-  stats?:
-    | T
-    | {
-        value?: T;
-        label?: T;
-        id?: T;
-      };
-  trustMetrics?:
-    | T
-    | {
-        value?: T;
-        label?: T;
-        id?: T;
-      };
-  siteTitle?: T;
-  siteDescription?: T;
-  ogImage?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "navigation_select".
- */
-export interface NavigationSelect<T extends boolean = true> {
-  mainNav?:
-    | T
-    | {
-        label?: T;
-        href?: T;
-        id?: T;
-      };
-  footerNav?:
-    | T
-    | {
-        label?: T;
-        href?: T;
-        id?: T;
-      };
-  socialLinks?:
-    | T
-    | {
-        platform?: T;
-        url?: T;
-        id?: T;
-      };
-  contactInfo?:
-    | T
-    | {
-        email?: T;
-        phone?: T;
-        address?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

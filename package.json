@@ -9,8 +9,9 @@
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
     "build:cloudflare": "npx @opennextjs/cloudflare build",
     "start": "next start",
-    "deploy": "pnpm build:cloudflare && wrangler deploy",
-    "deploy:database": "wrangler d1 migrations apply agentic-site-db --remote",
+    "predeploy:check": "node scripts/check-deploy-config.mjs",
+    "deploy": "pnpm predeploy:check && pnpm build:cloudflare && wrangler deploy",
+    "deploy:database": "pnpm predeploy:check && wrangler d1 migrations apply agentic-site-db --remote",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
@@ -34,7 +35,6 @@
     "@payloadcms/richtext-lexical": "^3.73.0",
     "@payloadcms/storage-r2": "^3.73.0",
     "@payloadcms/ui": "^3.73.0",
-    "geist": "^1.5.1",
     "next": "15.4.10",
     "payload": "^3.73.0",
     "react": "19.1.0",
@@ -66,13 +66,5 @@
     "typescript": "^5",
     "typescript-eslint": "^8.62.1",
     "vitest": "^4.1.9"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
-      "sharp",
-      "esbuild",
-      "workerd"
-    ]
   }
 }

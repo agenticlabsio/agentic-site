@@ -19,6 +19,8 @@ export default function EmailCaptureForm({
 }: EmailCaptureFormProps) {
   const inputId = useId();
   const [email, setEmail] = useState("");
+  // Honeypot: bots that auto-fill every field populate this; humans never see it.
+  const [company, setCompany] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
@@ -34,6 +36,7 @@ export default function EmailCaptureForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
+          company,
           source,
           page: typeof window !== "undefined" ? window.location.pathname : undefined,
         }),
@@ -106,6 +109,19 @@ export default function EmailCaptureForm({
         width: "100%",
       }}
     >
+      {/* Honeypot — hidden from users, catches naive bots. */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+        <label htmlFor={`${inputId}-company`}>Company</label>
+        <input
+          id={`${inputId}-company`}
+          type="text"
+          name="company"
+          tabIndex={-1}
+          autoComplete="off"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+        />
+      </div>
       <label htmlFor={inputId} className="sr-only">
         Work email address
       </label>

@@ -11,7 +11,6 @@ import type { GetPlatformProxyOptions } from 'wrangler'
 // Collections
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import { Products } from './collections/Products'
 import { Solutions } from './collections/Solutions'
 import { CaseStudies } from './collections/CaseStudies'
 import { FAQ } from './collections/FAQ'
@@ -19,10 +18,6 @@ import { Industries } from './collections/Industries'
 import { Integrations } from './collections/Integrations'
 import { BlogPosts } from './collections/BlogPosts'
 import { Leads } from './collections/Leads'
-
-// Globals
-import { SiteSettings } from './globals/SiteSettings'
-import { Navigation } from './globals/Navigation'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -40,6 +35,13 @@ const isCLI = process.argv.some((value) => {
 })
 const isProduction = process.env.NODE_ENV === 'production'
 
+// PAYLOAD_SECRET is used to sign auth tokens. Fall back to a dev-only value
+// locally, but fail fast in production rather than shipping a public secret.
+const payloadSecret = process.env.PAYLOAD_SECRET
+if (isProduction && !payloadSecret) {
+  throw new Error('PAYLOAD_SECRET must be set in production.')
+}
+
 // Get Cloudflare context - different methods for CLI vs production
 const cloudflare =
   isCLI || !isProduction
@@ -49,6 +51,9 @@ const cloudflare =
 export default buildConfig({
   admin: {
     user: Users.slug,
+    components: {
+      beforeDashboard: ['@/components/admin/DashboardWidgets'],
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },
@@ -57,7 +62,6 @@ export default buildConfig({
   collections: [
     Users,
     Media,
-    Products,
     Solutions,
     CaseStudies,
     FAQ,
@@ -66,14 +70,15 @@ export default buildConfig({
     BlogPosts,
     Leads,
   ],
-  globals: [SiteSettings, Navigation],
-  secret: process.env.PAYLOAD_SECRET || 'development-secret-change-in-production',
+  secret: payloadSecret || 'development-secret-change-in-production',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
 
-  // Cloudflare D1 Database adapter
-  db: sqliteD1Adapter({ binding: cloudflare.env.D1 }),
+  // Cloudflare D1 Database adapter.
+  // push: false — this project tracks schema via committed migrations (src/migrations),
+  // so disable dev-time schema push, which otherwise collides with the migrated schema.
+  db: sqliteD1Adapter({ binding: cloudflare.env.D1, push: false }),
 
   // R2 Storage for media uploads
   plugins: [

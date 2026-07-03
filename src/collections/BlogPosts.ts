@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateContentHooks } from './hooks/revalidateContent'
 
 export const BlogPosts: CollectionConfig = {
   slug: 'blog-posts',
@@ -9,7 +10,11 @@ export const BlogPosts: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: ({ req }) => Boolean(req.user),
+    update: ({ req }) => Boolean(req.user),
+    delete: ({ req }) => Boolean(req.user),
   },
+  hooks: revalidateContentHooks('blog-posts'),
   fields: [
     {
       name: 'title',

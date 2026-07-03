@@ -1,164 +1,137 @@
-'use client';
-import { useState } from 'react';
-import Link from 'next/link';
-import Footer from '@/components/newsite/Footer';
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import Footer from '@/components/newsite/Footer'
+import { MarketingHeader, type MarketingNavItem } from '@/components/marketing/MarketingHeader'
+import { CtaSection } from '@/components/marketing/sections/CtaSection'
+
+export const metadata: Metadata = {
+  title: 'Resources | Agentic Labs',
+  description:
+    'Deep dives on building agents that ship, cutting SaaS sprawl, and proving ROI — written for small and mid-market operators.',
+  alternates: { canonical: '/resources' },
+}
+
+const navItems: MarketingNavItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Solutions', href: '/solutions' },
+  { label: 'Industries', href: '/industries' },
+  { label: 'Case Studies', href: '/case-studies' },
+]
 
 const featuredResources = [
   {
     type: 'Blog',
     title: 'Agentic AI in 2026: From Hype to "Is It Working?"',
-    description: '2026 is the year businesses finally ask "Is it working?" Learn how to measure AI agent performance and prove ROI.',
+    description:
+      '2026 is the year businesses finally ask "Is it working?" Learn how to measure AI agent performance and prove ROI.',
     href: '/resources/blog/agentic-ai-2026',
     category: 'Thought Leadership',
   },
   {
     type: 'Blog',
     title: 'The Model Context Protocol (MCP): Why Your AI Agents Need It',
-    description: 'MCP is the USB-C of AI connectivity. Learn how this standardization breakthrough transforms enterprise AI.',
+    description:
+      'MCP is the USB-C of AI connectivity. Learn how this standardization breakthrough transforms enterprise AI.',
     href: '/resources/blog/model-context-protocol-mcp',
     category: 'Technical Deep-Dive',
   },
   {
     type: 'Blog',
     title: 'Replace 10 SaaS Tools with One AI Agent',
-    description: 'A growing business pays for dozens of overlapping SaaS seats. See how one custom agent can replace 5–10 of them.',
+    description:
+      'A growing business pays for dozens of overlapping SaaS seats. See how one custom agent can replace 5–10 of them.',
     href: '/resources/blog/replace-saas-with-ai',
     category: 'Cost Reduction',
   },
-];
+]
 
 const categories = [
   { name: 'All', count: 10 },
   { name: 'Thought Leadership', count: 3 },
   { name: 'Technical', count: 4 },
   { name: 'Industry', count: 3 },
-];
+]
 
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Solutions", href: "/solutions" },
-  { label: "Industries", href: "/industries" },
-  { label: "Case Studies", href: "/case-studies" }
-];
+const arrowIcon = (
+  <svg
+    className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+  </svg>
+)
 
 export default function ResourcesPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   return (
     <div className="newsite relative min-h-screen">
-      {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/80 backdrop-blur-sm border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-xl font-bold text-slate-50 font-display">
-              Agentic Labs
-            </Link>
-            <nav className="hidden md:flex items-center gap-8">
-              {navItems.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className="text-slate-300 hover:text-slate-50 font-medium text-sm transition-colors font-display"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <Link
-                href="/#contact"
-                className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 font-display"
-              >
-                Book a Strategy Call
-              </Link>
-            </nav>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-slate-300 p-2"
-              aria-label="Toggle menu"
-            >
-              <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                {isMobileMenuOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
-              </svg>
-            </button>
-          </div>
-          {isMobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-white/10">
-              <nav className="flex flex-col space-y-2">
-                {navItems.map((item, index) => (
-                  <Link key={index} href={item.href} className="text-slate-300 hover:text-slate-50 py-2 px-4 rounded-lg hover:bg-white/5 transition-colors font-medium text-sm font-display" onClick={() => setIsMobileMenuOpen(false)}>
-                    {item.label}
-                  </Link>
-                ))}
-                <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-semibold text-sm text-center transition-colors font-display">
-                  Book a Strategy Call
-                </Link>
-              </nav>
-            </div>
-          )}
-        </div>
-      </header>
+      <MarketingHeader items={navItems} activeHref="/resources" ctaHref="/#contact" />
 
       <main className="pt-16">
-        {/* Hero */}
-        <section className="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <p className="text-brand-600 font-semibold text-sm uppercase tracking-wide mb-4">Resources</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-50 tracking-tight mb-4 font-display">
+        <section className="px-4 pt-20 pb-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">Resources</p>
+            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
               Straight talk on <span className="text-brand-400">agentic AI.</span>
             </h1>
-            <p className="text-xl text-slate-300 max-w-2xl font-body">
+            <p className="font-body max-w-2xl text-xl text-slate-300">
               Deep dives on building agents that ship, cutting SaaS sprawl, and proving ROI &mdash;
               written for small and mid-market operators, not analysts.
             </p>
           </div>
         </section>
 
-        {/* Resource Navigation */}
-        <section className="pb-8 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+        <section className="px-4 pb-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
             <div className="flex flex-wrap gap-4 border-b border-white/10 pb-4">
-              <Link href="/resources" className="text-brand-600 font-semibold text-sm font-display border-b-2 border-brand-600 pb-2">
+              <Link
+                href="/resources"
+                className="text-brand-600 border-brand-600 font-display border-b-2 pb-2 text-sm font-semibold"
+              >
                 All Resources
               </Link>
-              <Link href="/resources/blog" className="text-slate-300 hover:text-slate-50 font-medium text-sm font-display pb-2">
+              <Link
+                href="/resources/blog"
+                className="font-display pb-2 text-sm font-medium text-slate-300 hover:text-slate-50"
+              >
                 Blog
               </Link>
-              <Link href="/resources/faq" className="text-slate-300 hover:text-slate-50 font-medium text-sm font-display pb-2">
+              <Link
+                href="/resources/faq"
+                className="font-display pb-2 text-sm font-medium text-slate-300 hover:text-slate-50"
+              >
                 FAQ
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Featured Resources */}
-        <section className="pb-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-50 mb-8 font-display">Featured Resources</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="px-4 pb-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="font-display mb-8 text-2xl font-bold text-slate-50">Featured Resources</h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {featuredResources.map((resource, index) => (
                 <Link
                   key={index}
                   href={resource.href}
-                  className="bg-white/[0.03] rounded-2xl p-6 border border-white/10 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)] hover:border-brand-400/50 transition-all duration-300 group block"
+                  className="hover:border-brand-400/50 group block rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
                 >
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="px-2 py-1 bg-brand-500/10 text-brand-300 text-xs font-medium rounded font-display">
+                  <div className="mb-4 flex items-center gap-2">
+                    <span className="bg-brand-500/10 text-brand-300 font-display rounded px-2 py-1 text-xs font-medium">
                       {resource.type}
                     </span>
-                    <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-medium rounded font-display">
+                    <span className="font-display rounded bg-white/5 px-2 py-1 text-xs font-medium text-slate-300">
                       {resource.category}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-50 mb-2 font-display group-hover:text-brand-300 transition-colors">
+                  <h3 className="font-display group-hover:text-brand-300 mb-2 text-lg font-bold text-slate-50 transition-colors">
                     {resource.title}
                   </h3>
-                  <p className="text-slate-300 text-sm mb-4 font-body">
-                    {resource.description}
-                  </p>
-                  <div className="flex items-center text-brand-600 text-sm font-semibold font-display">
+                  <p className="font-body mb-4 text-sm text-slate-300">{resource.description}</p>
+                  <div className="text-brand-600 font-display flex items-center text-sm font-semibold">
                     Read more
-                    <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                    {arrowIcon}
                   </div>
                 </Link>
               ))}
@@ -166,48 +139,34 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        {/* Categories */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-50 mb-8 font-display">Browse by Category</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <section className="bg-white/[0.02] px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="font-display mb-8 text-2xl font-bold text-slate-50">Browse by Category</h2>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {categories.map((category, index) => (
                 <Link
                   key={index}
                   href={`/resources/blog?category=${category.name.toLowerCase().replace(' ', '-')}`}
-                  className="bg-white/[0.03] rounded-xl p-6 border border-white/10 hover:border-brand-400/50 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)] transition-all text-center"
+                  className="hover:border-brand-400/50 rounded-xl border border-white/10 bg-white/[0.03] p-6 text-center transition-all hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
                 >
-                  <div className="text-2xl font-bold text-brand-600 mb-1 font-display">{category.count}</div>
-                  <div className="text-slate-300 font-medium font-display">{category.name}</div>
+                  <div className="text-brand-600 font-display mb-1 text-2xl font-bold">{category.count}</div>
+                  <div className="font-display font-medium text-slate-300">{category.name}</div>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Newsletter CTA */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-brand-600">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4 font-display">
-              AI insights for operators.
-            </h2>
-            <p className="text-xl text-white/80 mb-8 font-body">
-              Monthly insights on agentic AI, automation strategies, and real implementation lessons.
-            </p>
-            <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-semibold text-lg hover:bg-brand-50 transition-all duration-200 shadow-lg font-display"
-            >
-              Subscribe to Updates
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-          </div>
-        </section>
+        <CtaSection
+          bg="brand"
+          headline="AI insights for operators."
+          description="Monthly insights on agentic AI, automation strategies, and real implementation lessons."
+          buttonLabel="Subscribe to Updates"
+          href="/#contact"
+        />
       </main>
 
       <Footer />
     </div>
-  );
+  )
 }

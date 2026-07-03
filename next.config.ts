@@ -2,6 +2,13 @@ import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  // Static generation now fans out across many CMS-backed [slug] routes
+  // (solutions, industries, case-studies). The local D1/miniflare emulation
+  // used for `next build` is a single SQLite file and throws SQLITE_BUSY
+  // under the default multi-worker concurrency, so force serial generation.
+  experimental: {
+    cpus: 1,
+  },
 
   // Image optimization is not supported on Cloudflare Workers
   // Use Cloudflare Image Resizing or pre-optimize images

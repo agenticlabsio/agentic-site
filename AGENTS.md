@@ -17,7 +17,6 @@ This is a single Next.js 15 + Payload CMS 3 marketing site. One service: `pnpm d
 
 ### Commands reference
 
-See `CLAUDE.md` for the full command reference. Key commands:
 - `pnpm dev` — start dev server (localhost:3000)
 - `pnpm payload migrate` — run pending DB migrations
 - `pnpm build` — standard Next.js build

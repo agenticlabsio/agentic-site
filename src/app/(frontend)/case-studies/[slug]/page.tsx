@@ -2,20 +2,14 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ArticleSchema, BreadcrumbSchema } from '@/components/SEO'
 import { MarketingDetailTemplate, type DetailSection } from '@/components/marketing/MarketingDetailTemplate'
-import type { MarketingNavItem } from '@/components/marketing/MarketingHeader'
 import { getCaseStudyBySlug, getAllCaseStudySlugs } from '@/lib/payload'
+import { SITE_URL } from '@/lib/seo'
 
 export const revalidate = 3600
 
-const navItems: MarketingNavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Case Studies', href: '/case-studies' },
-]
-
 export async function generateStaticParams() {
   const slugs = await getAllCaseStudySlugs()
-  return slugs.map((slug) => ({ slug }))
+  return slugs.map((s) => ({ slug: s.slug }))
 }
 
 export async function generateMetadata({
@@ -55,7 +49,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     notFound()
   }
 
-  const canonicalUrl = `https://agenticlabs.io/case-studies/${slug}`
+  const canonicalUrl = `${SITE_URL}/case-studies/${slug}`
   const headline = `${caseStudy.title} ${caseStudy.subtitle}`
 
   const sections: DetailSection[] = [
@@ -112,20 +106,18 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             headline={headline}
             description={caseStudy.challenge.intro}
             url={canonicalUrl}
-            datePublished="2026-01-01"
+            datePublished={caseStudy.createdAt ?? undefined}
+            dateModified={caseStudy.updatedAt ?? undefined}
           />
           <BreadcrumbSchema
             items={[
-              { name: 'Home', url: 'https://agenticlabs.io' },
-              { name: 'Case Studies', url: 'https://agenticlabs.io/case-studies' },
+              { name: 'Home', url: SITE_URL },
+              { name: 'Case Studies', url: `${SITE_URL}/case-studies` },
               { name: caseStudy.title, url: canonicalUrl },
             ]}
           />
         </>
       }
-      navItems={navItems}
-      activeNavHref="/case-studies"
-      navCtaHref="#contact"
       hero={{
         variant: 'case-study',
         backLink: { href: '/case-studies', label: 'Back to Case Studies' },

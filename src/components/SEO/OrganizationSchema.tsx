@@ -1,14 +1,16 @@
+import { SITE_URL } from '@/lib/seo'
+
 export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://agenticlabs.io/#organization",
+    "@id": `${SITE_URL}/#organization`,
     "name": "Agentic Labs",
     "legalName": "Agentic Labs Solutions LLC",
     "description": "Enterprise AI consulting firm building agentic systems that replace fragmented SaaS with intelligent automation. Production-ready in 6-8 weeks.",
-    "url": "https://agenticlabs.io",
-    "logo": "https://agenticlabs.io/logo.png",
-    "image": "https://agenticlabs.io/og-image.png",
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/logo.png`,
+    "image": `${SITE_URL}/og-image.png`,
     "email": "contact@agenticlabs.io",
     "sameAs": [
       "https://www.linkedin.com/company/agenticlabsio/",
@@ -84,12 +86,6 @@ export function OrganizationSchema() {
           }
         }
       ]
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "50",
-      "bestRating": "5"
     }
   };
 

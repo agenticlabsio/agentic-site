@@ -1,5 +1,9 @@
 import { revalidateTag } from 'next/cache'
-import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
+import type {
+  CollectionAfterChangeHook,
+  CollectionAfterDeleteHook,
+  GlobalAfterChangeHook,
+} from 'payload'
 
 // Shared afterChange/afterDelete hooks for the marketing content collections
 // (Solutions, Industries, CaseStudies, FAQ). Each collection is cached in
@@ -26,6 +30,29 @@ export function revalidateContentHooks(tag: string): {
       },
     ],
     afterDelete: [
+      ({ doc }) => {
+        revalidate()
+        return doc
+      },
+    ],
+  }
+}
+
+// Same purge behavior as revalidateContentHooks, sized for a global config
+// (which only has an afterChange hook, no afterDelete — globals aren't deleted).
+export function revalidateGlobalHook(tag: string): {
+  afterChange: GlobalAfterChangeHook[]
+} {
+  const revalidate = () => {
+    try {
+      revalidateTag(tag)
+    } catch {
+      // Outside a Next.js request context (e.g. seed scripts, migrations) — no-op.
+    }
+  }
+
+  return {
+    afterChange: [
       ({ doc }) => {
         revalidate()
         return doc

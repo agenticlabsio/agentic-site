@@ -1,3 +1,5 @@
+import { SITE_URL } from '@/lib/seo'
+
 interface ServiceSchemaProps {
   name: string;
   description: string;
@@ -24,7 +26,7 @@ export function ServiceSchema({
     "provider": {
       "@type": "Organization",
       "name": provider,
-      "url": "https://agenticlabs.io"
+      "url": SITE_URL
     },
     "areaServed": {
       "@type": "Country",

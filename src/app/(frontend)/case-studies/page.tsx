@@ -1,24 +1,11 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
-import Footer from '@/components/newsite/Footer'
-import { MarketingHeader, type MarketingNavItem } from '@/components/marketing/MarketingHeader'
 import { CtaSection } from '@/components/marketing/sections/CtaSection'
+import { BreadcrumbSchema } from '@/components/SEO'
 import { getCaseStudies } from '@/lib/payload'
+import { SITE_URL } from '@/lib/seo'
 
+// Metadata for /case-studies is provided by ./layout.tsx.
 export const revalidate = 3600
-
-export const metadata: Metadata = {
-  title: 'Case Studies | Agentic Labs',
-  description:
-    'Real workflows for small and mid-market teams — measurable outcomes and honest numbers, not a demo that never shipped.',
-  alternates: { canonical: '/case-studies' },
-}
-
-const navItems: MarketingNavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Case Studies', href: '/case-studies' },
-]
 
 // Representative aggregate outcomes — not modeled per-case-study in the CMS,
 // so this stays a static editorial summary (matches the original page).
@@ -41,13 +28,16 @@ export default async function CaseStudiesPage() {
   const others = caseStudies.filter((cs) => !cs.featured)
 
   return (
-    <div className="newsite relative min-h-screen">
-      <MarketingHeader items={navItems} activeHref="/case-studies" ctaHref="#contact" />
-
-      <main className="pt-16">
+    <main className="pt-16">
+        <BreadcrumbSchema
+          items={[
+            { name: 'Home', url: SITE_URL },
+            { name: 'Case Studies', url: `${SITE_URL}/case-studies` },
+          ]}
+        />
         <section className="px-4 pt-20 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <p className="text-brand-600 mb-3 text-sm font-medium tracking-wider uppercase">
+            <p className="text-brand-400 mb-3 text-sm font-medium tracking-wider uppercase">
               Case Studies
             </p>
             <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl lg:text-6xl">
@@ -81,7 +71,7 @@ export default async function CaseStudiesPage() {
                       {featured.card.title}
                     </h2>
                     <p className="mb-6 text-stone-400">{featured.card.subtitle}</p>
-                    <div className="text-brand-600 inline-flex items-center gap-2 font-medium">
+                    <div className="text-brand-400 inline-flex items-center gap-2 font-medium">
                       Read Case Study
                       {arrowIcon}
                     </div>
@@ -122,7 +112,7 @@ export default async function CaseStudiesPage() {
                     <div className="flex gap-6">
                       {(cs.card.metrics ?? []).map((metric, i) => (
                         <div key={i}>
-                          <div className="text-brand-600 text-lg font-bold">{metric.value}</div>
+                          <div className="text-brand-400 text-lg font-bold">{metric.value}</div>
                           <div className="text-xs text-stone-400">{metric.label}</div>
                         </div>
                       ))}
@@ -163,9 +153,6 @@ export default async function CaseStudiesPage() {
           href="mailto:contact@agenticlabs.io?subject=Discovery%20Call%20Request"
           external
         />
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }

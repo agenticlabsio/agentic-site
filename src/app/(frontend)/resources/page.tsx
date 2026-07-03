@@ -1,23 +1,7 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
-import Footer from '@/components/newsite/Footer'
-import { MarketingHeader, type MarketingNavItem } from '@/components/marketing/MarketingHeader'
 import { CtaSection } from '@/components/marketing/sections/CtaSection'
 
-export const metadata: Metadata = {
-  title: 'Resources | Agentic Labs',
-  description:
-    'Deep dives on building agents that ship, cutting SaaS sprawl, and proving ROI — written for small and mid-market operators.',
-  alternates: { canonical: '/resources' },
-}
-
-const navItems: MarketingNavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Industries', href: '/industries' },
-  { label: 'Case Studies', href: '/case-studies' },
-]
-
+// Metadata for /resources is provided by ./layout.tsx.
 const featuredResources = [
   {
     type: 'Blog',
@@ -54,7 +38,7 @@ const categories = [
 
 const arrowIcon = (
   <svg
-    className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+    className="ml-1 h-4 w-4 transition-transform group-hover:transtone-x-1"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -65,17 +49,14 @@ const arrowIcon = (
 
 export default function ResourcesPage() {
   return (
-    <div className="newsite relative min-h-screen">
-      <MarketingHeader items={navItems} activeHref="/resources" ctaHref="/#contact" />
-
-      <main className="pt-16">
+    <main className="pt-16">
         <section className="px-4 pt-20 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">Resources</p>
-            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
+            <p className="text-brand-400 mb-4 text-sm font-semibold tracking-wide uppercase">Resources</p>
+            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl lg:text-6xl">
               Straight talk on <span className="text-brand-400">agentic AI.</span>
             </h1>
-            <p className="font-body max-w-2xl text-xl text-slate-300">
+            <p className="font-body max-w-2xl text-xl text-stone-300">
               Deep dives on building agents that ship, cutting SaaS sprawl, and proving ROI &mdash;
               written for small and mid-market operators, not analysts.
             </p>
@@ -87,19 +68,19 @@ export default function ResourcesPage() {
             <div className="flex flex-wrap gap-4 border-b border-white/10 pb-4">
               <Link
                 href="/resources"
-                className="text-brand-600 border-brand-600 font-display border-b-2 pb-2 text-sm font-semibold"
+                className="text-brand-400 border-brand-400 font-display border-b-2 pb-2 text-sm font-semibold"
               >
                 All Resources
               </Link>
               <Link
                 href="/resources/blog"
-                className="font-display pb-2 text-sm font-medium text-slate-300 hover:text-slate-50"
+                className="font-display pb-2 text-sm font-medium text-stone-300 hover:text-stone-50"
               >
                 Blog
               </Link>
               <Link
                 href="/resources/faq"
-                className="font-display pb-2 text-sm font-medium text-slate-300 hover:text-slate-50"
+                className="font-display pb-2 text-sm font-medium text-stone-300 hover:text-stone-50"
               >
                 FAQ
               </Link>
@@ -109,7 +90,7 @@ export default function ResourcesPage() {
 
         <section className="px-4 pb-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display mb-8 text-2xl font-bold text-slate-50">Featured Resources</h2>
+            <h2 className="font-display mb-8 text-2xl font-bold text-stone-50">Featured Resources</h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {featuredResources.map((resource, index) => (
                 <Link
@@ -121,15 +102,15 @@ export default function ResourcesPage() {
                     <span className="bg-brand-500/10 text-brand-300 font-display rounded px-2 py-1 text-xs font-medium">
                       {resource.type}
                     </span>
-                    <span className="font-display rounded bg-white/5 px-2 py-1 text-xs font-medium text-slate-300">
+                    <span className="font-display rounded bg-white/5 px-2 py-1 text-xs font-medium text-stone-300">
                       {resource.category}
                     </span>
                   </div>
-                  <h3 className="font-display group-hover:text-brand-300 mb-2 text-lg font-bold text-slate-50 transition-colors">
+                  <h3 className="font-display group-hover:text-brand-300 mb-2 text-lg font-bold text-stone-50 transition-colors">
                     {resource.title}
                   </h3>
-                  <p className="font-body mb-4 text-sm text-slate-300">{resource.description}</p>
-                  <div className="text-brand-600 font-display flex items-center text-sm font-semibold">
+                  <p className="font-body mb-4 text-sm text-stone-300">{resource.description}</p>
+                  <div className="text-brand-400 font-display flex items-center text-sm font-semibold">
                     Read more
                     {arrowIcon}
                   </div>
@@ -141,7 +122,7 @@ export default function ResourcesPage() {
 
         <section className="bg-white/[0.02] px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display mb-8 text-2xl font-bold text-slate-50">Browse by Category</h2>
+            <h2 className="font-display mb-8 text-2xl font-bold text-stone-50">Browse by Category</h2>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {categories.map((category, index) => (
                 <Link
@@ -149,8 +130,8 @@ export default function ResourcesPage() {
                   href={`/resources/blog?category=${category.name.toLowerCase().replace(' ', '-')}`}
                   className="hover:border-brand-400/50 rounded-xl border border-white/10 bg-white/[0.03] p-6 text-center transition-all hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
                 >
-                  <div className="text-brand-600 font-display mb-1 text-2xl font-bold">{category.count}</div>
-                  <div className="font-display font-medium text-slate-300">{category.name}</div>
+                  <div className="text-brand-400 font-display mb-1 text-2xl font-bold">{category.count}</div>
+                  <div className="font-display font-medium text-stone-300">{category.name}</div>
                 </Link>
               ))}
             </div>
@@ -164,9 +145,6 @@ export default function ResourcesPage() {
           buttonLabel="Subscribe to Updates"
           href="/#contact"
         />
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }

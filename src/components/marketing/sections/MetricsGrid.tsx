@@ -43,7 +43,7 @@ export function MetricsGrid({ heading, variant, items }: MetricsGridProps) {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {items.map((item, i) => (
             <div key={i} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-              <div className="text-brand-600 font-display mb-1 text-3xl font-bold sm:text-4xl">
+              <div className="text-brand-400 font-display mb-1 text-3xl font-bold sm:text-4xl">
                 {item.metric}
               </div>
               <div className="font-display text-sm font-medium text-stone-50">{item.label}</div>

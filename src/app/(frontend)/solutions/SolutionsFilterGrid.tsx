@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { Button } from '@/components/ui/Button'
 
 export interface SolutionCardData {
   slug: string
@@ -17,7 +18,7 @@ export interface SolutionCardData {
 const categories = ['All', 'Core', 'Operations', 'Platform', 'Governance']
 
 const checkIcon = (
-  <svg className="text-brand-600 mt-0.5 h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="text-brand-400 mt-0.5 h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
   </svg>
 )
@@ -86,13 +87,10 @@ export function SolutionsFilterGrid({ solutions }: { solutions: SolutionCardData
                     ))}
                   </ul>
                   <div className="flex flex-wrap gap-4">
-                    <Link
-                      href={`/solutions/${featured.slug}`}
-                      className="bg-brand-600 hover:bg-brand-700 shadow-brand-600/25 inline-flex items-center gap-2 rounded-xl px-6 py-3 font-medium text-white shadow-lg transition-all duration-200"
-                    >
+                    <Button href={`/solutions/${featured.slug}`} variant="primary">
                       Learn More
                       {arrowIcon}
-                    </Link>
+                    </Button>
                   </div>
                 </div>
                 <div className="bg-brand-600 flex items-center justify-center p-8 md:p-10">

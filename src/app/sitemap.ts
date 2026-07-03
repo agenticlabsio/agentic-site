@@ -1,14 +1,14 @@
 import { MetadataRoute } from 'next'
-import { solutionSlugs } from '@/content/solutions'
-import { industrySlugs } from '@/content/industries'
-import { caseStudySlugs } from '@/content/case-studies'
-import { blogPostSlugs } from '@/content/blog'
+import { SITE_URL } from '@/lib/seo'
+import { getAllMarketingSlugs, getAllBlogPostSlugs } from '@/lib/payload'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  // Canonical production origin. Hardcoded to match robots.txt, metadataBase, and
-  // the JSON-LD schemas — NEXT_PUBLIC_SERVER_URL resolves to localhost at build time.
-  const baseUrl = 'https://agenticlabs.io'
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = SITE_URL
   const currentDate = new Date().toISOString()
+  const [marketingSlugs, blogSlugs] = await Promise.all([
+    getAllMarketingSlugs(),
+    getAllBlogPostSlugs(),
+  ])
 
   const staticPages: { path: string; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']; priority: number }[] = [
     { path: '', changeFrequency: 'weekly', priority: 1 },
@@ -23,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/resources/faq', changeFrequency: 'weekly', priority: 0.8 },
   ]
 
+  const detailPathByType = {
+    solutions: '/solutions',
+    industries: '/industries',
+    'case-studies': '/case-studies',
+  } as const
+
   const entries: MetadataRoute.Sitemap = [
     ...staticPages.map((p) => ({
       url: `${baseUrl}${p.path}`,
@@ -30,31 +36,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: p.changeFrequency,
       priority: p.priority,
     })),
-    // Solution detail pages (src/content/solutions.ts)
-    ...solutionSlugs.map((slug) => ({
-      url: `${baseUrl}/solutions/${slug}`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
+    // Solution / industry / case-study detail pages (Payload-backed)
+    ...marketingSlugs.map((entry) => ({
+      url: `${baseUrl}${detailPathByType[entry.type]}/${entry.slug}`,
+      lastModified: entry.updatedAt ?? currentDate,
+      changeFrequency: entry.type === 'case-studies' ? ('monthly' as const) : ('weekly' as const),
+      priority: entry.type === 'case-studies' ? 0.7 : 0.8,
     })),
-    // Industry detail pages (src/content/industries.ts)
-    ...industrySlugs.map((slug) => ({
-      url: `${baseUrl}/industries/${slug}`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    })),
-    // Case study detail pages (src/content/case-studies.ts)
-    ...caseStudySlugs.map((slug) => ({
-      url: `${baseUrl}/case-studies/${slug}`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })),
-    // Blog post detail pages (src/content/blog.ts)
-    ...blogPostSlugs.map((slug) => ({
-      url: `${baseUrl}/resources/blog/${slug}`,
-      lastModified: currentDate,
+    // Blog post detail pages (Payload-backed, published only)
+    ...blogSlugs.map((entry) => ({
+      url: `${baseUrl}/resources/blog/${entry.slug}`,
+      lastModified: entry.updatedAt ?? currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),

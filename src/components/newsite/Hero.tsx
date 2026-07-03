@@ -9,8 +9,8 @@ const partners = [
 ]
 
 const metrics = [
-  { value: '10x', label: 'Faster Deployment' },
-  { value: '90%', label: 'Cost Reduction' },
+  { value: '90%', label: 'Lower Ops Cost' },
+  { value: '6–12 wks', label: 'To Production' },
   { value: '24/7', label: 'Autonomous Ops' },
 ]
 
@@ -138,7 +138,7 @@ export default function Hero() {
                 letterSpacing: '0.02em',
               }}
             >
-              AI Agents for Enterprise
+              Enterprise AI, Measured in ROI
             </span>
           </div>
 
@@ -165,17 +165,16 @@ export default function Hero() {
               }}
             >
               <span className="hero-text-reveal" style={{ animationDelay: '0.3s' }}>
-                Deploy AI Agents
+                AI Agents That
               </span>
               <span className="hero-text-reveal" style={{ animationDelay: '0.45s' }}>
-                That{' '}
                 <span
                   className="text-gradient"
                   style={{
                     fontFamily: 'var(--font-display)',
                   }}
                 >
-                  Actually Ship
+                  Pay for Themselves
                 </span>
               </span>
             </h1>
@@ -217,8 +216,9 @@ export default function Hero() {
               lineHeight: 1.65,
             }}
           >
-            Custom AI agents engineered for production. Built for ROI, governed for compliance,
-            deployed on your infrastructure.
+            We build production AI agents that cut operational cost up to 90% — end to end, on
+            your infrastructure, live in 6–12 weeks. If it doesn&apos;t move a business metric, we
+            don&apos;t ship it.
           </p>
 
           {/* CTA Buttons */}
@@ -240,7 +240,7 @@ export default function Hero() {
                 fontSize: '0.95rem',
               }}
             >
-              <span>Start Building</span>
+              <span>Book an ROI Assessment</span>
               <svg
                 width="18"
                 height="18"
@@ -255,14 +255,14 @@ export default function Hero() {
               </svg>
             </a>
             <a
-              href="#process"
+              href="#results"
               className="btn-outline"
               style={{
                 padding: '14px 28px',
                 fontSize: '0.95rem',
               }}
             >
-              See How It Works
+              See the Results
             </a>
           </div>
 

@@ -1,23 +1,8 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
-import Footer from '@/components/newsite/Footer'
-import { MarketingHeader, type MarketingNavItem } from '@/components/marketing/MarketingHeader'
 import { CtaSection } from '@/components/marketing/sections/CtaSection'
+import { Button } from '@/components/ui/Button'
 
-export const metadata: Metadata = {
-  title: 'Platform | Agentic Labs',
-  description:
-    'The governance, integration, and control layer behind every agent we ship — running in your VPC or on your own hardware.',
-  alternates: { canonical: '/platform' },
-}
-
-const navItems: MarketingNavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Industries', href: '/industries' },
-  { label: 'Case Studies', href: '/case-studies' },
-]
-
+// Metadata for /platform is provided by ./layout.tsx.
 const capabilities = [
   {
     title: 'Model Context Protocol (MCP)',
@@ -67,13 +52,10 @@ const arrowIcon = (
 
 export default function PlatformPage() {
   return (
-    <div className="newsite relative min-h-screen">
-      <MarketingHeader items={navItems} activeHref="/platform" ctaHref="/#contact" />
-
-      <main className="pt-16">
+    <main className="pt-16">
         <section className="bg-white/[0.02] px-4 pt-20 pb-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">Platform</p>
+            <p className="text-brand-400 mb-4 text-sm font-semibold tracking-wide uppercase">Platform</p>
             <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl lg:text-6xl">
               Production infrastructure for <span className="text-brand-400">agents that act.</span>
             </h1>
@@ -82,19 +64,13 @@ export default function PlatformPage() {
               your VPC or on your own hardware, plugged into the systems you already run. No migration.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/#contact"
-                className="bg-brand-600 hover:bg-brand-700 shadow-brand-600/25 font-display inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-white shadow-lg transition-all duration-200"
-              >
+              <Button href="/#contact" variant="primary">
                 Book a Strategy Call
                 {arrowIcon}
-              </Link>
-              <Link
-                href="/platform/integrations"
-                className="font-display inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-6 py-3 font-semibold text-stone-300 transition-colors hover:bg-white/5"
-              >
+              </Button>
+              <Button href="/platform/integrations" variant="outline">
                 View Integrations
-              </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -126,7 +102,7 @@ export default function PlatformPage() {
               </div>
               <Link
                 href="/platform/integrations"
-                className="text-brand-600 font-display hidden items-center gap-2 font-semibold md:inline-flex"
+                className="text-brand-400 font-display hidden items-center gap-2 font-semibold md:inline-flex"
               >
                 View all integrations
                 {arrowIcon}
@@ -148,7 +124,7 @@ export default function PlatformPage() {
             </div>
             <Link
               href="/platform/integrations"
-              className="text-brand-600 font-display mt-6 inline-flex items-center gap-2 font-semibold md:hidden"
+              className="text-brand-400 font-display mt-6 inline-flex items-center gap-2 font-semibold md:hidden"
             >
               View all integrations
               {arrowIcon}
@@ -203,9 +179,6 @@ export default function PlatformPage() {
           buttonLabel="Book a Strategy Call"
           href="/#contact"
         />
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }

@@ -38,7 +38,7 @@ export function BlogList({ posts }: { posts: BlogCard[] }) {
                 className={`font-display rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   activeCategory === category
                     ? 'bg-brand-600 shadow-brand-600/25 text-white shadow-lg'
-                    : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-slate-50'
+                    : 'bg-white/5 text-stone-300 hover:bg-white/10 hover:text-stone-50'
                 }`}
               >
                 {category}
@@ -52,7 +52,7 @@ export function BlogList({ posts }: { posts: BlogCard[] }) {
       {featuredPost && activeCategory === 'All' && (
         <section className="px-4 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div className="font-display mb-4 text-sm font-semibold tracking-wider text-slate-400 uppercase">
+            <div className="font-display mb-4 text-sm font-semibold tracking-wider text-stone-400 uppercase">
               Featured
             </div>
             <Link
@@ -65,13 +65,13 @@ export function BlogList({ posts }: { posts: BlogCard[] }) {
                     <span className="bg-brand-500/10 text-brand-300 font-display rounded-full px-3 py-1 text-sm font-medium">
                       {featuredPost.categoryLabel}
                     </span>
-                    <span className="font-body text-sm text-slate-400">{featuredPost.date}</span>
+                    <span className="font-body text-sm text-stone-400">{featuredPost.date}</span>
                   </div>
-                  <h2 className="font-display mb-4 text-2xl font-bold text-slate-50 sm:text-3xl">
+                  <h2 className="font-display mb-4 text-2xl font-bold text-stone-50 sm:text-3xl">
                     {featuredPost.title}
                   </h2>
-                  <p className="font-body mb-6 text-slate-300">{featuredPost.excerpt}</p>
-                  <span className="text-brand-600 font-display inline-flex items-center gap-2 font-semibold">
+                  <p className="font-body mb-6 text-stone-300">{featuredPost.excerpt}</p>
+                  <span className="text-brand-400 font-display inline-flex items-center gap-2 font-semibold">
                     Read article
                     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
@@ -103,7 +103,7 @@ export function BlogList({ posts }: { posts: BlogCard[] }) {
       <section className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {activeCategory === 'All' && (
-            <div className="font-display mb-4 text-sm font-semibold tracking-wider text-slate-400 uppercase">
+            <div className="font-display mb-4 text-sm font-semibold tracking-wider text-stone-400 uppercase">
               All Posts
             </div>
           )}
@@ -115,15 +115,15 @@ export function BlogList({ posts }: { posts: BlogCard[] }) {
                 className="hover:border-brand-400/50 group block rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
               >
                 <div className="mb-4 flex items-center gap-2">
-                  <span className="font-display rounded bg-white/5 px-2 py-1 text-xs font-medium text-slate-300">
+                  <span className="font-display rounded bg-white/5 px-2 py-1 text-xs font-medium text-stone-300">
                     {post.categoryLabel}
                   </span>
-                  <span className="font-body text-xs text-slate-400">{post.date}</span>
+                  <span className="font-body text-xs text-stone-400">{post.date}</span>
                 </div>
-                <h3 className="font-display group-hover:text-brand-300 mb-2 line-clamp-2 text-lg font-bold text-slate-50 transition-colors">
+                <h3 className="font-display group-hover:text-brand-300 mb-2 line-clamp-2 text-lg font-bold text-stone-50 transition-colors">
                   {post.title}
                 </h3>
-                <p className="font-body line-clamp-3 text-sm text-slate-300">{post.excerpt}</p>
+                <p className="font-body line-clamp-3 text-sm text-stone-300">{post.excerpt}</p>
               </Link>
             ))}
           </div>

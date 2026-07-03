@@ -82,7 +82,7 @@ export function HeroSection({
     )
   }
 
-  const taglineColor = variant === 'solution' ? 'text-brand-600' : 'text-brand-400'
+  const taglineColor = 'text-brand-400'
 
   return (
     <section className="bg-white/[0.02] px-4 pt-20 pb-16 sm:px-6 lg:px-8">

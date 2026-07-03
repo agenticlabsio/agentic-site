@@ -1,42 +1,43 @@
 import { describe, it, expect, vi } from 'vitest'
+
+// The sitemap is driven entirely by Payload (getAllMarketingSlugs /
+// getAllBlogPostSlugs), so these guard that it maps each fetched slug to the
+// right URL, type-prefixed path, and lastModified — not that it derives from
+// any particular content source.
+const getSolutionBySlug = vi.fn()
+vi.mock('@/lib/payload', () => ({
+  getSolutionBySlug: (slug: string) => getSolutionBySlug(slug),
+  getAllSolutionSlugs: vi.fn().mockResolvedValue([]),
+  getAllMarketingSlugs: vi.fn().mockResolvedValue([
+    { type: 'solutions', slug: 'intelligent-agents', updatedAt: '2026-01-01T00:00:00.000Z' },
+    { type: 'industries', slug: 'healthcare', updatedAt: '2026-01-02T00:00:00.000Z' },
+    { type: 'case-studies', slug: 'patient-intake', updatedAt: '2026-01-03T00:00:00.000Z' },
+  ]),
+  getAllBlogPostSlugs: vi.fn().mockResolvedValue([
+    { slug: 'agentic-ai-2026', updatedAt: '2026-01-04T00:00:00.000Z' },
+  ]),
+}))
+
 import sitemap from '@/app/sitemap'
-import { solutionSlugs } from '@/content/solutions'
-import { industrySlugs } from '@/content/industries'
-import { caseStudySlugs } from '@/content/case-studies'
 
-// The sitemap and the seeded CMS both derive from the canonical src/content
-// slug arrays, so they can never drift. This guards that the sitemap keeps
-// emitting exactly one entry per content slug.
-describe('sitemap ↔ content slugs', () => {
-  const urls = sitemap().map((e) => e.url)
-  const slugsFor = (prefix: string) =>
-    urls
-      .filter((u) => u.includes(`/${prefix}/`))
-      .map((u) => u.split(`/${prefix}/`)[1])
-      .sort()
+describe('sitemap', () => {
+  it('emits a matching URL and lastModified for each marketing/blog slug', async () => {
+    const entries = await sitemap()
+    const urls = entries.map((e) => e.url)
 
-  it('emits every solution slug exactly once', () => {
-    expect(slugsFor('solutions')).toEqual([...solutionSlugs].sort())
-  })
+    expect(urls).toContain('https://agenticlabs.io/solutions/intelligent-agents')
+    expect(urls).toContain('https://agenticlabs.io/industries/healthcare')
+    expect(urls).toContain('https://agenticlabs.io/case-studies/patient-intake')
+    expect(urls).toContain('https://agenticlabs.io/resources/blog/agentic-ai-2026')
 
-  it('emits every industry slug exactly once', () => {
-    expect(slugsFor('industries')).toEqual([...industrySlugs].sort())
-  })
-
-  it('emits every case-study slug exactly once', () => {
-    expect(slugsFor('case-studies')).toEqual([...caseStudySlugs].sort())
+    const solutionEntry = entries.find((e) => e.url.endsWith('/solutions/intelligent-agents'))
+    expect(solutionEntry?.lastModified).toBe('2026-01-01T00:00:00.000Z')
   })
 })
 
 // generateMetadata must always set a canonical URL — even for an unknown slug
 // (so a 404 page still self-canonicalizes) — and derive title/description from
 // the CMS record when it resolves.
-const getSolutionBySlug = vi.fn()
-vi.mock('@/lib/payload', () => ({
-  getSolutionBySlug: (slug: string) => getSolutionBySlug(slug),
-  getAllSolutionSlugs: vi.fn().mockResolvedValue([]),
-}))
-
 import { generateMetadata } from '@/app/(frontend)/solutions/[slug]/page'
 
 describe('solutions/[slug] generateMetadata', () => {

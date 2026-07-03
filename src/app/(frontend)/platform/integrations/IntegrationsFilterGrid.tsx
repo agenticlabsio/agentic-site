@@ -52,7 +52,7 @@ export function IntegrationsFilterGrid({ integrations }: { integrations: Integra
                 <div className="mb-4 flex items-start justify-between">
                   <div>
                     <h3 className="font-display text-xl font-bold text-stone-50">{integration.name}</h3>
-                    <span className="text-brand-600 font-display text-sm font-medium">
+                    <span className="text-brand-400 font-display text-sm font-medium">
                       {integration.category}
                     </span>
                   </div>

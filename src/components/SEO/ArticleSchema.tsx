@@ -1,8 +1,10 @@
+import { SITE_URL } from '@/lib/seo'
+
 interface ArticleSchemaProps {
   headline: string;
   description: string;
   url: string;
-  datePublished: string;
+  datePublished?: string;
   dateModified?: string;
   authorName?: string;
   image?: string;
@@ -23,20 +25,20 @@ export function ArticleSchema({
     "headline": headline,
     "description": description,
     "url": url,
-    "datePublished": datePublished,
-    "dateModified": dateModified || datePublished,
+    ...(datePublished && { "datePublished": datePublished }),
+    ...((dateModified || datePublished) && { "dateModified": dateModified || datePublished }),
     "author": {
       "@type": "Organization",
       "name": authorName,
-      "url": "https://agenticlabs.io"
+      "url": SITE_URL
     },
     "publisher": {
       "@type": "Organization",
       "name": "Agentic Labs",
-      "url": "https://agenticlabs.io",
+      "url": SITE_URL,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://agenticlabs.io/logo.png"
+        "url": `${SITE_URL}/logo.png`
       }
     },
     ...(image && {

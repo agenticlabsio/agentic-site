@@ -1,5 +1,11 @@
 import type { Metadata } from 'next'
 
+// Canonical production origin, consumed by metadata, JSON-LD schemas, and the
+// sitemap so it's defined once instead of scattered as string literals.
+// NEXT_PUBLIC_SERVER_URL is deliberately NOT used here — it resolves to
+// localhost at build time in this project's Cloudflare Workers deploy.
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://agenticlabs.io'
+
 // Builds per-page metadata with a self-referential canonical + OpenGraph/Twitter.
 // `title` is passed through the root layout's "%s | Agentic Labs" template.
 export function pageMetadata(path: string, title: string, description: string): Metadata {

@@ -1,34 +1,23 @@
-import type { Metadata } from 'next'
-import Footer from '@/components/newsite/Footer'
-import { MarketingHeader, type MarketingNavItem } from '@/components/marketing/MarketingHeader'
 import { CtaSection } from '@/components/marketing/sections/CtaSection'
+import { BreadcrumbSchema } from '@/components/SEO'
 import { getSolutions } from '@/lib/payload'
+import { SITE_URL } from '@/lib/seo'
 import { SolutionsFilterGrid } from './SolutionsFilterGrid'
 
+// Metadata for /solutions is provided by ./layout.tsx.
 export const revalidate = 3600
-
-export const metadata: Metadata = {
-  title: 'AI Solutions | Agentic Labs',
-  description:
-    'Custom AI agents that ship in 6–8 weeks — built for small and medium enterprises, not the Fortune 500 playbook shrunk to fit.',
-  alternates: { canonical: '/solutions' },
-}
-
-const navItems: MarketingNavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Industries', href: '/industries' },
-  { label: 'Case Studies', href: '/case-studies' },
-]
 
 export default async function SolutionsPage() {
   const solutions = await getSolutions()
 
   return (
-    <div className="newsite relative min-h-screen">
-      <MarketingHeader items={navItems} activeHref="/solutions" ctaHref="/#contact" />
-
-      <main className="pt-16">
+    <main className="pt-16">
+        <BreadcrumbSchema
+          items={[
+            { name: 'Home', url: SITE_URL },
+            { name: 'Solutions', url: `${SITE_URL}/solutions` },
+          ]}
+        />
         <section className="px-4 pt-20 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <p className="text-brand-400 mb-4 text-sm font-medium tracking-wide uppercase">Solutions</p>
@@ -64,9 +53,6 @@ export default async function SolutionsPage() {
           buttonLabel="Book a Strategy Call"
           href="/#contact"
         />
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }

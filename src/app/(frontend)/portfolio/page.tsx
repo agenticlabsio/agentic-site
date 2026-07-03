@@ -1,7 +1,4 @@
-'use client'
 import Link from 'next/link'
-import { useState } from 'react'
-import Footer from '@/components/newsite/Footer'
 import ContactFormSection from '@/components/ContactFormSection'
 
 const solutions = [
@@ -123,104 +120,7 @@ const caseStudyMetrics = [
 ]
 
 export default function PortfolioPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Solutions', href: '/solutions' },
-    { label: 'Industries', href: '/industries' },
-    { label: 'Case Studies', href: '/case-studies' },
-  ]
-
   return (
-    <div className="newsite relative min-h-screen">
-      {/* Navigation Header */}
-      <header className="fixed top-0 right-0 left-0 z-50 border-b border-white/10 bg-[#0a0e1a]/80 backdrop-blur-sm">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="font-display text-xl text-stone-50">
-              Agentic Labs
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden items-center gap-8 md:flex">
-              {navItems.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors ${
-                    item.href === '/portfolio'
-                      ? 'text-brand-600'
-                      : 'text-stone-300 hover:text-stone-50'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <a
-                href="#contact"
-                className="bg-brand-600 hover:bg-brand-700 shadow-brand-600/25 rounded-xl px-5 py-2.5 text-sm font-medium text-white shadow-lg transition-all duration-200"
-              >
-                Book a Strategy Call
-              </a>
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-stone-300 md:hidden"
-              aria-label="Toggle menu"
-            >
-              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <div className="border-t border-white/10 py-4 md:hidden">
-              <nav className="flex flex-col space-y-2">
-                {navItems.map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className="rounded-lg px-4 py-2 text-sm font-medium text-stone-300 transition-colors hover:bg-white/5 hover:text-stone-50"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                <a
-                  href="#contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="bg-brand-600 hover:bg-brand-700 mt-4 rounded-xl px-4 py-3 text-center text-sm font-medium text-white transition-colors"
-                >
-                  Book a Strategy Call
-                </a>
-              </nav>
-            </div>
-          )}
-        </div>
-      </header>
-
-      {/* Main Content */}
       <main>
         {/* Hero Section */}
         <section className="px-4 pt-28 pb-16 sm:px-6 lg:px-8 lg:pt-36 lg:pb-24">
@@ -276,11 +176,11 @@ export default function PortfolioPage() {
                   </p>
 
                   <div className="flex items-baseline gap-2">
-                    <span className="font-display text-brand-600 text-2xl">{solution.metric}</span>
+                    <span className="font-display text-brand-400 text-2xl">{solution.metric}</span>
                     <span className="text-sm text-stone-400">{solution.metricLabel}</span>
                   </div>
 
-                  <div className="text-brand-600 mt-4 flex items-center gap-1 text-sm font-medium transition-all group-hover:gap-2">
+                  <div className="text-brand-400 mt-4 flex items-center gap-1 text-sm font-medium transition-all group-hover:gap-2">
                     Learn more
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
@@ -316,7 +216,7 @@ export default function PortfolioPage() {
                   key={index}
                   className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center"
                 >
-                  <div className="font-display text-brand-600 mb-2 text-3xl sm:text-4xl">
+                  <div className="font-display text-brand-400 mb-2 text-3xl sm:text-4xl">
                     {metric.value}
                   </div>
                   <div className="text-sm text-stone-300">{metric.label}</div>
@@ -346,9 +246,5 @@ export default function PortfolioPage() {
         {/* Contact CTA */}
         <ContactFormSection />
       </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
   )
 }

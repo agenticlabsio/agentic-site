@@ -1,7 +1,14 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { NextResponse } from 'next/server'
-import { seedSolutions, seedIndustries, seedCaseStudies, seedFAQ, seedBlogPosts } from '@/seed'
+import {
+  seedSolutions,
+  seedIndustries,
+  seedCaseStudies,
+  seedFAQ,
+  seedBlogPosts,
+  seedSiteSettings,
+} from '@/seed'
 
 export async function GET() {
   // Only allow in development
@@ -18,6 +25,7 @@ export async function GET() {
   results.push(...(await seedCaseStudies(payload)))
   results.push(...(await seedFAQ(payload)))
   results.push(...(await seedBlogPosts(payload)))
+  results.push(...(await seedSiteSettings(payload)))
 
   return NextResponse.json({ success: true, results })
 }

@@ -21,7 +21,7 @@ export interface CtaSectionProps {
 // controls the section/button color pairing; everything else (headline,
 // description, link target) is data the caller supplies.
 export function CtaSection({ id, bg, headline, description, buttonLabel, href, external }: CtaSectionProps) {
-  const sectionBg = bg === 'slate' ? 'bg-slate-900' : 'bg-brand-600'
+  const sectionBg = bg === 'slate' ? 'bg-stone-900' : 'bg-brand-600'
   const buttonClass =
     bg === 'slate'
       ? 'bg-brand-600 hover:bg-brand-700 text-white'

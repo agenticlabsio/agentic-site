@@ -1,25 +1,11 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
-import Footer from '@/components/newsite/Footer'
-import { MarketingHeader, type MarketingNavItem } from '@/components/marketing/MarketingHeader'
 import { CtaSection } from '@/components/marketing/sections/CtaSection'
+import { BreadcrumbSchema } from '@/components/SEO'
 import { getIndustries } from '@/lib/payload'
+import { SITE_URL } from '@/lib/seo'
 
+// Metadata for /industries is provided by ./layout.tsx.
 export const revalidate = 3600
-
-export const metadata: Metadata = {
-  title: 'Industries | Agentic Labs',
-  description:
-    'We build for the workflows, compliance rules, and systems your sector actually runs on — sized for a small or mid-market operator.',
-  alternates: { canonical: '/industries' },
-}
-
-const navItems: MarketingNavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Industries', href: '/industries' },
-  { label: 'Case Studies', href: '/case-studies' },
-]
 
 const arrowIcon = (
   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,10 +19,13 @@ export default async function IndustriesPage() {
   const otherIndustries = industries.filter((i) => !i.featured)
 
   return (
-    <div className="newsite relative min-h-screen">
-      <MarketingHeader items={navItems} activeHref="/industries" ctaHref="/#contact" />
-
-      <main className="pt-16">
+    <main className="pt-16">
+        <BreadcrumbSchema
+          items={[
+            { name: 'Home', url: SITE_URL },
+            { name: 'Industries', url: `${SITE_URL}/industries` },
+          ]}
+        />
         <section className="px-4 pt-20 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <p className="text-brand-400 mb-4 text-sm font-medium tracking-wide uppercase">Industries</p>
@@ -149,9 +138,6 @@ export default async function IndustriesPage() {
           buttonLabel="Book a Strategy Call"
           href="/#contact"
         />
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }

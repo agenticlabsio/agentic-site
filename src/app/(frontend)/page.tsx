@@ -1,4 +1,3 @@
-import Navbar from '@/components/newsite/Navbar';
 import Hero from '@/components/newsite/Hero';
 import Comparison from '@/components/newsite/Comparison';
 import Process from '@/components/newsite/Process';
@@ -8,7 +7,7 @@ import Differentiation from '@/components/newsite/Differentiation';
 import Security from '@/components/newsite/Security';
 import CTA from '@/components/newsite/CTA';
 import FAQ from '@/components/newsite/FAQ';
-import Footer from '@/components/newsite/Footer';
+import { FAQSchema } from '@/components/SEO';
 import { getFAQ } from '@/lib/payload';
 
 // ISR: the homepage FAQ is pulled from the CMS at build/revalidate, not per request.
@@ -22,8 +21,8 @@ export default async function RootPage() {
     .map((f) => ({ question: f.question, answer: f.answer }));
 
   return (
-    <div className="newsite">
-      <Navbar />
+    <main>
+      <FAQSchema faqs={faqs} />
       <Hero />
       <Comparison />
       <Process />
@@ -33,7 +32,6 @@ export default async function RootPage() {
       <Security />
       <CTA />
       <FAQ faqs={faqs} />
-      <Footer />
-    </div>
+    </main>
   );
 }

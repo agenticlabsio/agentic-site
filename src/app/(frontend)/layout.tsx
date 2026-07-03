@@ -1,6 +1,10 @@
 import { Metadata } from "next";
 import { Sora, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { OrganizationSchema, WebSiteSchema } from "@/components/SEO";
+import SiteHeader from "@/components/site/SiteHeader";
+import Footer from "@/components/newsite/Footer";
+import { getSiteSettings } from "@/lib/payload";
+import { SITE_URL } from "@/lib/seo";
 import "../globals.css";
 
 // Sapphire Nocturne type system:
@@ -28,7 +32,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://agenticlabs.io'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Agentic Labs | Custom AI Agents for SMEs, Shipped in Weeks',
     template: '%s | Agentic Labs'
@@ -52,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://agenticlabs.io',
+    url: SITE_URL,
     siteName: 'Agentic Labs',
     title: 'Agentic Labs | Custom AI Agents for SMEs, Shipped in Weeks',
     description: 'Custom AI agents for small and medium enterprises. In production in 6-8 weeks, on infrastructure you control, built to pay back.',
@@ -88,7 +92,7 @@ export const metadata: Metadata = {
     // google: 'your-google-verification-code',
   },
   alternates: {
-    canonical: 'https://agenticlabs.io',
+    canonical: SITE_URL,
   },
 };
 
@@ -104,11 +108,13 @@ const themeScript = `
 })();
 `;
 
-export default function FrontendLayout({
+export default async function FrontendLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const siteSettings = await getSiteSettings();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -123,7 +129,18 @@ export default function FrontendLayout({
       >
         <OrganizationSchema />
         <WebSiteSchema />
-        {children}
+        <div className="newsite">
+          <SiteHeader navItems={siteSettings.navItems ?? []} cta={siteSettings.ctaButton} />
+          {children}
+          <Footer
+            tagline={siteSettings.brandTagline}
+            linkGroups={(siteSettings.footerLinkGroups ?? []).map((group) => ({
+              title: group.title,
+              links: group.links ?? [],
+            }))}
+            socialLinks={siteSettings.socialLinks ?? []}
+          />
+        </div>
       </body>
     </html>
   );

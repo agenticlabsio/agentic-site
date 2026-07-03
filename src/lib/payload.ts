@@ -53,9 +53,9 @@ export const getAllSolutionSlugs = cachedByTag('solutions', ['solution-slugs'], 
     limit: 100,
     depth: 0,
     pagination: false,
-    select: { slug: true },
+    select: { slug: true, updatedAt: true },
   })
-  return docs.map((doc) => doc.slug)
+  return docs.map((doc) => ({ slug: doc.slug, updatedAt: doc.updatedAt }))
 })
 
 // Case Studies ------------------------------------------------------------
@@ -92,9 +92,9 @@ export const getAllCaseStudySlugs = cachedByTag('case-studies', ['case-study-slu
     limit: 100,
     depth: 0,
     pagination: false,
-    select: { slug: true },
+    select: { slug: true, updatedAt: true },
   })
-  return docs.map((doc) => doc.slug)
+  return docs.map((doc) => ({ slug: doc.slug, updatedAt: doc.updatedAt }))
 })
 
 // Industries --------------------------------------------------------------
@@ -131,26 +131,34 @@ export const getAllIndustrySlugs = cachedByTag('industries', ['industry-slugs'],
     limit: 100,
     depth: 0,
     pagination: false,
-    select: { slug: true },
+    select: { slug: true, updatedAt: true },
   })
-  return docs.map((doc) => doc.slug)
+  return docs.map((doc) => ({ slug: doc.slug, updatedAt: doc.updatedAt }))
 })
 
 // Combined marketing slugs (for sitemap / generateStaticParams) ------------
 export const getAllMarketingSlugs = cache(
-  async (): Promise<{ type: 'solutions' | 'industries' | 'case-studies'; slug: string }[]> => {
+  async (): Promise<
+    { type: 'solutions' | 'industries' | 'case-studies'; slug: string; updatedAt: string }[]
+  > => {
     const [solutionSlugs, industrySlugs, caseStudySlugs] = await Promise.all([
       getAllSolutionSlugs(),
       getAllIndustrySlugs(),
       getAllCaseStudySlugs(),
     ])
     return [
-      ...solutionSlugs.map((slug) => ({ type: 'solutions' as const, slug })),
-      ...industrySlugs.map((slug) => ({ type: 'industries' as const, slug })),
-      ...caseStudySlugs.map((slug) => ({ type: 'case-studies' as const, slug })),
+      ...solutionSlugs.map((s) => ({ type: 'solutions' as const, ...s })),
+      ...industrySlugs.map((s) => ({ type: 'industries' as const, ...s })),
+      ...caseStudySlugs.map((s) => ({ type: 'case-studies' as const, ...s })),
     ]
   },
 )
+
+// Site Settings -------------------------------------------------------------
+export const getSiteSettings = cachedByTag('site-settings', ['site-settings'], async () => {
+  const payload = await getPayloadClient()
+  return payload.findGlobal({ slug: 'site-settings' })
+})
 
 // FAQ ---------------------------------------------------------------------
 export const getFAQ = cachedByTag('faq', ['faq-all'], async () => {
@@ -199,9 +207,9 @@ export const getAllBlogPostSlugs = cachedByTag(
       limit: 100,
       depth: 0,
       pagination: false,
-      select: { slug: true },
+      select: { slug: true, updatedAt: true },
     })
-    return docs.map((doc) => doc.slug)
+    return docs.map((doc) => ({ slug: doc.slug, updatedAt: doc.updatedAt }))
   },
 )
 

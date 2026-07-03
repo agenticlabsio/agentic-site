@@ -4,10 +4,10 @@ const checkIcon = (
   </svg>
 )
 
-// Industries "ROI Metrics" — slate-900 band, checkmark rows.
+// Industries "ROI Metrics" — stone-900 band, checkmark rows.
 export function ChecklistSection({ heading, items }: { heading: string; items: string[] }) {
   return (
-    <section className="bg-slate-900 px-4 py-16 sm:px-6 lg:px-8">
+    <section className="bg-stone-900 px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <h2 className="font-display mb-12 text-center text-3xl font-bold text-white">{heading}</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

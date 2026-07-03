@@ -4,6 +4,7 @@ import { industries } from '@/content/industries'
 import { caseStudies } from '@/content/case-studies'
 import { faqCategories } from '@/content/faq'
 import { blogPosts } from '@/content/blog'
+import { siteSettingsDefault } from '@/content/site-settings'
 import { blocksToLexical } from './blog-lexical'
 
 // Idempotent seeders: each upserts by slug so the dev seed route can be re-run
@@ -170,6 +171,11 @@ export async function seedFAQ(payload: Payload): Promise<string[]> {
     }
   }
   return results
+}
+
+export async function seedSiteSettings(payload: Payload): Promise<string[]> {
+  await payload.updateGlobal({ slug: 'site-settings', data: siteSettingsDefault })
+  return ['Updated site settings']
 }
 
 export async function seedBlogPosts(payload: Payload): Promise<string[]> {

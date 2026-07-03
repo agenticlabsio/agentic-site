@@ -18,6 +18,7 @@ import { Industries } from './collections/Industries'
 import { Integrations } from './collections/Integrations'
 import { BlogPosts } from './collections/BlogPosts'
 import { Leads } from './collections/Leads'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -70,6 +71,7 @@ export default buildConfig({
     BlogPosts,
     Leads,
   ],
+  globals: [SiteSettings],
   secret: payloadSecret || 'development-secret-change-in-production',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

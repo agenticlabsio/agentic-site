@@ -2,21 +2,14 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { FAQSchema, ServiceSchema, BreadcrumbSchema } from '@/components/SEO'
 import { MarketingDetailTemplate, type DetailSection } from '@/components/marketing/MarketingDetailTemplate'
-import type { MarketingNavItem } from '@/components/marketing/MarketingHeader'
 import { getIndustryBySlug, getAllIndustrySlugs } from '@/lib/payload'
+import { SITE_URL } from '@/lib/seo'
 
 export const revalidate = 3600
 
-const navItems: MarketingNavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Industries', href: '/industries' },
-  { label: 'Case Studies', href: '/case-studies' },
-]
-
 export async function generateStaticParams() {
   const slugs = await getAllIndustrySlugs()
-  return slugs.map((slug) => ({ slug }))
+  return slugs.map((s) => ({ slug: s.slug }))
 }
 
 export async function generateMetadata({
@@ -56,7 +49,7 @@ export default async function IndustryDetailPage({
     notFound()
   }
 
-  const url = `https://agenticlabs.io/industries/${slug}`
+  const url = `${SITE_URL}/industries/${slug}`
   const faqs = (industry.faqs ?? []).map((f) => ({ question: f.question, answer: f.answer }))
   const nameLower = industry.name.toLowerCase()
 
@@ -147,16 +140,13 @@ export default async function IndustryDetailPage({
           <FAQSchema faqs={faqs} />
           <BreadcrumbSchema
             items={[
-              { name: 'Home', url: 'https://agenticlabs.io' },
-              { name: 'Industries', url: 'https://agenticlabs.io/industries' },
+              { name: 'Home', url: SITE_URL },
+              { name: 'Industries', url: `${SITE_URL}/industries` },
               { name: industry.name, url },
             ]}
           />
         </>
       }
-      navItems={navItems}
-      activeNavHref="/industries"
-      navCtaHref="/#contact"
       hero={{
         variant: 'industry',
         breadcrumb: [

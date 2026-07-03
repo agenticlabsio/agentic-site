@@ -1,24 +1,9 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
-import Footer from '@/components/newsite/Footer'
-import { MarketingHeader, type MarketingNavItem } from '@/components/marketing/MarketingHeader'
 import { CtaSection } from '@/components/marketing/sections/CtaSection'
+import { Button } from '@/components/ui/Button'
 import { IntegrationsFilterGrid, type IntegrationData } from './IntegrationsFilterGrid'
 
-export const metadata: Metadata = {
-  title: 'Integrations | Agentic Labs',
-  description:
-    'Native connectors to your systems of record. Zero-copy access — your data stays where it lives. No migration.',
-  alternates: { canonical: '/platform/integrations' },
-}
-
-const navItems: MarketingNavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Industries', href: '/industries' },
-  { label: 'Case Studies', href: '/case-studies' },
-]
-
+// Metadata for /platform/integrations is provided by ./layout.tsx.
 const integrations: IntegrationData[] = [
   {
     slug: 'salesforce',
@@ -84,7 +69,7 @@ const integrations: IntegrationData[] = [
 ]
 
 const checkIcon = (
-  <svg className="text-brand-600 mt-0.5 h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="text-brand-400 mt-0.5 h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
   </svg>
 )
@@ -97,10 +82,7 @@ const arrowIcon = (
 
 export default function IntegrationsPage() {
   return (
-    <div className="newsite relative min-h-screen">
-      <MarketingHeader items={navItems} activeHref="/platform/integrations" ctaHref="/#contact" />
-
-      <main className="pt-16">
+    <main className="pt-16">
         <section className="px-4 pt-20 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <nav className="mb-6">
@@ -121,7 +103,7 @@ export default function IntegrationsPage() {
               </ol>
             </nav>
 
-            <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">Integrations</p>
+            <p className="text-brand-400 mb-4 text-sm font-semibold tracking-wide uppercase">Integrations</p>
             <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl">
               Plug into what you <span className="text-brand-400">already run.</span>
             </h1>
@@ -142,13 +124,10 @@ export default function IntegrationsPage() {
                 We build custom connectors for proprietary systems as part of our implementation.
                 If it has an API, we can integrate it.
               </p>
-              <Link
-                href="/#contact"
-                className="bg-brand-600 hover:bg-brand-700 font-display inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-white transition-all duration-200"
-              >
+              <Button href="/#contact" variant="primary">
                 Discuss Your Integration
                 {arrowIcon}
-              </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -197,9 +176,6 @@ export default function IntegrationsPage() {
           buttonLabel="Book a Strategy Call"
           href="/#contact"
         />
-      </main>
-
-      <Footer />
-    </div>
+    </main>
   )
 }

@@ -1,6 +1,4 @@
 import type { ReactNode } from 'react'
-import Footer from '@/components/newsite/Footer'
-import { MarketingHeader, type MarketingNavItem } from './MarketingHeader'
 import { HeroSection, type HeroSectionProps } from './sections/HeroSection'
 import { MetricsGrid, type MetricItem } from './sections/MetricsGrid'
 import { NarrativeSection, type NarrativeSectionProps } from './sections/NarrativeSection'
@@ -90,9 +88,6 @@ function renderSection(section: DetailSection, key: number) {
 
 export interface MarketingDetailTemplateProps {
   schemas?: ReactNode
-  navItems: MarketingNavItem[]
-  activeNavHref: string
-  navCtaHref: string
   hero: HeroSectionProps
   sections: DetailSection[]
 }
@@ -100,24 +95,14 @@ export interface MarketingDetailTemplateProps {
 // Shared RSC template for the three marketing detail entities (Solutions,
 // Industries, CaseStudies). Pages map their CMS record into `hero` +
 // `sections` and stay thin; all Tailwind markup lives in the section
-// subcomponents under ./sections.
-export function MarketingDetailTemplate({
-  schemas,
-  navItems,
-  activeNavHref,
-  navCtaHref,
-  hero,
-  sections,
-}: MarketingDetailTemplateProps) {
+// subcomponents under ./sections. Header/footer are owned by the frontend
+// layout, so this template only renders the page's own content.
+export function MarketingDetailTemplate({ schemas, hero, sections }: MarketingDetailTemplateProps) {
   return (
-    <div className="newsite relative min-h-screen">
+    <main className="pt-16">
       {schemas}
-      <MarketingHeader items={navItems} activeHref={activeNavHref} ctaHref={navCtaHref} />
-      <main className="pt-16">
-        <HeroSection {...hero} />
-        {sections.map((section, i) => renderSection(section, i))}
-      </main>
-      <Footer />
-    </div>
+      <HeroSection {...hero} />
+      {sections.map((section, i) => renderSection(section, i))}
+    </main>
   )
 }

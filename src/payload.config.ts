@@ -40,6 +40,13 @@ const isCLI = process.argv.some((value) => {
 })
 const isProduction = process.env.NODE_ENV === 'production'
 
+// PAYLOAD_SECRET is used to sign auth tokens. Fall back to a dev-only value
+// locally, but fail fast in production rather than shipping a public secret.
+const payloadSecret = process.env.PAYLOAD_SECRET
+if (isProduction && !payloadSecret) {
+  throw new Error('PAYLOAD_SECRET must be set in production.')
+}
+
 // Get Cloudflare context - different methods for CLI vs production
 const cloudflare =
   isCLI || !isProduction
@@ -67,7 +74,7 @@ export default buildConfig({
     Leads,
   ],
   globals: [SiteSettings, Navigation],
-  secret: process.env.PAYLOAD_SECRET || 'development-secret-change-in-production',
+  secret: payloadSecret || 'development-secret-change-in-production',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },

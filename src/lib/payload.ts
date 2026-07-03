@@ -160,6 +160,8 @@ export const getFAQ = cachedByTag('faq', ['faq-all'], async () => {
 })
 
 // Leads — public write path for the CTA / footer signup forms.
+// Idempotent by email: re-submitting an address returns the existing lead
+// instead of creating a duplicate, so the public endpoint is safe to retry.
 export async function createLead(data: {
   email: string
   source?: 'cta-section' | 'footer' | 'hero'
@@ -167,6 +169,16 @@ export async function createLead(data: {
   consent?: boolean
 }) {
   const payload = await getPayloadClient()
+
+  const { docs: existing } = await payload.find({
+    collection: 'leads',
+    where: { email: { equals: data.email } },
+    limit: 1,
+  })
+  if (existing.length > 0) {
+    return existing[0]
+  }
+
   return payload.create({
     collection: 'leads',
     data: {

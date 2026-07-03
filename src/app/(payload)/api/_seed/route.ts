@@ -2,58 +2,6 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { NextResponse } from 'next/server'
 
-const seedProducts = [
-  {
-    name: 'AgenForge',
-    category: 'agents' as const,
-    categoryColor: 'blue' as const,
-    description: 'Agentic AI platform for orchestrating goal-driven autonomous agents.',
-    tagline: 'Build autonomous agents that act',
-    order: 1,
-  },
-  {
-    name: 'OpsIQ',
-    category: 'platform' as const,
-    categoryColor: 'cyan' as const,
-    description: 'Operations intelligence with automated insights and root-cause analysis.',
-    tagline: 'Intelligence for operations',
-    order: 2,
-  },
-  {
-    name: 'OpsTalk',
-    category: 'ai-tools' as const,
-    categoryColor: 'blue' as const,
-    description: 'Secure conversational AI for enterprise knowledge and SOPs.',
-    tagline: 'Secure enterprise conversational AI',
-    order: 3,
-  },
-  {
-    name: 'OrderGenie',
-    category: 'ai-tools' as const,
-    categoryColor: 'purple' as const,
-    description: 'AI-driven ordering and recommendations for retail and QSR.',
-    tagline: 'AI-powered ordering intelligence',
-    order: 4,
-  },
-  {
-    name: 'DataMesh+',
-    category: 'data' as const,
-    categoryColor: 'cyan' as const,
-    description:
-      'Unified data access with governance and fine-grained line-of-business ownership.',
-    tagline: 'Unified data governance',
-    order: 5,
-  },
-  {
-    name: 'IntegrateX',
-    category: 'integration' as const,
-    categoryColor: 'blue' as const,
-    description: 'Prebuilt enterprise connectors and pipelines for rapid integrations.',
-    tagline: 'Enterprise integration made simple',
-    order: 6,
-  },
-]
-
 const seedSolutions = [
   {
     name: 'Customer Service Automation',
@@ -226,7 +174,6 @@ const seedSiteSettings = {
 const seedNavigation = {
   mainNav: [
     { label: 'Home', href: '/' },
-    { label: 'Products', href: '/products' },
     { label: 'Solutions', href: '#solutions' },
   ],
   footerNav: [
@@ -254,16 +201,6 @@ export async function GET() {
 
   const payload = await getPayload({ config })
   const results: string[] = []
-
-  // Seed Products
-  for (const product of seedProducts) {
-    try {
-      await payload.create({ collection: 'products', data: product })
-      results.push(`Created product: ${product.name}`)
-    } catch {
-      results.push(`Product ${product.name} may already exist, skipping...`)
-    }
-  }
 
   // Seed Solutions
   for (const solution of seedSolutions) {

@@ -72,8 +72,10 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
 
-  // Cloudflare D1 Database adapter
-  db: sqliteD1Adapter({ binding: cloudflare.env.D1 }),
+  // Cloudflare D1 Database adapter.
+  // push: false — this project tracks schema via committed migrations (src/migrations),
+  // so disable dev-time schema push, which otherwise collides with the migrated schema.
+  db: sqliteD1Adapter({ binding: cloudflare.env.D1, push: false }),
 
   // R2 Storage for media uploads
   plugins: [

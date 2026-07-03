@@ -3,36 +3,17 @@
 import { useState } from "react";
 import Animate from "./Animate";
 
-const faqs = [
-  {
-    question: "How do you define a 'Sprint'?",
-    answer:
-      "A sprint is a fixed-scope, time-boxed delivery cycle — typically one week. Each sprint delivers a working increment of your product with clear acceptance criteria defined upfront.",
-  },
-  {
-    question: "What tech stack do you support?",
-    answer:
-      "We work across modern tech stacks including React, Next.js, Node.js, Python, AWS, GCP, Azure, and more. Our AI-native engineers adapt to your existing stack and constraints.",
-  },
-  {
-    question: "How does payment work?",
-    answer:
-      "We offer outcome-based pricing tied to sprint deliverables. Payment is structured around fixed weekly outcomes — you pay for shipped results, not hours logged.",
-  },
-  {
-    question: "How is Agentic Labs different from a traditional dev shop or agency?",
-    answer:
-      "We pair proprietary AI agents with senior engineers to design and ship custom agents that reach production — governed, compliant, and instrumented for ROI. A dev shop hands off a demo; we deliver a running system and keep operating it.",
-  },
-  {
-    question: "Can Agentic Labs integrate with existing enterprise systems securely?",
-    answer:
-      "Yes. Agents run in your approved infrastructure — or on compute you control. We keep zero client data retention, full audit trails, and design to your compliance requirements from day one.",
-  },
-];
+export interface HomepageFaq {
+  question: string;
+  answer: string;
+}
 
-export default function FAQ() {
+// FAQs are sourced from the CMS (a subset of /resources/faq) and passed in by
+// the homepage RSC, so the homepage FAQ can never drift from the canonical set.
+export default function FAQ({ faqs }: { faqs: HomepageFaq[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  if (faqs.length === 0) return null;
 
   const toggle = (i: number) => {
     setOpenIndex(openIndex === i ? null : i);
@@ -175,7 +156,7 @@ export default function FAQ() {
                     role="region"
                     style={{
                       overflow: "hidden",
-                      maxHeight: isOpen ? 200 : 0,
+                      maxHeight: isOpen ? 500 : 0,
                       transition:
                         "max-height 0.35s ease, opacity 0.3s ease",
                       opacity: isOpen ? 1 : 0,

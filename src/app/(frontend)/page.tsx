@@ -9,8 +9,18 @@ import Security from '@/components/newsite/Security';
 import CTA from '@/components/newsite/CTA';
 import FAQ from '@/components/newsite/FAQ';
 import Footer from '@/components/newsite/Footer';
+import { getFAQ } from '@/lib/payload';
 
-export default function RootPage() {
+// ISR: the homepage FAQ is pulled from the CMS at build/revalidate, not per request.
+export const revalidate = 3600;
+
+export default async function RootPage() {
+  // Homepage shows a curated subset of the canonical CMS FAQ (first 6 by order).
+  const allFaqs = await getFAQ();
+  const faqs = allFaqs
+    .slice(0, 6)
+    .map((f) => ({ question: f.question, answer: f.answer }));
+
   return (
     <div className="newsite">
       <Navbar />
@@ -22,7 +32,7 @@ export default function RootPage() {
       <Differentiation />
       <Security />
       <CTA />
-      <FAQ />
+      <FAQ faqs={faqs} />
       <Footer />
     </div>
   );

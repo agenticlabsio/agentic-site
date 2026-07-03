@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+payload.db
 
 # debug
 npm-debug.log*
@@ -47,3 +48,30 @@ next-env.d.ts
 
 # Localflare generated files
 .localflare/
+
+# generated build artifacts
+.open-next/
+.wrangler/
+
+# local assistant/editor workspaces
+.agent/
+.agents/
+.claude/
+.continue/
+.cursor/
+.factory/
+.gemini/
+.goose/
+.opencode/
+.pi/
+.superset/
+.windsurf/
+
+# local planning and research drafts
+PLAN*.md
+*-PLAN.md
+*_content.md
+*-content.md
+*research*.md
+SKILLS.md
+skills-lock.json

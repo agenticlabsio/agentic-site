@@ -243,54 +243,40 @@ export interface Solution {
    * URL-friendly identifier (e.g., "intelligent-agents")
    */
   slug: string;
+  category: 'Core' | 'Operations' | 'Platform' | 'Governance';
   /**
-   * Short tagline for the solution (e.g., "60% Faster Resolution")
+   * Short description used on cards and as the SEO fallback (150–200 chars)
    */
-  tagline: string;
-  category:
-    | 'agents'
-    | 'customer-service'
-    | 'document-processing'
-    | 'context-management'
-    | 'agentic-evaluation'
-    | 'ai-governance';
-  categoryColor: 'blue' | 'purple' | 'cyan' | 'teal' | 'amber' | 'red';
+  description: string;
   /**
-   * Short description for cards (150-200 chars)
+   * One-line headline under the title on the detail page
    */
-  shortDescription: string;
+  heroTagline: string;
   /**
-   * Full description for the solution page
+   * Card headline metric, e.g. "60%"
    */
-  fullDescription: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  icon?: (number | null) | Media;
+  cardMetric: string;
   /**
-   * Hero image for the solution detail page
+   * Card metric label, e.g. "faster resolution"
    */
-  heroImage?: (number | null) | Media;
+  cardMetricLabel: string;
   /**
-   * List of challenges this solution addresses
+   * Four short capability bullets shown on the solutions list card
    */
-  challenges?:
+  features?:
     | {
-        challenge: string;
+        text: string;
         id?: string | null;
       }[]
     | null;
+  problem: string;
+  challenges?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  solutionOverview: string;
   capabilities?:
     | {
         title: string;
@@ -302,7 +288,7 @@ export interface Solution {
         id?: string | null;
       }[]
     | null;
-  processSteps?:
+  howItWorks?:
     | {
         step: number;
         title: string;
@@ -311,29 +297,46 @@ export interface Solution {
       }[]
     | null;
   /**
-   * Related integrations for this solution
+   * Systems this solution integrates with
    */
-  integrations?: (number | Integration)[] | null;
+  integrations?:
+    | {
+        name: string;
+        id?: string | null;
+      }[]
+    | null;
+  results?:
+    | {
+        metric: string;
+        label: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  cta: {
+    headline: string;
+    description: string;
+  };
   /**
-   * Related FAQs for this solution
+   * Optional path to a related case study, e.g. /case-studies/customer-service
    */
-  faqs?: (number | Faq)[] | null;
-  caseStudies?: (number | CaseStudy)[] | null;
-  /**
-   * Search engine optimization settings
-   */
+  caseStudyLink?: string | null;
   seo?: {
     /**
-     * Page title for search engines (50-60 chars)
+     * Page title for search engines (50–60 chars)
      */
     metaTitle?: string | null;
     /**
-     * Page description for search engines (150-160 chars)
+     * Page description for search engines (150–160 chars)
      */
     metaDescription?: string | null;
-    /**
-     * Image for social media sharing
-     */
     ogImage?: (number | null) | Media;
     /**
      * Prevent this page from being indexed by search engines
@@ -342,7 +345,7 @@ export interface Solution {
   };
   order?: number | null;
   /**
-   * Feature this solution on the homepage
+   * Feature this solution on the solutions list
    */
   featured?: boolean | null;
   updatedAt: string;
@@ -350,14 +353,21 @@ export interface Solution {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "integrations".
+ * via the `definition` "case-studies".
  */
-export interface Integration {
+export interface CaseStudy {
   id: number;
-  name: string;
-  category: 'sales-crm' | 'communication' | 'productivity' | 'support' | 'bi' | 'storage';
-  logo: number | Media;
-  url?: string | null;
+  title: string;
+  category: string;
+  description: string;
+  metrics?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  image?: (number | null) | Media;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -407,27 +417,6 @@ export interface Faq {
    * Show this FAQ on the homepage
    */
   featured?: boolean | null;
-  order?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "case-studies".
- */
-export interface CaseStudy {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  metrics?:
-    | {
-        value: string;
-        label: string;
-        id?: string | null;
-      }[]
-    | null;
-  image?: (number | null) | Media;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -582,6 +571,20 @@ export interface Industry {
    * Feature this industry on the homepage
    */
   featured?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "integrations".
+ */
+export interface Integration {
+  id: number;
+  name: string;
+  category: 'sales-crm' | 'communication' | 'productivity' | 'support' | 'bi' | 'storage';
+  logo: number | Media;
+  url?: string | null;
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -893,19 +896,25 @@ export interface ProductsSelect<T extends boolean = true> {
 export interface SolutionsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
-  tagline?: T;
   category?: T;
-  categoryColor?: T;
-  shortDescription?: T;
-  fullDescription?: T;
-  icon?: T;
-  heroImage?: T;
+  description?: T;
+  heroTagline?: T;
+  cardMetric?: T;
+  cardMetricLabel?: T;
+  features?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  problem?: T;
   challenges?:
     | T
     | {
-        challenge?: T;
+        text?: T;
         id?: T;
       };
+  solutionOverview?: T;
   capabilities?:
     | T
     | {
@@ -914,7 +923,7 @@ export interface SolutionsSelect<T extends boolean = true> {
         metric?: T;
         id?: T;
       };
-  processSteps?:
+  howItWorks?:
     | T
     | {
         step?: T;
@@ -922,9 +931,34 @@ export interface SolutionsSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
-  integrations?: T;
-  faqs?: T;
-  caseStudies?: T;
+  integrations?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  results?:
+    | T
+    | {
+        metric?: T;
+        label?: T;
+        description?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  cta?:
+    | T
+    | {
+        headline?: T;
+        description?: T;
+      };
+  caseStudyLink?: T;
   seo?:
     | T
     | {

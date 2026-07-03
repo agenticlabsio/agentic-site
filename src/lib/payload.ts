@@ -1,25 +1,13 @@
 import { getPayload } from 'payload'
+import { cache } from 'react'
 import config from '@payload-config'
 
-// Cached payload instance getter
-export async function getPayloadClient() {
-  return getPayload({ config })
-}
+// Request-scoped singleton: React.cache dedupes the (heavy) Payload init so all
+// fetchers in a single render share one instance.
+export const getPayloadClient = cache(async () => getPayload({ config }))
 
-// Products
-export async function getProducts() {
-  const payload = await getPayloadClient()
-  const { docs } = await payload.find({
-    collection: 'products',
-    sort: 'order',
-    limit: 100,
-    depth: 1,
-  })
-  return docs
-}
-
-// Solutions
-export async function getSolutions() {
+// Solutions ---------------------------------------------------------------
+export const getSolutions = cache(async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'solutions',
@@ -28,10 +16,33 @@ export async function getSolutions() {
     depth: 1,
   })
   return docs
-}
+})
 
-// Case Studies
-export async function getCaseStudies() {
+export const getSolutionBySlug = cache(async (slug: string) => {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'solutions',
+    where: { slug: { equals: slug } },
+    limit: 1,
+    depth: 1,
+  })
+  return docs[0] ?? null
+})
+
+export const getAllSolutionSlugs = cache(async () => {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'solutions',
+    limit: 100,
+    depth: 0,
+    pagination: false,
+    select: { slug: true },
+  })
+  return docs.map((doc) => doc.slug)
+})
+
+// Case Studies ------------------------------------------------------------
+export const getCaseStudies = cache(async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'case-studies',
@@ -40,21 +51,10 @@ export async function getCaseStudies() {
     depth: 1,
   })
   return docs
-}
+})
 
-// FAQ
-export async function getFAQ() {
-  const payload = await getPayloadClient()
-  const { docs } = await payload.find({
-    collection: 'faq',
-    sort: 'order',
-    limit: 100,
-  })
-  return docs
-}
-
-// Industries
-export async function getIndustries() {
+// Industries --------------------------------------------------------------
+export const getIndustries = cache(async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'industries',
@@ -63,35 +63,16 @@ export async function getIndustries() {
     depth: 1,
   })
   return docs
-}
+})
 
-// Integrations
-export async function getIntegrations() {
+// FAQ ---------------------------------------------------------------------
+export const getFAQ = cache(async () => {
   const payload = await getPayloadClient()
-  const { docs } = await payload.find({
-    collection: 'integrations',
-    sort: 'order',
-    limit: 100,
-    depth: 1,
-  })
+  const { docs } = await payload.find({ collection: 'faq', sort: 'order', limit: 100 })
   return docs
-}
+})
 
-// Integrations grouped by category
-export async function getIntegrationsByCategory() {
-  const integrations = await getIntegrations()
-  return integrations.reduce(
-    (acc, integration) => {
-      const category = integration.category || 'other'
-      if (!acc[category]) acc[category] = []
-      acc[category].push(integration)
-      return acc
-    },
-    {} as Record<string, typeof integrations>
-  )
-}
-
-// Leads — persist a captured email (public write path for the CTA/footer forms)
+// Leads — public write path for the CTA / footer signup forms.
 export async function createLead(data: {
   email: string
   source?: 'cta-section' | 'footer' | 'hero'
@@ -108,16 +89,4 @@ export async function createLead(data: {
       consent: data.consent ?? false,
     },
   })
-}
-
-// Site Settings
-export async function getSiteSettings() {
-  const payload = await getPayloadClient()
-  return payload.findGlobal({ slug: 'site-settings', depth: 1 })
-}
-
-// Navigation
-export async function getNavigation() {
-  const payload = await getPayloadClient()
-  return payload.findGlobal({ slug: 'navigation' })
 }

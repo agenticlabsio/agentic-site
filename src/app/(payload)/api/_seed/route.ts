@@ -1,53 +1,7 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { NextResponse } from 'next/server'
-
-const seedSolutions = [
-  {
-    name: 'Customer Service Automation',
-    category: 'Service',
-    categoryColor: 'blue' as const,
-    description:
-      'AI-powered support agents that resolve tickets, reduce response time, and improve CSAT.',
-    order: 1,
-  },
-  {
-    name: 'Document Processing',
-    category: 'Automation',
-    categoryColor: 'purple' as const,
-    description:
-      'Intelligent extraction, classification, and workflow automation for business documents.',
-    order: 2,
-  },
-  {
-    name: 'Predictive Maintenance',
-    category: 'Manufacturing',
-    categoryColor: 'amber' as const,
-    description: 'Reduce downtime with AI-driven equipment monitoring and failure prediction.',
-    order: 3,
-  },
-  {
-    name: 'Fraud Detection',
-    category: 'Security',
-    categoryColor: 'red' as const,
-    description: 'Real-time transaction monitoring and anomaly detection to prevent fraud.',
-    order: 4,
-  },
-  {
-    name: 'Supply Chain Optimization',
-    category: 'Logistics',
-    categoryColor: 'teal' as const,
-    description: 'Demand forecasting, inventory optimization, and route planning with AI.',
-    order: 5,
-  },
-  {
-    name: 'Personalized Marketing',
-    category: 'Marketing',
-    categoryColor: 'cyan' as const,
-    description: 'AI-driven customer segmentation and personalized campaign recommendations.',
-    order: 6,
-  },
-]
+import { seedSolutions } from '@/seed'
 
 const seedFAQ = [
   {
@@ -202,17 +156,8 @@ export async function GET() {
   const payload = await getPayload({ config })
   const results: string[] = []
 
-  // Seed Solutions
-  for (const solution of seedSolutions) {
-    try {
-      // Seed categories predate the stricter collection union; cast for this dev-only seed route.
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      await payload.create({ collection: 'solutions', data: solution as any })
-      results.push(`Created solution: ${solution.name}`)
-    } catch {
-      results.push(`Solution ${solution.name} may already exist, skipping...`)
-    }
-  }
+  // Seed Solutions (from the canonical content module)
+  results.push(...(await seedSolutions(payload)))
 
   // Seed FAQ
   for (const faq of seedFAQ) {

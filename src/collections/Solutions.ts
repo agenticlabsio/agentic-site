@@ -1,224 +1,180 @@
 import type { CollectionConfig } from 'payload'
 
+// Solutions collection — mirrors the Solution shape in src/content/types.ts so the
+// seed script, the CMS, and the RSC detail/list pages all share one source of truth.
 export const Solutions: CollectionConfig = {
   slug: 'solutions',
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'slug', 'category', 'order', 'updatedAt'],
-    group: 'Content',
+    group: 'Marketing Content',
   },
   access: {
     read: () => true,
+    create: ({ req }) => Boolean(req.user),
+    update: ({ req }) => Boolean(req.user),
+    delete: ({ req }) => Boolean(req.user),
   },
   fields: [
     {
-      name: 'name',
-      type: 'text',
-      required: true,
-      index: true,
-    },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      admin: {
-        description: 'URL-friendly identifier (e.g., "intelligent-agents")',
-      },
-    },
-    {
-      name: 'tagline',
-      type: 'text',
-      required: true,
-      admin: {
-        description: 'Short tagline for the solution (e.g., "60% Faster Resolution")',
-      },
+      type: 'row',
+      fields: [
+        { name: 'name', type: 'text', required: true, index: true },
+        {
+          name: 'slug',
+          type: 'text',
+          required: true,
+          unique: true,
+          admin: { description: 'URL-friendly identifier (e.g., "intelligent-agents")' },
+        },
+      ],
     },
     {
       name: 'category',
       type: 'select',
       required: true,
       options: [
-        { label: 'Intelligent Agents', value: 'agents' },
-        { label: 'Customer Service', value: 'customer-service' },
-        { label: 'Document Processing', value: 'document-processing' },
-        { label: 'Context Management', value: 'context-management' },
-        { label: 'Agentic Evaluation', value: 'agentic-evaluation' },
-        { label: 'AI Governance', value: 'ai-governance' },
+        { label: 'Core', value: 'Core' },
+        { label: 'Operations', value: 'Operations' },
+        { label: 'Platform', value: 'Platform' },
+        { label: 'Governance', value: 'Governance' },
       ],
     },
     {
-      name: 'categoryColor',
-      type: 'select',
-      required: true,
-      options: [
-        { label: 'Blue', value: 'blue' },
-        { label: 'Purple', value: 'purple' },
-        { label: 'Cyan', value: 'cyan' },
-        { label: 'Teal', value: 'teal' },
-        { label: 'Amber', value: 'amber' },
-        { label: 'Red', value: 'red' },
-      ],
-      defaultValue: 'purple',
-    },
-    {
-      name: 'shortDescription',
+      name: 'description',
       type: 'textarea',
       required: true,
-      admin: {
-        description: 'Short description for cards (150-200 chars)',
-      },
+      admin: { description: 'Short description used on cards and as the SEO fallback (150–200 chars)' },
     },
     {
-      name: 'fullDescription',
-      type: 'richText',
+      name: 'heroTagline',
+      type: 'text',
       required: true,
-      admin: {
-        description: 'Full description for the solution page',
-      },
+      admin: { description: 'One-line headline under the title on the detail page' },
     },
     {
-      name: 'icon',
-      type: 'upload',
-      relationTo: 'media',
+      type: 'row',
+      fields: [
+        {
+          name: 'cardMetric',
+          type: 'text',
+          required: true,
+          admin: { description: 'Card headline metric, e.g. "60%"' },
+        },
+        {
+          name: 'cardMetricLabel',
+          type: 'text',
+          required: true,
+          admin: { description: 'Card metric label, e.g. "faster resolution"' },
+        },
+      ],
     },
     {
-      name: 'heroImage',
-      type: 'upload',
-      relationTo: 'media',
-      admin: {
-        description: 'Hero image for the solution detail page',
-      },
+      name: 'features',
+      type: 'array',
+      label: 'Card Feature Bullets',
+      admin: { description: 'Four short capability bullets shown on the solutions list card' },
+      fields: [{ name: 'text', type: 'text', required: true }],
     },
-    // Problem Section
+    // Problem / challenge section
+    { name: 'problem', type: 'textarea', required: true, label: 'Problem Statement' },
     {
       name: 'challenges',
       type: 'array',
       label: 'Industry Challenges',
-      admin: {
-        description: 'List of challenges this solution addresses',
-      },
-      fields: [
-        {
-          name: 'challenge',
-          type: 'text',
-          required: true,
-        },
-      ],
+      fields: [{ name: 'text', type: 'text', required: true }],
     },
-    // Features/Capabilities
+    { name: 'solutionOverview', type: 'textarea', required: true },
+    // Capabilities
     {
       name: 'capabilities',
       type: 'array',
       label: 'Key Capabilities',
       fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          required: true,
-        },
+        { name: 'title', type: 'text', required: true },
+        { name: 'description', type: 'textarea', required: true },
         {
           name: 'metric',
           type: 'text',
-          admin: {
-            description: 'e.g., "94% accuracy" or "60% faster"',
-          },
+          admin: { description: 'e.g., "94% accuracy" or "60% faster"' },
         },
       ],
     },
-    // How It Works
+    // How it works
     {
-      name: 'processSteps',
+      name: 'howItWorks',
       type: 'array',
       label: 'How It Works',
       fields: [
-        {
-          name: 'step',
-          type: 'number',
-          required: true,
-        },
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          required: true,
-        },
+        { name: 'step', type: 'number', required: true },
+        { name: 'title', type: 'text', required: true },
+        { name: 'description', type: 'textarea', required: true },
       ],
     },
-    // Integrations
     {
       name: 'integrations',
-      type: 'relationship',
-      relationTo: 'integrations',
-      hasMany: true,
-      admin: {
-        description: 'Related integrations for this solution',
-      },
+      type: 'array',
+      label: 'Integrations',
+      admin: { description: 'Systems this solution integrates with' },
+      fields: [{ name: 'name', type: 'text', required: true }],
     },
-    // Related FAQ
+    // Results
+    {
+      name: 'results',
+      type: 'array',
+      label: 'Results We Deliver',
+      fields: [
+        { name: 'metric', type: 'text', required: true },
+        { name: 'label', type: 'text', required: true },
+        { name: 'description', type: 'text', required: true },
+      ],
+    },
+    // FAQ (inline — distinct from the general /resources/faq collection)
     {
       name: 'faqs',
-      type: 'relationship',
-      relationTo: 'faq',
-      hasMany: true,
-      admin: {
-        description: 'Related FAQs for this solution',
-      },
+      type: 'array',
+      label: 'FAQ',
+      fields: [
+        { name: 'question', type: 'text', required: true },
+        { name: 'answer', type: 'textarea', required: true },
+      ],
     },
-    // Related Case Studies
     {
-      name: 'caseStudies',
-      type: 'relationship',
-      relationTo: 'case-studies',
-      hasMany: true,
+      name: 'cta',
+      type: 'group',
+      label: 'Call To Action',
+      fields: [
+        { name: 'headline', type: 'text', required: true },
+        { name: 'description', type: 'textarea', required: true },
+      ],
     },
-    // SEO Fields
+    {
+      name: 'caseStudyLink',
+      type: 'text',
+      admin: { description: 'Optional path to a related case study, e.g. /case-studies/customer-service' },
+    },
+    // SEO
     {
       name: 'seo',
       type: 'group',
       label: 'SEO Settings',
-      admin: {
-        description: 'Search engine optimization settings',
-      },
       fields: [
         {
           name: 'metaTitle',
           type: 'text',
-          admin: {
-            description: 'Page title for search engines (50-60 chars)',
-          },
+          admin: { description: 'Page title for search engines (50–60 chars)' },
         },
         {
           name: 'metaDescription',
           type: 'textarea',
-          admin: {
-            description: 'Page description for search engines (150-160 chars)',
-          },
+          admin: { description: 'Page description for search engines (150–160 chars)' },
         },
-        {
-          name: 'ogImage',
-          type: 'upload',
-          relationTo: 'media',
-          admin: {
-            description: 'Image for social media sharing',
-          },
-        },
+        { name: 'ogImage', type: 'upload', relationTo: 'media' },
         {
           name: 'noIndex',
           type: 'checkbox',
           defaultValue: false,
-          admin: {
-            description: 'Prevent this page from being indexed by search engines',
-          },
+          admin: { description: 'Prevent this page from being indexed by search engines' },
         },
       ],
     },
@@ -232,10 +188,7 @@ export const Solutions: CollectionConfig = {
       name: 'featured',
       type: 'checkbox',
       defaultValue: false,
-      admin: {
-        position: 'sidebar',
-        description: 'Feature this solution on the homepage',
-      },
+      admin: { position: 'sidebar', description: 'Feature this solution on the solutions list' },
     },
   ],
   defaultSort: 'order',

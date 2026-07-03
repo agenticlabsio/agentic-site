@@ -1,4 +1,7 @@
 import { MetadataRoute } from 'next'
+import { solutionSlugs } from '@/content/solutions'
+import { industrySlugs } from '@/content/industries'
+import { caseStudySlugs } from '@/content/case-studies'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Canonical production origin. Hardcoded to match robots.txt, metadataBase, and
@@ -19,37 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/resources/faq', changeFrequency: 'weekly', priority: 0.8 },
   ]
 
-  // Solution detail pages (see solutions/[slug]/seo.ts)
-  const solutions = [
-    'intelligent-agents',
-    'customer-service-automation',
-    'document-processing',
-    'context-management',
-    'agentic-evaluation',
-    'ai-governance-security',
-  ]
-
-  // Industry detail pages (see industries/[slug]/seo.ts)
-  const industries = [
-    'healthcare',
-    'manufacturing',
-    'retail',
-    'energy',
-    'dealers-distributors',
-    'power-electronics-fpga',
-    'autonomy-robotics',
-    'biotech-pharma-logistics',
-  ]
-
-  // Case study detail pages (see case-studies/[slug]/page.tsx generateStaticParams)
-  const caseStudies = [
-    'document-processing',
-    'patient-intake',
-    'inventory-forecasting',
-    'predictive-maintenance',
-    'claims-processing',
-  ]
-
   const entries: MetadataRoute.Sitemap = [
     ...staticPages.map((p) => ({
       url: `${baseUrl}${p.path}`,
@@ -57,19 +29,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: p.changeFrequency,
       priority: p.priority,
     })),
-    ...solutions.map((slug) => ({
+    // Solution detail pages (src/content/solutions.ts)
+    ...solutionSlugs.map((slug) => ({
       url: `${baseUrl}/solutions/${slug}`,
       lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     })),
-    ...industries.map((slug) => ({
+    // Industry detail pages (src/content/industries.ts)
+    ...industrySlugs.map((slug) => ({
       url: `${baseUrl}/industries/${slug}`,
       lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     })),
-    ...caseStudies.map((slug) => ({
+    // Case study detail pages (src/content/case-studies.ts)
+    ...caseStudySlugs.map((slug) => ({
       url: `${baseUrl}/case-studies/${slug}`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,

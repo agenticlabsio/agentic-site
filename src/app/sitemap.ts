@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { solutionSlugs } from '@/content/solutions'
 import { industrySlugs } from '@/content/industries'
 import { caseStudySlugs } from '@/content/case-studies'
+import { blogPostSlugs } from '@/content/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Canonical production origin. Hardcoded to match robots.txt, metadataBase, and
@@ -49,6 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+    })),
+    // Blog post detail pages (src/content/blog.ts)
+    ...blogPostSlugs.map((slug) => ({
+      url: `${baseUrl}/resources/blog/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
     })),
   ]
 

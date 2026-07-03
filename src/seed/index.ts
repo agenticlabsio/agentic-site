@@ -3,6 +3,8 @@ import { solutions } from '@/content/solutions'
 import { industries } from '@/content/industries'
 import { caseStudies } from '@/content/case-studies'
 import { faqCategories } from '@/content/faq'
+import { blogPosts } from '@/content/blog'
+import { blocksToLexical } from './blog-lexical'
 
 // Idempotent seeders: each upserts by slug so the dev seed route can be re-run
 // safely and stays in sync with the canonical content modules in src/content.
@@ -159,6 +161,41 @@ export async function seedFAQ(payload: Payload): Promise<string[]> {
         results.push(`Created FAQ: ${faq.question}`)
       }
       order++
+    }
+  }
+  return results
+}
+
+export async function seedBlogPosts(payload: Payload): Promise<string[]> {
+  const results: string[] = []
+  for (const post of blogPosts) {
+    const data = {
+      title: post.title,
+      slug: post.slug,
+      excerpt: post.excerpt,
+      content: blocksToLexical(post.body),
+      category: post.category,
+      tags: post.tags.map((tag) => ({ tag })),
+      keyTakeaways: post.keyTakeaways.map((takeaway) => ({ takeaway })),
+      status: 'published' as const,
+      publishedAt: post.publishedAt,
+      author: post.author,
+      seo: {
+        metaTitle: `${post.title} | Agentic Labs`,
+        metaDescription: post.excerpt,
+      },
+    }
+    const existing = await payload.find({
+      collection: 'blog-posts',
+      where: { slug: { equals: post.slug } },
+      limit: 1,
+    })
+    if (existing.docs[0]) {
+      await payload.update({ collection: 'blog-posts', id: existing.docs[0].id, data })
+      results.push(`Updated blog post: ${post.title}`)
+    } else {
+      await payload.create({ collection: 'blog-posts', data })
+      results.push(`Created blog post: ${post.title}`)
     }
   }
   return results

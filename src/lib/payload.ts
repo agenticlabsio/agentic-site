@@ -159,6 +159,52 @@ export const getFAQ = cachedByTag('faq', ['faq-all'], async () => {
   return docs
 })
 
+// Blog --------------------------------------------------------------------
+// Only published posts are ever exposed to the public site.
+export const getBlogPosts = cachedByTag('blog-posts', ['blog-posts-published'], async () => {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'blog-posts',
+    where: { status: { equals: 'published' } },
+    sort: '-publishedAt',
+    limit: 100,
+    depth: 1,
+  })
+  return docs
+})
+
+export const getBlogPostBySlug = cachedByTag(
+  'blog-posts',
+  ['blog-post-by-slug'],
+  async (slug: string) => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'blog-posts',
+      where: { slug: { equals: slug }, status: { equals: 'published' } },
+      limit: 1,
+      depth: 1,
+    })
+    return docs[0] ?? null
+  },
+)
+
+export const getAllBlogPostSlugs = cachedByTag(
+  'blog-posts',
+  ['blog-post-slugs'],
+  async () => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'blog-posts',
+      where: { status: { equals: 'published' } },
+      limit: 100,
+      depth: 0,
+      pagination: false,
+      select: { slug: true },
+    })
+    return docs.map((doc) => doc.slug)
+  },
+)
+
 // Leads — public write path for the CTA / footer signup forms.
 // Idempotent by email: re-submitting an address returns the existing lead
 // instead of creating a duplicate, so the public endpoint is safe to retry.

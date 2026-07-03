@@ -56,6 +56,9 @@ const cloudflare =
 export default buildConfig({
   admin: {
     user: Users.slug,
+    components: {
+      beforeDashboard: ['@/components/admin/DashboardWidgets'],
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },

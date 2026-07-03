@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateContentHooks } from './hooks/revalidateContent'
 
 // Industries collection — mirrors the Industry shape in src/content/industries.ts so the
 // seed script, the CMS, and the RSC detail/list pages all share one source of truth.
@@ -15,6 +16,7 @@ export const Industries: CollectionConfig = {
     update: ({ req }) => Boolean(req.user),
     delete: ({ req }) => Boolean(req.user),
   },
+  hooks: revalidateContentHooks('industries'),
   fields: [
     {
       type: 'row',

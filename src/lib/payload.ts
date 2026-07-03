@@ -1,13 +1,26 @@
 import { getPayload } from 'payload'
 import { cache } from 'react'
+import { unstable_cache } from 'next/cache'
 import config from '@payload-config'
 
 // Request-scoped singleton: React.cache dedupes the (heavy) Payload init so all
 // fetchers in a single render share one instance.
 export const getPayloadClient = cache(async () => getPayload({ config }))
 
+// Cross-request persisted cache, tagged per collection so a Payload afterChange/
+// afterDelete hook can call revalidateTag(<collection>) to purge just that data.
+// react's cache() (above) only dedupes within a single render; this is what
+// actually avoids re-querying D1 on every request between revalidations.
+function cachedByTag<Args extends unknown[], Result>(
+  tag: string,
+  keyParts: string[],
+  fn: (...args: Args) => Promise<Result>,
+) {
+  return cache(unstable_cache(fn, keyParts, { tags: [tag], revalidate: 3600 }))
+}
+
 // Solutions ---------------------------------------------------------------
-export const getSolutions = cache(async () => {
+export const getSolutions = cachedByTag('solutions', ['solutions-all'], async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'solutions',
@@ -18,18 +31,22 @@ export const getSolutions = cache(async () => {
   return docs
 })
 
-export const getSolutionBySlug = cache(async (slug: string) => {
-  const payload = await getPayloadClient()
-  const { docs } = await payload.find({
-    collection: 'solutions',
-    where: { slug: { equals: slug } },
-    limit: 1,
-    depth: 1,
-  })
-  return docs[0] ?? null
-})
+export const getSolutionBySlug = cachedByTag(
+  'solutions',
+  ['solution-by-slug'],
+  async (slug: string) => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'solutions',
+      where: { slug: { equals: slug } },
+      limit: 1,
+      depth: 1,
+    })
+    return docs[0] ?? null
+  },
+)
 
-export const getAllSolutionSlugs = cache(async () => {
+export const getAllSolutionSlugs = cachedByTag('solutions', ['solution-slugs'], async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'solutions',
@@ -42,7 +59,7 @@ export const getAllSolutionSlugs = cache(async () => {
 })
 
 // Case Studies ------------------------------------------------------------
-export const getCaseStudies = cache(async () => {
+export const getCaseStudies = cachedByTag('case-studies', ['case-studies-all'], async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'case-studies',
@@ -53,18 +70,22 @@ export const getCaseStudies = cache(async () => {
   return docs
 })
 
-export const getCaseStudyBySlug = cache(async (slug: string) => {
-  const payload = await getPayloadClient()
-  const { docs } = await payload.find({
-    collection: 'case-studies',
-    where: { slug: { equals: slug } },
-    limit: 1,
-    depth: 1,
-  })
-  return docs[0] ?? null
-})
+export const getCaseStudyBySlug = cachedByTag(
+  'case-studies',
+  ['case-study-by-slug'],
+  async (slug: string) => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'case-studies',
+      where: { slug: { equals: slug } },
+      limit: 1,
+      depth: 1,
+    })
+    return docs[0] ?? null
+  },
+)
 
-export const getAllCaseStudySlugs = cache(async () => {
+export const getAllCaseStudySlugs = cachedByTag('case-studies', ['case-study-slugs'], async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'case-studies',
@@ -77,7 +98,7 @@ export const getAllCaseStudySlugs = cache(async () => {
 })
 
 // Industries --------------------------------------------------------------
-export const getIndustries = cache(async () => {
+export const getIndustries = cachedByTag('industries', ['industries-all'], async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'industries',
@@ -88,18 +109,22 @@ export const getIndustries = cache(async () => {
   return docs
 })
 
-export const getIndustryBySlug = cache(async (slug: string) => {
-  const payload = await getPayloadClient()
-  const { docs } = await payload.find({
-    collection: 'industries',
-    where: { slug: { equals: slug } },
-    limit: 1,
-    depth: 1,
-  })
-  return docs[0] ?? null
-})
+export const getIndustryBySlug = cachedByTag(
+  'industries',
+  ['industry-by-slug'],
+  async (slug: string) => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'industries',
+      where: { slug: { equals: slug } },
+      limit: 1,
+      depth: 1,
+    })
+    return docs[0] ?? null
+  },
+)
 
-export const getAllIndustrySlugs = cache(async () => {
+export const getAllIndustrySlugs = cachedByTag('industries', ['industry-slugs'], async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'industries',
@@ -128,7 +153,7 @@ export const getAllMarketingSlugs = cache(
 )
 
 // FAQ ---------------------------------------------------------------------
-export const getFAQ = cache(async () => {
+export const getFAQ = cachedByTag('faq', ['faq-all'], async () => {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({ collection: 'faq', sort: 'order', limit: 100 })
   return docs

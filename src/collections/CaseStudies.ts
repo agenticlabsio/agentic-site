@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateContentHooks } from './hooks/revalidateContent'
 
 // CaseStudies collection — mirrors the CaseStudy shape in src/content/case-studies.ts
 // so the seed script, the CMS, and the RSC detail/list pages share one source of truth.
@@ -15,6 +16,7 @@ export const CaseStudies: CollectionConfig = {
     update: ({ req }) => Boolean(req.user),
     delete: ({ req }) => Boolean(req.user),
   },
+  hooks: revalidateContentHooks('case-studies'),
   fields: [
     {
       type: 'row',

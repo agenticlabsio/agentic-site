@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateContentHooks } from './hooks/revalidateContent'
 
 // FAQ collection — mirrors the FaqCategory shape in src/content/faq.ts so the
 // seed script, the CMS, and the /resources/faq page all share one source of truth.
@@ -16,6 +17,7 @@ export const FAQ: CollectionConfig = {
     update: ({ req }) => Boolean(req.user),
     delete: ({ req }) => Boolean(req.user),
   },
+  hooks: revalidateContentHooks('faq'),
   fields: [
     {
       name: 'question',

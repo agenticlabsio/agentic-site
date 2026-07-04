@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { DEMO_URL } from '@/lib/seo'
 
 const arrowIcon = (
   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,6 +38,8 @@ export function CtaSection({ id, bg, headline, description, buttonLabel, href, e
     </span>
   )
 
+  const demoLinkClass = bg === 'slate' ? 'text-stone-300 hover:text-white' : 'text-white/80 hover:text-white'
+
   return (
     <section id={id} className={`px-4 py-20 sm:px-6 lg:px-8 ${sectionBg}`}>
       <div className="mx-auto max-w-4xl text-center">
@@ -49,6 +52,19 @@ export function CtaSection({ id, bg, headline, description, buttonLabel, href, e
         ) : (
           <Link href={href}>{button}</Link>
         )}
+        <p className="mt-6">
+          <a
+            href={DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`font-body inline-flex items-center gap-1.5 text-base font-medium underline underline-offset-4 transition-colors duration-200 ${demoLinkClass}`}
+          >
+            Or explore the live demo
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </a>
+        </p>
       </div>
     </section>
   )

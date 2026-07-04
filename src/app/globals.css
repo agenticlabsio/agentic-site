@@ -537,8 +537,38 @@ a:hover { color: var(--text-link-hover); }
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-primary:hover .btn-icon-chip,
-.btn-outline:hover .btn-icon-chip {
+.btn-outline:hover .btn-icon-chip,
+.btn-demo:hover .btn-icon-chip {
   transform: translateX(2px);
+}
+
+/* Racing-green CTA reserved for the live demo suite — distinct from the
+   near-black primary ("Book a Call") and the outline button so the demo
+   reads as its own, on-brand action. */
+.btn-demo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--cta-btn-color);
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: background-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+.btn-demo:hover {
+  background: var(--accent-dark);
+  color: #ffffff;
+  box-shadow: 0 8px 28px var(--accent-glow);
+  transform: translateY(-1px);
 }
 
 /* Bordered card (former double-bezel — now a flat hairline card, names kept) */

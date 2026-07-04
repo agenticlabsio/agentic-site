@@ -2,6 +2,7 @@
 
 import EmailCaptureForm from "./EmailCaptureForm";
 import { RocketIcon } from "./icons/AgentIcons";
+import { DEMO_URL } from "@/lib/seo";
 
 export default function CTA() {
   return (
@@ -143,6 +144,23 @@ export default function CTA() {
               <span className="btn-icon-chip">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-demo"
+              style={{
+                padding: "16px 32px",
+                fontSize: "1rem",
+              }}
+            >
+              <span>Explore Live Demo</span>
+              <span className="btn-icon-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </span>
             </a>

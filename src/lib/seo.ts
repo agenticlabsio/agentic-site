@@ -6,6 +6,10 @@ import type { Metadata } from 'next'
 // localhost at build time in this project's Cloudflare Workers deploy.
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://agenticlabs.io'
 
+// Hosted interactive demo suite (Ledger). Linked as a CTA from the header,
+// hero, and closing CTA bands. Defined once so the URL isn't scattered.
+export const DEMO_URL = 'https://demo.agenticlabs.io'
+
 // Builds per-page metadata with a self-referential canonical + OpenGraph/Twitter.
 // `title` is passed through the root layout's "%s | Agentic Labs" template.
 export function pageMetadata(path: string, title: string, description: string): Metadata {

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { DEMO_URL } from '@/lib/seo'
 
 const metrics = [
   { value: 'End-to-End', label: 'Department Automation' },
@@ -178,6 +179,32 @@ export default function Hero() {
                   strokeLinejoin="round"
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-demo"
+              style={{
+                padding: '14px 28px',
+                fontSize: '0.95rem',
+              }}
+            >
+              <span>Explore Live Demo</span>
+              <span className="btn-icon-chip">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </span>
             </a>

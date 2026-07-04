@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { DEMO_URL } from '@/lib/seo'
 
 export interface SiteNavItem {
   label: string
@@ -87,6 +88,31 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
           </div>
 
           <div className="nav-desktop" style={{ flexShrink: 0, alignItems: 'center', gap: 12 }}>
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-demo"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                background: 'var(--accent)',
+                color: 'var(--cta-btn-color)',
+                padding: '10px 18px',
+                borderRadius: 8,
+                fontSize: '0.88rem',
+                fontWeight: 500,
+                textDecoration: 'none',
+                transition: 'all 0.2s ease',
+                cursor: 'pointer',
+              }}
+            >
+              <span>Live Demo</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </a>
             <Link
               href={cta.href}
               className="nav-cta"
@@ -204,11 +230,38 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
                 {item.label}
               </Link>
             ))}
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                marginTop: 20,
+                width: '100%',
+                textAlign: 'center',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                background: 'var(--accent)',
+                color: 'var(--cta-btn-color)',
+                padding: '14px 24px',
+                borderRadius: 8,
+                fontSize: '0.9rem',
+                fontWeight: 500,
+                textDecoration: 'none',
+              }}
+            >
+              <span>Live Demo</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </a>
             <Link
               href={cta.href}
               onClick={() => setMobileOpen(false)}
               style={{
-                marginTop: 20,
+                marginTop: 12,
                 width: '100%',
                 textAlign: 'center',
                 display: 'inline-flex',
@@ -246,6 +299,12 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
 
         .nav-cta:hover, .nav-cta:focus-visible {
           box-shadow: 0 0 0 1px var(--border-accent), 0 8px 28px var(--accent-glow);
+          transform: translateY(-1px);
+        }
+
+        .nav-demo:hover, .nav-demo:focus-visible {
+          background: var(--accent-dark);
+          box-shadow: 0 8px 28px var(--accent-glow);
           transform: translateY(-1px);
         }
 

@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* AGENTIC LABS — "LEDGER" demo suite (light-only)
+ * Ivory paper, near-black ink, racing-green accent.
+ * Hairline rules and whitespace carry the page: no gradients, no glows. */
+
+:root {
+  --paper: #f7f7f3;
+  --elevated: #ffffff;
+  --ink: #161613;
+  --ink-soft: #34342e;
+  --secondary: #4c4c44;
+  --muted-fg: #6e6e63;
+  --faint: #9a9a8d;
+  --hairline: rgba(22, 22, 19, 0.12);
+  --hairline-soft: rgba(22, 22, 19, 0.08);
+  --accent: #1e5f45;
+  --accent-dark: #174d38;
+  --accent-light: #337a5b;
+  --accent-wash: #eef4f0;
+  --accent-border: rgba(30, 95, 69, 0.35);
+
+  /* Legacy token names used by the /products pages — remapped to Ledger */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --primary: var(--accent);
+  --primary-dark: var(--accent-dark);
+  --muted: #efefe9;
+  --muted-foreground: var(--muted-fg);
+  --border: var(--hairline);
+  --card: var(--elevated);
+  --card-foreground: var(--ink);
+
+  --display-stack: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --body-stack: var(--font-plex-sans), system-ui, -apple-system, sans-serif;
+  --mono-stack: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-elevated: var(--elevated);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-secondary: var(--secondary);
+  --color-faint: var(--faint);
+  --color-hairline: var(--hairline);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-light: var(--accent-light);
+  --color-accent-wash: var(--accent-wash);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --font-display: var(--display-stack);
+  --font-sans: var(--body-stack);
+  --font-mono: var(--mono-stack);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+}
+
+body {
+  background: var(--paper);
+  color: var(--secondary);
+  font-family: var(--body-stack), system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display-stack);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Mono eyebrow label — the dossier's recurring device */
+.eyebrow {
+  font-family: var(--mono-stack);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+}
+
+.eyebrow-muted {
+  font-family: var(--mono-stack);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted-fg);
+}
+
+/* Ledger figures: digits that line up */
+.figures {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hairline-bordered card */
+.dossier-card {
+  background: var(--elevated);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  transition: border-color 200ms ease-out;
+}
+.dossier-card:hover {
+  border-color: var(--accent-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

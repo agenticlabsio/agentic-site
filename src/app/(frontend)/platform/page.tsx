@@ -53,13 +53,13 @@ const arrowIcon = (
 export default function PlatformPage() {
   return (
     <main className="pt-16">
-        <section className="bg-white/[0.02] px-4 pt-20 pb-16 sm:px-6 lg:px-8">
+        <section className="bg-stone-50 px-4 pt-20 pb-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <p className="text-brand-400 mb-4 text-sm font-semibold tracking-wide uppercase">Platform</p>
-            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl lg:text-6xl">
-              Production infrastructure for <span className="text-brand-400">agents that act.</span>
+            <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">Platform</p>
+            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
+              Production infrastructure for <span className="text-brand-600">agents that act.</span>
             </h1>
-            <p className="font-body mb-8 max-w-2xl text-xl text-stone-300">
+            <p className="font-body mb-8 max-w-2xl text-xl text-stone-600">
               The governance, integration, and control layer behind every agent we ship — running in
               your VPC or on your own hardware, plugged into the systems you already run. No migration.
             </p>
@@ -77,32 +77,32 @@ export default function PlatformPage() {
 
         <section className="px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display mb-4 text-3xl font-bold text-stone-50">Platform Capabilities</h2>
-            <p className="font-body mb-12 max-w-2xl text-lg text-stone-300">
+            <h2 className="font-display mb-4 text-3xl font-bold text-stone-900">Platform Capabilities</h2>
+            <p className="font-body mb-12 max-w-2xl text-lg text-stone-600">
               The building blocks behind agents that reach production and stay governed.
             </p>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {capabilities.map((cap, index) => (
-                <div key={index} className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+                <div key={index} className="rounded-xl border border-stone-200 bg-stone-50 p-6">
                   <div className="mb-4 text-3xl">{cap.icon}</div>
-                  <h3 className="font-display mb-2 text-lg font-bold text-stone-50">{cap.title}</h3>
-                  <p className="font-body text-stone-300">{cap.description}</p>
+                  <h3 className="font-display mb-2 text-lg font-bold text-stone-900">{cap.title}</h3>
+                  <p className="font-body text-stone-600">{cap.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-white/[0.02] px-4 py-20 sm:px-6 lg:px-8">
+        <section className="bg-stone-50 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <div className="mb-8 flex items-center justify-between">
               <div>
-                <h2 className="font-display mb-2 text-3xl font-bold text-stone-50">Integrations</h2>
-                <p className="font-body text-lg text-stone-300">Native connectors to your systems of record</p>
+                <h2 className="font-display mb-2 text-3xl font-bold text-stone-900">Integrations</h2>
+                <p className="font-body text-lg text-stone-600">Native connectors to your systems of record</p>
               </div>
               <Link
                 href="/platform/integrations"
-                className="text-brand-400 font-display hidden items-center gap-2 font-semibold md:inline-flex"
+                className="text-brand-600 font-display hidden items-center gap-2 font-semibold md:inline-flex"
               >
                 View all integrations
                 {arrowIcon}
@@ -113,18 +113,18 @@ export default function PlatformPage() {
                 <Link
                   key={index}
                   href={integration.href}
-                  className="hover:border-brand-400/50 group rounded-xl border border-white/10 bg-white/[0.03] p-6 text-center transition-all hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
+                  className="hover:border-brand-500/50 group rounded-xl border border-stone-200 bg-stone-50 p-6 text-center transition-all hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
                 >
-                  <div className="font-display group-hover:text-brand-300 mb-1 text-xl font-bold text-stone-50 transition-colors">
+                  <div className="font-display group-hover:text-brand-600 mb-1 text-xl font-bold text-stone-900 transition-colors">
                     {integration.name}
                   </div>
-                  <div className="font-body text-sm text-stone-400">{integration.category}</div>
+                  <div className="font-body text-sm text-stone-500">{integration.category}</div>
                 </Link>
               ))}
             </div>
             <Link
               href="/platform/integrations"
-              className="text-brand-400 font-display mt-6 inline-flex items-center gap-2 font-semibold md:hidden"
+              className="text-brand-600 font-display mt-6 inline-flex items-center gap-2 font-semibold md:hidden"
             >
               View all integrations
               {arrowIcon}
@@ -134,18 +134,18 @@ export default function PlatformPage() {
 
         <section className="px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display mb-4 text-3xl font-bold text-stone-50">How It Works</h2>
-            <p className="font-body mb-12 max-w-2xl text-lg text-stone-300">
+            <h2 className="font-display mb-4 text-3xl font-bold text-stone-900">How It Works</h2>
+            <p className="font-body mb-12 max-w-2xl text-lg text-stone-600">
               AI agents layer on top of your existing infrastructure
             </p>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+            <div className="rounded-2xl border border-stone-200 bg-stone-50 p-8">
               <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                 <div className="text-center">
                   <div className="bg-brand-500/10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
                     <span className="text-2xl">📊</span>
                   </div>
-                  <h3 className="font-display mb-2 text-lg font-bold text-stone-50">Your Data</h3>
-                  <p className="font-body text-sm text-stone-300">
+                  <h3 className="font-display mb-2 text-lg font-bold text-stone-900">Your Data</h3>
+                  <p className="font-body text-sm text-stone-600">
                     Salesforce, Workday, Databricks, SAP, and your existing systems
                   </p>
                 </div>
@@ -153,8 +153,8 @@ export default function PlatformPage() {
                   <div className="bg-brand-500/10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
                     <span className="text-2xl">🔌</span>
                   </div>
-                  <h3 className="font-display mb-2 text-lg font-bold text-stone-50">MCP Layer</h3>
-                  <p className="font-body text-sm text-stone-300">
+                  <h3 className="font-display mb-2 text-lg font-bold text-stone-900">MCP Layer</h3>
+                  <p className="font-body text-sm text-stone-600">
                     Model Context Protocol provides secure, standardized access
                   </p>
                 </div>
@@ -162,8 +162,8 @@ export default function PlatformPage() {
                   <div className="bg-brand-500/10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
                     <span className="text-2xl">🤖</span>
                   </div>
-                  <h3 className="font-display mb-2 text-lg font-bold text-stone-50">AI Agents</h3>
-                  <p className="font-body text-sm text-stone-300">
+                  <h3 className="font-display mb-2 text-lg font-bold text-stone-900">AI Agents</h3>
+                  <p className="font-body text-sm text-stone-600">
                     Autonomous agents with bounded autonomy and audit trails
                   </p>
                 </div>

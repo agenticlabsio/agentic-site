@@ -52,11 +52,11 @@ export default function ResourcesPage() {
     <main className="pt-16">
         <section className="px-4 pt-20 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <p className="text-brand-400 mb-4 text-sm font-semibold tracking-wide uppercase">Resources</p>
-            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl lg:text-6xl">
-              Straight talk on <span className="text-brand-400">agentic AI.</span>
+            <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">Resources</p>
+            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
+              Straight talk on <span className="text-brand-600">agentic AI.</span>
             </h1>
-            <p className="font-body max-w-2xl text-xl text-stone-300">
+            <p className="font-body max-w-2xl text-xl text-stone-600">
               Deep dives on building agents that ship, cutting SaaS sprawl, and proving ROI &mdash;
               written for small and mid-market operators, not analysts.
             </p>
@@ -65,22 +65,22 @@ export default function ResourcesPage() {
 
         <section className="px-4 pb-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div className="flex flex-wrap gap-4 border-b border-white/10 pb-4">
+            <div className="flex flex-wrap gap-4 border-b border-stone-200 pb-4">
               <Link
                 href="/resources"
-                className="text-brand-400 border-brand-400 font-display border-b-2 pb-2 text-sm font-semibold"
+                className="text-brand-600 border-brand-600 font-display border-b-2 pb-2 text-sm font-semibold"
               >
                 All Resources
               </Link>
               <Link
                 href="/resources/blog"
-                className="font-display pb-2 text-sm font-medium text-stone-300 hover:text-stone-50"
+                className="font-display pb-2 text-sm font-medium text-stone-600 hover:text-stone-900"
               >
                 Blog
               </Link>
               <Link
                 href="/resources/faq"
-                className="font-display pb-2 text-sm font-medium text-stone-300 hover:text-stone-50"
+                className="font-display pb-2 text-sm font-medium text-stone-600 hover:text-stone-900"
               >
                 FAQ
               </Link>
@@ -90,27 +90,27 @@ export default function ResourcesPage() {
 
         <section className="px-4 pb-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display mb-8 text-2xl font-bold text-stone-50">Featured Resources</h2>
+            <h2 className="font-display mb-8 text-2xl font-bold text-stone-900">Featured Resources</h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {featuredResources.map((resource, index) => (
                 <Link
                   key={index}
                   href={resource.href}
-                  className="hover:border-brand-400/50 group block rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
+                  className="hover:border-brand-500/50 group block rounded-2xl border border-stone-200 bg-stone-50 p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
                 >
                   <div className="mb-4 flex items-center gap-2">
-                    <span className="bg-brand-500/10 text-brand-300 font-display rounded px-2 py-1 text-xs font-medium">
+                    <span className="bg-brand-500/10 text-brand-700 font-display rounded px-2 py-1 text-xs font-medium">
                       {resource.type}
                     </span>
-                    <span className="font-display rounded bg-white/5 px-2 py-1 text-xs font-medium text-stone-300">
+                    <span className="font-display rounded bg-stone-100 px-2 py-1 text-xs font-medium text-stone-600">
                       {resource.category}
                     </span>
                   </div>
-                  <h3 className="font-display group-hover:text-brand-300 mb-2 text-lg font-bold text-stone-50 transition-colors">
+                  <h3 className="font-display group-hover:text-brand-600 mb-2 text-lg font-bold text-stone-900 transition-colors">
                     {resource.title}
                   </h3>
-                  <p className="font-body mb-4 text-sm text-stone-300">{resource.description}</p>
-                  <div className="text-brand-400 font-display flex items-center text-sm font-semibold">
+                  <p className="font-body mb-4 text-sm text-stone-600">{resource.description}</p>
+                  <div className="text-brand-600 font-display flex items-center text-sm font-semibold">
                     Read more
                     {arrowIcon}
                   </div>
@@ -120,18 +120,18 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section className="bg-white/[0.02] px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display mb-8 text-2xl font-bold text-stone-50">Browse by Category</h2>
+            <h2 className="font-display mb-8 text-2xl font-bold text-stone-900">Browse by Category</h2>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {categories.map((category, index) => (
                 <Link
                   key={index}
                   href={`/resources/blog?category=${category.name.toLowerCase().replace(' ', '-')}`}
-                  className="hover:border-brand-400/50 rounded-xl border border-white/10 bg-white/[0.03] p-6 text-center transition-all hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
+                  className="hover:border-brand-500/50 rounded-xl border border-stone-200 bg-white p-6 text-center transition-all hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
                 >
-                  <div className="text-brand-400 font-display mb-1 text-2xl font-bold">{category.count}</div>
-                  <div className="font-display font-medium text-stone-300">{category.name}</div>
+                  <div className="text-brand-600 font-display mb-1 text-2xl font-bold">{category.count}</div>
+                  <div className="font-display font-medium text-stone-600">{category.name}</div>
                 </Link>
               ))}
             </div>

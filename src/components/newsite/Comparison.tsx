@@ -1,6 +1,5 @@
 "use client";
 
-import Animate from "./Animate";
 
 const traditionalApproach = [
   { label: "18+ month timelines", negative: true },
@@ -42,7 +41,6 @@ export default function Comparison() {
       />
 
       <div style={{ width: "100%", maxWidth: 1140, margin: "0 auto", position: "relative", zIndex: 1 }}>
-        <Animate type="fadeUp">
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <span
               className="font-display"
@@ -72,7 +70,6 @@ export default function Comparison() {
               </span>
             </h2>
           </div>
-        </Animate>
 
         <div
           className="comparison-grid"
@@ -83,7 +80,6 @@ export default function Comparison() {
           }}
         >
           {/* Traditional */}
-          <Animate type="fadeLeft" delay={0.1}>
             <div
               style={{
                 padding: 32,
@@ -165,10 +161,8 @@ export default function Comparison() {
                 </p>
               </div>
             </div>
-          </Animate>
 
           {/* Agentic Labs */}
-          <Animate type="fadeRight" delay={0.2}>
             <div
               style={{
                 padding: 32,
@@ -265,12 +259,11 @@ export default function Comparison() {
                   }}
                 >
                   <p style={{ fontSize: "0.85rem", color: "var(--accent-highlight)", fontWeight: 500 }}>
-                    100% of our agents reach production with measurable ROI
+                    Every agent we ship reaches production with measurable ROI
                   </p>
                 </div>
               </div>
             </div>
-          </Animate>
         </div>
       </div>
 

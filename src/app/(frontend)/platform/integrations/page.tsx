@@ -69,7 +69,7 @@ const integrations: IntegrationData[] = [
 ]
 
 const checkIcon = (
-  <svg className="text-brand-400 mt-0.5 h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="text-brand-600 mt-0.5 h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
   </svg>
 )
@@ -88,26 +88,26 @@ export default function IntegrationsPage() {
             <nav className="mb-6">
               <ol className="flex items-center gap-2 text-sm">
                 <li>
-                  <Link href="/" className="text-stone-400 hover:text-stone-300">
+                  <Link href="/" className="text-stone-500 hover:text-stone-600">
                     Home
                   </Link>
                 </li>
-                <li className="text-stone-400">/</li>
+                <li className="text-stone-500">/</li>
                 <li>
-                  <Link href="/platform" className="text-stone-400 hover:text-stone-300">
+                  <Link href="/platform" className="text-stone-500 hover:text-stone-600">
                     Platform
                   </Link>
                 </li>
-                <li className="text-stone-400">/</li>
-                <li className="font-medium text-stone-50">Integrations</li>
+                <li className="text-stone-500">/</li>
+                <li className="font-medium text-stone-900">Integrations</li>
               </ol>
             </nav>
 
-            <p className="text-brand-400 mb-4 text-sm font-semibold tracking-wide uppercase">Integrations</p>
-            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl">
-              Plug into what you <span className="text-brand-400">already run.</span>
+            <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">Integrations</p>
+            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl">
+              Plug into what you <span className="text-brand-600">already run.</span>
             </h1>
-            <p className="font-body max-w-2xl text-xl text-stone-300">
+            <p className="font-body max-w-2xl text-xl text-stone-600">
               Native connectors to your systems of record. Zero-copy access &mdash; your data stays where it
               lives. No migration.
             </p>
@@ -116,11 +116,11 @@ export default function IntegrationsPage() {
 
         <IntegrationsFilterGrid integrations={integrations} />
 
-        <section className="bg-white/[0.02] px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center">
-              <h2 className="font-display mb-4 text-2xl font-bold text-stone-50">Need a custom integration?</h2>
-              <p className="font-body mx-auto mb-6 max-w-2xl text-stone-300">
+            <div className="rounded-2xl border border-stone-200 bg-stone-50 p-8 text-center">
+              <h2 className="font-display mb-4 text-2xl font-bold text-stone-900">Need a custom integration?</h2>
+              <p className="font-body mx-auto mb-6 max-w-2xl text-stone-600">
                 We build custom connectors for proprietary systems as part of our implementation.
                 If it has an API, we can integrate it.
               </p>
@@ -135,10 +135,10 @@ export default function IntegrationsPage() {
         <section className="px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="font-display mb-4 text-3xl font-bold text-stone-50">
+              <h2 className="font-display mb-4 text-3xl font-bold text-stone-900">
                 Powered by Model Context Protocol
               </h2>
-              <p className="font-body mb-6 text-lg text-stone-300">
+              <p className="font-body mb-6 text-lg text-stone-600">
                 MCP is the USB-C of AI connectivity. Instead of building custom integrations for each data source,
                 we implement a universal protocol that provides secure, standardized access.
               </p>
@@ -149,18 +149,18 @@ export default function IntegrationsPage() {
                   'Secure, audited data access',
                   'No lock-in — swap models and tools without a rebuild',
                 ].map((item, i) => (
-                  <li key={i} className="font-body flex items-start gap-3 text-stone-300">
+                  <li key={i} className="font-body flex items-start gap-3 text-stone-600">
                     {checkIcon}
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+            <div className="rounded-2xl border border-stone-200 bg-stone-50 p-8">
               <div className="text-center">
                 <div className="mb-4 text-6xl">🔌</div>
-                <h3 className="font-display mb-2 text-xl font-bold text-stone-50">MCP-Ready</h3>
-                <p className="font-body text-stone-300">
+                <h3 className="font-display mb-2 text-xl font-bold text-stone-900">MCP-Ready</h3>
+                <p className="font-body text-stone-600">
                   All our integrations are built on MCP, ensuring compatibility with the emerging standard
                   for AI-to-data connectivity.
                 </p>

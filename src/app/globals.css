@@ -1,17 +1,15 @@
 @import "tailwindcss";
 
 /*
- * AGENTIC LABS DESIGN SYSTEM — "SAPPHIRE NOCTURNE"
+ * AGENTIC LABS DESIGN SYSTEM — "SAPPHIRE" (light-only)
  *
- * Dark-first, premium-technical.
- * - Deep ink-sapphire canvas, luminous electric-blue → violet accents
- * - Fine grain + radial glow for atmosphere
+ * Light, premium-technical.
+ * - Cool sapphire-tinted white canvas, electric-blue → violet accents
  * - Display: Sora (geometric grotesque) · Body: IBM Plex Sans · Mono: IBM Plex Mono
  *
  * One token system drives everything:
  *   - Interior pages read the light-sapphire `:root` tokens (Tailwind utilities).
- *   - The homepage (`.newsite`) is dark by default and flips to light via
- *     `[data-theme="light"] .newsite` (the theme toggle).
+ *   - The homepage (`.newsite`) uses its own light token set for its bespoke components.
  */
 
 /* ═══════════════════════════════════════════════
@@ -321,64 +319,9 @@ a:hover { color: var(--text-link-hover); }
 .section-dark p { color: var(--color-gray-300); }
 
 /* ═══════════════════════════════════════════════
-   HOMEPAGE — "SAPPHIRE NOCTURNE" (dark-first, scoped to .newsite)
+   HOMEPAGE — light-only, scoped to .newsite
    ═══════════════════════════════════════════════ */
 .newsite {
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #0b1120;
-  --bg-elevated: #111a2e;
-  --accent: #5b8dff;
-  --accent-light: #7da5ff;
-  --accent-dark: #3b6ae0;
-  --accent-glow: rgba(91,141,255,0.28);
-  --accent-highlight: #7da5ff;
-  --accent-secondary: #a855f7;
-  --accent-secondary-light: #c4b5fd;
-  --bg-card: rgba(255,255,255,0.03);
-  --bg-card-hover: rgba(255,255,255,0.06);
-  --text-primary: #eef1f8;
-  --text-secondary: #9aa3b8;
-  --text-muted: #5c6478;
-  --border: rgba(124,152,255,0.12);
-  --border-accent: rgba(124,152,255,0.34);
-  --font-display: var(--font-sora), sans-serif;
-  --font-body: var(--font-plex-sans), sans-serif;
-  --hero-bg-gradient:
-    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(91,141,255,0.20) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 45% at 85% 25%, rgba(168,85,247,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 45% 40% at 12% 55%, rgba(59,106,224,0.10) 0%, transparent 55%),
-    linear-gradient(180deg, #0a0e1a 0%, #090c16 100%);
-  --grid-line: rgba(124,152,255,0.08);
-  --nav-bg: rgba(10,14,26,0.72);
-  --nav-border: rgba(124,152,255,0.10);
-  --partner-text: rgba(238,241,248,0.32);
-  --cta-btn-bg: #eef1f8;
-  --cta-btn-color: #0a0e1a;
-  --cta-btn-arrow: #3b6ae0;
-  --card-blue-bg: rgba(124,152,255,0.05);
-  --card-blue-border: rgba(124,152,255,0.14);
-  --card-blue-bg-hover: rgba(124,152,255,0.09);
-  --card-blue-border-hover: rgba(124,152,255,0.34);
-  --tag-bg: rgba(124,152,255,0.08);
-  --tag-border: rgba(124,152,255,0.22);
-  --faq-bg: rgba(124,152,255,0.03);
-  --faq-border: rgba(124,152,255,0.12);
-  --faq-bg-open: rgba(124,152,255,0.07);
-  --faq-border-open: rgba(124,152,255,0.30);
-  --footer-bg: #090c16;
-  --grain-opacity: 0.05;
-  --pastel-white: #0a0e1a;
-  --pastel-grey: #0b1120;
-  --pastel-green: #0b1424;
-
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  min-height: 100vh;
-}
-
-/* Light variant of the homepage — opt-in via the theme toggle */
-html[data-theme="light"] .newsite {
   --bg-primary: #f6f8fd;
   --bg-secondary: #eef2fb;
   --bg-elevated: #ffffff;
@@ -396,6 +339,8 @@ html[data-theme="light"] .newsite {
   --text-muted: #6b7488;
   --border: rgba(59,106,224,0.14);
   --border-accent: rgba(59,106,224,0.34);
+  --font-display: var(--font-sora), sans-serif;
+  --font-body: var(--font-plex-sans), sans-serif;
   --hero-bg-gradient:
     radial-gradient(ellipse 90% 55% at 50% -5%, rgba(91,141,255,0.12) 0%, transparent 60%),
     radial-gradient(ellipse 55% 45% at 85% 25%, rgba(168,85,247,0.07) 0%, transparent 55%),
@@ -422,11 +367,13 @@ html[data-theme="light"] .newsite {
   --pastel-white: #f6f8fd;
   --pastel-grey: #eef2fb;
   --pastel-green: #f0f4fd;
+
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
   color-scheme: light;
 }
-
-/* Dark is the default color-scheme for the homepage */
-.newsite { color-scheme: dark; }
 
 .newsite h1, .newsite h2, .newsite h3, .newsite h4, .newsite h5, .newsite h6 { font-family: var(--font-display); }
 .newsite .font-display { font-family: var(--font-display); }
@@ -493,17 +440,6 @@ html[data-theme="light"] .newsite {
   transform: translateY(-2px);
   box-shadow: 0 0 0 1px rgba(124,152,255,0.35), 0 12px 40px -8px var(--accent-glow);
 }
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  transition: left 0.6s ease;
-}
-.btn-primary:hover::after { left: 120%; }
 
 .btn-outline {
   display: inline-flex;
@@ -526,6 +462,44 @@ html[data-theme="light"] .newsite {
   color: var(--accent-light);
   transform: translateY(-2px);
   box-shadow: 0 0 24px -4px var(--accent-glow);
+}
+
+/* Trailing icon nested in its own chip, flush with the button's inner padding */
+.btn-icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 14%, transparent);
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary:hover .btn-icon-chip,
+.btn-outline:hover .btn-icon-chip {
+  transform: translateX(2px);
+}
+
+/* Double-bezel card: soft-tinted outer shell + white inner core, concentric radii */
+.card-bezel {
+  padding: 6px;
+  border-radius: 22px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.card-bezel:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 16px 48px -12px var(--accent-glow);
+  transform: translateY(-4px);
+}
+.card-bezel-inner {
+  border-radius: 16px;
+  background: var(--bg-elevated);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+  height: 100%;
 }
 
 .card-hover {
@@ -552,9 +526,7 @@ html[data-theme="light"] .newsite {
   border-radius: 2px;
 }
 .card-hover:hover::after { width: 60%; }
-.card-hover:hover .icon-box { animation: iconBounce 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 
-.section-divider { height: 1px; background: var(--border); }
 .stat-divider {
   width: 1px;
   background: linear-gradient(to bottom, transparent, var(--border), transparent);
@@ -563,130 +535,6 @@ html[data-theme="light"] .newsite {
 .dot-grid {
   background-image: radial-gradient(circle, var(--grid-line) 1px, transparent 1px);
   background-size: 32px 32px;
-}
-
-.text-gradient-animated {
-  background: linear-gradient(135deg, var(--accent-secondary-light), var(--accent-light), var(--accent), var(--accent-secondary-light));
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientTextShift 6s ease-in-out infinite;
-}
-
-.hero-border-line { border-color: var(--grid-line); }
-
-.hero-light-speed {
-  font-family: var(--font-display);
-  font-style: normal;
-  color: var(--accent-highlight);
-  white-space: nowrap;
-  position: relative;
-  z-index: 0;
-}
-.hero-light-speed::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0.04em;
-  left: 0.04em;
-  z-index: -1;
-  background: linear-gradient(45deg, transparent 45%, var(--accent-secondary) 45%, var(--accent-secondary) 55%, transparent 0);
-  background-size: 0.06em 0.06em;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: lineShadow 3s ease-in-out infinite;
-}
-
-/* Marquee (redesign TrustBar) */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.marquee-track {
-  display: flex;
-  animation: marquee 35s linear infinite;
-  width: max-content;
-}
-.marquee-track:hover { animation-play-state: paused; }
-
-/* Redesign animation keyframes + helpers */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero-animate { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-
-@keyframes heroTextReveal {
-  from { opacity: 0; transform: translateY(50px); filter: blur(6px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-.hero-text-reveal { animation: heroTextReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
-
-@keyframes heroBadgeIn {
-  0% { opacity: 0; transform: translateY(16px) scale(0.9); }
-  60% { transform: translateY(-3px) scale(1.02); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-.hero-badge-in { animation: heroBadgeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
-
-@keyframes heroCtaIn {
-  from { opacity: 0; transform: translateY(20px) scale(0.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-.hero-cta-in { animation: heroCtaIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-
-@keyframes statCountIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.stat-count-in { animation: statCountIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
-
-@keyframes gradientTextShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes revealUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes revealLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes revealRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes revealScale {
-  from { opacity: 0; transform: scale(0.92); }
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes revealBlur {
-  from { opacity: 0; filter: blur(8px); transform: translateY(20px); }
-  to { opacity: 1; filter: blur(0); transform: translateY(0); }
-}
-@keyframes pulseRing {
-  0% { transform: scale(1); opacity: 0.5; }
-  100% { transform: scale(1.8); opacity: 0; }
-}
-@keyframes iconBounce {
-  0%, 100% { transform: translateY(0) scale(1); }
-  40% { transform: translateY(-6px) scale(1.05); }
-}
-@keyframes laser {
-  0% { left: -20%; }
-  100% { left: 120%; }
-}
-@keyframes lineShadow {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.55; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.04); }
 }
 
 /* ═══════════════════════════════════════════════

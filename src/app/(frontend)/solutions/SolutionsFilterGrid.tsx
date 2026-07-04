@@ -18,7 +18,7 @@ export interface SolutionCardData {
 const categories = ['All', 'Core', 'Operations', 'Platform', 'Governance']
 
 const checkIcon = (
-  <svg className="text-brand-400 mt-0.5 h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="text-brand-600 mt-0.5 h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
   </svg>
 )
@@ -52,7 +52,7 @@ export function SolutionsFilterGrid({ solutions }: { solutions: SolutionCardData
                 className={`rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   activeCategory === category
                     ? 'bg-brand-600 shadow-brand-600/25 text-white shadow-lg'
-                    : 'bg-white/5 text-stone-300 hover:bg-white/10 hover:text-stone-50'
+                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-900'
                 }`}
               >
                 {category}
@@ -65,22 +65,22 @@ export function SolutionsFilterGrid({ solutions }: { solutions: SolutionCardData
       {featured && activeCategory === 'All' && (
         <section className="px-4 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div className="mb-4 text-sm font-medium tracking-wider text-stone-400 uppercase">
+            <div className="mb-4 text-sm font-medium tracking-wider text-stone-500 uppercase">
               Featured Solution
             </div>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-lg">
+            <div className="overflow-hidden rounded-2xl border border-stone-200 bg-stone-50 shadow-lg">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="p-8 md:p-10">
-                  <div className="bg-brand-500/10 text-brand-300 mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium">
+                  <div className="bg-brand-500/10 text-brand-700 mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium">
                     {featured.category}
                   </div>
-                  <h2 className="font-display mb-4 text-2xl font-bold text-stone-50 sm:text-3xl">
+                  <h2 className="font-display mb-4 text-2xl font-bold text-stone-900 sm:text-3xl">
                     {featured.name}
                   </h2>
-                  <p className="mb-6 text-stone-300">{featured.description}</p>
+                  <p className="mb-6 text-stone-600">{featured.description}</p>
                   <ul className="mb-8 space-y-3">
                     {featured.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3 text-stone-300">
+                      <li key={i} className="flex items-start gap-3 text-stone-600">
                         {checkIcon}
                         {feature}
                       </li>
@@ -110,7 +110,7 @@ export function SolutionsFilterGrid({ solutions }: { solutions: SolutionCardData
       <section className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {activeCategory === 'All' && (
-            <div className="mb-4 text-sm font-medium tracking-wider text-stone-400 uppercase">
+            <div className="mb-4 text-sm font-medium tracking-wider text-stone-500 uppercase">
               All Solutions
             </div>
           )}
@@ -119,21 +119,21 @@ export function SolutionsFilterGrid({ solutions }: { solutions: SolutionCardData
               <Link
                 key={solution.slug}
                 href={`/solutions/${solution.slug}`}
-                className="hover:border-brand-400/50 group block rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
+                className="hover:border-brand-500/50 group block rounded-2xl border border-stone-200 bg-stone-50 p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
               >
-                <div className="mb-4 inline-block rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-stone-300">
+                <div className="mb-4 inline-block rounded-full bg-stone-100 px-3 py-1 text-xs font-medium text-stone-600">
                   {solution.category}
                 </div>
-                <h3 className="group-hover:text-brand-300 mb-2 text-lg font-semibold text-stone-50 transition-colors">
+                <h3 className="group-hover:text-brand-600 mb-2 text-lg font-semibold text-stone-900 transition-colors">
                   {solution.name}
                 </h3>
-                <p className="mb-4 line-clamp-2 text-sm text-stone-300">{solution.description}</p>
+                <p className="mb-4 line-clamp-2 text-sm text-stone-600">{solution.description}</p>
                 <div className="flex items-end justify-between">
                   <div>
-                    <div className="text-brand-400 text-2xl font-bold">{solution.cardMetric}</div>
-                    <div className="text-sm text-stone-400">{solution.cardMetricLabel}</div>
+                    <div className="text-brand-600 text-2xl font-bold">{solution.cardMetric}</div>
+                    <div className="text-sm text-stone-500">{solution.cardMetricLabel}</div>
                   </div>
-                  <div className="group-hover:bg-brand-500 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-stone-300 transition-all duration-200 group-hover:text-white">
+                  <div className="group-hover:bg-brand-500 flex h-10 w-10 items-center justify-center rounded-full bg-stone-100 text-stone-600 transition-all duration-200 group-hover:text-white">
                     {arrowIcon}
                   </div>
                 </div>

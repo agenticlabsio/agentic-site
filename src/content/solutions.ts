@@ -13,8 +13,8 @@ export const solutions: Solution[] = [
     description:
       'Goal-driven autonomous AI agents that execute complex workflows, make decisions, and integrate with Salesforce, Workday, Databricks.',
     heroTagline: 'Autonomous AI that works across your entire enterprise',
-    cardMetric: '60%',
-    cardMetricLabel: 'less manual coordination',
+    cardMetric: '6-8 weeks',
+    cardMetricLabel: 'to production',
     features: [
       'Multi-agent orchestration',
       'Tool calling & function execution',
@@ -96,8 +96,8 @@ export const solutions: Solution[] = [
     ],
     results: [
       {
-        metric: '60%',
-        label: 'reduction in manual coordination',
+        metric: 'Up to 10 agents',
+        label: 'coordinating in parallel',
         description: 'Time saved on cross-system workflows',
       },
       {
@@ -106,8 +106,8 @@ export const solutions: Solution[] = [
         description: 'From discovery to live deployment',
       },
       {
-        metric: '40%',
-        label: 'cost reduction',
+        metric: '150+ apps',
+        label: 'orchestrated automatically',
         description: 'Through SaaS consolidation and automation',
       },
     ],
@@ -155,9 +155,9 @@ export const solutions: Solution[] = [
     category: 'Operations',
     description:
       'Replace fragmented support tools with unified AI agents that handle tickets, route inquiries, and resolve issues across all channels.',
-    heroTagline: '60% faster resolution with unified AI agents',
-    cardMetric: '60%',
-    cardMetricLabel: 'faster resolution',
+    heroTagline: 'Faster resolution with unified AI agents — live in 6-8 weeks',
+    cardMetric: '6-8 weeks',
+    cardMetricLabel: 'to production',
     features: [
       'Multi-channel support automation',
       'Intelligent ticket routing',
@@ -169,7 +169,7 @@ export const solutions: Solution[] = [
       'Support teams juggle 5-10 tools: ticketing, chat, email, knowledge base, CRM, analytics. Each tool is a silo, each integration is fragile, and customers feel the friction.',
     challenges: [
       'Siloed support tools create fragmented customer experiences',
-      'Agents spend 40% of time on context switching between systems',
+      'Agents juggle 5-10 tools per ticket, losing time to context switching between systems',
       'Knowledge bases are outdated and hard to search',
       'First-response time averaging 4+ hours',
       'High cost per ticket with low automation rates',
@@ -187,7 +187,7 @@ export const solutions: Solution[] = [
         title: 'Intelligent Ticket Routing',
         description:
           'AI analyzes intent, sentiment, and complexity to route tickets to the right team or auto-resolve.',
-        metric: '80% auto-routed',
+        metric: 'Routes across 5-10 systems',
       },
       {
         title: 'Knowledge Base Integration',
@@ -237,19 +237,19 @@ export const solutions: Solution[] = [
     ],
     results: [
       {
-        metric: '60%',
-        label: 'faster resolution',
-        description: 'Average ticket resolution time improvement',
+        metric: '6-8 weeks',
+        label: 'to production',
+        description: 'From discovery to live deployment across all channels',
       },
       {
-        metric: '40%',
-        label: 'cost reduction',
-        description: 'Lower cost per ticket through automation',
+        metric: '5-10 tools',
+        label: 'consolidated into one AI layer',
+        description: 'Replacing fragmented, costly point solutions',
       },
       {
-        metric: '85%',
-        label: 'first-contact resolution',
-        description: 'Issues resolved without escalation',
+        metric: '4+ hours',
+        label: 'average first-response time before AI',
+        description: 'Now addressed through instant multi-channel triage',
       },
     ],
     faqs: [
@@ -281,12 +281,12 @@ export const solutions: Solution[] = [
     ],
     cta: {
       headline: 'Ready to transform your support?',
-      description: 'Book a discovery call to see how AI can cut your resolution time by 60%.',
+      description: 'Book a discovery call to see how AI can get you to production in 6-8 weeks.',
     },
     seo: {
-      metaTitle: 'AI Customer Service Automation | 60% Faster Resolution',
+      metaTitle: 'AI Customer Service Automation | Live in 6-8 Weeks',
       metaDescription:
-        'Replace fragmented support tools with unified AI agents. 60% faster ticket resolution. Integrates with Salesforce Service Cloud, Zendesk, ServiceNow.',
+        'Replace fragmented support tools with unified AI agents. Live in 6-8 weeks. Integrates with Salesforce Service Cloud, Zendesk, ServiceNow.',
     },
   },
   {
@@ -295,12 +295,12 @@ export const solutions: Solution[] = [
     category: 'Operations',
     description:
       'AI-powered document extraction, classification, and processing. Handle invoices, contracts, forms, and unstructured documents with enterprise-grade accuracy.',
-    heroTagline: '94% accuracy in document extraction at scale',
-    cardMetric: '94%',
-    cardMetricLabel: 'accuracy',
+    heroTagline: 'Enterprise-grade accuracy in document extraction at scale',
+    cardMetric: '$2.4M',
+    cardMetricLabel: 'in annual savings',
     features: [
       'Auto-classification and routing',
-      'Entity extraction with 94%+ accuracy',
+      'Entity extraction with enterprise-grade accuracy',
       'Human-in-the-loop exception handling',
       'Full audit trail and compliance',
     ],
@@ -321,13 +321,13 @@ export const solutions: Solution[] = [
         title: 'Auto-Classification',
         description:
           'Automatically categorize incoming documents by type, priority, and required action.',
-        metric: '95% accuracy',
+        metric: 'Thousands/hour',
       },
       {
         title: 'Entity Extraction',
         description:
           'Extract names, dates, amounts, line items, and custom fields from any document format.',
-        metric: '94%+ accuracy',
+        metric: '$2.4M saved annually',
       },
       {
         title: 'Human-in-the-Loop',
@@ -379,14 +379,14 @@ export const solutions: Solution[] = [
     ],
     results: [
       {
-        metric: '94%',
-        label: 'extraction accuracy',
+        metric: 'Thousands/hour',
+        label: 'documents processed',
         description: 'Across invoice, contract, and form processing',
       },
       {
-        metric: '80%',
-        label: 'time savings',
-        description: 'Reduction in manual document handling',
+        metric: 'Full compliance',
+        label: 'audit-ready processing',
+        description: 'Full logging replaces manual, error-prone document handling',
       },
       {
         metric: '$2.4M',
@@ -401,7 +401,7 @@ export const solutions: Solution[] = [
           'We process PDFs, scanned images, Word documents, Excel files, emails, and even handwritten forms. Our AI adapts to poor scan quality and inconsistent formatting.',
       },
       {
-        question: 'How do you achieve 94% accuracy?',
+        question: 'How do you achieve that level of accuracy?',
         answer:
           'We combine multiple AI techniques: vision models for layout understanding, language models for context, and validation rules for domain-specific checks. Human review of edge cases continuously improves accuracy.',
       },
@@ -423,12 +423,12 @@ export const solutions: Solution[] = [
     ],
     cta: {
       headline: 'Ready to automate document processing?',
-      description: 'Book a demo to see 94% accuracy document extraction in action.',
+      description: 'Book a demo to see the accuracy behind $2.4M in annual savings.',
     },
     seo: {
-      metaTitle: 'Intelligent Document Processing | 94% Accuracy',
+      metaTitle: 'Intelligent Document Processing | $2.4M in Annual Savings',
       metaDescription:
-        'AI-powered document extraction, classification, and processing at scale. 94% accuracy rate. Integrates with existing ERP and systems of record.',
+        'AI-powered document extraction, classification, and processing at scale. Enterprise-grade accuracy. Integrates with existing ERP and systems of record.',
     },
   },
   {
@@ -530,9 +530,9 @@ export const solutions: Solution[] = [
         description: 'Access data where it lives',
       },
       {
-        metric: '80%',
-        label: 'reduction in hallucinations',
-        description: 'Grounded AI responses',
+        metric: 'MCP-ready',
+        label: 'grounded in real context',
+        description: 'Reduces hallucinations through business-specific grounding',
       },
     ],
     faqs: [
@@ -604,7 +604,7 @@ export const solutions: Solution[] = [
         title: 'Task Success Rate Tracking',
         description:
           'Measure whether agents complete their assigned goals, with breakdowns by task type and complexity.',
-        metric: 'Goal completion %',
+        metric: 'Goal completion tracking',
       },
       {
         title: 'Accuracy & Hallucination Monitoring',
@@ -663,9 +663,9 @@ export const solutions: Solution[] = [
         description: 'From deployment to demonstrated business value',
       },
       {
-        metric: '25%',
-        label: 'faster optimization',
-        description: 'With real performance data to guide improvements',
+        metric: '90 days',
+        label: 'to optimized performance',
+        description: 'Real performance data guides improvements within the same ROI window',
       },
       {
         metric: 'Complete',
@@ -682,7 +682,7 @@ export const solutions: Solution[] = [
       {
         question: "What's a good task success rate?",
         answer:
-          'It depends on the task complexity. For routine tasks (data extraction, routing), we target 95%+. For complex tasks (multi-step workflows, decision-making), 85%+ is strong. We establish baselines and improve iteratively.',
+          'It depends on the task complexity. For routine tasks (data extraction, routing), we target near-complete success. For complex tasks (multi-step workflows, decision-making), a strong majority success rate is the bar. We establish baselines within the first 90 days and improve iteratively.',
       },
       {
         question: 'How often should we evaluate our agents?',
@@ -802,8 +802,8 @@ export const solutions: Solution[] = [
         description: 'Type II certification for AI operations',
       },
       {
-        metric: '100%',
-        label: 'audit coverage',
+        metric: 'Full traceability',
+        label: 'complete audit coverage',
         description: 'Every agent action logged and traceable',
       },
       {

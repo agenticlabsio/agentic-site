@@ -30,7 +30,7 @@ export interface ComplianceItem {
 export interface Industry {
   slug: string
   name: string
-  /** Short headline metric shown on cards and the detail hero (e.g. "35% Less Downtime"). */
+  /** Short headline metric shown on cards and the detail hero (e.g. "$5M+ Annual Savings"). */
   tagline: string
   /** Emoji icon used on cards and the detail hero. */
   icon: string
@@ -56,7 +56,7 @@ export const industries: Industry[] = [
   {
     slug: 'healthcare',
     name: 'Healthcare',
-    tagline: '40% Admin Burden Reduction',
+    tagline: '$2M+ Annual Admin Savings',
     icon: '🏥',
     featured: true,
     cardDescription:
@@ -65,13 +65,13 @@ export const industries: Industry[] = [
       'AI automation that reduces administrative burden on clinical staff, speeds up patient intake, and improves care delivery—all while maintaining HIPAA compliance.',
     targetAudience: 'Health systems, large practices, healthcare IT companies ($500M-$10B)',
     marketContext: [
-      { stat: '30% of healthcare spending goes to administrative tasks', source: 'McKinsey' },
+      { stat: 'A large share of healthcare spending goes to administrative tasks', source: 'McKinsey' },
       {
         stat: 'Physicians spend 2 hours on paperwork for every hour of patient care',
         source: 'AMA',
       },
       {
-        stat: '83% of physicians report burnout symptoms related to administrative burden',
+        stat: 'Most physicians report burnout symptoms related to administrative burden',
       },
     ],
     challenges: [
@@ -100,22 +100,22 @@ export const industries: Industry[] = [
         title: 'Patient Intake Automation',
         description:
           'AI-powered forms, document extraction, and verification reduce manual entry and wait times.',
-        metric: '70% reduction in manual entry',
+        metric: '$2M+ annual savings for health systems',
       },
       {
         title: 'Clinical Documentation',
         description: 'AI-assisted note generation from voice or text, with human review and approval.',
-        metric: '50% faster documentation',
+        metric: '6-8 week implementation',
       },
       {
         title: 'Scheduling Optimization',
         description: 'Intelligent scheduling that maximizes utilization while reducing wait times.',
-        metric: '25% improvement in utilization',
+        metric: 'ROI proof within 90 days',
       },
       {
         title: 'Prior Authorization',
         description: 'Automated prior auth submission and follow-up, reducing delays and denials.',
-        metric: '80% automation rate',
+        metric: '$2M+ annual savings for health systems',
       },
     ],
     integrations: [
@@ -132,10 +132,10 @@ export const industries: Industry[] = [
       { standard: 'HITRUST', description: 'Healthcare-specific security framework alignment' },
     ],
     roiMetrics: [
-      '40% reduction in administrative burden',
-      '70% faster patient intake processing',
+      'Major reduction in administrative burden',
+      'Faster patient intake processing, live within 6-8 weeks',
       '$2M+ annual savings for mid-size health systems',
-      '25% improvement in provider utilization',
+      'ROI proof within 90 days of deployment',
     ],
     faqs: [
       {
@@ -156,7 +156,7 @@ export const industries: Industry[] = [
       {
         question: 'What ROI can healthcare organizations expect?',
         answer:
-          'Mid-size health systems typically see 40% reduction in administrative burden, $2M+ annual savings, and 25% improvement in provider utilization. ROI proof within 90 days of deployment.',
+          'Mid-size health systems typically see major reductions in administrative burden, $2M+ annual savings, and meaningful gains in provider utilization. ROI proof within 90 days of deployment.',
       },
       {
         question: 'How long does healthcare AI implementation take?',
@@ -172,13 +172,13 @@ export const industries: Industry[] = [
     seo: {
       metaTitle: 'AI Solutions for Healthcare | HIPAA Compliant | Agentic Labs',
       metaDescription:
-        'AI automation for healthcare: patient intake, clinical documentation, appointment scheduling. HIPAA compliant. Reduce administrative burden by 40%.',
+        'AI automation for healthcare: patient intake, clinical documentation, appointment scheduling. HIPAA compliant. Cut administrative burden with ROI proof within 90 days.',
     },
   },
   {
     slug: 'manufacturing',
     name: 'Manufacturing',
-    tagline: '35% Less Downtime',
+    tagline: '$5M+ Annual Savings',
     icon: '🏭',
     cardDescription:
       'Predictive maintenance, quality control, and supply chain optimization for Industry 4.0.',
@@ -188,9 +188,12 @@ export const industries: Industry[] = [
     marketContext: [
       { stat: 'Average cost of unplanned downtime: $260K per hour', source: 'Aberdeen' },
       {
-        stat: '82% of manufacturers have experienced unplanned downtime in past 3 years',
+        stat: 'Most manufacturers have experienced unplanned downtime in the past 3 years',
       },
-      { stat: 'Predictive maintenance can reduce downtime by 30-50%', source: 'McKinsey' },
+      {
+        stat: 'Predictive maintenance can meaningfully cut the $260K-per-hour cost of unplanned downtime',
+        source: 'McKinsey',
+      },
     ],
     challenges: [
       {
@@ -215,22 +218,22 @@ export const industries: Industry[] = [
       {
         title: 'Predictive Maintenance',
         description: 'AI monitors equipment health and predicts failures before they occur.',
-        metric: '35% reduction in downtime',
+        metric: '$5M+ annual savings for manufacturers',
       },
       {
         title: 'Quality Inspection',
         description: 'Computer vision systems detect defects with superhuman accuracy.',
-        metric: '99% defect detection',
+        metric: 'Near-perfect defect detection accuracy',
       },
       {
         title: 'Demand Forecasting',
         description: 'AI-driven forecasting reduces inventory carrying costs.',
-        metric: '20% inventory reduction',
+        metric: 'Lower inventory carrying costs',
       },
       {
         title: 'Process Optimization',
         description: 'Continuous optimization of production parameters for yield and efficiency.',
-        metric: '15% throughput improvement',
+        metric: 'Meaningful throughput gains',
       },
     ],
     integrations: [
@@ -247,9 +250,9 @@ export const industries: Industry[] = [
       { standard: 'Industry 4.0', description: 'Smart manufacturing standards alignment' },
     ],
     roiMetrics: [
-      '35% reduction in unplanned downtime',
-      '99% defect detection accuracy',
-      '20% inventory reduction',
+      'Major reduction in unplanned downtime',
+      'Near-perfect defect detection accuracy',
+      'Lower inventory carrying costs',
       '$5M+ annual savings for mid-size manufacturers',
     ],
     faqs: [
@@ -276,20 +279,20 @@ export const industries: Industry[] = [
       {
         question: 'What ROI can manufacturers expect?',
         answer:
-          'Mid-size manufacturers typically see 35% downtime reduction, 20% inventory reduction, and $5M+ annual savings. ROI proof within 90 days.',
+          'Mid-size manufacturers typically see major reductions in downtime and inventory carrying costs, plus $5M+ annual savings. ROI proof within 90 days.',
       },
     ],
     relatedSolutions: ['intelligent-agents', 'document-processing', 'agentic-evaluation'],
     seo: {
       metaTitle: 'AI Solutions for Manufacturing | Predictive Maintenance | Agentic Labs',
       metaDescription:
-        'AI automation for manufacturing: predictive maintenance, quality control, supply chain optimization. 35% less downtime. Integrates with existing MES and ERP.',
+        'AI automation for manufacturing: predictive maintenance, quality control, supply chain optimization. Major downtime reduction, proven in 90 days. Integrates with existing MES and ERP.',
     },
   },
   {
     slug: 'retail',
     name: 'Retail',
-    tagline: '15-25% Inventory Reduction',
+    tagline: '$750K+ Freed From Inventory',
     icon: '🛒',
     cardDescription:
       'Demand forecasting, customer service automation, and omnichannel optimization.',
@@ -301,9 +304,9 @@ export const industries: Industry[] = [
         stat: 'Retailers lose $1.75T annually due to overstock and out-of-stock situations',
         source: 'IHL Group',
       },
-      { stat: '73% of consumers expect personalized experiences', source: 'Salesforce' },
+      { stat: 'The majority of consumers expect personalized experiences', source: 'Salesforce' },
       {
-        stat: 'AI-driven inventory optimization can reduce carrying costs by 20-30%',
+        stat: 'AI-driven inventory optimization can free up hundreds of thousands of dollars in carrying costs for a mid-market retailer',
       },
     ],
     challenges: [
@@ -329,22 +332,22 @@ export const industries: Industry[] = [
       {
         title: 'Demand Forecasting',
         description: 'AI predicts demand by SKU, location, and time period with high accuracy.',
-        metric: '15-25% inventory reduction',
+        metric: '$750K+ freed from inventory carrying costs',
       },
       {
         title: 'Customer Service AI',
         description: 'Unified AI handles inquiries across chat, email, and phone.',
-        metric: '60% faster resolution',
+        metric: 'ROI proof within 90 days',
       },
       {
         title: 'Order Processing',
         description: 'Automated order routing, fulfillment optimization, and exception handling.',
-        metric: '80% automation rate',
+        metric: 'High automation rate for order routing',
       },
       {
         title: 'Personalization',
         description: 'AI-driven product recommendations and personalized marketing.',
-        metric: '15% conversion lift',
+        metric: 'Meaningful lift in conversion rate',
       },
     ],
     integrations: [
@@ -361,16 +364,16 @@ export const industries: Industry[] = [
       { standard: 'GDPR/CCPA', description: 'Consumer privacy regulations' },
     ],
     roiMetrics: [
-      '15-25% inventory reduction',
+      'Major reduction in inventory carrying costs',
       '$750K+ freed from inventory carrying costs',
-      '60% faster customer service resolution',
-      '15% conversion rate improvement',
+      'Faster customer service resolution, live within 90 days',
+      'Meaningful lift in conversion rate',
     ],
     faqs: [
       {
         question: 'How accurate is AI demand forecasting for retail?',
         answer:
-          'Our AI models achieve 85-95% forecast accuracy at the SKU-location level, significantly outperforming traditional statistical methods. Accuracy improves over time as the model learns your specific patterns.',
+          'Our AI models achieve high forecast accuracy at the SKU-location level, significantly outperforming traditional statistical methods. Accuracy improves over time as the model learns your specific patterns.',
       },
       {
         question: 'Can AI handle seasonal and promotional demand?',
@@ -390,20 +393,20 @@ export const industries: Industry[] = [
       {
         question: 'What ROI can retailers expect?',
         answer:
-          'Mid-market retailers typically see 15-25% inventory reduction, $750K+ freed from carrying costs, and 15% conversion improvement. ROI proof within 90 days.',
+          'Mid-market retailers typically see major reductions in inventory carrying costs, $750K+ freed from carrying costs, and meaningful conversion improvement. ROI proof within 90 days.',
       },
     ],
     relatedSolutions: ['customer-service-automation', 'document-processing', 'intelligent-agents'],
     seo: {
       metaTitle: 'AI Solutions for Retail | Inventory Optimization | Agentic Labs',
       metaDescription:
-        'AI automation for retail: inventory forecasting, customer service, order management. 15-25% inventory reduction. Integrates with existing POS and ERP.',
+        'AI automation for retail: inventory forecasting, customer service, order management. $750K+ freed from inventory carrying costs. Integrates with existing POS and ERP.',
     },
   },
   {
     slug: 'energy',
     name: 'Energy',
-    tagline: '20% Grid Stability Improvement',
+    tagline: 'Stronger Grid Reliability',
     icon: '⚡',
     cardDescription:
       'Grid optimization, predictive maintenance, and renewable integration for utilities.',
@@ -411,8 +414,8 @@ export const industries: Industry[] = [
       'AI-powered grid optimization, predictive maintenance, and demand forecasting that improves reliability and enables renewable integration for utilities and energy producers.',
     targetAudience: 'Utilities, energy producers, grid operators ($500M-$10B)',
     marketContext: [
-      { stat: '65% of energy CEOs rank AI as top investment priority', source: 'KPMG' },
-      { stat: '94% of utility CIOs plan to increase AI investments in 2025' },
+      { stat: 'Most energy CEOs rank AI as a top investment priority', source: 'KPMG' },
+      { stat: 'The vast majority of utility CIOs plan to increase AI investments in 2025' },
       {
         stat: 'AI-driven energy efficiency could generate $1.3T in value by 2030',
         source: 'McKinsey',
@@ -440,22 +443,22 @@ export const industries: Industry[] = [
       {
         title: 'Grid Optimization',
         description: 'AI-based load forecasting and balancing improves grid stability.',
-        metric: '20% stability improvement',
+        metric: 'ROI proof within 90 days',
       },
       {
         title: 'Predictive Maintenance',
         description: 'Monitor transformer health, line conditions, and predict failures.',
-        metric: '35% reduction in failures',
+        metric: 'Fewer equipment failures',
       },
       {
         title: 'Renewable Integration',
         description: 'AI forecasting for solar and wind output enables better planning.',
-        metric: '2-3% availability improvement',
+        metric: 'Higher renewable availability',
       },
       {
         title: 'Demand Response',
         description: 'Intelligent demand response programs reduce peak load.',
-        metric: '10% peak reduction',
+        metric: 'Lower peak demand',
       },
     ],
     integrations: [
@@ -472,10 +475,10 @@ export const industries: Industry[] = [
       { standard: 'ISO 27001', description: 'Information security management' },
     ],
     roiMetrics: [
-      '15% reduction in operational costs',
-      '35% reduction in equipment failures',
-      '2-3% improvement in renewable availability',
-      '10% workforce productivity improvement',
+      'ROI proof within 90 days',
+      'Fewer equipment failures',
+      'Higher renewable availability',
+      'Improved workforce productivity',
     ],
     faqs: [
       {
@@ -501,20 +504,20 @@ export const industries: Industry[] = [
       {
         question: 'What ROI can utilities expect?',
         answer:
-          'Utilities typically see 15% operational cost reduction, 35% reduction in equipment failures, and 10% improvement in workforce productivity. ROI proof within 90 days.',
+          'Utilities typically see lower operational costs, fewer equipment failures, and improved workforce productivity. ROI proof within 90 days.',
       },
     ],
     relatedSolutions: ['intelligent-agents', 'agentic-evaluation', 'ai-governance-security'],
     seo: {
       metaTitle: 'AI Solutions for Energy & Utilities | Grid Optimization | Agentic Labs',
       metaDescription:
-        'AI automation for energy: grid optimization, predictive maintenance, demand forecasting. Reduce operational costs by 15%. Improve renewable availability 2-3%.',
+        'AI automation for energy: grid optimization, predictive maintenance, demand forecasting. Lower operational costs and improve renewable availability. ROI proof within 90 days.',
     },
   },
   {
     slug: 'dealers-distributors',
     name: 'Dealers & Distributors',
-    tagline: '80% Faster Order Entry',
+    tagline: '$75K-$180K Annual Labor Savings',
     icon: '📦',
     cardDescription:
       'Order automation, inventory optimization, and quote generation for wholesale distribution.',
@@ -525,11 +528,11 @@ export const industries: Industry[] = [
     marketContext: [
       { stat: 'AI in distribution projected to generate $100B in the US by 2025' },
       {
-        stat: '80% of B2B sales interactions will occur in digital channels by 2025',
+        stat: 'Most B2B sales interactions will occur in digital channels by 2025',
         source: 'Gartner',
       },
       {
-        stat: 'GenAI can generate 75-100 basis points EBIT improvement for distributors',
+        stat: 'GenAI can meaningfully improve EBIT margins for distributors',
         source: 'Deloitte',
       },
     ],
@@ -556,7 +559,7 @@ export const industries: Industry[] = [
       {
         title: 'Order Entry Automation',
         description: 'AI processes any order format: handwritten, PDF, email, voicemail, spreadsheet.',
-        metric: '80% faster entry',
+        metric: '$75K-$180K annual labor savings',
       },
       {
         title: 'Quote Generation',
@@ -566,12 +569,12 @@ export const industries: Industry[] = [
       {
         title: 'Inventory Optimization',
         description: 'Predictive demand forecasting reduces carrying costs.',
-        metric: '15-25% reduction',
+        metric: '$450K-$750K freed capital',
       },
       {
         title: 'Sales Rep Productivity',
         description: 'AI handles admin so reps can sell.',
-        metric: '10-20% productivity uplift',
+        metric: 'More selling time, less admin work',
       },
     ],
     integrations: [
@@ -589,8 +592,8 @@ export const industries: Industry[] = [
     roiMetrics: [
       '$50M distributor: $75K-$180K annual labor savings',
       '$3M inventory: $450K-$750K freed capital',
-      '75-100 basis points EBIT improvement',
-      '80% reduction in order entry time',
+      'Meaningful EBIT margin improvement',
+      'Major reduction in order entry time',
     ],
     faqs: [
       {
@@ -616,37 +619,37 @@ export const industries: Industry[] = [
       {
         question: 'How does this replace SaaS point solutions?',
         answer:
-          'Instead of separate tools for order capture, quoting, inventory planning, and customer communication, our AI agents handle these workflows in one integrated system—reducing SaaS subscriptions by 40-60%.',
+          'Instead of separate tools for order capture, quoting, inventory planning, and customer communication, our AI agents handle these workflows in one integrated system—significantly cutting SaaS subscription costs and sprawl.',
       },
     ],
     relatedSolutions: ['document-processing', 'customer-service-automation', 'intelligent-agents'],
     seo: {
       metaTitle: 'AI Solutions for Dealers & Distributors | Order Automation | Agentic Labs',
       metaDescription:
-        'AI automation for dealers and distributors: order entry (80% faster), inventory optimization (15-25% reduction), quote generation. Replace fragmented SaaS with unified agents.',
+        'AI automation for dealers and distributors: order entry automation, inventory optimization ($450K-$750K freed capital), quote generation. Replace fragmented SaaS with unified agents.',
     },
   },
   {
     slug: 'power-electronics-fpga',
     name: 'Power Electronics & FPGA',
-    tagline: '25-40% Faster Design Cycles',
+    tagline: 'Production-Ready in 6-8 Weeks',
     icon: '🔌',
     cardDescription:
       'AI-enhanced EDA tools for FPGA design, verification, and test automation.',
     heroDescription:
-      'AI-enhanced EDA tools that accelerate FPGA design, verification, and test automation—reducing design cycles by 25-40% while maintaining quality.',
+      'AI-enhanced EDA tools that accelerate FPGA design, verification, and test automation—shortening design cycles while maintaining quality.',
     targetAudience:
       'Semiconductor companies, FPGA design houses, power electronics manufacturers ($500M-$10B)',
     marketContext: [
       {
-        stat: 'EDA software market: $14.55B in 2025 → $32.15B by 2034 (9.21% CAGR)',
+        stat: 'EDA software market: $14.55B in 2025 → $32.15B by 2034',
         source: 'Precedence Research',
       },
       {
         stat: 'AI-enhanced EDA tools dramatically boost productivity for complex design',
         source: 'Siemens',
       },
-      { stat: 'Verification consumes 60-70% of development time' },
+      { stat: 'Verification consumes the majority of development time' },
     ],
     challenges: [
       {
@@ -655,7 +658,7 @@ export const industries: Industry[] = [
       },
       {
         challenge: 'Verification bottlenecks',
-        description: '60-70% of development time goes to verification, not design.',
+        description: 'The majority of development time goes to verification, not design.',
       },
       {
         challenge: 'Documentation lag',
@@ -670,7 +673,7 @@ export const industries: Industry[] = [
       {
         title: 'Design Verification Automation',
         description: 'AI generates testbenches, coverage analysis, and simulation scenarios.',
-        metric: '25-40% faster cycles',
+        metric: 'Faster design iteration cycles',
       },
       {
         title: 'Documentation Generation',
@@ -685,7 +688,7 @@ export const industries: Industry[] = [
       {
         title: 'Test Automation',
         description: 'Automated test vector generation and coverage gap identification.',
-        metric: '95%+ coverage',
+        metric: 'High verification coverage',
       },
     ],
     integrations: [
@@ -702,10 +705,10 @@ export const industries: Industry[] = [
       { standard: 'IEC 61508', description: 'Functional safety for industrial' },
     ],
     roiMetrics: [
-      '25-40% reduction in design iteration cycles',
-      '50% faster documentation generation',
-      '95%+ verification coverage',
-      '30% reduction in time-to-tape-out',
+      'Major reduction in design iteration cycles',
+      'Faster documentation generation, always current',
+      'High verification coverage',
+      'Faster time-to-tape-out',
     ],
     faqs: [
       {
@@ -731,20 +734,20 @@ export const industries: Industry[] = [
       {
         question: 'What ROI can FPGA teams expect?',
         answer:
-          'Design teams typically see 25-40% reduction in design cycles, 50% faster documentation, and 30% reduction in time-to-tape-out. ROI proof within 90 days.',
+          'Design teams typically see major reductions in design cycles, faster documentation, and shorter time-to-tape-out. ROI proof within 90 days.',
       },
     ],
     relatedSolutions: ['context-management', 'agentic-evaluation', 'intelligent-agents'],
     seo: {
       metaTitle: 'AI for Power Electronics & FPGA Design | EDA Automation | Agentic Labs',
       metaDescription:
-        'AI-enhanced EDA tools for FPGA design, verification, and testing. 25-40% faster design cycles. Works with Siemens, AMD/Xilinx, Intel toolchains. Production-ready in 6-8 weeks.',
+        'AI-enhanced EDA tools for FPGA design, verification, and testing. Faster design cycles and shorter time-to-tape-out. Works with Siemens, AMD/Xilinx, Intel toolchains. Production-ready in 6-8 weeks.',
     },
   },
   {
     slug: 'autonomy-robotics',
     name: 'Autonomy & Robotics',
-    tagline: '50% Downtime Reduction',
+    tagline: '$500K+ Annual Savings',
     icon: '🤖',
     cardDescription:
       'Vision AI, autonomous navigation, and predictive maintenance for industrial robotics.',
@@ -755,7 +758,7 @@ export const industries: Industry[] = [
     marketContext: [
       { stat: 'Global industrial robot market: $16.7B, 542,076 units in 2024', source: 'IFR' },
       {
-        stat: 'SAP Embodied AI: 50% downtime reduction, 25% productivity improvement',
+        stat: 'SAP Embodied AI delivers substantial downtime reduction and productivity gains',
         source: 'SAP',
       },
       { stat: 'Deal value in robotics/AI: $7.3B in H1 2025' },
@@ -782,7 +785,7 @@ export const industries: Industry[] = [
       {
         title: 'Vision AI for Inspection',
         description: 'Real-time defect detection with self-learning adaptation to new products.',
-        metric: '99%+ accuracy',
+        metric: 'Near-perfect inspection accuracy',
       },
       {
         title: 'Autonomous Navigation',
@@ -797,7 +800,7 @@ export const industries: Industry[] = [
       {
         title: 'Predictive Maintenance',
         description: 'Anomaly detection across robot fleets predicts failures.',
-        metric: '50% downtime reduction',
+        metric: '$500K+ annual savings across a robot fleet',
       },
     ],
     integrations: [
@@ -816,10 +819,10 @@ export const industries: Industry[] = [
       { standard: 'CE Marking', description: 'European conformity requirements' },
     ],
     roiMetrics: [
-      '50% reduction in unplanned downtime',
-      '25% productivity improvement',
-      '99%+ defect detection accuracy',
-      '30% reduction in maintenance costs',
+      '$500K+ annual savings from reduced downtime',
+      'Meaningful productivity improvement',
+      'Near-perfect defect detection accuracy',
+      'Lower maintenance costs',
     ],
     faqs: [
       {
@@ -852,7 +855,7 @@ export const industries: Industry[] = [
     seo: {
       metaTitle: 'AI for Autonomy & Robotics | Industrial Automation | Agentic Labs',
       metaDescription:
-        'AI systems for industrial robotics: vision inspection, autonomous navigation, cobot orchestration. 50% reduction in unplanned downtime. Integrates with existing robot fleets.',
+        'AI systems for industrial robotics: vision inspection, autonomous navigation, cobot orchestration. $500K+ annual savings from reduced downtime. Integrates with existing robot fleets.',
     },
   },
   {
@@ -871,9 +874,9 @@ export const industries: Industry[] = [
         stat: 'AI applications could create $350-410B annual value for pharma',
         source: 'McKinsey',
       },
-      { stat: '80% of pharma professionals use AI for drug discovery', source: 'Industry survey' },
+      { stat: 'Most pharma professionals use AI for drug discovery', source: 'Industry survey' },
       {
-        stat: 'GenAI can generate 75-100 basis points EBIT improvement for distributors',
+        stat: 'GenAI can meaningfully improve EBIT margins for distributors',
         source: 'Deloitte',
       },
     ],
@@ -912,12 +915,12 @@ export const industries: Industry[] = [
       {
         title: 'Compliance Automation',
         description: 'Automated batch record review, regulatory documentation, serialization.',
-        metric: '80% faster review',
+        metric: 'Faster compliance review, ROI within 90 days',
       },
       {
         title: 'Drug Discovery Support',
         description: 'Literature mining, target identification, and clinical trial analysis.',
-        metric: '25%+ time reduction',
+        metric: 'Meaningful reduction in discovery timelines',
       },
     ],
     integrations: [
@@ -936,9 +939,9 @@ export const industries: Industry[] = [
       { standard: 'EU Annex 11', description: 'Computerized systems' },
     ],
     roiMetrics: [
-      '80% faster compliance documentation',
-      '25% reduction in early-stage discovery time',
-      '50% reduction in cold chain excursion investigations',
+      'Faster compliance documentation, proven within 90 days',
+      'Meaningful reduction in early-stage discovery time',
+      'Fewer cold chain excursion investigations',
       '$5M+ annual savings for mid-size pharma',
     ],
     faqs: [
@@ -960,7 +963,7 @@ export const industries: Industry[] = [
       {
         question: "What's the ROI for pharma supply chain AI?",
         answer:
-          'Mid-size pharma companies typically see 80% faster compliance documentation, 50% reduction in excursion investigations, and $5M+ annual savings. ROI proof within 90 days.',
+          'Mid-size pharma companies typically see faster compliance documentation, fewer excursion investigations, and $5M+ annual savings. ROI proof within 90 days.',
       },
       {
         question: 'Can AI help with drug shortage prevention?',

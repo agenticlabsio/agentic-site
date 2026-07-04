@@ -96,18 +96,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Sapphire Nocturne is dark-first: the homepage (.newsite) renders dark by
-// default and only switches to light when the visitor explicitly opts in.
-const themeScript = `
-(function(){
-  try {
-    if (localStorage.getItem('theme') === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  } catch (e) {}
-})();
-`;
-
 export default async function FrontendLayout({
   children,
 }: {
@@ -125,7 +113,6 @@ export default async function FrontendLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />

@@ -1,6 +1,5 @@
 "use client";
 
-import Animate from "./Animate";
 
 const cards = [
   {
@@ -62,7 +61,6 @@ export default function Security() {
       />
 
       <div className="container-main">
-        <Animate type="fadeUp">
           <div style={{ maxWidth: 600, marginBottom: 56, textAlign: "center", margin: "0 auto 56px" }}>
             <span
               className="font-display"
@@ -93,12 +91,11 @@ export default function Security() {
               Our delivery model moves fast inside enterprise constraints, not around them.
             </p>
           </div>
-        </Animate>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20 }} className="security-grid">
           {cards.map((card, i) => (
-            <Animate key={i} type="fadeUp" delay={0.1 * i}>
               <div
+                key={i}
                 className="security-card"
                 style={{
                   borderRadius: 16,
@@ -137,12 +134,10 @@ export default function Security() {
                   {card.description}
                 </p>
               </div>
-            </Animate>
           ))}
         </div>
 
         {/* Compliance badges */}
-        <Animate type="fadeUp" delay={0.4}>
           <div
             style={{
               marginTop: 48,
@@ -175,7 +170,6 @@ export default function Security() {
               </div>
             ))}
           </div>
-        </Animate>
       </div>
 
       <style>{`

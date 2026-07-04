@@ -2,7 +2,6 @@ import Hero from '@/components/newsite/Hero';
 import Comparison from '@/components/newsite/Comparison';
 import Process from '@/components/newsite/Process';
 import Problem from '@/components/newsite/Problem';
-import Testimonials from '@/components/newsite/Testimonials';
 import Differentiation from '@/components/newsite/Differentiation';
 import Security from '@/components/newsite/Security';
 import CTA from '@/components/newsite/CTA';
@@ -27,7 +26,6 @@ export default async function RootPage() {
       <Comparison />
       <Process />
       <Problem />
-      <Testimonials />
       <Differentiation />
       <Security />
       <CTA />

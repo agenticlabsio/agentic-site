@@ -85,7 +85,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="mx-auto max-w-3xl">
             <Link
               href="/resources/blog"
-              className="font-display inline-flex items-center gap-2 text-sm text-stone-400 transition-colors hover:text-stone-50"
+              className="font-display inline-flex items-center gap-2 text-sm text-stone-500 transition-colors hover:text-stone-900"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -104,24 +104,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <article className="px-4 pt-8 pb-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <div className="mb-4 flex items-center gap-2">
-              <span className="bg-brand-500/10 text-brand-300 font-display rounded-full px-3 py-1 text-xs font-medium">
+              <span className="bg-brand-500/10 text-brand-600 font-display rounded-full px-3 py-1 text-xs font-medium">
                 {categoryLabel}
               </span>
-              {date && <span className="font-body text-sm text-stone-400">{date}</span>}
+              {date && <span className="font-body text-sm text-stone-500">{date}</span>}
             </div>
-            <h1 className="font-display mb-4 text-3xl font-bold tracking-tight text-stone-50 sm:text-4xl lg:text-5xl">
+            <h1 className="font-display mb-4 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl lg:text-5xl">
               {post.title}
             </h1>
-            <p className="font-body mb-8 text-xl text-stone-300">{post.excerpt}</p>
+            <p className="font-body mb-8 text-xl text-stone-600">{post.excerpt}</p>
 
             {takeaways.length > 0 && (
-              <div className="mb-10 rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                <h2 className="font-display mb-4 text-sm font-semibold tracking-wider text-stone-400 uppercase">
+              <div className="mb-10 rounded-2xl border border-stone-200 bg-stone-50 p-6">
+                <h2 className="font-display mb-4 text-sm font-semibold tracking-wider text-stone-500 uppercase">
                   Key Takeaways
                 </h2>
                 <ul className="space-y-3">
                   {takeaways.map((t, i) => (
-                    <li key={i} className="font-body flex items-start gap-3 text-stone-300">
+                    <li key={i} className="font-body flex items-start gap-3 text-stone-600">
                       <svg
                         className="text-brand-500 mt-0.5 h-5 w-5 flex-shrink-0"
                         fill="none"
@@ -143,23 +143,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             )}
 
             {/* Body */}
-            <div className="blog-content font-body space-y-5 text-lg leading-relaxed text-stone-300">
+            <div className="blog-content font-body space-y-5 text-lg leading-relaxed text-stone-600">
               <RichText data={post.content as SerializedEditorState} />
             </div>
 
             {/* FAQs */}
             {faqs.length > 0 && (
               <section className="mt-12">
-                <h2 className="font-display mb-6 text-2xl font-bold text-stone-50">
+                <h2 className="font-display mb-6 text-2xl font-bold text-stone-900">
                   Frequently Asked Questions
                 </h2>
                 <div className="space-y-4">
                   {faqs.map((faq, i) => (
-                    <div key={i} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                      <h3 className="font-display mb-2 font-semibold text-stone-50">
+                    <div key={i} className="rounded-2xl border border-stone-200 bg-stone-50 p-6">
+                      <h3 className="font-display mb-2 font-semibold text-stone-900">
                         {faq.question}
                       </h3>
-                      <p className="font-body text-stone-300">{faq.answer}</p>
+                      <p className="font-body text-stone-600">{faq.answer}</p>
                     </div>
                   ))}
                 </div>

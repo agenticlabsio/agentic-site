@@ -68,7 +68,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: 'Why do most AI projects fail?',
         answer:
-          'Industry research (MIT, 2025) found roughly 95% of enterprise GenAI pilots deliver no measurable P&L impact — and it is almost always a deployment problem, not a model problem. The usual causes: (1) unclear ROI expectations, (2) 6-12 month timelines that lose stakeholder support, (3) treating AI as a "science project" with no production goal, (4) vendor lock-in, and (5) agents that do not understand the business. We address these by defining the number upfront, shipping in 6-8 weeks, grounding agents in your real data, and handing over production systems with full IP transfer.',
+          'Industry research (MIT, 2025) found the vast majority of enterprise GenAI pilots deliver no measurable P&L impact — and it is almost always a deployment problem, not a model problem. The usual causes: (1) unclear ROI expectations, (2) 6-12 month timelines that lose stakeholder support, (3) treating AI as a "science project" with no production goal, (4) vendor lock-in, and (5) agents that do not understand the business. We address these by defining the number upfront, shipping in 6-8 weeks, grounding agents in your real data, and handing over production systems with full IP transfer.',
       },
       {
         question: 'What industries do you work with?',

@@ -1,6 +1,5 @@
 "use client";
 
-import Animate from "./Animate";
 import EmailCaptureForm from "./EmailCaptureForm";
 import { RocketIcon } from "./icons/AgentIcons";
 
@@ -57,7 +56,6 @@ export default function CTA() {
           maxWidth: 700,
         }}
       >
-        <Animate type="blur">
           <div
             style={{
               display: "flex",
@@ -109,9 +107,7 @@ export default function CTA() {
           >
             Book a free strategy session. We&apos;ll map your workflows and show you exactly where AI agents can deliver measurable ROI.
           </p>
-        </Animate>
 
-        <Animate type="fadeUp" delay={0.15}>
           <div style={{ marginBottom: 24 }}>
             <EmailCaptureForm source="cta-section" buttonLabel="Get Started" />
           </div>
@@ -124,9 +120,7 @@ export default function CTA() {
           >
             Or book a call directly:
           </p>
-        </Animate>
 
-        <Animate type="fadeUp" delay={0.2}>
           <div
             style={{
               display: "flex",
@@ -146,9 +140,11 @@ export default function CTA() {
               }}
             >
               <span>Schedule Strategy Call</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              <span className="btn-icon-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
             </a>
             <a
               href="#process"
@@ -174,7 +170,7 @@ export default function CTA() {
             {[
               { icon: "clock", text: "Response within 24h" },
               { icon: "check", text: "No commitment" },
-              { icon: "lock", text: "100% confidential" },
+              { icon: "lock", text: "Fully confidential" },
             ].map((item, i) => (
               <div
                 key={i}
@@ -208,7 +204,6 @@ export default function CTA() {
               </div>
             ))}
           </div>
-        </Animate>
       </div>
     </section>
   );

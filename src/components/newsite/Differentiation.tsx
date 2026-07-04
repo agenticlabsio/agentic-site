@@ -1,6 +1,5 @@
 "use client";
 
-import Animate from "./Animate";
 import { SpeedIcon, NeuralNetworkIcon, AgentBrainIcon, ShieldCheckIcon } from "./icons/AgentIcons";
 
 const items = [
@@ -15,8 +14,8 @@ const items = [
     icon: <NeuralNetworkIcon size={32} />,
     title: "AI-Native Engineering",
     description: "Senior engineers trained to ship production systems, not experiments. Every line is production-ready.",
-    stat: "100%",
-    statLabel: "Production",
+    stat: "10+ yrs",
+    statLabel: "Senior Engineers",
   },
   {
     icon: <AgentBrainIcon size={32} />,
@@ -63,7 +62,6 @@ export default function Differentiation() {
       />
 
       <div style={{ width: "100%", maxWidth: 1140, position: "relative", zIndex: 1 }}>
-        <Animate type="blur">
           <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
             <span
               className="font-display"
@@ -105,7 +103,6 @@ export default function Differentiation() {
               Outcome-driven, AI-native, and built for production and governance from day one.
             </p>
           </div>
-        </Animate>
 
         <div
           className="diff-grid"
@@ -116,8 +113,8 @@ export default function Differentiation() {
           }}
         >
           {items.map((item, i) => (
-            <Animate key={i} type="fadeUp" delay={0.1 * i}>
               <div
+                key={i}
                 className="diff-card"
                 style={{
                   borderRadius: 16,
@@ -200,7 +197,6 @@ export default function Differentiation() {
                   {item.description}
                 </p>
               </div>
-            </Animate>
           ))}
         </div>
       </div>

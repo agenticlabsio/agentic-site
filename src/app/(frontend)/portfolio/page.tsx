@@ -24,8 +24,8 @@ const solutions = [
     title: 'Customer Service Automation',
     description:
       'Resolve tickets without human intervention, while maintaining quality and customer satisfaction.',
-    metric: '60%',
-    metricLabel: 'tickets auto-resolved',
+    metric: '1,200+',
+    metricLabel: 'tickets auto-resolved/mo',
     href: '/solutions/customer-service-automation',
     icon: (
       <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,8 +42,8 @@ const solutions = [
     title: 'Document Processing',
     description:
       'Extract data from invoices, contracts, and forms in seconds—not hours. Zero manual data entry required.',
-    metric: '94%',
-    metricLabel: 'extraction accuracy',
+    metric: '<2 min',
+    metricLabel: 'per document turnaround',
     href: '/solutions/document-processing',
     icon: (
       <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,8 +78,8 @@ const solutions = [
     title: 'Agentic Evaluation',
     description:
       'Comprehensive testing and monitoring systems to ensure AI performance and reliability at scale.',
-    metric: '99.9%',
-    metricLabel: 'uptime guaranteed',
+    metric: '<5 min',
+    metricLabel: 'mean incident detection',
     href: '/solutions/agentic-evaluation',
     icon: (
       <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,9 +114,9 @@ const solutions = [
 
 const caseStudyMetrics = [
   { value: '6–8 wks', label: 'To Production' },
-  { value: '94%', label: 'Extraction Accuracy' },
-  { value: '60%', label: 'Faster Resolution' },
-  { value: '40%', label: 'Cost Reduction' },
+  { value: '<2 min', label: 'Doc Turnaround' },
+  { value: '3 days', label: 'Faster Resolution' },
+  { value: '$150K+/yr', label: 'Cost Reduction' },
 ]
 
 export default function PortfolioPage() {
@@ -127,16 +127,16 @@ export default function PortfolioPage() {
           <div className="mx-auto max-w-6xl text-center">
             <div className="bg-brand-500/10 border-brand-400/20 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2">
               <span className="bg-brand-600 h-2 w-2 animate-pulse rounded-full" />
-              <span className="text-brand-300 text-sm font-medium">
+              <span className="text-brand-700 text-sm font-medium">
                 AI for Small &amp; Medium Enterprises
               </span>
             </div>
 
-            <h1 className="font-display mx-auto mb-6 max-w-4xl text-4xl tracking-[-0.02em] text-stone-50 sm:text-5xl lg:text-6xl">
+            <h1 className="font-display mx-auto mb-6 max-w-4xl text-4xl tracking-[-0.02em] text-stone-900 sm:text-5xl lg:text-6xl">
               Our Work
             </h1>
 
-            <p className="mx-auto max-w-2xl text-xl leading-relaxed text-stone-300">
+            <p className="mx-auto max-w-2xl text-xl leading-relaxed text-stone-600">
               Production AI for small and medium enterprises — shipped in 6&ndash;8 weeks, running
               on infrastructure you own, with full IP transfer.
             </p>
@@ -144,13 +144,13 @@ export default function PortfolioPage() {
         </section>
 
         {/* Solutions Grid */}
-        <section className="bg-white/[0.02] px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        <section className="bg-stone-50 px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div className="mx-auto max-w-6xl">
             <div className="mb-16 text-center">
-              <h2 className="font-display mb-4 text-3xl tracking-[-0.02em] text-stone-50 sm:text-4xl">
+              <h2 className="font-display mb-4 text-3xl tracking-[-0.02em] text-stone-900 sm:text-4xl">
                 Solutions We Build
               </h2>
-              <p className="mx-auto max-w-2xl text-xl text-stone-300">
+              <p className="mx-auto max-w-2xl text-xl text-stone-600">
                 End-to-end AI systems that integrate with your existing infrastructure.
               </p>
             </div>
@@ -160,27 +160,27 @@ export default function PortfolioPage() {
                 <Link
                   key={index}
                   href={solution.href}
-                  className="group hover:border-brand-400/50 rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
+                  className="group hover:border-brand-500/50 rounded-2xl border border-stone-200 bg-stone-50 p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
                 >
                   {/* Icon */}
-                  <div className="bg-brand-500/10 text-brand-300 group-hover:bg-brand-500/20 mb-5 flex h-12 w-12 items-center justify-center rounded-xl transition-colors">
+                  <div className="bg-brand-500/10 text-brand-700 group-hover:bg-brand-500/20 mb-5 flex h-12 w-12 items-center justify-center rounded-xl transition-colors">
                     {solution.icon}
                   </div>
 
-                  <h3 className="group-hover:text-brand-300 mb-2 text-lg font-semibold text-stone-50 transition-colors">
+                  <h3 className="group-hover:text-brand-600 mb-2 text-lg font-semibold text-stone-900 transition-colors">
                     {solution.title}
                   </h3>
 
-                  <p className="mb-4 text-sm leading-relaxed text-stone-300">
+                  <p className="mb-4 text-sm leading-relaxed text-stone-600">
                     {solution.description}
                   </p>
 
                   <div className="flex items-baseline gap-2">
-                    <span className="font-display text-brand-400 text-2xl">{solution.metric}</span>
-                    <span className="text-sm text-stone-400">{solution.metricLabel}</span>
+                    <span className="font-display text-brand-600 text-2xl">{solution.metric}</span>
+                    <span className="text-sm text-stone-500">{solution.metricLabel}</span>
                   </div>
 
-                  <div className="text-brand-400 mt-4 flex items-center gap-1 text-sm font-medium transition-all group-hover:gap-2">
+                  <div className="text-brand-600 mt-4 flex items-center gap-1 text-sm font-medium transition-all group-hover:gap-2">
                     Learn more
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
@@ -201,10 +201,10 @@ export default function PortfolioPage() {
         <section className="px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div className="mx-auto max-w-6xl">
             <div className="mb-16 text-center">
-              <h2 className="font-display mb-4 text-3xl tracking-[-0.02em] text-stone-50 sm:text-4xl">
+              <h2 className="font-display mb-4 text-3xl tracking-[-0.02em] text-stone-900 sm:text-4xl">
                 Proven Results
               </h2>
-              <p className="mx-auto max-w-2xl text-xl text-stone-300">
+              <p className="mx-auto max-w-2xl text-xl text-stone-600">
                 Real outcomes from real deployments &mdash; sized for SME budgets, not enterprise
                 ones.
               </p>
@@ -214,12 +214,12 @@ export default function PortfolioPage() {
               {caseStudyMetrics.map((metric, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center"
+                  className="rounded-2xl border border-stone-200 bg-stone-50 p-6 text-center"
                 >
-                  <div className="font-display text-brand-400 mb-2 text-3xl sm:text-4xl">
+                  <div className="font-display text-brand-600 mb-2 text-3xl sm:text-4xl">
                     {metric.value}
                   </div>
-                  <div className="text-sm text-stone-300">{metric.label}</div>
+                  <div className="text-sm text-stone-600">{metric.label}</div>
                 </div>
               ))}
             </div>
@@ -227,7 +227,7 @@ export default function PortfolioPage() {
             <div className="text-center">
               <Link
                 href="/case-studies"
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/10 bg-white/[0.03] px-7 py-4 text-lg font-medium text-stone-300 transition-all duration-200 hover:border-white/20 hover:bg-white/[0.06]"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-stone-200 bg-stone-50 px-7 py-4 text-lg font-medium text-stone-600 transition-all duration-200 hover:border-stone-300 hover:bg-stone-100"
               >
                 View Case Studies
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

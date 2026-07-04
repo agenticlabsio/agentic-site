@@ -20,11 +20,11 @@ export default async function SolutionsPage() {
         />
         <section className="px-4 pt-20 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <p className="text-brand-400 mb-4 text-sm font-medium tracking-wide uppercase">Solutions</p>
-            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl lg:text-6xl">
-              Custom agents that ship. <span className="text-brand-400">Not another pilot.</span>
+            <p className="text-brand-600 mb-4 text-sm font-medium tracking-wide uppercase">Solutions</p>
+            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
+              Custom agents that ship. <span className="text-brand-600">Not another pilot.</span>
             </h1>
-            <p className="max-w-2xl text-xl text-stone-300">
+            <p className="max-w-2xl text-xl text-stone-600">
               Built for small and medium enterprises — not the Fortune 500 playbook shrunk to fit.
               Each solution reaches production in 6&ndash;8 weeks, runs on infrastructure you control,
               and is instrumented to prove its payback.

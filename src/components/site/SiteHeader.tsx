@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import ThemeToggle from '@/components/newsite/ThemeToggle'
 
 export interface SiteNavItem {
   label: string
@@ -88,7 +87,6 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
           </div>
 
           <div className="nav-desktop" style={{ flexShrink: 0, alignItems: 'center', gap: 12 }}>
-            <ThemeToggle />
             <Link
               href={cta.href}
               className="nav-cta"
@@ -121,7 +119,6 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
           </div>
 
           <div className="nav-mobile-right" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <ThemeToggle />
             <button
               className="nav-mobile-toggle"
               onClick={() => setMobileOpen(!mobileOpen)}

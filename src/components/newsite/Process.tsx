@@ -1,6 +1,5 @@
 "use client";
 
-import Animate from "./Animate";
 import { TargetIcon, CodeAgentIcon, RocketIcon, SupportAgentIcon } from "./icons/AgentIcons";
 
 const steps = [
@@ -61,7 +60,6 @@ export default function Process() {
       />
 
       <div style={{ width: "100%", maxWidth: 1140, margin: "0 auto", position: "relative", zIndex: 1 }}>
-        <Animate type="fadeUp">
           <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 64, textAlign: "center" }}>
             <span
               className="font-display"
@@ -101,13 +99,12 @@ export default function Process() {
               A proven methodology that combines AI-native engineering with enterprise-grade delivery.
             </p>
           </div>
-        </Animate>
 
         {/* Timeline layout */}
         <div className="process-timeline">
           {steps.map((step, i) => (
-            <Animate key={i} type="fadeUp" delay={0.15 * i}>
               <div
+                key={i}
                 className="process-step"
                 style={{
                   display: "flex",
@@ -195,12 +192,10 @@ export default function Process() {
                   </p>
                 </div>
               </div>
-            </Animate>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <Animate type="fadeUp" delay={0.6}>
           <div
             style={{
               marginTop: 48,
@@ -218,7 +213,6 @@ export default function Process() {
               Schedule Discovery Call
             </a>
           </div>
-        </Animate>
       </div>
 
       <style>{`

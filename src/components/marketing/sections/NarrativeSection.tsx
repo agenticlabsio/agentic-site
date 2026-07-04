@@ -17,7 +17,7 @@ export interface NarrativeSectionProps {
 }
 
 const warningIcon = (
-  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="mt-1 h-5 w-5 flex-shrink-0 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -28,13 +28,13 @@ const warningIcon = (
 )
 
 const xIcon = (
-  <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
   </svg>
 )
 
 const clockIcon = (
-  <svg className="text-brand-400 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="text-brand-600 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -59,35 +59,35 @@ export function NarrativeSection({
   return (
     <section className="px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-display mb-6 text-2xl font-bold text-stone-50 sm:text-3xl">{heading}</h2>
-        <p className="font-body mb-6 max-w-2xl text-lg leading-relaxed text-stone-300 sm:mb-8">{intro}</p>
+        <h2 className="font-display mb-6 text-2xl font-bold text-stone-900 sm:text-3xl">{heading}</h2>
+        <p className="font-body mb-6 max-w-2xl text-lg leading-relaxed text-stone-600 sm:mb-8">{intro}</p>
 
         {sideCard && list ? (
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             <div>
               <ul className="space-y-4">
                 {list.map((item, i) => (
-                  <li key={i} className="font-body flex items-start gap-3 text-stone-300">
+                  <li key={i} className="font-body flex items-start gap-3 text-stone-600">
                     {warningIcon}
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl bg-white/[0.02] p-8">
-              <h3 className="font-display mb-4 text-xl font-bold text-stone-50">{sideCard.heading}</h3>
-              <p className="font-body text-stone-300">{sideCard.body}</p>
+            <div className="rounded-2xl border border-stone-200 bg-stone-50 p-8">
+              <h3 className="font-display mb-4 text-xl font-bold text-stone-900">{sideCard.heading}</h3>
+              <p className="font-body text-stone-600">{sideCard.body}</p>
             </div>
           </div>
         ) : (
           list && (
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-              <h3 className="font-display mb-4 text-sm font-semibold tracking-wider text-stone-400 uppercase">
+            <div className="rounded-2xl border border-stone-200 bg-stone-50 p-6">
+              <h3 className="font-display mb-4 text-sm font-semibold tracking-wider text-stone-500 uppercase">
                 Pain Points
               </h3>
               <ul className="space-y-3">
                 {list.map((item, i) => (
-                  <li key={i} className="font-body flex items-start gap-3 text-stone-300">
+                  <li key={i} className="font-body flex items-start gap-3 text-stone-600">
                     {listIcon === 'x' ? xIcon : warningIcon}
                     {item}
                   </li>
@@ -102,23 +102,23 @@ export function NarrativeSection({
             {numberedCards.map((card, i) => (
               <div
                 key={i}
-                className="hover:border-brand-400/50 rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
+                className="hover:border-brand-500/50 rounded-2xl border border-stone-200 bg-stone-50 p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
               >
-                <div className="bg-brand-500/10 text-brand-300 font-display mb-4 flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold">
+                <div className="bg-brand-500/10 text-brand-700 font-display mb-4 flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold">
                   {i + 1}
                 </div>
-                <div className="font-display mb-2 font-semibold text-stone-50">{card.title}</div>
-                <p className="font-body text-sm text-stone-400">{card.description}</p>
+                <div className="font-display mb-2 font-semibold text-stone-900">{card.title}</div>
+                <p className="font-body text-sm text-stone-500">{card.description}</p>
               </div>
             ))}
           </div>
         )}
 
         {timeline && (
-          <div className="flex items-center gap-2 text-stone-300">
+          <div className="flex items-center gap-2 text-stone-600">
             {clockIcon}
             <span className="font-body">
-              <span className="font-display font-semibold text-stone-50">Timeline:</span> {timeline}
+              <span className="font-display font-semibold text-stone-900">Timeline:</span> {timeline}
             </span>
           </div>
         )}

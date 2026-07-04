@@ -16,9 +16,9 @@ export function ProcessStepsSection({
   return (
     <section className="px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-display mb-4 text-3xl font-bold text-stone-50">{heading}</h2>
+        <h2 className="font-display mb-4 text-3xl font-bold text-stone-900">{heading}</h2>
         {description && (
-          <p className="font-body mb-12 max-w-2xl text-lg text-stone-300">{description}</p>
+          <p className="font-body mb-12 max-w-2xl text-lg text-stone-600">{description}</p>
         )}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
@@ -27,8 +27,8 @@ export function ProcessStepsSection({
                 {step.step}
               </div>
               <div className="relative pt-8 pl-4">
-                <h3 className="font-display mb-2 text-lg font-bold text-stone-50">{step.title}</h3>
-                <p className="font-body text-sm text-stone-300">{step.description}</p>
+                <h3 className="font-display mb-2 text-lg font-bold text-stone-900">{step.title}</h3>
+                <p className="font-body text-sm text-stone-600">{step.description}</p>
               </div>
             </div>
           ))}

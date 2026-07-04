@@ -1,6 +1,5 @@
 "use client";
 
-import Animate from "./Animate";
 import { MetricsIcon, ShieldCheckIcon, WorkflowIcon, DataFlowIcon, NeuralNetworkIcon } from "./icons/AgentIcons";
 
 const capabilities = [
@@ -49,7 +48,6 @@ export default function Problem() {
       }}
     >
       <div style={{ width: "100%", maxWidth: 1140 }}>
-        <Animate type="blur">
           <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
             <span
               className="font-display"
@@ -91,23 +89,17 @@ export default function Problem() {
               Most AI pilots fail because they ignore enterprise constraints. We build custom agents that ship, govern, and return real ROI.
             </p>
           </div>
-        </Animate>
 
         {/* Hexagonal/Bento grid layout */}
         <div className="capabilities-grid">
           {capabilities.map((cap, i) => (
-            <Animate key={i} type="fadeUp" delay={0.1 * i}>
+              <div className="card-bezel" key={i}>
               <div
-                className="capability-card"
+                className="capability-card card-bezel-inner"
                 style={{
-                  borderRadius: 16,
                   padding: "28px 24px",
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border)",
-                  height: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
                   position: "relative",
                   overflow: "hidden",
                 }}
@@ -188,11 +180,10 @@ export default function Problem() {
                   ))}
                 </div>
               </div>
-            </Animate>
+              </div>
           ))}
         </div>
 
-        <Animate type="fadeUp" delay={0.5}>
           <div
             style={{
               marginTop: 48,
@@ -217,7 +208,6 @@ export default function Problem() {
               {" "}From Your AI Investment
             </p>
           </div>
-        </Animate>
       </div>
 
       <style>{`

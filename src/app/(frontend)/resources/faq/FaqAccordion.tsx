@@ -22,22 +22,22 @@ export function FaqAccordion({ categories }: { categories: FaqCategoryGroup[] })
     <>
       {categories.map((category) => (
         <div key={category.slug} id={category.slug} className="mb-12 scroll-mt-24">
-          <h2 className="font-display mb-6 text-2xl font-bold text-stone-50">{category.name}</h2>
+          <h2 className="font-display mb-6 text-2xl font-bold text-stone-900">{category.name}</h2>
           <div className="space-y-4">
             {category.faqs.map((faq, faqIndex) => {
               const key = `${category.slug}-${faqIndex}`
               const isOpen = openIndex === key
 
               return (
-                <div key={faqIndex} className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]">
+                <div key={faqIndex} className="overflow-hidden rounded-xl border border-stone-200 bg-stone-50">
                   <button
                     onClick={() => toggleFAQ(category.slug, faqIndex)}
-                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-white/5"
+                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-stone-100"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-display text-lg font-semibold text-stone-50">{faq.question}</span>
+                    <span className="font-display text-lg font-semibold text-stone-900">{faq.question}</span>
                     <svg
-                      className={`h-5 w-5 flex-shrink-0 text-stone-400 transition-transform duration-200 ${
+                      className={`h-5 w-5 flex-shrink-0 text-stone-500 transition-transform duration-200 ${
                         isOpen ? 'rotate-180' : ''
                       }`}
                       fill="none"
@@ -51,7 +51,7 @@ export function FaqAccordion({ categories }: { categories: FaqCategoryGroup[] })
                   <div
                     className={`overflow-hidden transition-all duration-200 ${isOpen ? 'max-h-96' : 'max-h-0'}`}
                   >
-                    <div className="font-body px-6 pb-5 text-stone-300">{faq.answer}</div>
+                    <div className="font-body px-6 pb-5 text-stone-600">{faq.answer}</div>
                   </div>
                 </div>
               )

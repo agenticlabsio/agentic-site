@@ -55,7 +55,7 @@ export function HeroSection({
             <div className="mx-auto max-w-6xl">
               <Link
                 href={backLink.href}
-                className="font-display inline-flex items-center gap-2 text-sm text-stone-400 transition-colors hover:text-stone-50"
+                className="font-display inline-flex items-center gap-2 text-sm text-stone-500 transition-colors hover:text-stone-900"
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -68,37 +68,37 @@ export function HeroSection({
         <section className="px-4 pt-8 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             {eyebrow && (
-              <div className="bg-brand-500/10 text-brand-300 font-display mb-4 inline-block rounded-full px-3 py-1 text-xs font-medium">
+              <div className="bg-brand-500/10 text-brand-700 font-display mb-4 inline-block rounded-full px-3 py-1 text-xs font-medium">
                 {eyebrow}
               </div>
             )}
-            <h1 className="font-display mb-2 text-3xl font-bold tracking-tight text-stone-50 sm:text-4xl lg:text-5xl">
+            <h1 className="font-display mb-2 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl lg:text-5xl">
               {title}
             </h1>
-            {tagline && <p className="font-body text-xl text-stone-400">{tagline}</p>}
+            {tagline && <p className="font-body text-xl text-stone-500">{tagline}</p>}
           </div>
         </section>
       </>
     )
   }
 
-  const taglineColor = 'text-brand-400'
+  const taglineColor = 'text-brand-600'
 
   return (
-    <section className="bg-white/[0.02] px-4 pt-20 pb-16 sm:px-6 lg:px-8">
+    <section className="bg-stone-50 px-4 pt-20 pb-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         {breadcrumb && (
           <nav className="mb-6">
             <ol className="flex items-center gap-2 text-sm">
               {breadcrumb.map((item, i) => (
                 <li key={item.label} className="flex items-center gap-2">
-                  {i > 0 && <span className="text-stone-400">/</span>}
+                  {i > 0 && <span className="text-stone-500">/</span>}
                   {item.href ? (
-                    <Link href={item.href} className="text-stone-400 hover:text-stone-200">
+                    <Link href={item.href} className="text-stone-500 hover:text-stone-700">
                       {item.label}
                     </Link>
                   ) : (
-                    <span className="font-medium text-stone-50">{item.label}</span>
+                    <span className="font-medium text-stone-900">{item.label}</span>
                   )}
                 </li>
               ))}
@@ -107,23 +107,23 @@ export function HeroSection({
         )}
 
         {eyebrow && (
-          <div className="bg-brand-500/10 text-brand-300 font-display mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium">
+          <div className="bg-brand-500/10 text-brand-700 font-display mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium">
             {eyebrow}
           </div>
         )}
         {icon && <div className="mb-4 text-5xl">{icon}</div>}
 
-        <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl lg:text-6xl">
+        <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
           {title}
         </h1>
         {tagline && (
           <p className={`font-display mb-6 text-xl font-medium sm:text-2xl ${taglineColor}`}>{tagline}</p>
         )}
         {description && (
-          <p className="font-body mb-8 max-w-3xl text-lg text-stone-300">{description}</p>
+          <p className="font-body mb-8 max-w-3xl text-lg text-stone-600">{description}</p>
         )}
         {meta && (
-          <p className="font-body mb-8 text-sm text-stone-400">
+          <p className="font-body mb-8 text-sm text-stone-500">
             <strong>Target Audience:</strong> {meta}
           </p>
         )}
@@ -142,7 +142,7 @@ export function HeroSection({
             {secondaryCta && (
               <Link
                 href={secondaryCta.href}
-                className="font-display inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-6 py-3 font-semibold text-stone-300 transition-colors hover:bg-white/5"
+                className="font-display inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-stone-50 px-6 py-3 font-semibold text-stone-600 transition-colors hover:bg-stone-100"
               >
                 {secondaryCta.label}
               </Link>

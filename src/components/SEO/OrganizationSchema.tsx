@@ -50,7 +50,7 @@ export function OrganizationSchema() {
           "itemOffered": {
             "@type": "Service",
             "name": "Customer Service Automation",
-            "description": "AI agents for 60% faster ticket resolution"
+            "description": "AI agents for dramatically faster ticket resolution"
           }
         },
         {
@@ -58,7 +58,7 @@ export function OrganizationSchema() {
           "itemOffered": {
             "@type": "Service",
             "name": "Document Processing",
-            "description": "Intelligent extraction and classification at 94% accuracy"
+            "description": "Intelligent extraction and classification with near-perfect accuracy"
           }
         },
         {

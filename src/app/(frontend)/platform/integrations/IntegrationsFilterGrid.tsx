@@ -31,7 +31,7 @@ export function IntegrationsFilterGrid({ integrations }: { integrations: Integra
                 className={`font-display rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   activeCategory === category
                     ? 'bg-brand-600 shadow-brand-600/25 text-white shadow-lg'
-                    : 'bg-white/5 text-stone-300 hover:bg-white/10 hover:text-stone-50'
+                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-900'
                 }`}
               >
                 {category}
@@ -47,22 +47,22 @@ export function IntegrationsFilterGrid({ integrations }: { integrations: Integra
             {filteredIntegrations.map((integration) => (
               <div
                 key={integration.slug}
-                className="hover:border-brand-400/50 rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
+                className="hover:border-brand-500/50 rounded-2xl border border-stone-200 bg-stone-50 p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
               >
                 <div className="mb-4 flex items-start justify-between">
                   <div>
-                    <h3 className="font-display text-xl font-bold text-stone-50">{integration.name}</h3>
-                    <span className="text-brand-400 font-display text-sm font-medium">
+                    <h3 className="font-display text-xl font-bold text-stone-900">{integration.name}</h3>
+                    <span className="text-brand-600 font-display text-sm font-medium">
                       {integration.category}
                     </span>
                   </div>
                 </div>
-                <p className="font-body mb-4 text-stone-300">{integration.description}</p>
+                <p className="font-body mb-4 text-stone-600">{integration.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {integration.features.map((feature, i) => (
                     <span
                       key={i}
-                      className="font-display rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-stone-300"
+                      className="font-display rounded-full bg-stone-200 px-3 py-1 text-xs font-medium text-stone-600"
                     >
                       {feature}
                     </span>

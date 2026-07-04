@@ -43,28 +43,28 @@ export default async function FAQHubPage() {
             <nav className="mb-6">
               <ol className="flex items-center gap-2 text-sm">
                 <li>
-                  <Link href="/" className="text-stone-400 hover:text-stone-300">
+                  <Link href="/" className="text-stone-500 hover:text-stone-600">
                     Home
                   </Link>
                 </li>
-                <li className="text-stone-400">/</li>
+                <li className="text-stone-500">/</li>
                 <li>
-                  <Link href="/resources" className="text-stone-400 hover:text-stone-300">
+                  <Link href="/resources" className="text-stone-500 hover:text-stone-600">
                     Resources
                   </Link>
                 </li>
-                <li className="text-stone-400">/</li>
-                <li className="font-medium text-stone-50">FAQ</li>
+                <li className="text-stone-500">/</li>
+                <li className="font-medium text-stone-900">FAQ</li>
               </ol>
             </nav>
 
-            <p className="text-brand-400 mb-4 text-sm font-semibold tracking-wide uppercase">
+            <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">
               Frequently Asked Questions
             </p>
-            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl">
+            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl">
               Straight answers.
             </h1>
-            <p className="font-body max-w-2xl text-xl text-stone-300">
+            <p className="font-body max-w-2xl text-xl text-stone-600">
               Common questions about agentic AI, SaaS replacement, deployment, and governance &mdash;
               answered for small and mid-market teams, without the sales pitch.
             </p>
@@ -78,7 +78,7 @@ export default async function FAQHubPage() {
                 <a
                   key={category.slug}
                   href={`#${category.slug}`}
-                  className="font-display rounded-lg bg-white/5 px-4 py-2 text-sm font-medium text-stone-300 transition-colors hover:bg-white/10 hover:text-stone-50"
+                  className="font-display rounded-lg bg-stone-100 px-4 py-2 text-sm font-medium text-stone-600 transition-colors hover:bg-stone-200 hover:text-stone-900"
                 >
                   {category.name}
                 </a>

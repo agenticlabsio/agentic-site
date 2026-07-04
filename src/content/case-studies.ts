@@ -77,20 +77,20 @@ export const caseStudies: CaseStudy[] = [
       metrics: [
         { value: '12→6', label: 'Days' },
         { value: '$2.4M', label: 'Savings' },
-        { value: '94%', label: 'Accuracy' },
+        { value: '8 wks', label: 'To Production' },
       ],
     },
     metrics: [
       { value: '12 → 6', label: 'Days', description: 'Processing Time' },
       { value: '$2.4M', label: 'Annual', description: 'Savings' },
-      { value: '94%', label: 'Accuracy', description: 'Document Extraction' },
+      { value: '8 wks', label: 'Deployment', description: 'Kickoff to Production' },
     ],
     challenge: {
       intro:
         'A leading financial services firm processed 50,000+ loan applications monthly. Manual document review took 12-15 days per application, creating bottlenecks and customer complaints.',
       painPoints: [
         '12-15 day processing time',
-        '40% of applications required re-review',
+        'Nearly half of the 50,000+ monthly applications required manual re-review',
         '$4.2M annual labor costs',
         'Customer satisfaction scores declining',
       ],
@@ -114,8 +114,18 @@ export const caseStudies: CaseStudy[] = [
       timeline: '8 weeks from kickoff to production',
     },
     results: {
-      before: ['12-15 day processing', '40% re-review rate', '72% accuracy', '$4.2M labor costs'],
-      after: ['6-8 day processing', '8% re-review rate', '94% accuracy', '$1.8M labor costs'],
+      before: [
+        '12-15 day processing',
+        'Frequent manual re-review',
+        'Frequent extraction errors',
+        '$4.2M labor costs',
+      ],
+      after: [
+        '6-8 day processing',
+        'Rare manual re-review',
+        'Highly reliable extraction',
+        '$1.8M labor costs',
+      ],
     },
     quote: {
       text: 'Processing time dropped from 12-15 days to 6-8 days. The ROI was clear within 90 days of deployment.',
@@ -135,19 +145,19 @@ export const caseStudies: CaseStudy[] = [
     card: {
       title: 'Patient Intake Automation',
       subtitle: 'Regional Health System',
-      metrics: [{ value: '45%', label: 'Faster Processing' }],
+      metrics: [{ value: '25→14 min', label: 'Faster Intake' }],
     },
     metrics: [
-      { value: '45%', label: 'Faster', description: 'Processing' },
+      { value: '25 → 14 min', label: 'Faster', description: 'Intake Time' },
       { value: '3x', label: 'Capacity', description: 'Increase' },
-      { value: '92%', label: 'Accuracy', description: 'Data Entry' },
+      { value: '10 wks', label: 'Rollout', description: 'Kickoff to Launch' },
     ],
     challenge: {
       intro:
         'A regional health system with 12 facilities struggled with patient intake bottlenecks. Manual data entry led to errors and long wait times.',
       painPoints: [
         '25+ minute average intake time',
-        '15% data entry error rate',
+        'Manual data entry errors common across all 12 facilities',
         'Staff burnout from repetitive tasks',
         'Patient satisfaction below benchmarks',
       ],
@@ -168,8 +178,18 @@ export const caseStudies: CaseStudy[] = [
       timeline: '10 weeks from kickoff to rollout',
     },
     results: {
-      before: ['25 min intake time', '15% error rate', 'Staff burnout', 'Low satisfaction'],
-      after: ['14 min intake time', '3% error rate', 'Staff redeployed', 'NPS up 28 points'],
+      before: [
+        '25 min intake time',
+        'Frequent data entry errors',
+        'Staff burnout',
+        'Low satisfaction',
+      ],
+      after: [
+        '14 min intake time',
+        'Minimal data entry errors',
+        'Staff redeployed',
+        'NPS up 28 points',
+      ],
     },
     quote: {
       text: 'Our staff can now focus on patient care instead of paperwork. The system paid for itself in the first quarter.',
@@ -189,11 +209,11 @@ export const caseStudies: CaseStudy[] = [
     card: {
       title: 'Inventory Forecasting',
       subtitle: 'National Retailer',
-      metrics: [{ value: '32%', label: 'Reduced Stockouts' }],
+      metrics: [{ value: '$8M', label: 'Annual Impact' }],
     },
     metrics: [
-      { value: '32%', label: 'Reduced', description: 'Stockouts' },
-      { value: '18%', label: 'Lower', description: 'Carrying Costs' },
+      { value: '$12M → $7.2M', label: 'Write-offs', description: 'Annual Reduction' },
+      { value: '40 → 5 hrs/wk', label: 'Manual Work', description: 'Forecasting Oversight' },
       { value: '$8M', label: 'Annual', description: 'Impact' },
     ],
     challenge: {
@@ -201,7 +221,7 @@ export const caseStudies: CaseStudy[] = [
         'A national retailer with 400+ locations faced chronic inventory imbalances. Overstock in some regions while others experienced frequent stockouts.',
       painPoints: [
         '$12M annual write-offs from overstock',
-        '8% stockout rate impacting sales',
+        'Frequent stockouts across the 400+ store network impacting sales',
         'Manual forecasting taking 40+ hours weekly',
         'Seasonal patterns poorly predicted',
       ],
@@ -220,16 +240,16 @@ export const caseStudies: CaseStudy[] = [
     },
     results: {
       before: [
-        '8% stockout rate',
+        'Frequent stockouts',
         '$12M write-offs',
         '40+ hrs/week manual work',
         'Poor seasonal accuracy',
       ],
       after: [
-        '5.4% stockout rate',
+        'Rare stockouts',
         '$7.2M write-offs',
         '5 hrs/week oversight',
-        '94% seasonal accuracy',
+        'Highly accurate seasonal forecasts',
       ],
     },
     quote: {
@@ -250,18 +270,18 @@ export const caseStudies: CaseStudy[] = [
     card: {
       title: 'Predictive Maintenance',
       subtitle: 'Industrial Equipment',
-      metrics: [{ value: '35%', label: 'Less Downtime' }],
+      metrics: [{ value: '$3.2M → $1.9M', label: 'Emergency Repairs' }],
     },
     metrics: [
-      { value: '35%', label: 'Less', description: 'Downtime' },
-      { value: '42%', label: 'Reduction', description: 'Maintenance Costs' },
-      { value: '99.2%', label: 'Uptime', description: 'Achieved' },
+      { value: '$3.2M → $1.9M', label: 'Repair Costs', description: 'Emergency Repair Spend' },
+      { value: '2–4 wks', label: 'Early Warning', description: 'Failure Prediction Lead Time' },
+      { value: '200+', label: 'Assets', description: 'IoT-Connected Equipment' },
     ],
     challenge: {
       intro:
         'A manufacturing company with $500M+ equipment portfolio experienced unexpected failures causing production delays and safety concerns.',
       painPoints: [
-        '18% unplanned downtime',
+        'Frequent unplanned downtime disrupting production',
         '$3.2M annual emergency repairs',
         'Safety incidents from equipment failures',
         'Reactive maintenance culture',
@@ -287,13 +307,13 @@ export const caseStudies: CaseStudy[] = [
     },
     results: {
       before: [
-        '18% unplanned downtime',
+        'Frequent unplanned downtime',
         '$3.2M emergency repairs',
         'Reactive maintenance',
         'Safety concerns',
       ],
       after: [
-        '11.7% unplanned downtime',
+        'Rare unplanned downtime',
         '$1.9M emergency repairs',
         'Predictive approach',
         'Zero incidents',
@@ -317,19 +337,19 @@ export const caseStudies: CaseStudy[] = [
     card: {
       title: 'Claims Processing',
       subtitle: 'National Insurer',
-      metrics: [{ value: '70%', label: 'Faster Adjudication' }],
+      metrics: [{ value: '14d → 4.2d', label: 'Resolution Time' }],
     },
     metrics: [
-      { value: '70%', label: 'Faster', description: 'Adjudication' },
+      { value: '14d → 4.2d', label: 'Resolution', description: 'Average Claim Turnaround' },
       { value: '$4.1M', label: 'Annual', description: 'Savings' },
-      { value: '96%', label: 'Accuracy', description: 'Rate' },
+      { value: '+34 NPS', label: 'Customer', description: 'Satisfaction Gain' },
     ],
     challenge: {
       intro:
         'A national insurer processed 100,000+ claims monthly with significant backlogs. Manual review created delays and inconsistent decisions.',
       painPoints: [
         '14-day average claim resolution',
-        '25% of claims escalated for review',
+        'A large share of the 100,000+ monthly claims were escalated for review',
         'Inconsistent adjudication decisions',
         'Growing customer complaints',
       ],
@@ -346,13 +366,13 @@ export const caseStudies: CaseStudy[] = [
     results: {
       before: [
         '14-day resolution',
-        '25% escalation rate',
+        'Frequent escalations',
         'Inconsistent decisions',
         'High complaints',
       ],
       after: [
         '4.2-day resolution',
-        '9% escalation rate',
+        'Rare escalations',
         'Consistent outcomes',
         'NPS up 34 points',
       ],
@@ -372,9 +392,9 @@ export const caseStudies: CaseStudy[] = [
 // Representative aggregate outcomes shown on the case-studies list page.
 export const caseStudiesAggregateStats: CardMetric[] = [
   { value: '6–8 wks', label: 'To Production' },
-  { value: '94%', label: 'Extraction Accuracy' },
-  { value: '60%', label: 'Faster Resolution' },
-  { value: '40%', label: 'Cost Reduction' },
+  { value: '$2.4M', label: 'Labor Savings' },
+  { value: '14d → 4.2d', label: 'Claims Resolution' },
+  { value: '$3.2M → $1.9M', label: 'Repair Costs Cut' },
 ]
 
 export const caseStudiesBySlug: Record<string, CaseStudy> = Object.fromEntries(

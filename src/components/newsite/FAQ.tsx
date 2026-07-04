@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Animate from "./Animate";
 
 export interface HomepageFaq {
   question: string;
@@ -32,7 +31,6 @@ export default function FAQ({ faqs }: { faqs: HomepageFaq[] }) {
     >
       <div style={{ width: "100%", maxWidth: 800 }}>
         {/* Header */}
-        <Animate type="blur">
           <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
             <h2
               style={{
@@ -66,15 +64,14 @@ export default function FAQ({ faqs }: { faqs: HomepageFaq[] }) {
               Everything you need to know about working with Agentic Labs.
             </p>
           </div>
-        </Animate>
 
         {/* FAQ Items */}
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <Animate key={i} type="fadeUp" delay={0.06 * i}>
                 <div
+                  key={i}
                   style={{
                     borderRadius: 12,
                     background: isOpen
@@ -174,7 +171,6 @@ export default function FAQ({ faqs }: { faqs: HomepageFaq[] }) {
                     </p>
                   </div>
                 </div>
-              </Animate>
             );
           })}
         </div>

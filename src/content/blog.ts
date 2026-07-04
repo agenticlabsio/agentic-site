@@ -48,7 +48,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'agentic-ai-2026',
     title: 'Agentic AI in 2026: From Hype to "Is It Working?"',
     excerpt:
-      '2026 is the year businesses finally ask "Is it working?" Only 19% of executives report >5% revenue increase from AI. Learn how to measure AI agent performance and prove ROI to stakeholders.',
+      '2026 is the year businesses finally ask "Is it working?" Most executives still can\'t point to a meaningful revenue increase from AI. Learn how to measure AI agent performance and prove ROI to stakeholders.',
     category: 'thought-leadership',
     author: 'Agentic Labs',
     publishedAt: '2026-01-28',
@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'ai-dealers-distributors-order-entry',
-    title: 'AI for Dealers & Distributors: 80% Faster Order Entry',
+    title: 'AI for Dealers & Distributors: Faster Order Entry, Fewer Errors',
     excerpt:
       'Stop manually entering orders from handwritten notes. Learn how AI agents process any order format—PDF, email, voicemail, spreadsheet—and integrate directly with your ERP.',
     category: 'industry',
@@ -145,7 +145,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'fpga-design-automation-ai',
-    title: 'AI-Enhanced FPGA Design: 25-40% Faster Verification Cycles',
+    title: 'AI-Enhanced FPGA Design: Faster Verification Cycles',
     excerpt:
       'Siemens unveiled agentic AI for EDA at DAC 2025. Learn how AI-enhanced tools accelerate FPGA design, verification, and documentation.',
     category: 'industry',
@@ -193,7 +193,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'robotics-ai-downtime-reduction',
-    title: 'AI for Industrial Robotics: 50% Reduction in Unplanned Downtime',
+    title: 'AI for Industrial Robotics: Predicting Failures Weeks Before Downtime',
     excerpt:
       "SAP's Embodied AI proves robotics ROI in production. Learn how vision AI, predictive maintenance, and autonomous navigation transform industrial automation.",
     category: 'industry',
@@ -241,7 +241,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'energy-ai-grid-optimization',
     title: 'Energy Sector AI: Grid Optimization and Predictive Maintenance',
     excerpt:
-      '65% of energy CEOs now rank AI as top investment. Learn how AI improves grid stability, enables renewable integration, and reduces operational costs.',
+      'Energy CEOs now rank AI among their top investments. Learn how AI improves grid stability, enables renewable integration, and reduces operational costs.',
     category: 'industry',
     author: 'Agentic Labs',
     publishedAt: '2026-01-06',
@@ -264,7 +264,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'why-ai-projects-fail',
     title: "Most AI Pilots Never Ship. Here's the Pattern That Does.",
     excerpt:
-      'MIT (2025) found ~95% of enterprise GenAI pilots deliver no measurable ROI — almost always a deployment problem, not a model one. The five reasons projects stall, and how SMEs beat the odds.',
+      'MIT (2025) found the vast majority of enterprise GenAI pilots deliver no measurable ROI — almost always a deployment problem, not a model one. The five reasons projects stall, and how SMEs beat the odds.',
     category: 'thought-leadership',
     author: 'Agentic Labs',
     publishedAt: '2026-01-04',

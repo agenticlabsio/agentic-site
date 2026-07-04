@@ -2,14 +2,8 @@
 
 import { NeuralNetworkIcon, DataFlowIcon, AgentBrainIcon } from './icons/AgentIcons'
 
-const partners = [
-  { name: 'ITC', height: 64 },
-  { name: 'HUL', height: 56 },
-  { name: 'DHL', height: 68 },
-]
-
 const metrics = [
-  { value: '90%', label: 'Lower Ops Cost' },
+  { value: '$1M+', label: 'Ops Cost Saved' },
   { value: '6–12 wks', label: 'To Production' },
   { value: '24/7', label: 'Autonomous Ops' },
 ]
@@ -109,9 +103,7 @@ export default function Hero() {
         >
           {/* Badge */}
           <div
-            className="hero-badge-in"
             style={{
-              animationDelay: '0.2s',
               display: 'inline-flex',
               alignItems: 'center',
               gap: 8,
@@ -127,7 +119,6 @@ export default function Hero() {
                 height: 6,
                 borderRadius: '50%',
                 background: 'var(--accent)',
-                animation: 'glowPulse 2s ease-in-out infinite',
               }}
             />
             <span
@@ -164,10 +155,10 @@ export default function Hero() {
                 letterSpacing: '-0.03em',
               }}
             >
-              <span className="hero-text-reveal" style={{ animationDelay: '0.3s' }}>
+              <span>
                 AI Agents That
               </span>
-              <span className="hero-text-reveal" style={{ animationDelay: '0.45s' }}>
+              <span>
                 <span
                   className="text-gradient"
                   style={{
@@ -179,11 +170,9 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Animated accent line */}
+            {/* Accent line */}
             <div
-              className="hero-animate"
               style={{
-                animationDelay: '0.6s',
                 position: 'relative',
                 height: 3,
                 width: 280,
@@ -199,33 +188,27 @@ export default function Hero() {
                   inset: 0,
                   background:
                     'linear-gradient(90deg, var(--accent), var(--accent-secondary), var(--accent))',
-                  backgroundSize: '200% 100%',
-                  animation: 'gradientTextShift 3s linear infinite',
                 }}
               />
             </div>
           </div>
 
           <p
-            className="hero-text-reveal"
             style={{
-              animationDelay: '0.75s',
               color: 'var(--text-secondary)',
               fontSize: 'clamp(1rem, 2vw, 1.25rem)',
               maxWidth: 580,
               lineHeight: 1.65,
             }}
           >
-            We build production AI agents that cut operational cost up to 90% — end to end, on
+            We build production AI agents that cut operational cost significantly — end to end, on
             your infrastructure, live in 6–12 weeks. If it doesn&apos;t move a business metric, we
             don&apos;t ship it.
           </p>
 
           {/* CTA Buttons */}
           <div
-            className="hero-cta-in"
             style={{
-              animationDelay: '0.9s',
               display: 'flex',
               gap: 12,
               flexWrap: 'wrap',
@@ -241,18 +224,20 @@ export default function Hero() {
               }}
             >
               <span>Book an ROI Assessment</span>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              <span className="btn-icon-chip">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
             </a>
             <a
               href="#results"
@@ -268,9 +253,8 @@ export default function Hero() {
 
           {/* Quick metrics */}
           <div
-            className="hero-animate hero-metrics"
+            className="hero-metrics"
             style={{
-              animationDelay: '1.1s',
               display: 'flex',
               gap: 32,
               marginTop: 24,
@@ -309,72 +293,11 @@ export default function Hero() {
             ))}
           </div>
         </div>
-
-        {/* Trust section */}
-        <div
-          className="hero-trust"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: '32px 16px',
-            borderTop: '1px solid var(--grid-line)',
-          }}
-        >
-          <p
-            style={{
-              fontSize: '0.75rem',
-              fontWeight: 500,
-              color: 'var(--text-muted)',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              marginBottom: 20,
-            }}
-          >
-            Trusted by Industry Leaders
-          </p>
-          <div style={{ display: 'flex', gap: 48, flexWrap: 'wrap', justifyContent: 'center' }}>
-            {partners.map((p) => (
-              <span
-                key={p.name}
-                className="font-display"
-                style={{
-                  fontSize: '1.3rem',
-                  fontWeight: 700,
-                  color: 'var(--partner-text)',
-                  letterSpacing: '0.06em',
-                }}
-              >
-                {p.name}
-              </span>
-            ))}
-            <span
-              className="font-display"
-              style={{
-                fontSize: '1.3rem',
-                fontWeight: 700,
-                color: 'var(--partner-text)',
-                letterSpacing: '0.06em',
-              }}
-            >
-              Titan Capital
-            </span>
-          </div>
-        </div>
       </div>
 
       <style>{`
         .hero-shape {
           color: var(--accent);
-          animation: floatShape 8s ease-in-out infinite;
-        }
-        .shape-1 { animation-delay: 0s; }
-        .shape-2 { animation-delay: -2s; }
-        .shape-3 { animation-delay: -4s; }
-
-        @keyframes floatShape {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         @media (max-width: 768px) {

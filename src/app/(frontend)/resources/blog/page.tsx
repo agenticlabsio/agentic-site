@@ -41,25 +41,25 @@ export default async function BlogPage() {
             <nav className="mb-6">
               <ol className="flex items-center gap-2 text-sm">
                 <li>
-                  <Link href="/" className="text-stone-400 hover:text-stone-300">
+                  <Link href="/" className="text-stone-500 hover:text-stone-600">
                     Home
                   </Link>
                 </li>
-                <li className="text-stone-400">/</li>
+                <li className="text-stone-500">/</li>
                 <li>
-                  <Link href="/resources" className="text-stone-400 hover:text-stone-300">
+                  <Link href="/resources" className="text-stone-500 hover:text-stone-600">
                     Resources
                   </Link>
                 </li>
-                <li className="text-stone-400">/</li>
-                <li className="font-medium text-stone-50">Blog</li>
+                <li className="text-stone-500">/</li>
+                <li className="font-medium text-stone-900">Blog</li>
               </ol>
             </nav>
-            <p className="text-brand-400 mb-4 text-sm font-semibold tracking-wide uppercase">Blog</p>
-            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl">
+            <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">Blog</p>
+            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl">
               The Agentic Labs Blog
             </h1>
-            <p className="font-body max-w-2xl text-xl text-stone-300">
+            <p className="font-body max-w-2xl text-xl text-stone-600">
               Deep dives on agentic AI, industry automation, and practical build guides &mdash;
               written for small and mid-market operators.
             </p>
@@ -68,7 +68,7 @@ export default async function BlogPage() {
 
         {posts.length === 0 ? (
           <section className="px-4 pb-20 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-6xl text-stone-400">No posts published yet.</div>
+            <div className="mx-auto max-w-6xl text-stone-500">No posts published yet.</div>
           </section>
         ) : (
           <BlogList posts={cards} />

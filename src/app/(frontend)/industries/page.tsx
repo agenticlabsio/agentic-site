@@ -28,11 +28,11 @@ export default async function IndustriesPage() {
         />
         <section className="px-4 pt-20 pb-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <p className="text-brand-400 mb-4 text-sm font-medium tracking-wide uppercase">Industries</p>
-            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-50 sm:text-5xl lg:text-6xl">
-              Your industry. <span className="text-brand-400">Your workflows.</span>
+            <p className="text-brand-600 mb-4 text-sm font-medium tracking-wide uppercase">Industries</p>
+            <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
+              Your industry. <span className="text-brand-600">Your workflows.</span>
             </h1>
-            <p className="max-w-2xl text-xl text-stone-300">
+            <p className="max-w-2xl text-xl text-stone-600">
               We build for the workflows, compliance rules, and systems your sector actually runs on —
               sized for a small or mid-market operator, not a Fortune 500 pilot budget.
             </p>
@@ -42,30 +42,30 @@ export default async function IndustriesPage() {
         {featured && (
           <section className="px-4 pb-12 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
-              <div className="mb-4 text-sm font-medium tracking-wider text-stone-400 uppercase">
+              <div className="mb-4 text-sm font-medium tracking-wider text-stone-500 uppercase">
                 Featured Industry
               </div>
               <Link
                 href={`/industries/${featured.slug}`}
-                className="block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-lg transition-shadow hover:shadow-xl"
+                className="block overflow-hidden rounded-2xl border border-stone-200 bg-stone-50 shadow-lg transition-shadow hover:shadow-xl"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="p-8 md:p-10">
                     <div className="mb-4 text-4xl">{featured.icon}</div>
-                    <h2 className="font-display mb-2 text-2xl font-bold text-stone-50 sm:text-3xl">
+                    <h2 className="font-display mb-2 text-2xl font-bold text-stone-900 sm:text-3xl">
                       {featured.name}
                     </h2>
-                    <p className="text-brand-400 mb-4 font-medium">{featured.tagline}</p>
-                    <p className="mb-6 text-stone-300">{featured.cardDescription}</p>
-                    <div className="text-brand-300 inline-flex items-center gap-2 font-medium">
+                    <p className="text-brand-600 mb-4 font-medium">{featured.tagline}</p>
+                    <p className="mb-6 text-stone-600">{featured.cardDescription}</p>
+                    <div className="text-brand-600 inline-flex items-center gap-2 font-medium">
                       Explore {featured.name} Solutions
                       {arrowIcon}
                     </div>
                   </div>
                   <div className="bg-brand-600 flex items-center justify-center p-8 md:p-10">
                     <div className="text-center">
-                      <div className="mb-2 text-6xl font-bold text-white lg:text-7xl">40%</div>
-                      <div className="text-brand-100 text-lg">admin burden reduction</div>
+                      <div className="mb-2 text-6xl font-bold text-white lg:text-7xl">20+ hrs</div>
+                      <div className="text-brand-100 text-lg">admin hours reclaimed weekly</div>
                     </div>
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export default async function IndustriesPage() {
 
         <section className="px-4 pb-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <div className="mb-4 text-sm font-medium tracking-wider text-stone-400 uppercase">
+            <div className="mb-4 text-sm font-medium tracking-wider text-stone-500 uppercase">
               All Industries
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -84,17 +84,17 @@ export default async function IndustriesPage() {
                 <Link
                   key={industry.slug}
                   href={`/industries/${industry.slug}`}
-                  className="hover:border-brand-400/50 group block rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
+                  className="hover:border-brand-500/50 group block rounded-2xl border border-stone-200 bg-stone-50 p-6 transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(91,141,255,0.25)]"
                 >
                   <div className="mb-4 text-3xl">{industry.icon}</div>
-                  <h3 className="group-hover:text-brand-300 mb-1 text-lg font-semibold text-stone-50 transition-colors">
+                  <h3 className="group-hover:text-brand-600 mb-1 text-lg font-semibold text-stone-900 transition-colors">
                     {industry.name}
                   </h3>
-                  <p className="text-brand-400 mb-3 text-sm font-medium">{industry.tagline}</p>
-                  <p className="mb-4 text-sm text-stone-300">{industry.cardDescription}</p>
+                  <p className="text-brand-600 mb-3 text-sm font-medium">{industry.tagline}</p>
+                  <p className="mb-4 text-sm text-stone-600">{industry.cardDescription}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-stone-400">Learn more</span>
-                    <div className="group-hover:bg-brand-500 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-stone-300 transition-all duration-200 group-hover:text-white">
+                    <span className="text-sm text-stone-500">Learn more</span>
+                    <div className="group-hover:bg-brand-500 flex h-10 w-10 items-center justify-center rounded-full bg-stone-100 text-stone-600 transition-all duration-200 group-hover:text-white">
                       {arrowIcon}
                     </div>
                   </div>
@@ -104,27 +104,27 @@ export default async function IndustriesPage() {
           </div>
         </section>
 
-        <section className="bg-white/[0.02] px-4 py-16 sm:px-6 lg:px-8">
+        <section className="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display mb-4 text-center text-3xl font-bold text-stone-50">
-              Built for SMEs. <span className="text-brand-400">Not enterprise theater.</span>
+            <h2 className="font-display mb-4 text-center text-3xl font-bold text-stone-900">
+              Built for SMEs. <span className="text-brand-600">Not enterprise theater.</span>
             </h2>
-            <p className="mx-auto mb-12 max-w-2xl text-center text-lg text-stone-300">
+            <p className="mx-auto mb-12 max-w-2xl text-center text-lg text-stone-600">
               US-based small and medium enterprises that need production AI — not science projects,
               and not the Fortune 500 playbook shrunk to fit. One workflow, shipped, paying back in months.
             </p>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               <div className="text-center">
-                <div className="text-brand-400 mb-2 text-4xl font-bold">10&ndash;500</div>
-                <div className="text-stone-300">Employees &mdash; built for your scale</div>
+                <div className="text-brand-600 mb-2 text-4xl font-bold">10&ndash;500</div>
+                <div className="text-stone-600">Employees &mdash; built for your scale</div>
               </div>
               <div className="text-center">
-                <div className="text-brand-400 mb-2 text-4xl font-bold">6&ndash;8 Weeks</div>
-                <div className="text-stone-300">To production</div>
+                <div className="text-brand-600 mb-2 text-4xl font-bold">6&ndash;8 Weeks</div>
+                <div className="text-stone-600">To production</div>
               </div>
               <div className="text-center">
-                <div className="text-brand-400 mb-2 text-4xl font-bold">4&ndash;6 Months</div>
-                <div className="text-stone-300">Typical SMB payback (industry benchmark)</div>
+                <div className="text-brand-600 mb-2 text-4xl font-bold">4&ndash;6 Months</div>
+                <div className="text-stone-600">Typical SMB payback (industry benchmark)</div>
               </div>
             </div>
           </div>

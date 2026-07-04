@@ -42,7 +42,7 @@ export function OrganizationSchema() {
           "itemOffered": {
             "@type": "Service",
             "name": "Intelligent Agents",
-            "description": "Goal-driven autonomous systems for complex workflows"
+            "description": "Harness engineering that converts legacy workflows into agentic workflows"
           }
         },
         {

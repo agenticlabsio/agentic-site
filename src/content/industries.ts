@@ -745,28 +745,29 @@ export const industries: Industry[] = [
     },
   },
   {
-    slug: 'autonomy-robotics',
-    name: 'Autonomy & Robotics',
+    slug: 'autonomy-vla-agents',
+    name: 'Autonomy & vLA Agents',
     tagline: '$500K+ Annual Savings',
     icon: '🤖',
     cardDescription:
-      'Vision AI, autonomous navigation, and predictive maintenance for industrial robotics.',
+      'Vision-language-action agents for inspection, autonomous navigation, and predictive maintenance in physical operations.',
     heroDescription:
-      'agentic systems that enhance industrial robotics with vision inspection, autonomous navigation, and predictive maintenance—reducing downtime and improving throughput.',
+      'agentic systems built on vision-language-action (vLA) models—perception, task planning, and physical action in one loop—reducing downtime and improving throughput across automated fleets.',
     targetAudience:
-      'Industrial automation companies, robotics integrators, manufacturers with robot fleets ($500M-$10B)',
+      'Industrial automation companies, systems integrators, manufacturers with automated fleets ($500M-$10B)',
     marketContext: [
       { stat: 'Global industrial robot market: $16.7B, 542,076 units in 2024', source: 'IFR' },
       {
         stat: 'SAP Embodied AI delivers substantial downtime reduction and productivity gains',
         source: 'SAP',
       },
-      { stat: 'Deal value in robotics/AI: $7.3B in H1 2025' },
+      { stat: 'Deal value in embodied AI: $7.3B in H1 2025' },
     ],
     challenges: [
       {
-        challenge: 'Robot programming expertise',
-        description: 'Specialized skills required for programming and maintaining robot systems.',
+        challenge: 'Fleet programming expertise',
+        description:
+          'Specialized skills required for programming and maintaining automated systems.',
       },
       {
         challenge: 'Vision system tuning',
@@ -774,7 +775,7 @@ export const industries: Industry[] = [
       },
       {
         challenge: 'Multi-vendor integration',
-        description: 'Fleets include robots from multiple vendors with different interfaces.',
+        description: 'Fleets include hardware from multiple vendors with different interfaces.',
       },
       {
         challenge: 'Safety certification',
@@ -783,8 +784,9 @@ export const industries: Industry[] = [
     ],
     aiSolutions: [
       {
-        title: 'Vision AI for Inspection',
-        description: 'Real-time defect detection with self-learning adaptation to new products.',
+        title: 'vLA Inspection Agents',
+        description:
+          'Vision-language-action agents detect defects in real time and adapt to new products with minimal examples.',
         metric: 'Near-perfect inspection accuracy',
       },
       {
@@ -793,14 +795,14 @@ export const industries: Industry[] = [
         metric: 'Dynamic adaptation',
       },
       {
-        title: 'Cobot Orchestration',
-        description: 'agentic task allocation and human-robot collaboration optimization.',
+        title: 'Human-Machine Orchestration',
+        description: 'agentic task allocation and human-machine collaboration optimization.',
         metric: 'Safe collaboration',
       },
       {
         title: 'Predictive Maintenance',
-        description: 'Anomaly detection across robot fleets predicts failures.',
-        metric: '$500K+ annual savings across a robot fleet',
+        description: 'Anomaly detection across automated fleets predicts failures.',
+        metric: '$500K+ annual savings across a fleet',
       },
     ],
     integrations: [
@@ -826,19 +828,19 @@ export const industries: Industry[] = [
     ],
     faqs: [
       {
-        question: 'How do you integrate with our existing robot fleet?',
+        question: 'How do you integrate with our existing automated fleet?',
         answer:
-          'We support major robot platforms including ABB, FANUC, KUKA, and Universal Robots through their native APIs and standard industrial protocols. No replacement of existing robots required.',
+          'We support major automation platforms including ABB, FANUC, KUKA, and Universal Robots through their native APIs and standard industrial protocols. No replacement of existing hardware required.',
       },
       {
-        question: 'Can AI work with cobots in human-shared workspaces?',
+        question: 'Can vLA agents work safely in human-shared workspaces?',
         answer:
-          'Yes. Our AI is designed for collaborative environments with safety monitoring, dynamic speed adjustment, and compliance with ISO/TS 15066 collaborative robot safety standards.',
+          'Yes. Our agents are designed for collaborative environments with safety monitoring, dynamic speed adjustment, and compliance with ISO/TS 15066 collaborative safety standards.',
       },
       {
-        question: "What's the typical ROI timeline for robotics AI?",
+        question: "What's the typical ROI timeline for vLA agents?",
         answer:
-          'Manufacturers typically see positive ROI within 6 months through downtime reduction and productivity improvement. A fleet of 50 robots can save $500K+ annually in maintenance and downtime costs.',
+          'Manufacturers typically see positive ROI within 6 months through downtime reduction and productivity improvement. A fleet of 50 machines can save $500K+ annually in maintenance and downtime costs.',
       },
       {
         question: 'How do you handle safety certification?',
@@ -853,14 +855,14 @@ export const industries: Industry[] = [
     ],
     relatedSolutions: ['intelligent-agents', 'agentic-evaluation', 'ai-governance-security'],
     seo: {
-      metaTitle: 'AI for Autonomy & Robotics | Industrial Automation | Agentic Labs',
+      metaTitle: 'AI for Autonomy & vLA Agents | Industrial Automation | Agentic Labs',
       metaDescription:
-        'agentic systems for industrial robotics: vision inspection, autonomous navigation, cobot orchestration. $500K+ annual savings from reduced downtime. Integrates with existing robot fleets.',
+        'agentic systems built on vision-language-action models: vision inspection, autonomous navigation, human-machine orchestration. $500K+ annual savings from reduced downtime. Integrates with existing fleets.',
     },
   },
   {
-    slug: 'biotech-pharma-logistics',
-    name: 'Biotech & Pharma Logistics',
+    slug: 'biotech-biologics-logistics',
+    name: 'Biotech & Biologics Logistics',
     tagline: 'GxP Compliant',
     icon: '💊',
     cardDescription:
@@ -868,13 +870,13 @@ export const industries: Industry[] = [
     heroDescription:
       'agentic cold chain monitoring, supply chain automation, and compliance documentation that maintains GxP compliance while improving operational efficiency.',
     targetAudience:
-      'Pharmaceutical companies, biotech firms, drug distributors, CDMOs ($500M-$10B)',
+      'Biologics manufacturers, biotech firms, specialty distributors, CDMOs ($500M-$10B)',
     marketContext: [
       {
-        stat: 'AI applications could create $350-410B annual value for pharma',
+        stat: 'AI applications could create $350-410B annual value for the industry',
         source: 'McKinsey',
       },
-      { stat: 'Most pharma professionals use AI for drug discovery', source: 'Industry survey' },
+      { stat: 'Most industry professionals use AI for drug discovery', source: 'Industry survey' },
       {
         stat: 'GenAI can meaningfully improve EBIT margins for distributors',
         source: 'Deloitte',
@@ -942,7 +944,7 @@ export const industries: Industry[] = [
       'Faster compliance documentation, proven within 90 days',
       'Meaningful reduction in early-stage discovery time',
       'Fewer cold chain excursion investigations',
-      '$5M+ annual savings for mid-size pharma',
+      '$5M+ annual savings for mid-size biologics manufacturers',
     ],
     faqs: [
       {
@@ -961,9 +963,9 @@ export const industries: Industry[] = [
           'We follow GAMP 5 methodology for system validation, provide IQ/OQ/PQ documentation, and support ongoing validation maintenance. Our systems are designed for regulated environments from the ground up.',
       },
       {
-        question: "What's the ROI for pharma supply chain AI?",
+        question: "What's the ROI for biologics supply chain AI?",
         answer:
-          'Mid-size pharma companies typically see faster compliance documentation, fewer excursion investigations, and $5M+ annual savings. ROI proof within 90 days.',
+          'Mid-size biologics manufacturers typically see faster compliance documentation, fewer excursion investigations, and $5M+ annual savings. ROI proof within 90 days.',
       },
       {
         question: 'Can AI help with drug shortage prevention?',
@@ -973,9 +975,9 @@ export const industries: Industry[] = [
     ],
     relatedSolutions: ['document-processing', 'ai-governance-security', 'context-management'],
     seo: {
-      metaTitle: 'AI for Biotech & Pharma Logistics | Supply Chain Automation | Agentic Labs',
+      metaTitle: 'AI for Biotech & Biologics Logistics | Supply Chain Automation | Agentic Labs',
       metaDescription:
-        'agentic automation for pharma logistics: cold chain monitoring, compliance documentation, drug discovery acceleration. HIPAA/GxP compliant. 6-8 weeks to production.',
+        'agentic automation for biologics logistics: cold chain monitoring, compliance documentation, drug discovery acceleration. HIPAA/GxP compliant. 6-8 weeks to production.',
     },
   },
 ]

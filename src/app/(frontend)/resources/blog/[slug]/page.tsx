@@ -143,7 +143,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             )}
 
             {/* Body */}
-            <div className="blog-content font-body space-y-5 text-lg leading-relaxed text-stone-600">
+            <div className="blog-content">
               <RichText data={post.content as SerializedEditorState} />
             </div>
 

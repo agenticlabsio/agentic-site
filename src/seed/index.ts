@@ -10,6 +10,25 @@ import { blocksToLexical } from './blog-lexical'
 // Idempotent seeders: each upserts by slug so the dev seed route can be re-run
 // safely and stays in sync with the canonical content modules in src/content.
 
+// Prune records whose slug is no longer in the canonical content module
+// (e.g. a renamed industry slug or a removed case study).
+async function pruneStaleBySlug(
+  payload: Payload,
+  collection: 'industries' | 'case-studies' | 'blog-posts',
+  canonicalSlugs: Set<string>,
+  label: string,
+): Promise<string[]> {
+  const results: string[] = []
+  const all = await payload.find({ collection, limit: 500 })
+  for (const doc of all.docs) {
+    if (typeof doc.slug === 'string' && !canonicalSlugs.has(doc.slug)) {
+      await payload.delete({ collection, id: doc.id })
+      results.push(`Removed stale ${label}: ${doc.slug}`)
+    }
+  }
+  return results
+}
+
 export async function seedSolutions(payload: Payload): Promise<string[]> {
   const results: string[] = []
   for (let i = 0; i < solutions.length; i++) {
@@ -94,6 +113,14 @@ export async function seedIndustries(payload: Payload): Promise<string[]> {
       results.push(`Created industry: ${ind.name}`)
     }
   }
+  results.push(
+    ...(await pruneStaleBySlug(
+      payload,
+      'industries',
+      new Set(industries.map((i) => i.slug)),
+      'industry',
+    )),
+  )
   return results
 }
 
@@ -137,6 +164,14 @@ export async function seedCaseStudies(payload: Payload): Promise<string[]> {
       results.push(`Created case study: ${cs.title}`)
     }
   }
+  results.push(
+    ...(await pruneStaleBySlug(
+      payload,
+      'case-studies',
+      new Set(caseStudies.map((c) => c.slug)),
+      'case study',
+    )),
+  )
   return results
 }
 
@@ -223,5 +258,13 @@ export async function seedBlogPosts(payload: Payload): Promise<string[]> {
       results.push(`Created blog post: ${post.title}`)
     }
   }
+  results.push(
+    ...(await pruneStaleBySlug(
+      payload,
+      'blog-posts',
+      new Set(blogPosts.map((p) => p.slug)),
+      'blog post',
+    )),
+  )
   return results
 }

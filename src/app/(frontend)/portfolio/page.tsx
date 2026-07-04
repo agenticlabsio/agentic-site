@@ -5,7 +5,7 @@ const solutions = [
   {
     title: 'Intelligent Agents',
     description:
-      'Autonomous systems that handle ticket routing, data entry, report generation—freeing teams for high-value decisions.',
+      'Harness engineering that converts legacy workflows into agentic workflows—tools, context, guardrails, and evals around the model.',
     metric: '40+ hrs',
     metricLabel: 'reclaimed per team weekly',
     href: '/solutions/intelligent-agents',

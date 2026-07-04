@@ -31,6 +31,7 @@ export const siteSettingsDefault = {
       title: 'Company',
       links: [
         { label: 'Case Studies', href: '/case-studies' },
+        { label: 'Demo Suite', href: 'https://demo.agenticlabs.io' },
         { label: 'Blog', href: '/resources/blog' },
         { label: 'FAQ', href: '/resources/faq' },
         { label: 'Contact', href: '/#contact' },
@@ -39,14 +40,18 @@ export const siteSettingsDefault = {
     {
       title: 'Legal',
       links: [
-        { label: 'Privacy Policy', href: '#' },
-        { label: 'Terms of Service', href: '#' },
-        { label: 'Cookie Policy', href: '#' },
+        { label: 'Trust & Security', href: '/trust' },
+        { label: 'Privacy Policy', href: '/legal/privacy' },
+        { label: 'Terms of Service', href: '/legal/terms' },
+        { label: 'Cookie Policy', href: '/legal/cookies' },
       ],
     },
   ],
   socialLinks: [
-    { platform: 'linkedin' as const, url: 'https://www.linkedin.com/company/agenticlabsio/posts/?feedView=all' },
+    {
+      platform: 'linkedin' as const,
+      url: 'https://www.linkedin.com/company/agenticlabsio/posts/?feedView=all',
+    },
     { platform: 'x' as const, url: 'https://x.com/agenticlabsio' },
     { platform: 'github' as const, url: 'https://github.com/agenticlabsio' },
   ],

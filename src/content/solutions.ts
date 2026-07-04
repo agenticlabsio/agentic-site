@@ -11,33 +11,39 @@ export const solutions: Solution[] = [
     category: 'Core',
     featured: true,
     description:
-      'Goal-driven autonomous agentic solutions that execute complex workflows, make decisions, and integrate with Salesforce, Workday, Databricks.',
-    heroTagline: 'Autonomous agents that works across your entire enterprise',
+      'Harness engineering that turns legacy workflows into agentic workflows—tools, context, guardrails, and evals built around the model, integrated with Salesforce, Workday, Databricks.',
+    heroTagline: 'Legacy workflows, rebuilt as agentic workflows',
     cardMetric: '6-8 weeks',
     cardMetricLabel: 'to production',
     features: [
-      'Multi-agent orchestration',
+      'Harness engineering: tools, context, guardrails, evals',
+      'Legacy workflow → agentic workflow conversion',
       'Tool calling & function execution',
       'Memory and context management',
-      'Goal-driven task decomposition',
     ],
     problem:
-      'Enterprises coordinate work across 150+ apps manually. Each handoff is a delay, each context switch is an error risk, and each integration maintenance is engineering debt.',
+      'Your workflows already exist—in SOPs, scripts, RPA bots, and tribal knowledge across 150+ apps. They were designed for humans clicking through screens, so every handoff is a delay, every context switch is an error risk, and every brittle automation is engineering debt.',
     challenges: [
+      'Legacy workflows encoded in SOPs, macros, and brittle RPA',
       'Manual coordination across 150+ enterprise apps',
       'Context lost between systems and handoffs',
       'Engineering time spent on integration maintenance',
-      'Slow decision-making due to information silos',
       'Inconsistent process execution across teams',
     ],
     solutionOverview:
-      'Intelligent agentic solutions that autonomously orchestrate workflows across your entire tech stack. They understand context, make decisions within defined boundaries, and execute multi-step processes without constant human oversight.',
+      'The model is not the product—the harness around it is. We engineer that harness: the tools an agent can call, the context it reads, the guardrails it operates within, and the evals that prove it works. Then we convert your legacy workflows, step by step, into agentic workflows that run inside your existing stack.',
     capabilities: [
       {
-        title: 'Multi-Agent Orchestration',
+        title: 'Harness Engineering',
         description:
-          'Deploy specialized agents that collaborate on complex tasks—one handles data extraction, another validates, a third executes.',
-        metric: 'Up to 10 agents',
+          'Tool definitions, context pipelines, permission boundaries, and eval suites engineered around the model—so agent behavior is designed, measured, and repeatable.',
+        metric: 'Evals on every workflow',
+      },
+      {
+        title: 'Legacy Workflow Conversion',
+        description:
+          'We map the workflow as it actually runs—SOPs, spreadsheets, RPA, tribal knowledge—and rebuild it as an agentic workflow with human gates only where judgment matters.',
+        metric: 'Step-by-step migration',
       },
       {
         title: 'Tool Calling & Function Execution',
@@ -51,37 +57,31 @@ export const solutions: Solution[] = [
           'Agents remember previous interactions, learn preferences, and maintain context across sessions using MCP.',
         metric: 'Persistent memory',
       },
-      {
-        title: 'Goal-Driven Task Decomposition',
-        description:
-          'Give agents a goal—they break it into steps, execute, verify, and report back.',
-        metric: 'Autonomous execution',
-      },
     ],
     howItWorks: [
       {
         step: 1,
-        title: 'Define Goals & Boundaries',
+        title: 'Map the Legacy Workflow',
         description:
-          'We work with you to define what the agent should accomplish and establish operational guardrails.',
+          'We document how the work actually runs today—systems touched, decisions made, exceptions handled—and define what the agent should accomplish within which boundaries.',
       },
       {
         step: 2,
-        title: 'Connect Systems',
+        title: 'Engineer the Harness',
         description:
-          'Using MCP and native connectors, we integrate with Salesforce, Workday, Databricks, and your other systems of record.',
+          'Using MCP and native connectors, we build the agent’s tools, context pipelines, and guardrails around Salesforce, Workday, Databricks, and your other systems of record.',
       },
       {
         step: 3,
-        title: 'Deploy & Monitor',
+        title: 'Convert & Deploy',
         description:
-          'Agents go into production with full logging, human-in-the-loop escalation paths, and performance monitoring.',
+          'The workflow goes live as an agentic workflow—full logging, human-in-the-loop escalation paths, and eval-backed performance monitoring from day one.',
       },
       {
         step: 4,
-        title: 'Iterate & Improve',
+        title: 'Iterate & Expand',
         description:
-          'Based on real usage data, we optimize agent behavior and expand capabilities.',
+          'Based on real usage data, we tune the harness, raise autonomy thresholds, and convert adjacent workflows.',
       },
     ],
     integrations: [
@@ -113,9 +113,14 @@ export const solutions: Solution[] = [
     ],
     faqs: [
       {
-        question: 'What is an intelligent agentic system?',
+        question: 'What is harness engineering?',
         answer:
-          'An intelligent agentic system is an autonomous system that can pursue goals, make decisions, and take actions without constant human oversight. Unlike traditional chatbots that respond to single prompts, agents execute multi-step workflows, coordinate across systems, and adapt to changing conditions.',
+          'The harness is everything around the model that makes it dependable: the tools it can call, the context it reads, the permissions and guardrails it operates within, and the evals that measure whether it did the job. Models improve every quarter; the harness is the part you own, and it is where agent quality is actually engineered.',
+      },
+      {
+        question: 'How do you convert a legacy workflow into an agentic workflow?',
+        answer:
+          'We start by mapping the workflow as it actually runs—the SOPs, spreadsheets, RPA bots, and tribal knowledge behind it. Then we rebuild it around an agent: deterministic steps stay deterministic, judgment calls get human gates, and everything else becomes tool calls with full audit logging. The workflow migrates step by step, so operations never stop.',
       },
       {
         question: 'How do agents integrate with our existing systems?',
@@ -139,14 +144,14 @@ export const solutions: Solution[] = [
       },
     ],
     cta: {
-      headline: 'Ready to deploy intelligent agents?',
+      headline: 'Ready to convert your first workflow?',
       description:
-        'Book a 30-minute discovery call to see how autonomous agentic solutions can run your operations.',
+        'Book a 30-minute discovery call to see how harness engineering turns a legacy workflow into an agentic one.',
     },
     seo: {
-      metaTitle: 'Intelligent Agentic Solutions for Enterprise',
+      metaTitle: 'Intelligent Agents & Harness Engineering for Enterprise',
       metaDescription:
-        'Goal-driven autonomous agentic solutions that execute complex workflows, make decisions, and integrate with Salesforce, Workday, Databricks. Production-ready in 6-8 weeks.',
+        'Harness engineering that converts legacy workflows into agentic workflows—tools, context, guardrails, and evals around the model. Integrates with Salesforce, Workday, Databricks. Production-ready in 6-8 weeks.',
     },
   },
   {
@@ -836,7 +841,7 @@ export const solutions: Solution[] = [
       {
         question: 'Do you support industry-specific regulations?',
         answer:
-          'Yes. We implement HIPAA for healthcare, GxP for pharma, NERC CIP for energy, ISO standards for industrial, and other industry-specific requirements as needed.',
+          'Yes. We implement HIPAA for healthcare, GxP for biologics, NERC CIP for energy, ISO standards for industrial, and other industry-specific requirements as needed.',
       },
     ],
     cta: {

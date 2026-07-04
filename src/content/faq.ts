@@ -73,7 +73,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: 'What industries do you work with?',
         answer:
-          'We work with US-based small and medium enterprises — roughly 10-500 employees — in sectors like Healthcare, Manufacturing, Retail, Energy, Dealers & Distributors, Power Electronics & FPGA, Autonomy & Robotics, and Biotech & Pharma Logistics. We handle the compliance that comes with them (HIPAA, GxP, NERC CIP) and design agents around those constraints from the first line.',
+          'We work with US-based small and medium enterprises — roughly 10-500 employees — in sectors like Healthcare, Manufacturing, Retail, Energy, Dealers & Distributors, Power Electronics & FPGA, Autonomy & vLA Agents, and Biotech & Biologics Logistics. We handle the compliance that comes with them (HIPAA, GxP, NERC CIP) and design agents around those constraints from the first line.',
       },
     ],
   },
@@ -94,7 +94,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: 'Is your AI infrastructure SOC 2 compliant?',
         answer:
-          'Yes. Agentic Labs maintains SOC 2 Type II compliance with independently audited security controls. We also support HIPAA for healthcare, GxP for pharma, and industry-specific regulations. Your data never leaves your environment—we orchestrate AI on top of your existing infrastructure.',
+          'Yes. Agentic Labs maintains SOC 2 Type II compliance with independently audited security controls. We also support HIPAA for healthcare, GxP for biologics, and industry-specific regulations. Your data never leaves your environment—we orchestrate AI on top of your existing infrastructure.',
       },
     ],
   },

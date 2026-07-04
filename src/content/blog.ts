@@ -638,15 +638,15 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: 'robotics-ai-downtime-reduction',
-    title: 'AI for Industrial Robotics: Predicting Failures Weeks Before Downtime',
+    slug: 'vla-agents-downtime-reduction',
+    title: 'vLA Agents in Industry: Predicting Failures Weeks Before Downtime',
     excerpt:
-      "SAP's Embodied AI proves robotics ROI in production. Learn how vision AI, predictive maintenance, and autonomous navigation transform industrial automation.",
+      "SAP's Embodied AI proves vision-language-action ROI in production. Learn how vLA agents, predictive maintenance, and autonomous navigation transform industrial automation.",
     category: 'industry',
     author: 'Agentic Labs',
     publishedAt: '2026-01-10',
     readTime: '8 min read',
-    tags: ['robotics', 'predictive maintenance', 'manufacturing'],
+    tags: ['vLA agents', 'predictive maintenance', 'manufacturing'],
     keyTakeaways: [
       'Predictive maintenance catches failures before they stop the line.',
       'Vision AI turns cameras into inspection and safety sensors.',
@@ -659,7 +659,7 @@ export const blogPosts: BlogPost[] = [
       { heading: 'What Should Bother You' },
       'Unplanned downtime is the most expensive event on a factory floor, and it almost always announces itself first — a vibration, a temperature drift, a subtle change in cycle time. The signal is there; nobody is watching it continuously.',
       'Manual inspection catches problems late, if at all, and pulls people onto the floor to look for what a sensor could see all day.',
-      { heading: 'Where AI for Industrial Robotics Really Works' },
+      { heading: 'Where vLA Agents Really Work' },
       { heading: '1. Predictive Maintenance' },
       today(
         'maintenance is scheduled by calendar or triggered by a breakdown that already stopped the line.'
@@ -699,22 +699,22 @@ export const blogPosts: BlogPost[] = [
           'It is the metric the whole effort is meant to move.',
         ],
       },
-      { heading: 'What Kills Most Robotics AI Projects' },
+      { heading: 'What Kills Most vLA Agent Projects' },
       'Chasing a fully autonomous floor before proving a single asset. The wins compound from one well-instrumented machine outward, not from a plant-wide rebuild.',
       { heading: 'Where to Start' },
       'Pick the machine whose downtime costs the most, put predictive monitoring on it, and measure uptime against last quarter. Prove it on one asset, then extend.',
     ],
   },
   {
-    slug: 'pharma-logistics-ai-cold-chain',
-    title: 'Pharma Logistics AI: Cold Chain Monitoring and GxP Compliance',
+    slug: 'biologics-logistics-ai-cold-chain',
+    title: 'Biologics Logistics AI: Cold Chain Monitoring and GxP Compliance',
     excerpt:
-      'AI could create $350-410B annual value for pharma. Learn how AI maintains cold chain integrity, automates compliance documentation, and accelerates drug discovery.',
+      'AI could create $350-410B annual value across the industry. Learn how AI maintains cold chain integrity, automates compliance documentation, and accelerates drug discovery.',
     category: 'industry',
     author: 'Agentic Labs',
     publishedAt: '2026-01-08',
     readTime: '10 min read',
-    tags: ['pharma', 'cold chain', 'GxP'],
+    tags: ['biologics', 'cold chain', 'GxP'],
     keyTakeaways: [
       'Continuous monitoring protects cold-chain integrity in real time.',
       'Compliance documentation can be generated as work happens.',
@@ -722,12 +722,12 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'Pharma logistics runs on two unforgiving constraints: temperature and paperwork. AI addresses both — watching the cold chain continuously and generating GxP documentation as events occur.'
+        'Biologics logistics runs on two unforgiving constraints: temperature and paperwork. AI addresses both — watching the cold chain continuously and generating GxP documentation as events occur.'
       ),
       { heading: 'What Should Bother You' },
       'A cold-chain excursion can spoil a shipment worth more than the truck carrying it, and the first sign is often a temperature log reviewed after the fact. By then the product is already compromised.',
       'Compliance is the second tax. GxP documentation is assembled by hand after the work — slow, error-prone, and exactly when memory is least reliable.',
-      { heading: 'Where AI for Pharma Logistics Really Works' },
+      { heading: 'Where AI for Biologics Logistics Really Works' },
       { heading: '1. Continuous Cold-Chain Monitoring' },
       today('temperature is logged and reviewed periodically, so excursions surface late.'),
       withAI(
@@ -765,7 +765,7 @@ export const blogPosts: BlogPost[] = [
           'The agent flags and documents; a qualified person decides.',
         ],
       },
-      { heading: 'What Kills Most Pharma AI Projects' },
+      { heading: 'What Kills Most Biologics AI Projects' },
       'Treating documentation as an afterthought bolted onto monitoring. The integrity and the evidence have to come from one system, or the compliance burden simply moves rather than shrinking.',
       { heading: 'Where to Start' },
       'Pick one lane or product line, put real-time monitoring and automatic documentation on the same data trail, and measure excursion response time and documentation effort against today.',

@@ -78,3 +78,6 @@ PLAN*.md
 SKILLS.md
 skills-lock.json
 backups/
+
+# local agent/tool state
+.codex/

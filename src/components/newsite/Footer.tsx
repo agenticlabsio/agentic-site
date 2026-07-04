@@ -46,10 +46,10 @@ export default function Footer({ tagline, linkGroups, socialLinks }: FooterProps
                 marginBottom: 6,
               }}
             >
-              Stay ahead on enterprise AI
+              Stay ahead on agentic operations
             </h3>
             <p style={{ fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.6 }}>
-              Get occasional briefings on agentic AI, deployment playbooks, and client outcomes. No spam.
+              Get occasional briefings on agentic systems, deployment playbooks, and client outcomes. No spam.
             </p>
           </div>
           <EmailCaptureForm source="footer" compact buttonLabel="Subscribe" />
@@ -62,7 +62,7 @@ export default function Footer({ tagline, linkGroups, socialLinks }: FooterProps
               alt="Agentic Labs"
               width={160}
               height={56}
-              style={{ height: 42, width: "auto", marginBottom: 20 }}
+              style={{ height: 42, width: "auto", marginBottom: 20, filter: "brightness(0)", opacity: 0.88 }}
             />
             <p
               style={{
@@ -183,7 +183,7 @@ export default function Footer({ tagline, linkGroups, socialLinks }: FooterProps
             &copy; {new Date().getFullYear()} Agentic Labs. All Rights Reserved.
           </p>
           <p style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
-            Built with AI, deployed for humans.
+            Built agentic. Deployed for humans.
           </p>
         </div>
       </div>

@@ -1,11 +1,29 @@
-import type { BlogBlock } from '@/content/blog'
+import type { BlogBlock, InlineSegment } from '@/content/blog'
 
 // Minimal builders for Payload's Lexical editor state. Enough to seed blog
-// bodies as real paragraphs + section headings that the /admin editor can
-// then extend with the full toolbar.
+// bodies as real paragraphs, section headings, and inline links that the
+// /admin editor can then extend with the full toolbar.
 
 function textNode(text: string) {
   return { type: 'text', version: 1, text, format: 0, style: '', mode: 'normal', detail: 0 }
+}
+
+// Payload's Lexical link node (v3). `linkType: 'custom'` + a url covers both
+// internal paths (/resources/blog/...) and external URLs.
+function linkNode(text: string, href: string) {
+  return {
+    type: 'link',
+    version: 3,
+    fields: { linkType: 'custom' as const, url: href, newTab: href.startsWith('http') },
+    format: '' as const,
+    indent: 0,
+    direction: 'ltr' as const,
+    children: [textNode(text)],
+  }
+}
+
+function inlineNode(segment: InlineSegment) {
+  return typeof segment === 'string' ? textNode(segment) : linkNode(segment.text, segment.href)
 }
 
 function paragraph(text: string) {
@@ -17,6 +35,18 @@ function paragraph(text: string) {
     direction: 'ltr' as const,
     textFormat: 0,
     children: [textNode(text)],
+  }
+}
+
+function richParagraph(segments: InlineSegment[]) {
+  return {
+    type: 'paragraph',
+    version: 1,
+    format: '' as const,
+    indent: 0,
+    direction: 'ltr' as const,
+    textFormat: 0,
+    children: segments.map(inlineNode),
   }
 }
 
@@ -34,9 +64,11 @@ function heading(text: string) {
 
 // Convert the content module's simple block list into a Lexical editor state.
 export function blocksToLexical(blocks: BlogBlock[]) {
-  const children = blocks.map((block) =>
-    typeof block === 'string' ? paragraph(block) : heading(block.heading),
-  )
+  const children = blocks.map((block) => {
+    if (typeof block === 'string') return paragraph(block)
+    if ('heading' in block) return heading(block.heading)
+    return richParagraph(block.paragraph)
+  })
   return {
     root: {
       type: 'root',

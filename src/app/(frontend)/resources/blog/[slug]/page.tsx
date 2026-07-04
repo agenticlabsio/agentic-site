@@ -171,7 +171,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <CtaSection
           bg="brand"
           headline="Want to put this into practice?"
-          buttonLabel="Book a Strategy Call"
+          buttonLabel="Book a Discovery Call"
           href="/#contact"
         />
     </main>

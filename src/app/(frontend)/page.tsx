@@ -4,6 +4,7 @@ import Process from '@/components/newsite/Process';
 import Problem from '@/components/newsite/Problem';
 import Differentiation from '@/components/newsite/Differentiation';
 import Security from '@/components/newsite/Security';
+import InProduction from '@/components/newsite/InProduction';
 import CTA from '@/components/newsite/CTA';
 import FAQ from '@/components/newsite/FAQ';
 import { FAQSchema } from '@/components/SEO';
@@ -25,9 +26,10 @@ export default async function RootPage() {
       <Hero />
       <Comparison />
       <Process />
-      <Problem />
       <Differentiation />
+      <Problem />
       <Security />
+      <InProduction />
       <CTA />
       <FAQ faqs={faqs} />
     </main>

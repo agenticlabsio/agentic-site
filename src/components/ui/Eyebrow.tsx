@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
-  const classes = ['text-brand-600 text-sm font-medium tracking-wide uppercase', className]
+  const classes = ['font-mono text-brand-700 text-xs font-medium tracking-widest uppercase', className]
     .filter(Boolean)
     .join(' ')
 

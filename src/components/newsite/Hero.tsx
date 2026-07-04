@@ -1,9 +1,9 @@
 'use client'
 
-import { NeuralNetworkIcon, DataFlowIcon, AgentBrainIcon } from './icons/AgentIcons'
+import Link from 'next/link'
 
 const metrics = [
-  { value: '$1M+', label: 'Ops Cost Saved' },
+  { value: 'End-to-End', label: 'Department Automation' },
   { value: '6–12 wks', label: 'To Production' },
   { value: '24/7', label: 'Autonomous Ops' },
 ]
@@ -22,58 +22,13 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
-      {/* Animated background gradient orbs */}
+      {/* Quiet paper wash */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           zIndex: 0,
           background: 'var(--hero-bg-gradient)',
-        }}
-      />
-
-      {/* Floating geometric shapes */}
-      <div
-        className="hero-shapes"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 1,
-          overflow: 'hidden',
-          pointerEvents: 'none',
-        }}
-      >
-        <div
-          className="hero-shape shape-1"
-          style={{ position: 'absolute', top: '15%', left: '8%', opacity: 0.08 }}
-        >
-          <NeuralNetworkIcon size={120} />
-        </div>
-        <div
-          className="hero-shape shape-2"
-          style={{ position: 'absolute', top: '25%', right: '10%', opacity: 0.06 }}
-        >
-          <DataFlowIcon size={100} />
-        </div>
-        <div
-          className="hero-shape shape-3"
-          style={{ position: 'absolute', bottom: '20%', left: '15%', opacity: 0.05 }}
-        >
-          <AgentBrainIcon size={80} />
-        </div>
-      </div>
-
-      {/* Grain texture */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 2,
-          opacity: 'var(--grain-opacity, 0.15)',
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '256px 256px',
-          pointerEvents: 'none',
         }}
       />
 
@@ -129,7 +84,7 @@ export default function Hero() {
                 letterSpacing: '0.02em',
               }}
             >
-              Enterprise AI, Measured in ROI
+              Enterprise Agentic Solutions
             </span>
           </div>
 
@@ -149,14 +104,14 @@ export default function Hero() {
                 alignItems: 'center',
                 gap: 8,
                 fontSize: 'clamp(2.4rem, 6vw, 4rem)',
-                fontWeight: 700,
-                lineHeight: 1.08,
+                fontWeight: 600,
+                lineHeight: 1.12,
                 color: 'var(--text-primary)',
-                letterSpacing: '-0.03em',
+                letterSpacing: '-0.015em',
               }}
             >
               <span>
-                AI Agents That
+                Transform Your Enterprise
               </span>
               <span>
                 <span
@@ -165,32 +120,19 @@ export default function Hero() {
                     fontFamily: 'var(--font-display)',
                   }}
                 >
-                  Pay for Themselves
+                  With Agentic Solutions
                 </span>
               </span>
             </h1>
 
-            {/* Accent line */}
+            {/* Accent rule */}
             <div
               style={{
-                position: 'relative',
-                height: 3,
-                width: 280,
-                maxWidth: '70vw',
-                overflow: 'hidden',
-                borderRadius: 4,
-                background: 'var(--border)',
+                height: 2,
+                width: 72,
+                background: 'var(--accent)',
               }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background:
-                    'linear-gradient(90deg, var(--accent), var(--accent-secondary), var(--accent))',
-                }}
-              />
-            </div>
+            />
           </div>
 
           <p
@@ -201,9 +143,9 @@ export default function Hero() {
               lineHeight: 1.65,
             }}
           >
-            We build production AI agents that cut operational cost significantly — end to end, on
-            your infrastructure, live in 6–12 weeks. If it doesn&apos;t move a business metric, we
-            don&apos;t ship it.
+            Custom agentic implementations, tailored to your business, that automate entire
+            departments from the inside — end to end. No generalized software that does half the
+            job. No 18-month timelines. No migrations.
           </p>
 
           {/* CTA Buttons */}
@@ -223,7 +165,7 @@ export default function Hero() {
                 fontSize: '0.95rem',
               }}
             >
-              <span>Book an ROI Assessment</span>
+              <span>Book a Discovery Call</span>
               <span className="btn-icon-chip">
                 <svg
                   width="14"
@@ -239,16 +181,16 @@ export default function Hero() {
                 </svg>
               </span>
             </a>
-            <a
-              href="#results"
+            <Link
+              href="/case-studies"
               className="btn-outline"
               style={{
                 padding: '14px 28px',
                 fontSize: '0.95rem',
               }}
             >
-              See the Results
-            </a>
+              View Case Studies
+            </Link>
           </div>
 
           {/* Quick metrics */}
@@ -296,17 +238,12 @@ export default function Hero() {
       </div>
 
       <style>{`
-        .hero-shape {
-          color: var(--accent);
-        }
-
         @media (max-width: 768px) {
           .hero-metrics {
             flex-direction: column !important;
             gap: 16px !important;
             padding: 16px 24px !important;
           }
-          .hero-shapes { display: none; }
         }
       `}</style>
     </section>

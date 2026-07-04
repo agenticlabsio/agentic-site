@@ -143,8 +143,12 @@ export async function seedCaseStudies(payload: Payload): Promise<string[]> {
 export async function seedFAQ(payload: Payload): Promise<string[]> {
   const results: string[] = []
   let order = 0
+  // Track the canonical question set so we can prune stale records left behind
+  // when a question is reworded (the upsert keys on question text).
+  const canonicalQuestions = new Set<string>()
   for (const category of faqCategories) {
     for (const faq of category.faqs) {
+      canonicalQuestions.add(faq.question)
       const data = {
         question: faq.question,
         answer: faq.answer,
@@ -170,6 +174,14 @@ export async function seedFAQ(payload: Payload): Promise<string[]> {
       order++
     }
   }
+  // Prune FAQs no longer in the canonical set (e.g. an old wording of a question).
+  const allFaqs = await payload.find({ collection: 'faq', limit: 500 })
+  for (const doc of allFaqs.docs) {
+    if (!canonicalQuestions.has(doc.question)) {
+      await payload.delete({ collection: 'faq', id: doc.id })
+      results.push(`Removed stale FAQ: ${doc.question}`)
+    }
+  }
   return results
 }
 
@@ -189,6 +201,7 @@ export async function seedBlogPosts(payload: Payload): Promise<string[]> {
       category: post.category,
       tags: post.tags.map((tag) => ({ tag })),
       keyTakeaways: post.keyTakeaways.map((takeaway) => ({ takeaway })),
+      faqs: (post.faqs ?? []).map((faq) => ({ question: faq.question, answer: faq.answer })),
       status: 'published' as const,
       publishedAt: post.publishedAt,
       author: post.author,

@@ -11,8 +11,8 @@ export const solutions: Solution[] = [
     category: 'Core',
     featured: true,
     description:
-      'Goal-driven autonomous AI agents that execute complex workflows, make decisions, and integrate with Salesforce, Workday, Databricks.',
-    heroTagline: 'Autonomous AI that works across your entire enterprise',
+      'Goal-driven autonomous agentic solutions that execute complex workflows, make decisions, and integrate with Salesforce, Workday, Databricks.',
+    heroTagline: 'Autonomous agents that works across your entire enterprise',
     cardMetric: '6-8 weeks',
     cardMetricLabel: 'to production',
     features: [
@@ -31,7 +31,7 @@ export const solutions: Solution[] = [
       'Inconsistent process execution across teams',
     ],
     solutionOverview:
-      'Intelligent AI agents that autonomously orchestrate workflows across your entire tech stack. They understand context, make decisions within defined boundaries, and execute multi-step processes without constant human oversight.',
+      'Intelligent agentic solutions that autonomously orchestrate workflows across your entire tech stack. They understand context, make decisions within defined boundaries, and execute multi-step processes without constant human oversight.',
     capabilities: [
       {
         title: 'Multi-Agent Orchestration',
@@ -113,9 +113,9 @@ export const solutions: Solution[] = [
     ],
     faqs: [
       {
-        question: 'What is an intelligent AI agent?',
+        question: 'What is an intelligent agentic system?',
         answer:
-          'An intelligent AI agent is an autonomous system that can pursue goals, make decisions, and take actions without constant human oversight. Unlike traditional chatbots that respond to single prompts, agents execute multi-step workflows, coordinate across systems, and adapt to changing conditions.',
+          'An intelligent agentic system is an autonomous system that can pursue goals, make decisions, and take actions without constant human oversight. Unlike traditional chatbots that respond to single prompts, agents execute multi-step workflows, coordinate across systems, and adapt to changing conditions.',
       },
       {
         question: 'How do agents integrate with our existing systems?',
@@ -141,12 +141,12 @@ export const solutions: Solution[] = [
     cta: {
       headline: 'Ready to deploy intelligent agents?',
       description:
-        'Book a 30-minute discovery call to see how autonomous AI agents can run your operations.',
+        'Book a 30-minute discovery call to see how autonomous agentic solutions can run your operations.',
     },
     seo: {
-      metaTitle: 'Intelligent AI Agents for Enterprise',
+      metaTitle: 'Intelligent Agentic Solutions for Enterprise',
       metaDescription:
-        'Goal-driven autonomous AI agents that execute complex workflows, make decisions, and integrate with Salesforce, Workday, Databricks. Production-ready in 6-8 weeks.',
+        'Goal-driven autonomous agentic solutions that execute complex workflows, make decisions, and integrate with Salesforce, Workday, Databricks. Production-ready in 6-8 weeks.',
     },
   },
   {
@@ -154,8 +154,8 @@ export const solutions: Solution[] = [
     name: 'Customer Service Automation',
     category: 'Operations',
     description:
-      'Replace fragmented support tools with unified AI agents that handle tickets, route inquiries, and resolve issues across all channels.',
-    heroTagline: 'Faster resolution with unified AI agents — live in 6-8 weeks',
+      'Replace fragmented support tools with unified agentic solutions that handle tickets, route inquiries, and resolve issues across all channels.',
+    heroTagline: 'Faster resolution with unified agentic solutions — live in 6-8 weeks',
     cardMetric: '6-8 weeks',
     cardMetricLabel: 'to production',
     features: [
@@ -175,12 +175,12 @@ export const solutions: Solution[] = [
       'High cost per ticket with low automation rates',
     ],
     solutionOverview:
-      'AI agents that unify your support stack. They understand customer intent, pull relevant context from all systems, and resolve or route tickets intelligently—across email, chat, phone, and social.',
+      'agentic solutions that unify your support stack. They understand customer intent, pull relevant context from all systems, and resolve or route tickets intelligently—across email, chat, phone, and social.',
     capabilities: [
       {
         title: 'Multi-Channel Support',
         description:
-          'Single AI system handles email, chat, phone transcripts, and social media—unified context across all channels.',
+          'Single agentic system handles email, chat, phone transcripts, and social media—unified context across all channels.',
         metric: 'Omnichannel',
       },
       {
@@ -218,7 +218,7 @@ export const solutions: Solution[] = [
         step: 3,
         title: 'Deploy with Human Oversight',
         description:
-          'Start with AI-assisted responses, then graduate to autonomous resolution as confidence grows.',
+          'Start with agentic responses, then graduate to autonomous resolution as confidence grows.',
       },
       {
         step: 4,
@@ -243,7 +243,7 @@ export const solutions: Solution[] = [
       },
       {
         metric: '5-10 tools',
-        label: 'consolidated into one AI layer',
+        label: 'consolidated into one agentic layer',
         description: 'Replacing fragmented, costly point solutions',
       },
       {
@@ -256,7 +256,7 @@ export const solutions: Solution[] = [
       {
         question: 'How does AI customer service differ from traditional chatbots?',
         answer:
-          'Traditional chatbots follow rigid scripts. Our AI agents understand context, access all your systems, and handle complex multi-turn conversations. They can actually resolve issues, not just deflect them.',
+          'Traditional chatbots follow rigid scripts. Our agentic solutions understand context, access all your systems, and handle complex multi-turn conversations. They can actually resolve issues, not just deflect them.',
       },
       {
         question: 'Will AI replace our support team?',
@@ -286,7 +286,7 @@ export const solutions: Solution[] = [
     seo: {
       metaTitle: 'AI Customer Service Automation | Live in 6-8 Weeks',
       metaDescription:
-        'Replace fragmented support tools with unified AI agents. Live in 6-8 weeks. Integrates with Salesforce Service Cloud, Zendesk, ServiceNow.',
+        'Replace fragmented support tools with unified agentic solutions. Live in 6-8 weeks. Integrates with Salesforce Service Cloud, Zendesk, ServiceNow.',
     },
   },
   {
@@ -294,7 +294,7 @@ export const solutions: Solution[] = [
     name: 'Document Processing',
     category: 'Operations',
     description:
-      'AI-powered document extraction, classification, and processing. Handle invoices, contracts, forms, and unstructured documents with enterprise-grade accuracy.',
+      'agentic document extraction, classification, and processing. Handle invoices, contracts, forms, and unstructured documents with enterprise-grade accuracy.',
     heroTagline: 'Enterprise-grade accuracy in document extraction at scale',
     cardMetric: '$2.4M',
     cardMetricLabel: 'in annual savings',
@@ -315,7 +315,7 @@ export const solutions: Solution[] = [
       'Errors in extraction leading to downstream problems',
     ],
     solutionOverview:
-      'AI agents that read, understand, and process documents at scale. Auto-classify incoming documents, extract structured data, validate against business rules, and route to the right systems—with human review only for exceptions.',
+      'agentic solutions that read, understand, and process documents at scale. Auto-classify incoming documents, extract structured data, validate against business rules, and route to the right systems—with human review only for exceptions.',
     capabilities: [
       {
         title: 'Auto-Classification',
@@ -428,7 +428,7 @@ export const solutions: Solution[] = [
     seo: {
       metaTitle: 'Intelligent Document Processing | $2.4M in Annual Savings',
       metaDescription:
-        'AI-powered document extraction, classification, and processing at scale. Enterprise-grade accuracy. Integrates with existing ERP and systems of record.',
+        'agentic document extraction, classification, and processing at scale. Enterprise-grade accuracy. Integrates with existing ERP and systems of record.',
     },
   },
   {
@@ -436,7 +436,7 @@ export const solutions: Solution[] = [
     name: 'Context Management',
     category: 'Platform',
     description:
-      'Contextualize enterprise data for AI agents. Knowledge graphs, semantic indexing, and Model Context Protocol (MCP) implementation.',
+      'Contextualize enterprise data for agentic solutions. Knowledge graphs, semantic indexing, and Model Context Protocol (MCP) implementation.',
     heroTagline: 'AI that actually understands your business',
     cardMetric: '3x',
     cardMetricLabel: 'AI relevance',
@@ -447,13 +447,13 @@ export const solutions: Solution[] = [
       'Zero-copy data access',
     ],
     problem:
-      'AI models are powerful but generic. Without business context, they produce hallucinations, irrelevant suggestions, and outputs that miss the mark. Many enterprises cite data searchability as a top AI challenge.',
+      'foundation models are powerful but generic. Without business context, they produce hallucinations, irrelevant suggestions, and outputs that miss the mark. Many enterprises cite data searchability as a top AI challenge.',
     challenges: [
       'AI lacks understanding of your business processes and terminology',
       'Data fragmented across Salesforce, Workday, SAP, and file storage',
       'Generic AI responses that miss business context',
       'No standard protocol for AI-to-data connectivity',
-      'Data quality issues magnified by AI systems',
+      'Data quality issues magnified by agentic systems',
     ],
     solutionOverview:
       'We build the context layer that makes AI useful. Knowledge graphs capture your business relationships, semantic indexing enables intelligent retrieval, and MCP provides standardized access—all without moving your data.',
@@ -498,13 +498,13 @@ export const solutions: Solution[] = [
       {
         step: 3,
         title: 'MCP Implementation',
-        description: 'Deploy MCP servers that give AI agents secure, contextualized data access.',
+        description: 'Deploy MCP servers that give agentic solutions secure, contextualized data access.',
       },
       {
         step: 4,
         title: 'Agent Integration',
         description:
-          'Connect your AI agents to the context layer for dramatically improved output quality.',
+          'Connect your agentic solutions to the context layer for dramatically improved output quality.',
       },
     ],
     integrations: [
@@ -570,7 +570,7 @@ export const solutions: Solution[] = [
     seo: {
       metaTitle: 'Enterprise AI Context Management | MCP-Ready',
       metaDescription:
-        'Contextualize enterprise data for AI agents. Knowledge graphs, semantic indexing, and Model Context Protocol (MCP) implementation. Enable AI that understands your business.',
+        'Contextualize enterprise data for agentic solutions. Knowledge graphs, semantic indexing, and Model Context Protocol (MCP) implementation. Enable AI that understands your business.',
     },
   },
   {
@@ -578,7 +578,7 @@ export const solutions: Solution[] = [
     name: 'Agentic Evaluation',
     category: 'Platform',
     description:
-      'Measure what matters: AI agent accuracy, task completion, cost-per-action, and business outcomes. Move from "Is it working?" to proven ROI.',
+      'Measure what matters: agentic system accuracy, task completion, cost-per-action, and business outcomes. Move from "Is it working?" to proven ROI.',
     heroTagline: 'Prove AI ROI in 90 days',
     cardMetric: '90 days',
     cardMetricLabel: 'to ROI',
@@ -591,14 +591,14 @@ export const solutions: Solution[] = [
     problem:
       '2025 was AI hype. 2026 is "Is it working?" Most executives haven\'t yet seen significant revenue gains from AI. The gap between expectations and realized benefits is massive.',
     challenges: [
-      'No clear metrics for AI agent success',
+      'No clear metrics for agentic system success',
       "Can't differentiate AI value from noise",
       'Stakeholders asking "Is it working?" with no answer',
       'Cost per AI action unknown',
       'Business outcomes unattributed to AI investments',
     ],
     solutionOverview:
-      'A comprehensive evaluation framework that measures AI agent performance against business outcomes. Track task success, accuracy, efficiency, and cost—then prove ROI to stakeholders with hard numbers.',
+      'A comprehensive evaluation framework that measures agentic system performance against business outcomes. Track task success, accuracy, efficiency, and cost—then prove ROI to stakeholders with hard numbers.',
     capabilities: [
       {
         title: 'Task Success Rate Tracking',
@@ -621,7 +621,7 @@ export const solutions: Solution[] = [
       {
         title: 'Business Outcome Attribution',
         description:
-          'Connect AI agent activity to revenue, cost savings, and throughput improvements.',
+          'Connect agentic system activity to revenue, cost savings, and throughput improvements.',
         metric: 'ROI attribution',
       },
     ],
@@ -635,12 +635,12 @@ export const solutions: Solution[] = [
       {
         step: 2,
         title: 'Instrumentation',
-        description: 'Deploy monitoring on AI agents—every action, decision, and outcome is tracked.',
+        description: 'Deploy monitoring on agentic solutions—every action, decision, and outcome is tracked.',
       },
       {
         step: 3,
         title: 'A/B Testing',
-        description: 'Compare AI-assisted vs baseline processes with statistical rigor.',
+        description: 'Compare agentic vs baseline processes with statistical rigor.',
       },
       {
         step: 4,
@@ -675,7 +675,7 @@ export const solutions: Solution[] = [
     ],
     faqs: [
       {
-        question: 'How do you measure AI agent performance?',
+        question: 'How do you measure agentic system performance?',
         answer:
           'We track multiple dimensions: task success rate (did the agent complete the goal?), accuracy (was the output correct?), efficiency (how long did it take, at what cost?), and business outcomes (what value did it create?). All metrics are auditable and tied to specific agent actions.',
       },
@@ -690,9 +690,9 @@ export const solutions: Solution[] = [
           'Continuous monitoring with weekly reviews and monthly deep-dives. Drift detection alerts you when agent performance degrades, triggering investigation and retraining.',
       },
       {
-        question: 'Can you evaluate existing AI deployments?',
+        question: 'Can you evaluate existing agentic deployments?',
         answer:
-          "Yes. We can instrument and evaluate AI systems you've already deployed, providing visibility you may not currently have.",
+          "Yes. We can instrument and evaluate agentic systems you've already deployed, providing visibility you may not currently have.",
       },
       {
         question: 'How do you handle the "black box" problem?',
@@ -708,7 +708,7 @@ export const solutions: Solution[] = [
     seo: {
       metaTitle: 'Agentic AI Evaluation & Performance Measurement',
       metaDescription:
-        'Measure what matters: AI agent accuracy, task completion, cost-per-action, and business outcomes. Move from "Is it working?" to proven ROI in 90 days.',
+        'Measure what matters: agentic system accuracy, task completion, cost-per-action, and business outcomes. Move from "Is it working?" to proven ROI in 90 days.',
     },
   },
   {
@@ -716,7 +716,7 @@ export const solutions: Solution[] = [
     name: 'AI Governance & Security',
     category: 'Governance',
     description:
-      'Bounded autonomy, audit trails, policy enforcement, and compliance-ready AI agents. Deploy autonomous AI with confidence.',
+      'Bounded autonomy, audit trails, policy enforcement, and compliance-ready agentic solutions. Deploy autonomous AI with confidence.',
     heroTagline: 'Governed AI that enterprises can trust',
     cardMetric: 'SOC 2',
     cardMetricLabel: 'Type II',
@@ -727,10 +727,10 @@ export const solutions: Solution[] = [
       'Governance supervisor agents',
     ],
     problem:
-      'Autonomous AI introduces new risk categories: unauthorized actions, data leakage, compliance violations, liability questions. Without governance, AI projects stall in legal and compliance review.',
+      'Autonomous agents introduces new risk categories: unauthorized actions, data leakage, compliance violations, liability questions. Without governance, AI projects stall in legal and compliance review.',
     challenges: [
-      'Unclear accountability for AI agent actions',
-      'Regulatory requirements (SOC 2, HIPAA, GDPR) for AI systems',
+      'Unclear accountability for agentic system actions',
+      'Regulatory requirements (SOC 2, HIPAA, GDPR) for agentic systems',
       'Risk of unauthorized AI actions outside intended scope',
       'No audit trail for AI decisions',
       'Security concerns blocking AI adoption',
@@ -847,7 +847,7 @@ export const solutions: Solution[] = [
     seo: {
       metaTitle: 'Enterprise AI Governance & Security | SOC 2 Compliant',
       metaDescription:
-        'Bounded autonomy, audit trails, policy enforcement, and compliance-ready AI agents. SOC 2 compliant. Your data never leaves your environment.',
+        'Bounded autonomy, audit trails, policy enforcement, and compliance-ready agentic solutions. SOC 2 compliant. Your data never leaves your environment.',
     },
   },
 ]

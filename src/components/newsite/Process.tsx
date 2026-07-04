@@ -5,29 +5,29 @@ import { TargetIcon, CodeAgentIcon, RocketIcon, SupportAgentIcon } from "./icons
 const steps = [
   {
     icon: <TargetIcon size={40} />,
-    title: "Discovery & Mapping",
-    description: "We analyze your workflows, identify automation opportunities, and design the agent architecture.",
-    duration: "Week 1",
+    title: "Opportunity Audit",
+    description: "We map how work actually moves through your organization — across teams, systems, and decision points — and pinpoint where agentic solutions cut overhead, speed execution, or replace manual coordination.",
+    duration: "Weeks 1-2",
     accent: "var(--accent)",
   },
   {
     icon: <CodeAgentIcon size={40} />,
-    title: "Agent Development",
-    description: "Our AI-native engineers build custom agents with governance and compliance baked in.",
-    duration: "Week 2-3",
+    title: "Process Architecture & Redesign",
+    description: "We design and build the agentic system that will run the workflow, integrating it with the tools, data, and operational logic that power the process. You stay in the loop the entire time.",
+    duration: "Weeks 3-6",
     accent: "var(--accent-secondary)",
   },
   {
     icon: <RocketIcon size={40} />,
-    title: "Production Launch",
-    description: "Deploy to your infrastructure with full observability, audit trails, and rollback capabilities.",
-    duration: "Week 4",
+    title: "Production Deployment",
+    description: "We deploy into your existing stack on your cloud, connected to live systems so it begins executing real work. Built on top of your current software — no migrations, with your approved models.",
+    duration: "Weeks 6-12",
     accent: "var(--accent-light)",
   },
   {
     icon: <SupportAgentIcon size={40} />,
-    title: "Continuous Optimization",
-    description: "We monitor, tune, and expand your agent capabilities as your needs evolve.",
+    title: "System Optimization",
+    description: "After go-live, we keep improving how the system operates — sharpening its decision logic, increasing reliability, and extending it into new operational responsibilities.",
     duration: "Ongoing",
     accent: "var(--accent-dark)",
   },
@@ -71,7 +71,7 @@ export default function Process() {
                 textTransform: "uppercase",
               }}
             >
-              Our Process
+              How We Work
             </span>
             <h2
               style={{
@@ -82,9 +82,9 @@ export default function Process() {
                 fontFamily: "var(--font-display)",
               }}
             >
-              From Concept to Production in{" "}
+              From Audit to{" "}
               <span className="text-gradient" style={{ fontFamily: "var(--font-display)" }}>
-                4 Weeks
+                Autonomous Operations
               </span>
             </h2>
             <p
@@ -96,7 +96,7 @@ export default function Process() {
                 margin: "0 auto",
               }}
             >
-              A proven methodology that combines AI-native engineering with enterprise-grade delivery.
+              A proven methodology that combines agentic engineering with enterprise-grade delivery.
             </p>
           </div>
 
@@ -207,10 +207,10 @@ export default function Process() {
             }}
           >
             <p style={{ fontSize: "1.1rem", fontWeight: 600, color: "var(--text-primary)", marginBottom: 16 }}>
-              Ready to accelerate your AI journey?
+              Ready to transform a department?
             </p>
             <a href="#contact" className="btn-primary" style={{ padding: "12px 24px" }}>
-              Schedule Discovery Call
+              Book a Discovery Call
             </a>
           </div>
       </div>

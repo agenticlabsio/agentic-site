@@ -30,7 +30,7 @@
     },
     {
       "name": "book_strategy_call",
-      "description": "Schedule a 30-minute enterprise AI strategy call.",
+      "description": "Schedule a 30-minute discovery call.",
       "method": "GET",
       "url": "https://calendly.com/cloud-agenticlabs/30min"
     }

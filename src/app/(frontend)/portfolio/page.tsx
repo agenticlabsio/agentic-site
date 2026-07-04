@@ -77,7 +77,7 @@ const solutions = [
   {
     title: 'Agentic Evaluation',
     description:
-      'Comprehensive testing and monitoring systems to ensure AI performance and reliability at scale.',
+      'Comprehensive testing and monitoring systems to ensure agentic system performance and reliability at scale.',
     metric: '<5 min',
     metricLabel: 'mean incident detection',
     href: '/solutions/agentic-evaluation',
@@ -93,9 +93,9 @@ const solutions = [
     ),
   },
   {
-    title: 'AI Governance & Security',
+    title: 'Agentic Governance & Security',
     description:
-      'Enterprise-grade security, compliance, and governance frameworks for AI deployments.',
+      'Enterprise-grade security, compliance, and governance frameworks for agentic deployments.',
     metric: 'SOC 2',
     metricLabel: 'Type II certified',
     href: '/solutions/ai-governance-security',
@@ -128,7 +128,7 @@ export default function PortfolioPage() {
             <div className="bg-brand-500/10 border-brand-400/20 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2">
               <span className="bg-brand-600 h-2 w-2 animate-pulse rounded-full" />
               <span className="text-brand-700 text-sm font-medium">
-                AI for Small &amp; Medium Enterprises
+                Agentic Solutions for the Enterprise
               </span>
             </div>
 
@@ -137,7 +137,7 @@ export default function PortfolioPage() {
             </h1>
 
             <p className="mx-auto max-w-2xl text-xl leading-relaxed text-stone-600">
-              Production AI for small and medium enterprises — shipped in 6&ndash;8 weeks, running
+              Production agentic solutions — shipped in 6&ndash;8 weeks, running
               on infrastructure you own, with full IP transfer.
             </p>
           </div>
@@ -151,7 +151,7 @@ export default function PortfolioPage() {
                 Solutions We Build
               </h2>
               <p className="mx-auto max-w-2xl text-xl text-stone-600">
-                End-to-end AI systems that integrate with your existing infrastructure.
+                End-to-end agentic systems that integrate with your existing infrastructure.
               </p>
             </div>
 

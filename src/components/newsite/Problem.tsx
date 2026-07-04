@@ -5,33 +5,33 @@ import { MetricsIcon, ShieldCheckIcon, WorkflowIcon, DataFlowIcon, NeuralNetwork
 const capabilities = [
   {
     icon: <MetricsIcon size={28} />,
-    title: "ROI-First Design",
-    description: "Every agent is built to a measurable outcome with an honest payback window. We instrument the work so you see the return.",
-    tags: ["Outcome-First", "Instrumented", "Measurable"],
+    title: "Finance Operations",
+    description: "Proactive agents handle accounts payable, receivable, reconciliation, and forecasting. Close the books faster, without the overhead.",
+    tags: ["AP / AR", "Reconciliation", "Forecasting"],
   },
   {
     icon: <ShieldCheckIcon size={28} />,
-    title: "Compliance by Design",
-    description: "Agents are architected around your compliance reality from day one: data residency, verifiable identity, and audit trails.",
-    tags: ["Data Residency", "Audit Trails", "Regulated"],
+    title: "Procurement",
+    description: "Agents run vendor onboarding, purchasing approvals, contract coordination, and supplier communication — cutting cycle times and off-contract spend.",
+    tags: ["Onboarding", "Approvals", "Contracts"],
   },
   {
     icon: <WorkflowIcon size={28} />,
-    title: "Governance Built In",
-    description: "Oversight over permissions, tool access, and real-world actions. Human-in-the-loop where it counts.",
-    tags: ["Permissions", "HITL", "Guardrails"],
+    title: "Revenue Operations",
+    description: "Agents keep CRM data clean, route deal-desk approvals, and assemble pipeline reporting and forecasts — so reps sell instead of doing ops work.",
+    tags: ["CRM Hygiene", "Deal Desk", "Forecasts"],
   },
   {
     icon: <DataFlowIcon size={28} />,
-    title: "Cost Optimization",
-    description: "One agent does the work of ten seats. We right-size models and tune inference so spend tracks outcomes.",
-    tags: ["Right-Sized", "Inference Tuning", "Efficient"],
+    title: "Compliance & Risk",
+    description: "Agents track regulatory deadlines, assemble audit documentation, monitor policy adherence, and flag exceptions before they become findings.",
+    tags: ["Audit-Ready", "Monitoring", "Exceptions"],
   },
   {
     icon: <NeuralNetworkIcon size={28} />,
-    title: "Your Infrastructure",
-    description: "Agents run on compute you control: your VPC or hardware. Sensitive data stays home with no API markup.",
-    tags: ["Your VPC", "Low Latency", "Data Control"],
+    title: "And the Rest of the Business",
+    description: "From logistics and support to HR and IT operations, the same agentic layer extends across the workflows that run your organization.",
+    tags: ["Logistics", "Support", "Operations"],
   },
 ];
 
@@ -59,7 +59,7 @@ export default function Problem() {
                 textTransform: "uppercase",
               }}
             >
-              Our Capabilities
+              Where We Deploy
             </span>
             <h2
               style={{
@@ -72,9 +72,9 @@ export default function Problem() {
                 marginBottom: 20,
               }}
             >
-              Agents Built for{" "}
+              Where Agentic Solutions{" "}
               <span className="text-gradient" style={{ fontFamily: "var(--font-display)" }}>
-                Enterprise Reality
+                Get Deployed
               </span>
             </h2>
             <p
@@ -86,7 +86,7 @@ export default function Problem() {
                 margin: "0 auto",
               }}
             >
-              Most AI pilots fail because they ignore enterprise constraints. We build custom agents that ship, govern, and return real ROI.
+              Across the operational functions that run the business — deployed on top of the systems you already use.
             </p>
           </div>
 
@@ -201,11 +201,11 @@ export default function Problem() {
                 color: "var(--text-primary)",
               }}
             >
-              Get{" "}
+              Built to work with{" "}
               <span className="text-gradient" style={{ fontFamily: "var(--font-display)" }}>
-                Measurable Outcomes
+                your existing systems
               </span>
-              {" "}From Your AI Investment
+              {" "}— no migrations required
             </p>
           </div>
       </div>

@@ -119,9 +119,9 @@ export default async function IndustryDetailPage({
     {
       type: 'cta',
       bg: 'brand',
-      headline: `Ready to transform ${nameLower} operations with AI?`,
+      headline: `Ready to transform ${nameLower} operations with agentic solutions?`,
       description: "30 minutes. We'll map your workflows and tell you where an agent pays back first.",
-      buttonLabel: 'Book a Strategy Call',
+      buttonLabel: 'Book a Discovery Call',
       href: '/#contact',
     },
   ]
@@ -159,7 +159,7 @@ export default async function IndustryDetailPage({
         tagline: industry.tagline,
         description: industry.heroDescription,
         meta: industry.targetAudience,
-        primaryCta: { label: 'Book a Strategy Call', href: '/#contact' },
+        primaryCta: { label: 'Book a Discovery Call', href: '/#contact' },
         secondaryCta: { label: 'View All Industries', href: '/industries' },
       }}
       sections={sections}

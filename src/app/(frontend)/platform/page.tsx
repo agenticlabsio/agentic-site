@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button'
 const capabilities = [
   {
     title: 'Model Context Protocol (MCP)',
-    description: 'Universal protocol for AI-to-data connectivity. Like USB-C for AI systems.',
+    description: 'Universal protocol for AI-to-data connectivity. Like USB-C for agentic systems.',
     icon: '🔌',
   },
   {
@@ -16,7 +16,7 @@ const capabilities = [
   },
   {
     title: 'Bounded Autonomy',
-    description: 'AI agents with clear operational limits, escalation paths, and human oversight.',
+    description: 'agentic solutions with clear operational limits, escalation paths, and human oversight.',
     icon: '🔒',
   },
   {
@@ -65,7 +65,7 @@ export default function PlatformPage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Button href="/#contact" variant="primary">
-                Book a Strategy Call
+                Book a Discovery Call
                 {arrowIcon}
               </Button>
               <Button href="/platform/integrations" variant="outline">
@@ -136,7 +136,7 @@ export default function PlatformPage() {
           <div className="mx-auto max-w-6xl">
             <h2 className="font-display mb-4 text-3xl font-bold text-stone-900">How It Works</h2>
             <p className="font-body mb-12 max-w-2xl text-lg text-stone-600">
-              AI agents layer on top of your existing infrastructure
+              agentic solutions layer on top of your existing infrastructure
             </p>
             <div className="rounded-2xl border border-stone-200 bg-stone-50 p-8">
               <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -162,7 +162,7 @@ export default function PlatformPage() {
                   <div className="bg-brand-500/10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
                     <span className="text-2xl">🤖</span>
                   </div>
-                  <h3 className="font-display mb-2 text-lg font-bold text-stone-900">AI Agents</h3>
+                  <h3 className="font-display mb-2 text-lg font-bold text-stone-900">Agentic Solutions</h3>
                   <p className="font-body text-sm text-stone-600">
                     Autonomous agents with bounded autonomy and audit trails
                   </p>
@@ -176,7 +176,7 @@ export default function PlatformPage() {
           bg="slate"
           headline="See it running on your stack."
           description="30 minutes. We'll show you how agents plug into the systems you already run — and where one pays back first."
-          buttonLabel="Book a Strategy Call"
+          buttonLabel="Book a Discovery Call"
           href="/#contact"
         />
     </main>

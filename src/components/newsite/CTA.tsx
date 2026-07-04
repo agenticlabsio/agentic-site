@@ -90,9 +90,9 @@ export default function CTA() {
               marginBottom: 20,
             }}
           >
-            Ready to Deploy{" "}
+            Explore What Agentic Solutions{" "}
             <span className="text-gradient" style={{ fontFamily: "var(--font-display)" }}>
-              AI Agents That Ship?
+              Could Do Inside Your Company
             </span>
           </h2>
 
@@ -105,11 +105,11 @@ export default function CTA() {
               margin: "0 auto 32px",
             }}
           >
-            Book a free strategy session. We&apos;ll map your workflows and show you exactly where AI agents can deliver measurable ROI.
+            Book a short discovery call. We&apos;ll map your workflows and show you exactly where agentic solutions can deliver immediate impact.
           </p>
 
           <div style={{ marginBottom: 24 }}>
-            <EmailCaptureForm source="cta-section" buttonLabel="Get Started" />
+            <EmailCaptureForm source="cta-section" buttonLabel="Book a Discovery Call" />
           </div>
           <p
             style={{
@@ -139,7 +139,7 @@ export default function CTA() {
                 fontSize: "1rem",
               }}
             >
-              <span>Schedule Strategy Call</span>
+              <span>Book a Discovery Call</span>
               <span className="btn-icon-chip">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />

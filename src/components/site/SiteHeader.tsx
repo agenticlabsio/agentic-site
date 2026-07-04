@@ -59,7 +59,7 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
               alt="Agentic Labs"
               width={160}
               height={36}
-              style={{ height: 36, width: 'auto' }}
+              style={{ height: 36, width: 'auto', filter: 'brightness(0)', opacity: 0.88 }}
               priority
             />
           </Link>

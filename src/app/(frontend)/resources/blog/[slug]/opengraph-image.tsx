@@ -9,7 +9,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
   const { slug } = await params
   const post = await getBlogPostBySlug(slug)
   const title = post?.title ?? 'Agentic Labs'
-  const tagline = post?.excerpt ?? 'Custom AI Agents for SMEs'
+  const tagline = post?.excerpt ?? 'Custom Agentic Solutions for the Enterprise'
 
   return new ImageResponse(
     (
@@ -21,20 +21,20 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#0a0e1a',
-          color: '#eef1f8',
+          background: '#161613',
+          color: '#f7f7f3',
           padding: 80,
           textAlign: 'center',
         }}
       >
-        <div style={{ fontSize: 24, color: '#7da5ff', letterSpacing: 2, display: 'flex' }}>
+        <div style={{ fontSize: 24, color: '#7dbd9b', letterSpacing: 2, display: 'flex' }}>
           AGENTIC LABS BLOG
         </div>
         <div style={{ fontSize: 52, fontWeight: 700, marginTop: 24, display: 'flex' }}>{title}</div>
         <div
           style={{
             fontSize: 28,
-            color: '#9aa3b8',
+            color: '#9a9a8d',
             marginTop: 20,
             display: 'flex',
             maxWidth: 900,

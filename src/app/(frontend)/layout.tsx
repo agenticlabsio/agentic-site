@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Sora, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Newsreader, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { OrganizationSchema, WebSiteSchema } from "@/components/SEO";
 import SiteHeader from "@/components/site/SiteHeader";
 import Footer from "@/components/newsite/Footer";
@@ -7,13 +7,14 @@ import { getSiteSettings } from "@/lib/payload";
 import { SITE_URL } from "@/lib/seo";
 import "../globals.css";
 
-// Sapphire Nocturne type system:
-// Display = Sora (geometric grotesque), Body = IBM Plex Sans (technical),
+// Ledger type system:
+// Display = Newsreader (classical serif), Body = IBM Plex Sans (technical),
 // Mono = IBM Plex Mono (stats / labels).
-const sora = Sora({
-  weight: ['400', '500', '600', '700', '800'],
+const newsreader = Newsreader({
+  weight: ['400', '500', '600', '700'],
+  style: ['normal'],
   subsets: ['latin'],
-  variable: '--font-sora',
+  variable: '--font-newsreader',
   display: 'swap',
 });
 
@@ -34,19 +35,19 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Agentic Labs | Custom AI Agents for SMEs, Shipped in Weeks',
+    default: 'Agentic Labs | Custom Agentic Solutions for the Enterprise',
     template: '%s | Agentic Labs'
   },
-  description: 'Custom AI agents for small and medium enterprises. In production in 6-8 weeks, on infrastructure you control, built to pay back. Book a strategy call.',
+  description: 'Custom agentic solutions — enterprise AI agents and multi-agentic systems that automate entire departments end to end, in production in 6–12 weeks on infrastructure you control. Book a discovery call.',
   keywords: [
-    'agentic AI',
+    'agentic solutions',
     'enterprise AI agents',
-    'AI automation consulting',
+    'agentic AI',
+    'multi-agentic systems',
+    'background agents',
+    'agentic automation consulting',
     'SaaS consolidation',
     'AI governance',
-    'Salesforce AI integration',
-    'Workday AI integration',
-    'Databricks AI',
     'enterprise automation',
     'AI implementation services'
   ],
@@ -58,21 +59,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: SITE_URL,
     siteName: 'Agentic Labs',
-    title: 'Agentic Labs | Custom AI Agents for SMEs, Shipped in Weeks',
-    description: 'Custom AI agents for small and medium enterprises. In production in 6-8 weeks, on infrastructure you control, built to pay back.',
+    title: 'Agentic Labs | Custom Agentic Solutions for the Enterprise',
+    description: 'Custom agentic solutions that automate entire departments end to end — in production in 6–12 weeks, on infrastructure you control.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Agentic Labs - Custom AI Agents for SMEs',
+        alt: 'Agentic Labs — Custom Agentic Solutions for the Enterprise',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Agentic Labs | Custom AI Agents for SMEs',
-    description: 'Custom AI agents for small and medium enterprises. In production in 6-8 weeks, on infrastructure you control, built to pay back.',
+    title: 'Agentic Labs | Custom Agentic Solutions',
+    description: 'Custom agentic solutions that automate entire departments end to end — in production in 6–12 weeks, on infrastructure you control.',
     creator: '@agenticlabs',
     images: ['/og-image.png'],
   },
@@ -108,7 +109,7 @@ export default async function FrontendLayout({
   // <Link>, which throws inside Next's URL formatter.
   const cta = siteSettings.ctaButton?.href
     ? siteSettings.ctaButton
-    : { label: 'Book a Strategy Call', href: '/#contact' };
+    : { label: 'Book a Discovery Call', href: '/#contact' };
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -118,7 +119,7 @@ export default async function FrontendLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className={`${sora.variable} ${plexSans.variable} ${plexMono.variable} antialiased`}
+        className={`${newsreader.variable} ${plexSans.variable} ${plexMono.variable} antialiased`}
         suppressHydrationWarning={true}
       >
         <OrganizationSchema />

@@ -50,7 +50,7 @@ export function OrganizationSchema() {
           "itemOffered": {
             "@type": "Service",
             "name": "Customer Service Automation",
-            "description": "AI agents for dramatically faster ticket resolution"
+            "description": "agentic solutions for dramatically faster ticket resolution"
           }
         },
         {
@@ -74,7 +74,7 @@ export function OrganizationSchema() {
           "itemOffered": {
             "@type": "Service",
             "name": "Agentic Evaluation",
-            "description": "AI agent performance measurement and ROI tracking"
+            "description": "agentic system performance measurement and ROI tracking"
           }
         },
         {

@@ -3,9 +3,9 @@
 // (fixes the missing "Industries" link that some pages previously omitted).
 export const siteSettingsDefault = {
   brandTagline:
-    "We design, ship, and run custom AI agents that handle your team's autonomous workflows. Built for ROI, governed end to end.",
+    "We design, ship, and run custom agentic solutions that handle your team's autonomous workflows. Built for ROI, governed end to end.",
   defaultSeoDescription:
-    'Agentic Labs builds custom AI agents engineered for production — built for ROI, governed for compliance, deployed on your infrastructure.',
+    'Agentic Labs builds custom agentic solutions engineered for production — built for ROI, governed for compliance, deployed on your infrastructure.',
   navItems: [
     { label: 'Solutions', href: '/solutions' },
     { label: 'Industries', href: '/industries' },
@@ -14,7 +14,7 @@ export const siteSettingsDefault = {
     { label: 'Resources', href: '/resources' },
   ],
   ctaButton: {
-    label: 'Book a Strategy Call',
+    label: 'Book a Discovery Call',
     href: '/#contact',
   },
   footerLinkGroups: [

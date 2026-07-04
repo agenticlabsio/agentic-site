@@ -50,7 +50,7 @@ export default async function SolutionsPage() {
           bg="brand"
           headline="Not sure which solution fits?"
           description="30 minutes. We'll map your workflows and tell you exactly what to build first."
-          buttonLabel="Book a Strategy Call"
+          buttonLabel="Book a Discovery Call"
           href="/#contact"
         />
     </main>

@@ -60,9 +60,9 @@ export const industries: Industry[] = [
     icon: '🏥',
     featured: true,
     cardDescription:
-      'AI automation for patient intake, clinical documentation, and scheduling. HIPAA compliant.',
+      'agentic automation for patient intake, clinical documentation, and scheduling. HIPAA compliant.',
     heroDescription:
-      'AI automation that reduces administrative burden on clinical staff, speeds up patient intake, and improves care delivery—all while maintaining HIPAA compliance.',
+      'agentic automation that reduces administrative burden on clinical staff, speeds up patient intake, and improves care delivery—all while maintaining HIPAA compliance.',
     targetAudience: 'Health systems, large practices, healthcare IT companies ($500M-$10B)',
     marketContext: [
       { stat: 'A large share of healthcare spending goes to administrative tasks', source: 'McKinsey' },
@@ -99,12 +99,12 @@ export const industries: Industry[] = [
       {
         title: 'Patient Intake Automation',
         description:
-          'AI-powered forms, document extraction, and verification reduce manual entry and wait times.',
+          'agentic forms, document extraction, and verification reduce manual entry and wait times.',
         metric: '$2M+ annual savings for health systems',
       },
       {
         title: 'Clinical Documentation',
-        description: 'AI-assisted note generation from voice or text, with human review and approval.',
+        description: 'agentic note generation from voice or text, with human review and approval.',
         metric: '6-8 week implementation',
       },
       {
@@ -141,7 +141,7 @@ export const industries: Industry[] = [
       {
         question: 'How does AI improve healthcare operations without compromising patient safety?',
         answer:
-          'Our AI systems are designed for administrative tasks only—scheduling, documentation, billing, intake. Clinical decisions remain with licensed providers. All AI outputs are flagged for human review before affecting patient care.',
+          'Our agentic systems are designed for administrative tasks only—scheduling, documentation, billing, intake. Clinical decisions remain with licensed providers. All AI outputs are flagged for human review before affecting patient care.',
       },
       {
         question: 'Is your healthcare AI HIPAA compliant?',
@@ -172,7 +172,7 @@ export const industries: Industry[] = [
     seo: {
       metaTitle: 'AI Solutions for Healthcare | HIPAA Compliant | Agentic Labs',
       metaDescription:
-        'AI automation for healthcare: patient intake, clinical documentation, appointment scheduling. HIPAA compliant. Cut administrative burden with ROI proof within 90 days.',
+        'agentic automation for healthcare: patient intake, clinical documentation, appointment scheduling. HIPAA compliant. Cut administrative burden with ROI proof within 90 days.',
     },
   },
   {
@@ -183,7 +183,7 @@ export const industries: Industry[] = [
     cardDescription:
       'Predictive maintenance, quality control, and supply chain optimization for Industry 4.0.',
     heroDescription:
-      'AI-powered predictive maintenance, quality control, and supply chain optimization that reduces downtime and improves throughput for modern manufacturing.',
+      'agentic predictive maintenance, quality control, and supply chain optimization that reduces downtime and improves throughput for modern manufacturing.',
     targetAudience: 'Mid-market manufacturers, industrial companies ($500M-$10B)',
     marketContext: [
       { stat: 'Average cost of unplanned downtime: $260K per hour', source: 'Aberdeen' },
@@ -227,7 +227,7 @@ export const industries: Industry[] = [
       },
       {
         title: 'Demand Forecasting',
-        description: 'AI-driven forecasting reduces inventory carrying costs.',
+        description: 'agentic forecasting reduces inventory carrying costs.',
         metric: 'Lower inventory carrying costs',
       },
       {
@@ -259,7 +259,7 @@ export const industries: Industry[] = [
       {
         question: 'How does predictive maintenance AI work?',
         answer:
-          'We deploy sensors on critical equipment that feed data to AI models. These models learn normal operating patterns and detect anomalies that precede failures, alerting maintenance teams before breakdowns occur.',
+          'We deploy sensors on critical equipment that feed data to foundation models. These models learn normal operating patterns and detect anomalies that precede failures, alerting maintenance teams before breakdowns occur.',
       },
       {
         question: 'Can AI integrate with our existing MES and ERP systems?',
@@ -269,7 +269,7 @@ export const industries: Industry[] = [
       {
         question: 'What about edge deployment for real-time decisions?',
         answer:
-          'We deploy AI models at the edge for real-time inference—critical for time-sensitive decisions like quality inspection and process control. Edge systems sync with cloud for model updates and analytics.',
+          'We deploy foundation models at the edge for real-time inference—critical for time-sensitive decisions like quality inspection and process control. Edge systems sync with cloud for model updates and analytics.',
       },
       {
         question: 'How do you handle legacy equipment without sensors?',
@@ -286,7 +286,7 @@ export const industries: Industry[] = [
     seo: {
       metaTitle: 'AI Solutions for Manufacturing | Predictive Maintenance | Agentic Labs',
       metaDescription:
-        'AI automation for manufacturing: predictive maintenance, quality control, supply chain optimization. Major downtime reduction, proven in 90 days. Integrates with existing MES and ERP.',
+        'agentic automation for manufacturing: predictive maintenance, quality control, supply chain optimization. Major downtime reduction, proven in 90 days. Integrates with existing MES and ERP.',
     },
   },
   {
@@ -297,7 +297,7 @@ export const industries: Industry[] = [
     cardDescription:
       'Demand forecasting, customer service automation, and omnichannel optimization.',
     heroDescription:
-      'AI-powered demand forecasting, customer service automation, and omnichannel optimization that reduces inventory costs and improves customer experience.',
+      'agentic demand forecasting, customer service automation, and omnichannel optimization that reduces inventory costs and improves customer experience.',
     targetAudience: 'Mid-market retailers, e-commerce companies ($500M-$10B)',
     marketContext: [
       {
@@ -306,7 +306,7 @@ export const industries: Industry[] = [
       },
       { stat: 'The majority of consumers expect personalized experiences', source: 'Salesforce' },
       {
-        stat: 'AI-driven inventory optimization can free up hundreds of thousands of dollars in carrying costs for a mid-market retailer',
+        stat: 'agentic inventory optimization can free up hundreds of thousands of dollars in carrying costs for a mid-market retailer',
       },
     ],
     challenges: [
@@ -346,7 +346,7 @@ export const industries: Industry[] = [
       },
       {
         title: 'Personalization',
-        description: 'AI-driven product recommendations and personalized marketing.',
+        description: 'agentic product recommendations and personalized marketing.',
         metric: 'Meaningful lift in conversion rate',
       },
     ],
@@ -373,7 +373,7 @@ export const industries: Industry[] = [
       {
         question: 'How accurate is AI demand forecasting for retail?',
         answer:
-          'Our AI models achieve high forecast accuracy at the SKU-location level, significantly outperforming traditional statistical methods. Accuracy improves over time as the model learns your specific patterns.',
+          'Our foundation models achieve high forecast accuracy at the SKU-location level, significantly outperforming traditional statistical methods. Accuracy improves over time as the model learns your specific patterns.',
       },
       {
         question: 'Can AI handle seasonal and promotional demand?',
@@ -400,7 +400,7 @@ export const industries: Industry[] = [
     seo: {
       metaTitle: 'AI Solutions for Retail | Inventory Optimization | Agentic Labs',
       metaDescription:
-        'AI automation for retail: inventory forecasting, customer service, order management. $750K+ freed from inventory carrying costs. Integrates with existing POS and ERP.',
+        'agentic automation for retail: inventory forecasting, customer service, order management. $750K+ freed from inventory carrying costs. Integrates with existing POS and ERP.',
     },
   },
   {
@@ -411,13 +411,13 @@ export const industries: Industry[] = [
     cardDescription:
       'Grid optimization, predictive maintenance, and renewable integration for utilities.',
     heroDescription:
-      'AI-powered grid optimization, predictive maintenance, and demand forecasting that improves reliability and enables renewable integration for utilities and energy producers.',
+      'agentic grid optimization, predictive maintenance, and demand forecasting that improves reliability and enables renewable integration for utilities and energy producers.',
     targetAudience: 'Utilities, energy producers, grid operators ($500M-$10B)',
     marketContext: [
       { stat: 'Most energy CEOs rank AI as a top investment priority', source: 'KPMG' },
       { stat: 'The vast majority of utility CIOs plan to increase AI investments in 2025' },
       {
-        stat: 'AI-driven energy efficiency could generate $1.3T in value by 2030',
+        stat: 'agentic energy efficiency could generate $1.3T in value by 2030',
         source: 'McKinsey',
       },
     ],
@@ -484,7 +484,7 @@ export const industries: Industry[] = [
       {
         question: 'How does AI improve grid stability?',
         answer:
-          'AI models predict demand and renewable output minutes to hours ahead, enabling operators to pre-position generation and storage resources. This reduces frequency deviations and improves overall grid reliability.',
+          'foundation models predict demand and renewable output minutes to hours ahead, enabling operators to pre-position generation and storage resources. This reduces frequency deviations and improves overall grid reliability.',
       },
       {
         question: 'Can AI work with our legacy SCADA systems?',
@@ -511,7 +511,7 @@ export const industries: Industry[] = [
     seo: {
       metaTitle: 'AI Solutions for Energy & Utilities | Grid Optimization | Agentic Labs',
       metaDescription:
-        'AI automation for energy: grid optimization, predictive maintenance, demand forecasting. Lower operational costs and improve renewable availability. ROI proof within 90 days.',
+        'agentic automation for energy: grid optimization, predictive maintenance, demand forecasting. Lower operational costs and improve renewable availability. ROI proof within 90 days.',
     },
   },
   {
@@ -522,7 +522,7 @@ export const industries: Industry[] = [
     cardDescription:
       'Order automation, inventory optimization, and quote generation for wholesale distribution.',
     heroDescription:
-      'AI-powered order automation, inventory optimization, and quote generation that transforms wholesale distribution operations and cuts SaaS sprawl.',
+      'agentic order automation, inventory optimization, and quote generation that transforms wholesale distribution operations and cuts SaaS sprawl.',
     targetAudience:
       'Wholesale distributors, industrial dealers, B2B distribution companies ($500M-$10B)',
     marketContext: [
@@ -597,7 +597,7 @@ export const industries: Industry[] = [
     ],
     faqs: [
       {
-        question: 'How do AI agents handle non-standard order formats?',
+        question: 'How do agentic solutions handle non-standard order formats?',
         answer:
           'Our AI is trained to interpret any format: handwritten notes, PDFs, emails, spreadsheets, even voicemails. It extracts customer ID, products, quantities, and special instructions, then validates against your product catalog before ERP entry.',
       },
@@ -619,14 +619,14 @@ export const industries: Industry[] = [
       {
         question: 'How does this replace SaaS point solutions?',
         answer:
-          'Instead of separate tools for order capture, quoting, inventory planning, and customer communication, our AI agents handle these workflows in one integrated system—significantly cutting SaaS subscription costs and sprawl.',
+          'Instead of separate tools for order capture, quoting, inventory planning, and customer communication, our agentic solutions handle these workflows in one integrated system—significantly cutting SaaS subscription costs and sprawl.',
       },
     ],
     relatedSolutions: ['document-processing', 'customer-service-automation', 'intelligent-agents'],
     seo: {
       metaTitle: 'AI Solutions for Dealers & Distributors | Order Automation | Agentic Labs',
       metaDescription:
-        'AI automation for dealers and distributors: order entry automation, inventory optimization ($450K-$750K freed capital), quote generation. Replace fragmented SaaS with unified agents.',
+        'agentic automation for dealers and distributors: order entry automation, inventory optimization ($450K-$750K freed capital), quote generation. Replace fragmented SaaS with unified agents.',
     },
   },
   {
@@ -635,9 +635,9 @@ export const industries: Industry[] = [
     tagline: 'Production-Ready in 6-8 Weeks',
     icon: '🔌',
     cardDescription:
-      'AI-enhanced EDA tools for FPGA design, verification, and test automation.',
+      'agentic EDA tools for FPGA design, verification, and test automation.',
     heroDescription:
-      'AI-enhanced EDA tools that accelerate FPGA design, verification, and test automation—shortening design cycles while maintaining quality.',
+      'agentic EDA tools that accelerate FPGA design, verification, and test automation—shortening design cycles while maintaining quality.',
     targetAudience:
       'Semiconductor companies, FPGA design houses, power electronics manufacturers ($500M-$10B)',
     marketContext: [
@@ -646,7 +646,7 @@ export const industries: Industry[] = [
         source: 'Precedence Research',
       },
       {
-        stat: 'AI-enhanced EDA tools dramatically boost productivity for complex design',
+        stat: 'agentic EDA tools dramatically boost productivity for complex design',
         source: 'Siemens',
       },
       { stat: 'Verification consumes the majority of development time' },
@@ -682,7 +682,7 @@ export const industries: Industry[] = [
       },
       {
         title: 'Layout Optimization',
-        description: 'AI-assisted placement and routing for performance metrics.',
+        description: 'agentic placement and routing for performance metrics.',
         metric: 'Optimized Fmax',
       },
       {
@@ -741,7 +741,7 @@ export const industries: Industry[] = [
     seo: {
       metaTitle: 'AI for Power Electronics & FPGA Design | EDA Automation | Agentic Labs',
       metaDescription:
-        'AI-enhanced EDA tools for FPGA design, verification, and testing. Faster design cycles and shorter time-to-tape-out. Works with Siemens, AMD/Xilinx, Intel toolchains. Production-ready in 6-8 weeks.',
+        'agentic EDA tools for FPGA design, verification, and testing. Faster design cycles and shorter time-to-tape-out. Works with Siemens, AMD/Xilinx, Intel toolchains. Production-ready in 6-8 weeks.',
     },
   },
   {
@@ -752,7 +752,7 @@ export const industries: Industry[] = [
     cardDescription:
       'Vision AI, autonomous navigation, and predictive maintenance for industrial robotics.',
     heroDescription:
-      'AI systems that enhance industrial robotics with vision inspection, autonomous navigation, and predictive maintenance—reducing downtime and improving throughput.',
+      'agentic systems that enhance industrial robotics with vision inspection, autonomous navigation, and predictive maintenance—reducing downtime and improving throughput.',
     targetAudience:
       'Industrial automation companies, robotics integrators, manufacturers with robot fleets ($500M-$10B)',
     marketContext: [
@@ -794,7 +794,7 @@ export const industries: Industry[] = [
       },
       {
         title: 'Cobot Orchestration',
-        description: 'AI-driven task allocation and human-robot collaboration optimization.',
+        description: 'agentic task allocation and human-robot collaboration optimization.',
         metric: 'Safe collaboration',
       },
       {
@@ -855,7 +855,7 @@ export const industries: Industry[] = [
     seo: {
       metaTitle: 'AI for Autonomy & Robotics | Industrial Automation | Agentic Labs',
       metaDescription:
-        'AI systems for industrial robotics: vision inspection, autonomous navigation, cobot orchestration. $500K+ annual savings from reduced downtime. Integrates with existing robot fleets.',
+        'agentic systems for industrial robotics: vision inspection, autonomous navigation, cobot orchestration. $500K+ annual savings from reduced downtime. Integrates with existing robot fleets.',
     },
   },
   {
@@ -866,7 +866,7 @@ export const industries: Industry[] = [
     cardDescription:
       'Cold chain monitoring, supply chain automation, and compliance documentation.',
     heroDescription:
-      'AI-powered cold chain monitoring, supply chain automation, and compliance documentation that maintains GxP compliance while improving operational efficiency.',
+      'agentic cold chain monitoring, supply chain automation, and compliance documentation that maintains GxP compliance while improving operational efficiency.',
     targetAudience:
       'Pharmaceutical companies, biotech firms, drug distributors, CDMOs ($500M-$10B)',
     marketContext: [
@@ -909,7 +909,7 @@ export const industries: Industry[] = [
       },
       {
         title: 'Supply Chain Resilience',
-        description: 'AI models predict disruptions and recommend alternative sourcing.',
+        description: 'foundation models predict disruptions and recommend alternative sourcing.',
         metric: 'Proactive mitigation',
       },
       {
@@ -975,7 +975,7 @@ export const industries: Industry[] = [
     seo: {
       metaTitle: 'AI for Biotech & Pharma Logistics | Supply Chain Automation | Agentic Labs',
       metaDescription:
-        'AI automation for pharma logistics: cold chain monitoring, compliance documentation, drug discovery acceleration. HIPAA/GxP compliant. 6-8 weeks to production.',
+        'agentic automation for pharma logistics: cold chain monitoring, compliance documentation, drug discovery acceleration. HIPAA/GxP compliant. 6-8 weeks to production.',
     },
   },
 ]

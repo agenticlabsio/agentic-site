@@ -163,7 +163,7 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
     solution: {
-      intro: 'We implemented an AI-powered intake system:',
+      intro: 'We implemented an agentic intake system:',
       components: [
         {
           title: 'Digital forms',

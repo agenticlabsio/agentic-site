@@ -112,7 +112,7 @@ export default async function SolutionDetailPage({
       bg: 'slate',
       headline: solution.cta.headline,
       description: solution.cta.description,
-      buttonLabel: 'Book a Strategy Call',
+      buttonLabel: 'Book a Discovery Call',
       href: '/#contact',
     },
   ]
@@ -149,7 +149,7 @@ export default async function SolutionDetailPage({
         title: solution.name,
         tagline: solution.heroTagline,
         description: solution.description,
-        primaryCta: { label: 'Book a Strategy Call', href: '/#contact' },
+        primaryCta: { label: 'Book a Discovery Call', href: '/#contact' },
         secondaryCta: { label: 'View All Solutions', href: '/solutions' },
       }}
       sections={sections}

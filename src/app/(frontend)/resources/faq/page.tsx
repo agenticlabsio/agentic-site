@@ -97,7 +97,7 @@ export default async function FAQHubPage() {
           bg="brand"
           headline="Still have questions?"
           description="30 minutes. We'll map your workflows and tell you what to build first."
-          buttonLabel="Book a Strategy Call"
+          buttonLabel="Book a Discovery Call"
           href="/#contact"
         />
     </main>

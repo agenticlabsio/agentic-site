@@ -2,19 +2,19 @@
 
 
 const traditionalApproach = [
-  { label: "18+ month timelines", negative: true },
-  { label: "Pilots that never reach production", negative: true },
-  { label: "Generic off-the-shelf solutions", negative: true },
-  { label: "Governance as an afterthought", negative: true },
-  { label: "Hidden costs and scope creep", negative: true },
+  { label: "One tool per task, none aware of the others", negative: true },
+  { label: "Point automations that break on exceptions", negative: true },
+  { label: "People still gluing systems together by hand", negative: true },
+  { label: "Dashboards that report problems, not resolve them", negative: true },
+  { label: "Effort scattered across disconnected scripts", negative: true },
 ];
 
 const agenticApproach = [
-  { label: "Production in 4 weeks", positive: true },
-  { label: "Built for ROI from day one", positive: true },
-  { label: "Custom agents for your workflows", positive: true },
-  { label: "Compliance baked into design", positive: true },
-  { label: "Fixed outcomes, transparent pricing", positive: true },
+  { label: "Multi-agentic systems that own end-to-end workflows", positive: true },
+  { label: "Intake to execution to reporting, handled", positive: true },
+  { label: "Whole process chains replaced, not single steps", positive: true },
+  { label: "Proactive agents that resolve, not just alert", positive: true },
+  { label: "One governed operational layer across your stack", positive: true },
 ];
 
 export default function Comparison() {
@@ -64,9 +64,9 @@ export default function Comparison() {
                 marginTop: 12,
               }}
             >
-              Why Most AI Projects{" "}
+              We Don&apos;t Just Automate Tasks.{" "}
               <span className="text-gradient" style={{ fontFamily: "var(--font-display)" }}>
-                Fail to Deliver
+                We Transform Departments.
               </span>
             </h2>
           </div>
@@ -108,7 +108,7 @@ export default function Comparison() {
                   </svg>
                 </div>
                 <h3 style={{ fontSize: "1.15rem", fontWeight: 600, color: "var(--text-primary)" }}>
-                  Traditional AI Consulting
+                  Task Automation
                 </h3>
               </div>
 
@@ -157,7 +157,7 @@ export default function Comparison() {
                 }}
               >
                 <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", fontStyle: "italic" }}>
-                  &ldquo;Nearly 1 in 5 AI projects never reach production&rdquo;
+                  &ldquo;A single automation that answers emails isn&apos;t transformation.&rdquo;
                 </p>
               </div>
             </div>
@@ -209,7 +209,7 @@ export default function Comparison() {
                     </svg>
                   </div>
                   <h3 style={{ fontSize: "1.15rem", fontWeight: 600, color: "var(--text-primary)" }}>
-                    The Agentic Labs Way
+                    Department Transformation
                   </h3>
                 </div>
 
@@ -259,7 +259,7 @@ export default function Comparison() {
                   }}
                 >
                   <p style={{ fontSize: "0.85rem", color: "var(--accent-highlight)", fontWeight: 500 }}>
-                    Every agent we ship reaches production with measurable ROI
+                    Your finance team operates like it&apos;s 3x the size. Your ops team ships without the backlog.
                   </p>
                 </div>
               </div>

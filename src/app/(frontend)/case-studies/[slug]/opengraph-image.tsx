@@ -9,7 +9,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
   const { slug } = await params
   const caseStudy = await getCaseStudyBySlug(slug)
   const title = caseStudy ? `${caseStudy.title} ${caseStudy.subtitle}` : 'Agentic Labs'
-  const tagline = caseStudy?.industry ?? 'Custom AI Agents for SMEs'
+  const tagline = caseStudy?.industry ?? 'Custom Agentic Solutions for the Enterprise'
 
   return new ImageResponse(
     (
@@ -21,17 +21,17 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#0a0e1a',
-          color: '#eef1f8',
+          background: '#161613',
+          color: '#f7f7f3',
           padding: 80,
           textAlign: 'center',
         }}
       >
-        <div style={{ fontSize: 24, color: '#7da5ff', letterSpacing: 2, display: 'flex' }}>
+        <div style={{ fontSize: 24, color: '#7dbd9b', letterSpacing: 2, display: 'flex' }}>
           AGENTIC LABS · CASE STUDY
         </div>
         <div style={{ fontSize: 56, fontWeight: 700, marginTop: 24, display: 'flex' }}>{title}</div>
-        <div style={{ fontSize: 30, color: '#9aa3b8', marginTop: 20, display: 'flex' }}>
+        <div style={{ fontSize: 30, color: '#9a9a8d', marginTop: 20, display: 'flex' }}>
           {tagline}
         </div>
       </div>

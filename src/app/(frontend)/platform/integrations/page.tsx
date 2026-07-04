@@ -26,7 +26,7 @@ const integrations: IntegrationData[] = [
     name: 'Databricks',
     category: 'Analytics',
     description:
-      'Access your lakehouse data directly. Run queries, trigger jobs, and use ML models through the AI agent layer.',
+      'Access your lakehouse data directly. Run queries, trigger jobs, and use ML models through the agentic system layer.',
     features: ['SQL Warehouse access', 'Unity Catalog support', 'MLflow models', 'Job orchestration'],
   },
   {
@@ -173,7 +173,7 @@ export default function IntegrationsPage() {
           bg="brand"
           headline="Ready to connect your systems?"
           description="30 minutes. Tell us your stack and we'll show you what an agent can reach."
-          buttonLabel="Book a Strategy Call"
+          buttonLabel="Book a Discovery Call"
           href="/#contact"
         />
     </main>

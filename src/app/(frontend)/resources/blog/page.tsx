@@ -78,7 +78,7 @@ export default async function BlogPage() {
           bg="slate"
           headline="Enough reading. Let's build one."
           description="30 minutes. We'll map your workflows and tell you which one an agent should run first."
-          buttonLabel="Book a Strategy Call"
+          buttonLabel="Book a Discovery Call"
           href="/#contact"
         />
     </main>

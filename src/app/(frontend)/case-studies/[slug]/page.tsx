@@ -92,7 +92,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       id: 'contact',
       bg: 'brand',
       headline: 'Want similar results?',
-      buttonLabel: 'Book a Strategy Call',
+      buttonLabel: 'Book a Discovery Call',
       href: 'mailto:contact@agenticlabs.io?subject=Discovery%20Call%20Request',
       external: true,
     },

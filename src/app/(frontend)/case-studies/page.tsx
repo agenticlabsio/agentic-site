@@ -149,7 +149,7 @@ export default async function CaseStudiesPage() {
           id="contact"
           bg="brand"
           headline="Your results could be next."
-          buttonLabel="Book a Strategy Call"
+          buttonLabel="Book a Discovery Call"
           href="mailto:contact@agenticlabs.io?subject=Discovery%20Call%20Request"
           external
         />

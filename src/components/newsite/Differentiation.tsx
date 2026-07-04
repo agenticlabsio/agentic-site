@@ -1,35 +1,28 @@
 "use client";
 
-import { SpeedIcon, NeuralNetworkIcon, AgentBrainIcon, ShieldCheckIcon } from "./icons/AgentIcons";
+import { SpeedIcon, NeuralNetworkIcon, AgentBrainIcon } from "./icons/AgentIcons";
 
 const items = [
   {
     icon: <SpeedIcon size={32} />,
-    title: "Outcomes, Not Hours",
-    description: "Fixed weekly outcomes eliminate planning drag and billable-hour friction. Pay for shipped results.",
-    stat: "10x",
-    statLabel: "Faster",
+    title: "Reduce Operational Overhead",
+    description: "Background agents remove the manual coordination, approvals, and repetitive operational work that pile up across systems.",
+    stat: ".01",
+    statLabel: "",
   },
   {
     icon: <NeuralNetworkIcon size={32} />,
-    title: "AI-Native Engineering",
-    description: "Senior engineers trained to ship production systems, not experiments. Every line is production-ready.",
-    stat: "10+ yrs",
-    statLabel: "Senior Engineers",
+    title: "Accelerate Execution",
+    description: "Processes that once required multiple team handoffs now execute continuously, without waiting on a queue.",
+    stat: ".02",
+    statLabel: "",
   },
   {
     icon: <AgentBrainIcon size={32} />,
-    title: "Internal Agent Systems",
-    description: "AI agents accelerate specs, code, testing, and deployment in parallel. We practice what we preach.",
-    stat: "4x",
-    statLabel: "Throughput",
-  },
-  {
-    icon: <ShieldCheckIcon size={32} />,
-    title: "Built for Production",
-    description: "Compliance, governance, and enterprise constraints are designed in from day one, not bolted on after.",
-    stat: "0",
-    statLabel: "Pilot Failures",
+    title: "Scale Without Hiring",
+    description: "Operational output grows without adding headcount or new layers of coordination to manage it.",
+    stat: ".03",
+    statLabel: "",
   },
 ];
 
@@ -73,7 +66,7 @@ export default function Differentiation() {
                 textTransform: "uppercase",
               }}
             >
-              Why Agentic Labs
+              The Shift
             </span>
             <h2
               style={{
@@ -86,9 +79,9 @@ export default function Differentiation() {
                 marginBottom: 20,
               }}
             >
-              We Don&apos;t Just Promise.{" "}
+              Only Agentic-Native Organizations{" "}
               <span className="text-gradient" style={{ fontFamily: "var(--font-display)" }}>
-                We Deliver.
+                Will Survive
               </span>
             </h2>
             <p
@@ -100,7 +93,7 @@ export default function Differentiation() {
                 margin: "0 auto",
               }}
             >
-              Outcome-driven, AI-native, and built for production and governance from day one.
+              Agentic solutions don&apos;t just automate tasks — they remove the operational bottlenecks that slow organizations down.
             </p>
           </div>
 
@@ -108,7 +101,7 @@ export default function Differentiation() {
           className="diff-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: 16,
           }}
         >

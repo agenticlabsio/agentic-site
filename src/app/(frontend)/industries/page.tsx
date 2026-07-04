@@ -107,7 +107,7 @@ export default async function IndustriesPage() {
         <section className="bg-stone-50 px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <h2 className="font-display mb-4 text-center text-3xl font-bold text-stone-900">
-              Built for SMEs. <span className="text-brand-600">Not enterprise theater.</span>
+              Built to ship. <span className="text-brand-600">Not enterprise theater.</span>
             </h2>
             <p className="mx-auto mb-12 max-w-2xl text-center text-lg text-stone-600">
               US-based small and medium enterprises that need production AI — not science projects,
@@ -135,7 +135,7 @@ export default async function IndustriesPage() {
           bg="brand"
           headline="Let's talk about your industry."
           description="30 minutes. We'll map your workflows and show you what's possible."
-          buttonLabel="Book a Strategy Call"
+          buttonLabel="Book a Discovery Call"
           href="/#contact"
         />
     </main>

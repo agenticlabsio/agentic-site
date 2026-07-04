@@ -7,13 +7,13 @@ const featuredResources = [
     type: 'Blog',
     title: 'Agentic AI in 2026: From Hype to "Is It Working?"',
     description:
-      '2026 is the year businesses finally ask "Is it working?" Learn how to measure AI agent performance and prove ROI.',
+      '2026 is the year businesses finally ask "Is it working?" Learn how to measure agentic system performance and prove ROI.',
     href: '/resources/blog/agentic-ai-2026',
     category: 'Thought Leadership',
   },
   {
     type: 'Blog',
-    title: 'The Model Context Protocol (MCP): Why Your AI Agents Need It',
+    title: 'The Model Context Protocol (MCP): Why Your Agentic Solutions Need It',
     description:
       'MCP is the USB-C of AI connectivity. Learn how this standardization breakthrough transforms enterprise AI.',
     href: '/resources/blog/model-context-protocol-mcp',
@@ -21,7 +21,7 @@ const featuredResources = [
   },
   {
     type: 'Blog',
-    title: 'Replace 10 SaaS Tools with One AI Agent',
+    title: 'Replace 10 SaaS Tools with One Agentic Solution',
     description:
       'A growing business pays for dozens of overlapping SaaS seats. See how one custom agent can replace 5–10 of them.',
     href: '/resources/blog/replace-saas-with-ai',
@@ -54,7 +54,7 @@ export default function ResourcesPage() {
           <div className="mx-auto max-w-6xl">
             <p className="text-brand-600 mb-4 text-sm font-semibold tracking-wide uppercase">Resources</p>
             <h1 className="font-display mb-4 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
-              Straight talk on <span className="text-brand-600">agentic AI.</span>
+              Straight talk on <span className="text-brand-600">agentic systems.</span>
             </h1>
             <p className="font-body max-w-2xl text-xl text-stone-600">
               Deep dives on building agents that ship, cutting SaaS sprawl, and proving ROI &mdash;
@@ -140,7 +140,7 @@ export default function ResourcesPage() {
 
         <CtaSection
           bg="brand"
-          headline="AI insights for operators."
+          headline="agentic insights for operators."
           description="Monthly insights on agentic AI, automation strategies, and real implementation lessons."
           buttonLabel="Subscribe to Updates"
           href="/#contact"

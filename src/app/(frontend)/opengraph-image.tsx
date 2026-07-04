@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'Agentic Labs — Custom AI Agents for SMEs'
+export const alt = 'Agentic Labs — Custom Agentic Solutions for the Enterprise'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -15,13 +15,13 @@ export default function OpengraphImage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#0a0e1a',
-          color: '#eef1f8',
+          background: '#161613',
+          color: '#f7f7f3',
         }}
       >
         <div style={{ fontSize: 64, fontWeight: 700, display: 'flex' }}>Agentic Labs</div>
-        <div style={{ fontSize: 32, color: '#9aa3b8', marginTop: 20, display: 'flex' }}>
-          Custom AI Agents for SMEs, Shipped in Weeks
+        <div style={{ fontSize: 32, color: '#9a9a8d', marginTop: 20, display: 'flex' }}>
+          Custom Agentic Solutions for the Enterprise, Shipped in Weeks
         </div>
       </div>
     ),

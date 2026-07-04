@@ -12,7 +12,7 @@
 - [AI Governance & Security](https://agenticlabs.io/solutions/ai-governance-security): Bounded autonomy, audit trails, and SOC 2 compliant agents.
 
 ## Industries
-- [Industries overview](https://agenticlabs.io/industries): Industry-specific AI automation.
+- [Industries overview](https://agenticlabs.io/industries): Industry-specific agentic automation.
 - [Healthcare](https://agenticlabs.io/industries/healthcare): HIPAA-compliant patient intake, clinical documentation, scheduling.
 - [Manufacturing](https://agenticlabs.io/industries/manufacturing): Predictive maintenance, quality control, supply chain optimization.
 - [Retail](https://agenticlabs.io/industries/retail): Inventory forecasting, customer service, order management.
@@ -33,5 +33,5 @@
 - [Blog](https://agenticlabs.io/resources/blog): Insights on agentic AI, MCP, and governance.
 
 ## Contact
-- Book a strategy call: https://calendly.com/cloud-agenticlabs/30min
+- Book a discovery call: https://calendly.com/cloud-agenticlabs/30min
 - Email: contact@agenticlabs.io

@@ -5,12 +5,7 @@
 // the BlogPosts collection's select values.
 
 export type BlogCategory =
-  | 'thought-leadership'
-  | 'technical'
-  | 'industry'
-  | 'case-study'
-  | 'how-to'
-  | 'news'
+  'thought-leadership' | 'technical' | 'industry' | 'case-study' | 'how-to' | 'news'
 
 export const BLOG_CATEGORY_LABELS: Record<BlogCategory, string> = {
   'thought-leadership': 'Thought Leadership',
@@ -21,8 +16,9 @@ export const BLOG_CATEGORY_LABELS: Record<BlogCategory, string> = {
   news: 'News & Announcements',
 }
 
-// An inline segment is plain text or an internal/external link.
-export type InlineSegment = string | { text: string; href: string }
+// An inline segment is plain text, an internal/external link, or bold text
+// (used for the "What happens today:" / "With AI:" lead-ins).
+export type InlineSegment = string | { text: string; href: string } | { text: string; bold: true }
 // A body block is a plain paragraph (string), a section heading, or a paragraph
 // that contains inline links.
 export type BlogBlock = string | { heading: string } | { paragraph: InlineSegment[] }
@@ -44,9 +40,19 @@ export interface BlogPost {
   faqs?: { question: string; answer: string }[]
 }
 
-// Concise, editable seed bodies grounded in each post's existing excerpt — a
-// lead plus a short structure. Editors flesh these out in the dashboard.
+// Blog bodies follow a shared template (intro → What Should Bother You →
+// Where AI Really Works → How to Implement → What Kills Most Projects → Where to
+// Start). The two helpers below build the recurring "What happens today:" /
+// "With AI:" contrast pairs used inside each numbered use case.
 const lead = (excerpt: string): BlogBlock[] => [excerpt]
+
+const today = (...segments: InlineSegment[]): BlogBlock => ({
+  paragraph: [{ text: 'What happens today: ', bold: true }, ...segments],
+})
+
+const withAI = (...segments: InlineSegment[]): BlogBlock => ({
+  paragraph: [{ text: 'What it looks like with AI: ', bold: true }, ...segments],
+})
 
 export const blogPosts: BlogPost[] = [
   {
@@ -69,35 +75,83 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        '2026 is the year businesses stop asking whether AI is impressive and start asking whether it is working. The honest answer for most teams is: they cannot tell, because they never defined what "working" meant.',
+        '2026 is the year businesses stop asking whether AI is impressive and start asking whether it is working. The honest answer for most teams is: they cannot tell, because they never defined what "working" meant.'
       ),
-      { heading: 'The question that replaced “is it impressive?”' },
-      'For two years the bar for an AI project was a good demo. The model wrote something clever, the room nodded, budget got approved. In 2026 the mood has shifted. Boards and owners have seen the spend and they want to know what changed on the business — not what the model can do in a sandbox, but whether a real number moved.',
-      'Most teams walk into that conversation empty-handed. Not because their agent does nothing, but because nobody agreed up front on what result it was supposed to produce, so there is no before-and-after to point to.',
-      { heading: 'Why most teams can’t answer it' },
+      'That distinction is the whole game. If you can name the number an agent is supposed to move, you can prove it in weeks. If you cannot, you will defend an ambiguous project for quarters.',
+      { heading: 'What Should Bother You' },
+      'For two years the bar for an AI project was a good demo — the model wrote something clever, the room nodded, budget got approved. That bar is gone. Boards have seen the spend and want to know what changed on the business, not what the model can do in a sandbox.',
+      'Most teams walk into that conversation empty-handed. Not because their agent does nothing, but because the project was scoped around a capability instead of an outcome, so there is no before-and-after to point to.',
+      { heading: 'Where Agentic AI Actually Moves a Number' },
+      { heading: '1. Order Entry' },
+      today(
+        'staff retype orders from email, PDF, and voicemail into the ERP one line at a time, and the queue grows whenever volume spikes.'
+      ),
+      withAI(
+        'an agent reads any format and posts validated records automatically. The number to watch is order-entry time and transcription error rate — both were measurable before you started.'
+      ),
+      { heading: '2. Month-End Close' },
+      today(
+        'controllers match transactions and chase exceptions by hand for days, and the close slips whenever someone is out.'
+      ),
+      withAI(
+        'the agent clears the deterministic majority and escalates only the genuine exceptions. Watch days-to-close, not the number of matches performed.'
+      ),
+      { heading: '3. Support Resolution' },
+      today('tickets queue behind a small team and first-response time is measured in hours.'),
+      withAI(
+        'the agent resolves routine tickets end to end and hands the rest to a human with context. Measure resolution rate — work actually finished without escalation — not tickets touched.'
+      ),
+      { heading: '4. Document Processing' },
+      today('someone opens each contract or invoice and keys the fields into a system by hand.'),
+      withAI(
+        'the agent extracts and validates the fields with a confidence score, routing anything ambiguous to a person. Watch cycle time and rework rate.'
+      ),
+      'Notice what every example shares: a number that existed before the agent and can still be read after it. That is the difference between a result and a demo.',
+      { heading: 'How to Implement' },
       {
         paragraph: [
-          'The usual reason is that the project was scoped around a capability instead of an outcome — "let’s add AI to support" rather than "let’s cut first-response time on billing tickets in half." That is the same gap that causes ',
-          { text: 'most pilots to stall before production', href: '/resources/blog/why-ai-projects-fail' },
-          ': without a target metric, there is nothing to build toward and nothing to measure against.',
+          { text: '1. Write the metric first. ', bold: true },
+          'Pick one number the business already tracks and record its current value before building anything.',
         ],
       },
-      'When the goal is fuzzy, teams fall back on measuring activity — how many tickets the agent touched, how many documents it read, how many hours people say it saved. None of those are results. They feel like progress and show up on no financial statement.',
-      { heading: 'Define “working” before you build' },
-      'The single highest-leverage move is to write down the metric first. Pick one number the business already cares about, record its current value, and set a target. "Reduce average order-entry time from 9 minutes to under 3." "Cut monthly reconciliation from four days to one." Now the agent has a job, and you have a scoreboard.',
-      'This also forces a healthy conversation before any money is spent: if no one can name the metric or find its baseline, the workflow probably isn’t ready to automate yet — and that’s useful to learn on day one rather than month six.',
-      { heading: 'Measure outcomes, not activity' },
-      'An agent that answers a thousand tickets is not valuable; an agent that resolves them without a human having to step in is. Instrument the outcome. Three numbers cover most cases: resolution rate (did the work actually get finished correctly, without escalation), cycle time (how long the work now takes end to end), and cost per task (fully loaded, including the model spend). Track those against the baseline and ROI stops being a matter of opinion.',
-      { heading: 'Report it in the language of the P&L' },
-      'Executives fund what they can see on the income statement. "The agent has 94% resolution accuracy" means little to a CFO; "the agent handles 80% of order entry, which freed two people for higher-value work and cut error-driven credits by a third" means everything. Translate agent performance into the metrics your finance team already tracks and the "is it working?" question answers itself.',
-      { heading: 'Watch for vanity metrics' },
-      'Volume, model calls, and "hours saved" self-reported in a survey are the junk food of AI reporting — satisfying and empty. If a metric can go up while the business is unchanged, it’s a vanity metric. Tie every claim back to cost, revenue, speed, or risk, or leave it out of the deck.',
-      { heading: 'A one-page scorecard for any agent' },
       {
         paragraph: [
-          'Before you build, fill in four lines: the metric, its baseline today, the target, and who owns the number. After launch, review it on a fixed cadence. That’s the whole discipline. It’s also why a narrow, well-instrumented agent beats a sprawling one — and why ',
-          { text: 'consolidating several tools into one measurable agent', href: '/resources/blog/replace-saas-with-ai' },
-          ' is easier to prove than a dozen disconnected experiments. The teams that can answer "is it working?" in 2026 are simply the ones who decided, in advance, what the answer would be measured against.',
+          { text: '2. Set a target and an owner. ', bold: true },
+          'Name the person responsible for the number, not just the code.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '3. Instrument the outcome. ', bold: true },
+          'Resolution rate, cycle time, and fully loaded cost per task cover most cases — including the model spend.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '4. Review on a fixed cadence. ', bold: true },
+          'A one-page scorecard beats a quarterly narrative every time.',
+        ],
+      },
+      { heading: 'What Kills Most Agentic AI Projects' },
+      {
+        paragraph: [
+          'The failure is almost never the model. It is measuring activity instead of outcomes, scoping around a capability instead of a result — the same gap that causes ',
+          {
+            text: 'most pilots to stall before production',
+            href: '/resources/blog/why-ai-projects-fail',
+          },
+          ' — starting with no baseline to compare against, and leaving no one to own the number after launch.',
+        ],
+      },
+      { heading: 'Where to Start' },
+      {
+        paragraph: [
+          'Choose one high-volume workflow with a number attached, record the baseline, and ship a narrow agent against it. A narrow, well-instrumented agent is easier to prove than a sprawling one, which is also why ',
+          {
+            text: 'consolidating several tools into one measurable agent',
+            href: '/resources/blog/replace-saas-with-ai',
+          },
+          ' beats a dozen disconnected experiments. Decide, in advance, what "working" will be measured against — and the question answers itself.',
         ],
       },
     ],
@@ -141,12 +195,74 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'The Model Context Protocol is to AI connectivity what USB-C is to hardware: one interface that lets any agent talk to any tool or data source without a custom adapter for every pairing.',
+        'The Model Context Protocol is to AI connectivity what USB-C is to hardware: one interface that lets any agent talk to any tool or data source without a custom adapter for every pairing.'
       ),
-      { heading: 'Why a protocol beats point integrations' },
-      'Without a standard, every model-to-system connection is bespoke glue you have to build, secure, and maintain. MCP collapses that N×M problem into a single, reusable surface.',
-      { heading: 'What it unlocks' },
-      'Your systems of record — CRM, ERP, ticketing, data warehouse — become composable capabilities an agent can safely reach, with the boundaries and permissions you define.',
+      { heading: 'What Should Bother You' },
+      'Without a standard, every model-to-system connection is bespoke glue you have to build, secure, and maintain. Ten models and ten systems is not twenty integrations — it is a hundred, each one a place for something to break.',
+      'That N×M sprawl is why so many "AI integrations" quietly rot: the moment a system’s API shifts, a hand-rolled connector fails, and no one notices until an agent starts making confident, wrong decisions.',
+      { heading: 'Where MCP Really Works' },
+      { heading: '1. Systems of Record (CRM, ERP)' },
+      today(
+        'each agent needs a custom connector to read a customer or post an order, rebuilt for every model you try.'
+      ),
+      withAI(
+        'the system is exposed once as an MCP server. Any agent reaches it through the same interface, with the boundaries and permissions you define.'
+      ),
+      { heading: '2. Ticketing and Workflow Tools' },
+      today(
+        'automations poll APIs on brittle schedules and drift out of sync with the underlying tool.'
+      ),
+      withAI(
+        'the agent reads and updates tickets through one governed surface, so status stays consistent and every action is logged in one place.'
+      ),
+      { heading: '3. The Data Warehouse' },
+      today(
+        'answering a question means someone writes a query, exports a result, and pastes it somewhere an agent can see it.'
+      ),
+      withAI(
+        'the warehouse becomes a composable capability the agent can query directly, within the scope you grant it.'
+      ),
+      { heading: 'How to Implement' },
+      {
+        paragraph: [
+          { text: '1. Wrap one system first. ', bold: true },
+          'Expose a single system of record as an MCP server before you connect the rest.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '2. Scope permissions tightly. ', bold: true },
+          'Grant read and write only where the job requires it — least privilege from day one.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '3. Route through one client. ', bold: true },
+          'Keep a single governed layer so every agent shares the same boundaries and logging.',
+        ],
+      },
+      { heading: 'What Kills Most MCP Projects' },
+      {
+        paragraph: [
+          'Treating the protocol as magic rather than plumbing, exposing every tool an agent could theoretically touch instead of the few it needs, and skipping the permission boundaries that make the whole thing safe. The standard removes the glue; it does not remove the need for ',
+          {
+            text: 'bounded autonomy and audit trails',
+            href: '/resources/blog/enterprise-ai-governance',
+          },
+          '.',
+        ],
+      },
+      { heading: 'Where to Start' },
+      {
+        paragraph: [
+          'Pick the one system your agents reach for most, expose it through MCP, and scope it narrowly. Once one system of record is composable, each new agent reuses that interface instead of building another connector — the same compounding advantage behind ',
+          {
+            text: 'consolidating tools into a single agent',
+            href: '/resources/blog/replace-saas-with-ai',
+          },
+          '.',
+        ],
+      },
     ],
   },
   {
@@ -168,35 +284,85 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'A growing business quietly accumulates dozens of overlapping SaaS seats — one tool per task, each with its own login, data silo, and bill. A custom agent that plugs into your systems of record can collapse many of them into a single workflow.',
+        'A growing business quietly accumulates dozens of overlapping SaaS seats — one tool per task, each with its own login, data silo, and bill. A custom agent that plugs into your systems of record can collapse many of them into a single workflow.'
       ),
-      { heading: 'How the SaaS pile grows' },
-      'No one decides to run forty tools. It happens one reasonable purchase at a time: a point solution for approvals, another for reminders, a third to move data from one system to another, a fourth because the first one didn’t quite fit. Each is cheap on its own. Together they’re a monthly bill nobody can fully explain, a dozen half-used logins, and a team that spends its day copying information between tabs.',
-      'The tell is that most of these tools don’t hold anything important. Your real data lives in a few systems of record — your ERP, your CRM, your accounting platform. The rest of the stack mostly shuffles data between those systems and nudges humans to act on it.',
-      { heading: 'The tool is not the job' },
-      'Start by listing the jobs those seats actually do, in plain language: "flag invoices missing a PO," "remind a rep when a deal goes quiet," "turn an email order into an ERP entry." Written that way, most of them are the same shape — read some data, apply a rule, write some data, or ask a person to decide. That shape is exactly what an agent does well, directly against the systems you already own, without a dedicated tool sitting in the middle.',
-      { heading: 'What one agent can absorb' },
-      'The best candidates for consolidation are the connective, rules-driven tasks: routing and approvals, reminders and follow-ups, data entry and enrichment, cross-system reconciliation, status lookups, and simple report assembly. These are the "glue" tools and the manual steps between systems. One agent that can read and write across your records can quietly retire a whole cluster of them.',
-      { heading: 'What it shouldn’t absorb' },
-      'Consolidation is not "replace everything." Your systems of record stay — you are not rebuilding your ERP or your accounting ledger, and you shouldn’t. Anything that is a genuine system of record, a specialized compliance tool, or software your team actively loves using is off the table. The goal is fewer tools doing more of the busywork, not one tool trying to do everything.',
-      { heading: 'A practical path to consolidation' },
+      { heading: 'What Should Bother You' },
+      'No one decides to run forty tools. It happens one reasonable purchase at a time: a point solution for approvals, another for reminders, a third to move data between systems. Each is cheap alone; together they are a monthly bill nobody can explain and a team that spends its day copying information between tabs.',
+      'The tell is that most of these tools hold nothing important. Your real data lives in a few systems of record — ERP, CRM, accounting. The rest of the stack mostly shuffles data between them and nudges humans to act.',
+      { heading: 'Where One Agent Really Works' },
+      { heading: '1. Approvals and Routing' },
+      today(
+        'a dedicated tool routes each request and pings the right approver, and someone maintains its rules.'
+      ),
+      withAI(
+        'the agent applies the same rules directly against your records and only escalates the edge cases — no separate app to log into.'
+      ),
+      { heading: '2. Reminders and Follow-ups' },
+      today(
+        'a second tool watches for stale deals or unpaid invoices and sends nudges on a fixed schedule.'
+      ),
+      withAI(
+        'the agent watches the source system itself and follows up with context, so nothing depends on a brittle sync.'
+      ),
+      { heading: '3. Data Entry and Enrichment' },
+      today('staff retype information from one system into another and clean it up by hand.'),
+      withAI(
+        'the agent reads, validates, and writes across systems directly, flagging only what it cannot resolve.'
+      ),
+      { heading: '4. Cross-System Reconciliation' },
+      today('a tool — or a spreadsheet — compares two systems and someone chases the differences.'),
+      withAI(
+        'the agent reconciles the deterministic majority and surfaces genuine mismatches for a person to decide.'
+      ),
+      { heading: '5. Status Lookups and Reports' },
+      today(
+        'a reporting tool assembles the same weekly view, and people still ask where a given order stands.'
+      ),
+      withAI(
+        'the agent answers status questions on demand and assembles routine reports from the source of truth.'
+      ),
+      'What these share: they are connective, rules-driven "glue." One agent that can read and write across your records can quietly retire a whole cluster of them.',
+      { heading: 'How to Implement' },
       {
         paragraph: [
-          'Move deliberately. Pick the single highest-friction, highest-cost workflow — the one people complain about — and replace just that first. Map how it really runs, build the agent on top of your existing systems, keep a human at the boundary for exceptions, and measure the result against what the old tool cost you. That is the same ',
-          { text: 'ship-narrow-and-measure pattern that separates AI projects that land from the ones that stall', href: '/resources/blog/why-ai-projects-fail' },
-          '. Prove the savings on one workflow, then fold in the next adjacent tool. Consolidation compounds; each workflow you add reuses the integrations you already built.',
+          { text: '1. List the jobs, not the tools. ', bold: true },
+          'Write what each seat actually does in plain language — most reduce to read, apply a rule, write, or ask a person.',
         ],
       },
-      { heading: 'Don’t trade tool sprawl for agent sprawl' },
       {
         paragraph: [
-          'There is a failure mode here worth naming: letting every team spin up its own little agent to replace its own little tool. Do that and in a year you have forty agents instead of forty apps — same mess, now harder to see. The fix is to run consolidation through one governed layer, with shared permissions, logging, and ownership. That’s where ',
-          { text: 'bounded autonomy and audit trails', href: '/resources/blog/enterprise-ai-governance' },
-          ' earn their keep: one place to see what every automation is allowed to do and what it actually did.',
+          { text: '2. Keep your systems of record. ', bold: true },
+          'You are not rebuilding the ERP or the ledger. Replace the glue and the manual steps between systems, not the systems themselves.',
         ],
       },
-      { heading: 'What you actually save' },
-      'The savings are bigger than the cancelled subscriptions, though those are real. You also recover the integration overhead of keeping a dozen tools talking to each other, the context-switching tax on your team, and the slow drift of data getting out of sync across systems. Fewer tools means fewer logins to secure, fewer vendors to manage, and fewer places for work to fall through the cracks — with the actual work happening faster because it’s no longer bouncing between tabs.',
+      {
+        paragraph: [
+          { text: '3. Consolidate the highest-friction workflow first. ', bold: true },
+          'Prove the savings on one, then fold in the next adjacent tool.',
+        ],
+      },
+      { heading: 'What Kills Most Consolidation Projects' },
+      {
+        paragraph: [
+          'The trap is trading tool sprawl for agent sprawl — letting every team spin up its own little agent until you have forty agents instead of forty apps. The fix is to route consolidation through one governed layer with shared permissions, logging, and ownership, which is where ',
+          {
+            text: 'bounded autonomy and audit trails',
+            href: '/resources/blog/enterprise-ai-governance',
+          },
+          ' earn their keep.',
+        ],
+      },
+      { heading: 'Where to Start' },
+      {
+        paragraph: [
+          'Pick the single highest-friction, highest-cost workflow — the one people complain about — and replace just that. Map how it really runs, build the agent on your existing systems, keep a human at the boundary for exceptions, and measure against what the old tool cost. That is the same ',
+          {
+            text: 'ship-narrow-and-measure pattern that separates AI projects that land from the ones that stall',
+            href: '/resources/blog/why-ai-projects-fail',
+          },
+          '. Consolidation compounds — each workflow reuses the integrations you already built.',
+        ],
+      },
     ],
     faqs: [
       {
@@ -238,10 +404,60 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'Orders arrive as PDFs, emails, voicemails, and spreadsheets — and staff retype them into the ERP one line at a time. An agent can read any of those formats and produce clean, validated order records.',
+        'Orders arrive as PDFs, emails, voicemails, and spreadsheets — and staff retype them into the ERP one line at a time. An agent can read any of those formats and produce clean, validated order records.'
       ),
-      { heading: 'Any format in, structured order out' },
-      'Extraction plus validation turns messy inputs into ERP-ready data, with confidence scoring so ambiguous lines route to a human instead of failing silently.',
+      { heading: 'What Should Bother You' },
+      'Every retyped order is a chance to transpose a part number, miss a quantity, or drop a line — and every error becomes a return, a credit, or an angry call downstream. The cost is not just the minutes at the keyboard; it is the rework the mistake creates later.',
+      'The queue is worse than the errors. When volume spikes, orders wait behind whoever is free to key them, and fulfillment slows exactly when it matters most.',
+      { heading: 'Where AI for Order Entry Really Works' },
+      { heading: '1. Any-Format Intake' },
+      today('a person opens each email, PDF, or voicemail and interprets it before typing it in.'),
+      withAI(
+        'the agent reads any format — including handwritten notes and phone orders — and extracts the line items directly.'
+      ),
+      { heading: '2. Validation and Confidence Scoring' },
+      today('errors surface downstream, after the order is already in the system.'),
+      withAI(
+        'the agent validates part numbers, quantities, and pricing as it goes, and routes anything ambiguous to a human instead of guessing.'
+      ),
+      { heading: '3. Direct ERP Integration' },
+      today('validated data still has to be keyed into the ERP by hand.'),
+      withAI(
+        'the agent writes clean records straight into the ERP, so the human touches only the exceptions.'
+      ),
+      'Human review stays in the loop — for the lines that need judgment, not for every line.',
+      { heading: 'How to Implement' },
+      {
+        paragraph: [
+          { text: '1. Start with your messiest channel. ', bold: true },
+          'The format that causes the most retyping is the one worth automating first.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '2. Set a confidence threshold. ', bold: true },
+          'Decide what score routes to a human so nothing ambiguous posts silently.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '3. Measure entry time and error rate. ', bold: true },
+          'Both existed before the agent, so both prove whether it worked.',
+        ],
+      },
+      { heading: 'What Kills Most Order-Entry AI Projects' },
+      {
+        paragraph: [
+          'Aiming for 100% automation and trusting the model on lines it should have flagged. The reliable version is mostly ordinary validation with the model reserved for reading messy inputs — the same ',
+          {
+            text: 'less-AI-more-reliability pattern that separates pilots that ship from the ones that stall',
+            href: '/resources/blog/why-ai-projects-fail',
+          },
+          '.',
+        ],
+      },
+      { heading: 'Where to Start' },
+      'Pick one high-volume order channel, put an agent in front of it with a human at the exception boundary, and measure entry time and error rate against today. Faster, cleaner entry means faster fulfillment — and one less source of downstream credits.',
     ],
   },
   {
@@ -261,10 +477,53 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'Agentic AI reached mainstream EDA conversation at DAC 2025. For FPGA teams, the near-term win is compressing verification — historically the longest pole in the schedule.',
+        'Agentic AI reached mainstream EDA conversation at DAC 2025. For FPGA teams, the near-term win is compressing verification — historically the longest pole in the schedule.'
       ),
-      { heading: 'Where the time goes back' },
-      'Testbench scaffolding, coverage analysis, and documentation are repetitive and rules-driven — exactly the work an agent can accelerate while engineers focus on design intent.',
+      { heading: 'What Should Bother You' },
+      'Verification, not synthesis, is where FPGA schedules slip. Testbench scaffolding, coverage analysis, and documentation are repetitive and rules-driven, yet they consume the time your best engineers should spend on design intent.',
+      'Documentation is the quiet casualty. When RTL moves fast, the docs fall behind, and the next engineer inherits code no one can explain.',
+      { heading: 'Where AI for FPGA Design Really Works' },
+      { heading: '1. Testbench Scaffolding' },
+      today(
+        'engineers hand-write repetitive testbench boilerplate before the interesting testing begins.'
+      ),
+      withAI(
+        'the agent generates the scaffolding from the design interface, leaving engineers to define the cases that actually matter.'
+      ),
+      { heading: '2. Coverage Analysis' },
+      today('finding coverage gaps means manually cross-referencing reports against intent.'),
+      withAI(
+        'the agent surfaces untested paths and proposes stimulus to close them, with an engineer approving the plan.'
+      ),
+      { heading: '3. Documentation' },
+      today('docs lag the RTL because updating them is nobody’s priority under deadline.'),
+      withAI(
+        'the agent drafts and updates documentation as the design changes, keeping it in step with the code.'
+      ),
+      'The engineer stays in control of design intent; the agent handles the repetitive scaffolding around it.',
+      { heading: 'How to Implement' },
+      {
+        paragraph: [
+          { text: '1. Target verification first. ', bold: true },
+          'It is the slowest part of the flow and the easiest to measure.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '2. Keep an engineer at the sign-off. ', bold: true },
+          'The agent proposes; a human approves what enters the design.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '3. Measure verification cycle time. ', bold: true },
+          'That is the number this work is meant to move.',
+        ],
+      },
+      { heading: 'What Kills Most FPGA AI Projects' },
+      'Pointing the model at design decisions it should not own. Reliable tooling uses AI for the repetitive scaffolding — generation, cross-referencing, drafting — and leaves architecture and sign-off to engineers.',
+      { heading: 'Where to Start' },
+      'Pick the verification task that eats the most time on your current project, put an agent on the scaffolding, and measure cycle time against your last comparable build.',
     ],
   },
   {
@@ -286,34 +545,74 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'The question that stalls enterprise AI is accountability: who owns the outcome when an agent gets it wrong? Governance answers it before deployment, not after an incident.',
+        'The question that stalls enterprise AI is accountability: who owns the outcome when an agent gets it wrong? Governance answers it before deployment, not after an incident.'
       ),
-      { heading: 'Accountability is the real blocker' },
+      { heading: 'What Should Bother You' },
       {
         paragraph: [
-          'Ask why an AI project is stuck in legal or security review and the surface reasons vary, but the root is almost always the same: nobody can say what happens when the agent makes a mistake. That uncertainty is as fatal to deployment as any technical gap — it is one of the quiet reasons ',
-          { text: 'so many pilots never reach production', href: '/resources/blog/why-ai-projects-fail' },
-          '. Good governance removes the blocker by answering the question in advance, in writing, with four simple mechanisms.',
+          'Ask why an AI project is stuck in legal or security review and the root is almost always the same: nobody can say what happens when the agent makes a mistake. That uncertainty is as fatal to deployment as any technical gap — it is one of the quiet reasons ',
+          {
+            text: 'so many pilots never reach production',
+            href: '/resources/blog/why-ai-projects-fail',
+          },
+          '.',
         ],
       },
-      { heading: 'Bounded autonomy: what the agent may do alone' },
-      'Bounded autonomy is a clear line between the actions an agent may take unattended and the ones that require a human. An agent might be free to match an invoice to a purchase order and post it when everything agrees, but never to approve a payment above a set amount or onboard a new vendor without sign-off. The boundary is explicit and enforced in code, not left to the model’s discretion. Inside the line, the agent moves fast; outside it, it stops and asks.',
-      { heading: 'Escalation: turn uncertainty into a review' },
-      'The counterpart to a boundary is a good escalation path. When the agent hits something outside its authority — or simply isn’t confident — it should hand the decision to the right person with everything they need to resolve it in seconds: what it was doing, what it found, why it paused, and its recommended action. Done well, escalation is not a failure state. It’s the mechanism that lets you grant narrow autonomy safely, because the hard cases always land in front of a human with full context.',
-      { heading: 'Audit trails: make every decision explainable' },
-      'Every action an agent takes should be logged with enough context to reconstruct why it happened: the inputs it saw, the data it retrieved, the rule or reasoning it applied, the action it chose, and the result. An audit trail turns "the AI did something weird" into a reviewable record you can trace, explain to an auditor, and learn from. It is also how you improve the agent — the log of corrected mistakes is the raw material for making it more accurate over time.',
-      { heading: 'Least privilege: only the keys it needs' },
-      'An agent should hold the narrowest set of permissions its job requires. If it only needs to read the CRM and write follow-up tasks, it should not have the ability to delete records or export the customer list. Scoping access this way limits the blast radius of any mistake and makes security review far simpler, because the answer to "what could go wrong?" is bounded by what the agent was ever allowed to touch.',
-      { heading: 'Governance is a feature, not a tax' },
+      'Good governance removes the blocker by answering the question in advance, in writing, with four mechanisms.',
+      { heading: 'Where Governance Really Works' },
+      { heading: '1. Bounded Autonomy' },
+      today(
+        'the agent either does everything or nothing, and no one can say where its authority ends.'
+      ),
+      withAI(
+        'an explicit, code-enforced line separates what it may do alone from what needs a human. It might post a fully matched invoice automatically but never approve a payment above a threshold. Inside the line it moves fast; outside it, it stops and asks.'
+      ),
+      { heading: '2. Escalation' },
+      today(
+        'when the agent hits something outside its authority, it either guesses or silently fails.'
+      ),
+      withAI(
+        'it hands the decision to the right person with everything they need — what it was doing, what it found, why it paused, and its recommended action. Escalation is not a failure state; it is what makes narrow autonomy safe.'
+      ),
+      { heading: '3. Audit Trails' },
+      today('"the AI did something weird" is impossible to reconstruct after the fact.'),
+      withAI(
+        'every action is logged with the inputs it saw, the rule it applied, and the result — a record you can trace, explain to an auditor, and learn from. The log of corrected mistakes is also how the agent improves.'
+      ),
+      { heading: '4. Least Privilege' },
+      today('the agent holds broad access "just in case," so any mistake can reach anything.'),
+      withAI(
+        'it holds only the permissions its job requires. Scoping access this way bounds the blast radius of any error and makes security review simple.'
+      ),
+      { heading: 'How to Implement' },
       {
         paragraph: [
-          'It’s tempting to treat governance as paperwork that slows the fun part down. In practice it’s what makes deployment possible at all, and it pays off operationally too. The same clear ownership that governance requires is what keeps an agent healthy after launch instead of quietly rotting. And when you route automation through one governed layer rather than a scatter of ad-hoc scripts, you get a single place to see and control everything — which is exactly what keeps ',
+          { text: '1. Write the boundary down. ', bold: true },
+          'Decide, before launch, exactly what the agent may do unattended.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '2. Define the escalation path. ', bold: true },
+          'Name who it asks when unsure, and what context they get.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '3. Log everything and scope access. ', bold: true },
+          'An audit trail plus least-privilege permissions turns "what could go wrong?" into a bounded question.',
+        ],
+      },
+      { heading: 'What Kills Most Governance Efforts' },
+      {
+        paragraph: [
+          'Treating governance as paperwork that slows the fun part down. In practice it is what makes deployment possible at all — and routing automation through one governed layer, rather than a scatter of ad-hoc scripts, is what keeps ',
           { text: 'consolidating tools into agents', href: '/resources/blog/replace-saas-with-ai' },
           ' from turning into an ungoverned mess.',
         ],
       },
-      { heading: 'Governance isn’t just for the Fortune 500' },
-      'Smaller companies sometimes assume this is enterprise overhead they can skip. The opposite is true: a mistake matters more when you don’t have a compliance department to catch it. The good news is that governance at this scale is lightweight — a written boundary, an escalation path, a log, and scoped permissions. You don’t need a committee. You need to decide, before the agent goes live, exactly what it may do, who it asks when unsure, and how you’ll know what it did. Answer those three questions and the accountability blocker disappears.',
+      { heading: 'Where to Start' },
+      'Governance is not just for the Fortune 500 — a mistake matters more when you have no compliance department to catch it. At this scale it is lightweight: a written boundary, an escalation path, a log, and scoped permissions. Answer three questions before the agent goes live — what may it do, who does it ask when unsure, and how will you know what it did — and the accountability blocker disappears.',
     ],
     faqs: [
       {
@@ -355,10 +654,55 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'Embodied AI has moved from demo to production. In industrial settings, the clearest ROI comes from keeping equipment running — predictive maintenance that flags failures weeks ahead.',
+        'Embodied AI has moved from demo to production. In industrial settings, the clearest ROI comes from keeping equipment running — predictive maintenance that flags failures weeks ahead.'
       ),
-      { heading: 'Uptime is the metric' },
-      'Vision-based inspection, anomaly detection, and autonomous navigation compound into fewer stoppages and safer floors.',
+      { heading: 'What Should Bother You' },
+      'Unplanned downtime is the most expensive event on a factory floor, and it almost always announces itself first — a vibration, a temperature drift, a subtle change in cycle time. The signal is there; nobody is watching it continuously.',
+      'Manual inspection catches problems late, if at all, and pulls people onto the floor to look for what a sensor could see all day.',
+      { heading: 'Where AI for Industrial Robotics Really Works' },
+      { heading: '1. Predictive Maintenance' },
+      today(
+        'maintenance is scheduled by calendar or triggered by a breakdown that already stopped the line.'
+      ),
+      withAI(
+        'the agent watches sensor and telemetry patterns and flags a developing failure weeks before it happens, so the fix is planned, not emergency.'
+      ),
+      { heading: '2. Vision-Based Inspection' },
+      today(
+        'quality and safety checks depend on someone looking at the right thing at the right moment.'
+      ),
+      withAI(
+        'cameras become continuous inspection and safety sensors, catching defects and hazards the instant they appear.'
+      ),
+      { heading: '3. Autonomous Navigation' },
+      today('material handling ties up people moving parts between stations.'),
+      withAI(
+        'autonomous units move material on their own, freeing staff for work that needs judgment.'
+      ),
+      'Together these compound into fewer stoppages and safer floors — with uptime as the number that proves it.',
+      { heading: 'How to Implement' },
+      {
+        paragraph: [
+          { text: '1. Start where downtime hurts most. ', bold: true },
+          'Instrument the asset whose failure stops the most output.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '2. Trust the deterministic signals. ', bold: true },
+          'Most of the value is threshold and pattern detection, not exotic AI.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '3. Measure uptime. ', bold: true },
+          'It is the metric the whole effort is meant to move.',
+        ],
+      },
+      { heading: 'What Kills Most Robotics AI Projects' },
+      'Chasing a fully autonomous floor before proving a single asset. The wins compound from one well-instrumented machine outward, not from a plant-wide rebuild.',
+      { heading: 'Where to Start' },
+      'Pick the machine whose downtime costs the most, put predictive monitoring on it, and measure uptime against last quarter. Prove it on one asset, then extend.',
     ],
   },
   {
@@ -378,10 +722,53 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'Pharma logistics runs on two unforgiving constraints: temperature and paperwork. AI addresses both — watching the cold chain continuously and generating GxP documentation as events occur.',
+        'Pharma logistics runs on two unforgiving constraints: temperature and paperwork. AI addresses both — watching the cold chain continuously and generating GxP documentation as events occur.'
       ),
-      { heading: 'Integrity and evidence together' },
+      { heading: 'What Should Bother You' },
+      'A cold-chain excursion can spoil a shipment worth more than the truck carrying it, and the first sign is often a temperature log reviewed after the fact. By then the product is already compromised.',
+      'Compliance is the second tax. GxP documentation is assembled by hand after the work — slow, error-prone, and exactly when memory is least reliable.',
+      { heading: 'Where AI for Pharma Logistics Really Works' },
+      { heading: '1. Continuous Cold-Chain Monitoring' },
+      today('temperature is logged and reviewed periodically, so excursions surface late.'),
+      withAI(
+        'the agent watches sensor data in real time and alerts the moment a shipment drifts toward its limits, while there is still time to act.'
+      ),
+      { heading: '2. Automated Compliance Documentation' },
+      today(
+        'GxP records are compiled manually after each event, pulling data from scattered sources.'
+      ),
+      withAI(
+        'the agent generates documentation as work happens, from the same data trail that drives the monitoring.'
+      ),
+      { heading: '3. Audit and Investigation Support' },
+      today(
+        'an audit or deviation investigation means reconstructing what happened from disconnected logs.'
+      ),
+      withAI('the shared data trail makes every excursion and action traceable on demand.'),
       'When monitoring and documentation share one data trail, compliance stops being a separate, manual step.',
+      { heading: 'How to Implement' },
+      {
+        paragraph: [
+          { text: '1. Unify the data trail first. ', bold: true },
+          'Monitoring and documentation should read from the same source.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '2. Alert before the limit, not after. ', bold: true },
+          'The value is in time to act, not a better post-mortem.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '3. Keep humans on the deviations. ', bold: true },
+          'The agent flags and documents; a qualified person decides.',
+        ],
+      },
+      { heading: 'What Kills Most Pharma AI Projects' },
+      'Treating documentation as an afterthought bolted onto monitoring. The integrity and the evidence have to come from one system, or the compliance burden simply moves rather than shrinking.',
+      { heading: 'Where to Start' },
+      'Pick one lane or product line, put real-time monitoring and automatic documentation on the same data trail, and measure excursion response time and documentation effort against today.',
     ],
   },
   {
@@ -401,10 +788,53 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'Energy leaders now rank AI among their top investments, and the grid is where it pays off — balancing renewable variability, predicting asset failures, and squeezing out operational cost.',
+        'Energy leaders now rank AI among their top investments, and the grid is where it pays off — balancing renewable variability, predicting asset failures, and squeezing out operational cost.'
       ),
-      { heading: 'Stability under variability' },
-      'Better forecasting and asset-level prediction keep an increasingly renewable grid stable.',
+      { heading: 'What Should Bother You' },
+      'A grid built for steady, dispatchable generation now has to absorb solar and wind that swing with the weather. Balancing that variability by hand leaves stability and cost on the table every hour.',
+      'Critical assets fail on their own schedule, and a transformer or line that goes down unexpectedly is far more expensive than one serviced ahead of time.',
+      { heading: 'Where AI for the Energy Sector Really Works' },
+      { heading: '1. Demand and Supply Forecasting' },
+      today(
+        'operators balance variable renewable output against demand using coarse, slow-moving forecasts.'
+      ),
+      withAI(
+        'the agent forecasts both sides more precisely and continuously, keeping an increasingly renewable grid stable.'
+      ),
+      { heading: '2. Predictive Maintenance' },
+      today('grid assets are serviced on a fixed schedule or after they fail.'),
+      withAI(
+        'the agent predicts asset-level failures ahead of time, so maintenance is planned and outages avoided.'
+      ),
+      { heading: '3. Operational Optimization' },
+      today('operational cost is managed with rules of thumb and hardware upgrades.'),
+      withAI(
+        'the agent trims cost through better dispatch and load decisions — without new hardware.'
+      ),
+      'Better forecasting and asset-level prediction keep the grid stable under variability while lowering what it costs to run.',
+      { heading: 'How to Implement' },
+      {
+        paragraph: [
+          { text: '1. Start with forecasting. ', bold: true },
+          'It underpins both stability and cost, and the accuracy is measurable.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '2. Layer prediction onto critical assets. ', bold: true },
+          'Protect what is most expensive to lose first.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '3. Measure stability and cost. ', bold: true },
+          'Both are numbers the grid already tracks.',
+        ],
+      },
+      { heading: 'What Kills Most Energy AI Projects' },
+      'Reaching for a grid-wide optimization program before proving forecasting on one region. The value compounds from accurate prediction outward, not from an all-at-once rebuild.',
+      { heading: 'Where to Start' },
+      'Pick one region or asset class, improve its forecasting, and measure stability and operational cost against your current baseline. Prove it there, then extend across the grid.',
     ],
   },
   {
@@ -426,50 +856,121 @@ export const blogPosts: BlogPost[] = [
     ],
     body: [
       ...lead(
-        'Every few weeks another study lands with the same headline: the overwhelming majority of enterprise AI pilots never turn into anything. MIT’s 2025 research put the figure near 95% with no measurable return. The instinct is to blame the model — it hallucinated, it wasn’t smart enough, it wasn’t the right one. But after enough of these projects, a clearer picture emerges: the models are good enough. The way most teams deploy them is what fails.',
+        'Every few weeks another study lands with the same headline: the overwhelming majority of enterprise AI pilots never turn into anything. MIT’s 2025 research put the figure near 95% with no measurable return. The instinct is to blame the model — but after enough of these projects, a clearer picture emerges: the models are good enough. The way most teams deploy them is what fails.'
       ),
-      'That distinction matters, because if the model is the problem you wait for a better one. If deployment is the problem, you can fix it today — and smaller companies are often better positioned to than the enterprises the headlines are written about.',
-      { heading: 'A demo is not a deployment' },
+      'That distinction matters. If the model is the problem you wait for a better one. If deployment is the problem, you can fix it today — and smaller companies are often better positioned to than the enterprises the headlines are written about.',
+      { heading: 'What Should Bother You' },
       'Almost every stalled project starts with a demo that worked. Someone wires a model to a slice of the workflow, runs it against a handful of clean examples, and it looks like magic. The gap between that demo and a system doing real work every day is enormous, and it is where projects quietly die.',
-      'Think of it like hiring a brilliant new employee and never onboarding them. They’re capable, but they don’t know which spreadsheet you actually trust, which customer always pays late, or that anything over a certain amount needs a second signature. Without that context they make confident, wrong decisions — and confident wrong decisions are worse than no decision at all, because now someone has to catch and unwind them.',
-      { heading: 'Failure mode 1: building for the process on paper, not the one that happens' },
-      'Every team has a documented process — the flowchart, the SOP, the way work is supposed to move. And every team has the real process, full of workarounds: the invoice someone always checks by hand, the approval that really lives in an email thread, the dozen exceptions that come up every month. Build an agent for the documented process and it handles the easy 70% while breaking on the 30% that was the whole reason you needed help. That 30% then generates more work than before, because now people fix the agent’s mistakes on top of doing the job.',
-      'The fix is unglamorous: sit with the people doing the work and map what actually happens before writing a line of automation. It feels like operations consulting, not AI, which is exactly why most projects skip it — and exactly why they fail.',
-      { heading: 'Failure mode 2: buying a tool instead of fixing a workflow' },
-      'The market is flooded with “AI for [your department]” products. They demo well and they’re easy to purchase — there’s a price and a checkbox next to the problem you were trying to solve. Then they arrive and sit there, because they don’t plug into how your work actually happens. They become another login, another data silo, another subscription nobody opens. A faster car does nothing if the road it needs was never built.',
+      'It is like hiring a brilliant new employee and never onboarding them. They are capable, but they do not know which spreadsheet you actually trust or that anything over a certain amount needs a second signature. Without that context they make confident, wrong decisions — worse than no decision, because now someone has to catch and unwind them.',
+      { heading: 'The Five Ways Pilots Die' },
+      { heading: '1. Building for the Process on Paper' },
       {
         paragraph: [
-          'Agents that stick do the opposite: they run on top of the systems you already use, take actions inside them, and don’t ask anyone to adopt a new place to work. The measure of a good deployment is that the team barely notices it — they just notice the backlog shrinking. It’s also how a handful of well-placed agents can quietly ',
-          { text: 'replace a pile of overlapping SaaS tools', href: '/resources/blog/replace-saas-with-ai' },
+          { text: 'Why it happens: ', bold: true },
+          'every team has a documented process and a real one full of workarounds. Build for the flowchart and the agent handles the easy 70% while breaking on the 30% that was the whole reason you needed help.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: 'What to do instead: ', bold: true },
+          'sit with the people doing the work and map what actually happens before writing a line of automation. It feels like operations consulting, which is exactly why most projects skip it.',
+        ],
+      },
+      { heading: '2. Buying a Tool Instead of Fixing a Workflow' },
+      {
+        paragraph: [
+          { text: 'Why it happens: ', bold: true },
+          '"AI for [your department]" products demo well and are easy to buy, then arrive and sit there because they do not plug into how your work actually happens.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: 'What to do instead: ', bold: true },
+          'run agents on top of the systems you already use, taking actions inside them. It is also how a handful of well-placed agents can quietly ',
+          {
+            text: 'replace a pile of overlapping SaaS tools',
+            href: '/resources/blog/replace-saas-with-ai',
+          },
           '.',
         ],
       },
-      { heading: 'Failure mode 3: pointing the model at everything' },
-      'Once you have a capable model, every problem starts to look like a model problem. Extract this value? Ask the model. Compare two numbers? Ask the model. Route based on a threshold? Ask the model. You end up with a system that is mostly LLM calls: slow, expensive, and wrong often enough to be unusable for anything that touches money or compliance.',
-      'The systems that hold up in production are almost boring. They’re mostly ordinary, deterministic code — database lookups, comparisons, rules, routing — with the model reserved for the few steps that genuinely need judgment: reading an unstructured document, classifying a messy exception, drafting an explanation for a human to approve. Less AI, more reliability. That’s a feature, not a compromise.',
-      { heading: 'Failure mode 4: no one owns it after launch' },
-      'Most companies budget AI like any other software project: plan, build, launch, declare victory, move on. That works for software because once it’s built it stays built. AI is the opposite. The ground shifts constantly — a model gets retired, pricing changes, a better option ships, an API you depended on changes underneath you. An agent that no one is responsible for degrades silently until one day it’s quietly making bad decisions and nobody notices for a month.',
+      { heading: '3. Pointing the Model at Everything' },
       {
         paragraph: [
-          'The deployments that keep paying off treat the agent as living infrastructure with a clear owner — someone who watches the metrics, swaps in better models when they arrive, and retires the parts that stop earning their keep. That ownership is also where governance lives: the ',
-          { text: 'bounded autonomy and audit trails', href: '/resources/blog/enterprise-ai-governance' },
-          ' that keep an agent accountable. It doesn’t take a big team. It takes one.',
+          { text: 'Why it happens: ', bold: true },
+          'once you have a capable model, every problem looks like a model problem. You end up with a system that is mostly LLM calls — slow, expensive, and wrong often enough to be unusable for anything that touches money or compliance.',
         ],
       },
-      { heading: 'Failure mode 5: trying to boil the ocean' },
-      'The last trap is ambition. A company decides to “transform with AI,” scopes a program across five departments, and eighteen months later has a stack of slideware and nothing in production. Every workstream competes with the last, nothing reaches real quality, and the initiative gets shelved. The irony is that the same effort aimed at one workflow would already be delivering.',
-      { heading: 'The pattern that ships' },
-      'The companies that get real value do something narrow and unglamorous, and they do it fast. The pattern is consistent enough to write down.',
       {
         paragraph: [
-          'First, pick one workflow that runs often and ',
-          { text: 'has a number attached', href: '/resources/blog/agentic-ai-2026' },
-          ' — cycle time, error rate, hours spent, revenue delayed. If you can’t measure it, you can’t prove it worked, so start somewhere you can. Second, map how that workflow really runs, exceptions and all. Third, decompose it: automate the deterministic majority with plain code and reserve the model for the genuine judgment calls. Fourth, build it on top of the systems that already hold the data, so there’s no migration and no new interface to adopt. Fifth, keep a human at the boundary — the agent handles the routine cases and escalates the rest with enough context to resolve them in seconds. Then ship it, measure against the number you started with, and only expand once it’s holding.',
+          { text: 'What to do instead: ', bold: true },
+          'the systems that hold up are almost boring — mostly deterministic code, with the model reserved for the few steps that genuinely need judgment, like reading an unstructured document. Less AI, more reliability.',
         ],
       },
-      'Done this way, a first workflow reaches production in weeks, not quarters, and every workflow after it goes faster because the foundation already exists. That’s the whole difference between the 95% and the rest: not a smarter model, but a narrower scope, an honest map of the work, and something actually running.',
-      { heading: 'Why smaller companies have the advantage' },
-      'None of this requires enterprise scale. If anything, the failure modes above are enterprise diseases — committees, migrations, year-long roadmaps, and nobody who owns the outcome. A small or mid-sized company can sit its operators and its builders in the same room, agree on one workflow, and have an agent in production before a larger organization has finished scheduling the kickoff. The odds in those surveys are beatable. Most companies just play the wrong game.',
+      { heading: '4. No One Owns It After Launch' },
+      {
+        paragraph: [
+          { text: 'Why it happens: ', bold: true },
+          'teams budget AI like other software — build, launch, move on. But the ground shifts: models retire, pricing changes, an API moves underneath you. An unowned agent degrades silently until one day it is making bad decisions and nobody notices for a month.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: 'What to do instead: ', bold: true },
+          'treat the agent as living infrastructure with a clear owner who watches the metrics and swaps in better models. That ownership is also where the ',
+          {
+            text: 'bounded autonomy and audit trails',
+            href: '/resources/blog/enterprise-ai-governance',
+          },
+          ' that keep an agent accountable live.',
+        ],
+      },
+      { heading: '5. Trying to Boil the Ocean' },
+      {
+        paragraph: [
+          { text: 'Why it happens: ', bold: true },
+          'a company decides to "transform with AI," scopes a program across five departments, and eighteen months later has a stack of slideware and nothing in production.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: 'What to do instead: ', bold: true },
+          'aim the same effort at one workflow and it would already be delivering. Narrow beats broad every time.',
+        ],
+      },
+      { heading: 'The Pattern That Ships' },
+      {
+        paragraph: [
+          { text: '1. Pick one workflow with a number attached. ', bold: true },
+          'Cycle time, error rate, hours spent — if you cannot measure it, you cannot prove it, so start where you can and ',
+          { text: 'give it a baseline', href: '/resources/blog/agentic-ai-2026' },
+          ' before you build.',
+        ],
+      },
+      {
+        paragraph: [{ text: '2. Map how it really runs, ', bold: true }, 'exceptions and all.'],
+      },
+      {
+        paragraph: [
+          { text: '3. Decompose it. ', bold: true },
+          'Automate the deterministic majority with plain code and reserve the model for the genuine judgment calls.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '4. Build on the systems that already hold the data, ', bold: true },
+          'so there is no migration and no new interface to adopt.',
+        ],
+      },
+      {
+        paragraph: [
+          { text: '5. Keep a human at the boundary. ', bold: true },
+          'The agent handles routine cases and escalates the rest with enough context to resolve them in seconds.',
+        ],
+      },
+      'Done this way, a first workflow reaches production in weeks, not quarters, and every workflow after it goes faster because the foundation already exists. That is the whole difference between the 95% and the rest: not a smarter model, but a narrower scope, an honest map of the work, and something actually running.',
+      { heading: 'Where to Start' },
+      'None of this requires enterprise scale. If anything, the failure modes above are enterprise diseases — committees, migrations, year-long roadmaps, nobody who owns the outcome. A small or mid-sized company can sit its operators and builders in the same room, agree on one workflow, and have an agent in production before a larger organization finishes scheduling the kickoff. The odds in those surveys are beatable. Most companies just play the wrong game.',
     ],
     faqs: [
       {

@@ -8,6 +8,12 @@ function textNode(text: string) {
   return { type: 'text', version: 1, text, format: 0, style: '', mode: 'normal', detail: 0 }
 }
 
+// Lexical text format bitmask: 1 = bold. Used for the "What happens today:" /
+// "What it looks like with AI:" inline lead-ins.
+function boldTextNode(text: string) {
+  return { ...textNode(text), format: 1 }
+}
+
 // Payload's Lexical link node (v3). `linkType: 'custom'` + a url covers both
 // internal paths (/resources/blog/...) and external URLs.
 function linkNode(text: string, href: string) {
@@ -23,7 +29,9 @@ function linkNode(text: string, href: string) {
 }
 
 function inlineNode(segment: InlineSegment) {
-  return typeof segment === 'string' ? textNode(segment) : linkNode(segment.text, segment.href)
+  if (typeof segment === 'string') return textNode(segment)
+  if ('href' in segment) return linkNode(segment.text, segment.href)
+  return boldTextNode(segment.text)
 }
 
 function paragraph(text: string) {

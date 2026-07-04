@@ -334,7 +334,7 @@ export const caseStudies: CaseStudy[] = [
     industry: 'Manufacturing',
     title: 'Procurement Spend Intelligence',
     subtitle: 'for a Mid-Market Manufacturer',
-    featured: true,
+    featured: false,
     card: {
       title: 'Procurement Spend Intelligence',
       subtitle: 'Mid-Market Manufacturer',

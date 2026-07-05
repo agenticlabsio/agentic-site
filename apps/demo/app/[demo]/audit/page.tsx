@@ -40,7 +40,7 @@ export default async function AuditPage({
                   <span className="figures font-mono text-xs text-accent-dark">
                     {iv.sessions}
                   </span>
-                  <span className="ml-auto text-sm text-faint">{iv.focus}</span>
+                  <span className="ml-auto text-sm text-muted-fg">{iv.focus}</span>
                 </li>
               ))}
             </ul>
@@ -63,7 +63,7 @@ export default async function AuditPage({
                     className="rounded-md border border-hairline bg-paper px-3 py-1.5 text-sm"
                   >
                     <span className="text-ink-soft">{doc.name}</span>
-                    <span className="ml-2 font-mono text-[0.65rem] uppercase tracking-wider text-faint">
+                    <span className="ml-2 font-mono text-[0.65rem] uppercase tracking-wider text-muted-fg">
                       {doc.kind}
                     </span>
                   </li>
@@ -84,7 +84,7 @@ export default async function AuditPage({
                 {a.systems.map((sys) => (
                   <li key={sys.name} className="text-sm">
                     <span className="font-medium text-ink">{sys.name}</span>
-                    <span className="block text-xs text-faint">{sys.role}</span>
+                    <span className="block text-xs text-muted-fg">{sys.role}</span>
                   </li>
                 ))}
               </ul>
@@ -137,7 +137,7 @@ export default async function AuditPage({
             <span className="figures text-accent-dark">
               {a.automation.automatedHours} hrs automated
             </span>
-            <span className="figures text-faint">
+            <span className="figures text-muted-fg">
               {a.automation.humanHours} hrs stay human
             </span>
           </div>
@@ -152,7 +152,7 @@ export default async function AuditPage({
                   key={agent.name}
                   className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1 sm:grid-cols-[auto_180px_1fr_auto]"
                 >
-                  <span className="figures font-mono text-xs text-faint">
+                  <span className="figures font-mono text-xs text-muted-fg">
                     P{i + 1}
                   </span>
                   <span className="text-sm font-medium text-ink">
@@ -194,7 +194,7 @@ export default async function AuditPage({
               {Array.from({ length: a.timelineWeeks }, (_, i) => (
                 <span
                   key={i}
-                  className="figures text-center font-mono text-[0.6rem] text-faint"
+                  className="figures text-center font-mono text-[0.6rem] text-muted-fg"
                 >
                   {i + 1}
                 </span>

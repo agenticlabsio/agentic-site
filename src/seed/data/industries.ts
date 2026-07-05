@@ -65,7 +65,10 @@ export const industries: Industry[] = [
       'agentic automation that reduces administrative burden on clinical staff, speeds up patient intake, and improves care delivery—all while maintaining HIPAA compliance.',
     targetAudience: 'Health systems, large practices, healthcare IT companies ($500M-$10B)',
     marketContext: [
-      { stat: 'A large share of healthcare spending goes to administrative tasks', source: 'McKinsey' },
+      {
+        stat: 'A large share of healthcare spending goes to administrative tasks',
+        source: 'McKinsey',
+      },
       {
         stat: 'Physicians spend 2 hours on paperwork for every hour of patient care',
         source: 'AMA',
@@ -82,8 +85,7 @@ export const industries: Industry[] = [
       },
       {
         challenge: 'Patient intake bottlenecks',
-        description:
-          'Manual data entry, form completion, and verification slow down patient flow.',
+        description: 'Manual data entry, form completion, and verification slow down patient flow.',
       },
       {
         challenge: 'Documentation requirements',
@@ -558,7 +560,8 @@ export const industries: Industry[] = [
     aiSolutions: [
       {
         title: 'Order Entry Automation',
-        description: 'AI processes any order format: handwritten, PDF, email, voicemail, spreadsheet.',
+        description:
+          'AI processes any order format: handwritten, PDF, email, voicemail, spreadsheet.',
         metric: '$75K-$180K annual labor savings',
       },
       {
@@ -634,8 +637,7 @@ export const industries: Industry[] = [
     name: 'Power Electronics & FPGA',
     tagline: 'Production-Ready in 6-8 Weeks',
     icon: '🔌',
-    cardDescription:
-      'agentic EDA tools for FPGA design, verification, and test automation.',
+    cardDescription: 'agentic EDA tools for FPGA design, verification, and test automation.',
     heroDescription:
       'agentic EDA tools that accelerate FPGA design, verification, and test automation—shortening design cycles while maintaining quality.',
     targetAudience:
@@ -983,7 +985,7 @@ export const industries: Industry[] = [
 ]
 
 export const industriesBySlug: Record<string, Industry> = Object.fromEntries(
-  industries.map((i) => [i.slug, i]),
+  industries.map((i) => [i.slug, i])
 )
 
 export const industrySlugs: string[] = industries.map((i) => i.slug)

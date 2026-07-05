@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* AGENTIC LABS — "LEDGER" demo suite (light-only)
  * Ivory paper, near-black ink, racing-green accent.
@@ -31,9 +31,9 @@
   --card: var(--elevated);
   --card-foreground: var(--ink);
 
-  --display-stack: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --display-stack: var(--font-newsreader), Georgia, 'Times New Roman', serif;
   --body-stack: var(--font-plex-sans), system-ui, -apple-system, sans-serif;
-  --mono-stack: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --mono-stack: var(--font-plex-mono), ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
 @theme inline {
@@ -42,6 +42,7 @@
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-secondary: var(--secondary);
+  --color-muted-fg: var(--muted-fg);
   --color-faint: var(--faint);
   --color-hairline: var(--hairline);
   --color-accent: var(--accent);
@@ -77,7 +78,10 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--display-stack);
   font-weight: 600;
   color: var(--ink);
@@ -122,15 +126,24 @@ h1, h2, h3, h4 {
   font-variant-numeric: tabular-nums;
 }
 
-/* Hairline-bordered card */
+/* Hairline-bordered card. Hover treatment is reserved for interactive
+ * (link) cards — static panels keep a resting border. */
 .dossier-card {
   background: var(--elevated);
   border: 1px solid var(--hairline);
   border-radius: 8px;
   transition: border-color 200ms ease-out;
 }
-.dossier-card:hover {
+a.dossier-card:hover {
   border-color: var(--accent-border);
+}
+
+/* Mobile chapter strip: fade the clipped edge to signal horizontal scroll */
+@media (max-width: 1023.98px) {
+  .chapter-strip {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -29,7 +29,7 @@ export default async function BuildPage({
           {b.agents.map((agent, i) => (
             <li key={agent.name} className="bg-elevated p-5">
               <div className="flex items-baseline justify-between">
-                <span className="figures font-mono text-xs text-faint">
+                <span className="figures font-mono text-xs text-muted-fg">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="figures font-mono text-xs text-accent-dark">

@@ -1,10 +1,10 @@
 import type { Payload } from 'payload'
-import { solutions } from '@/content/solutions'
-import { industries } from '@/content/industries'
-import { caseStudies } from '@/content/case-studies'
-import { faqCategories } from '@/content/faq'
-import { blogPosts } from '@/content/blog'
-import { siteSettingsDefault } from '@/content/site-settings'
+import { solutions } from './data/solutions'
+import { industries } from './data/industries'
+import { caseStudies } from './data/case-studies'
+import { faqCategories } from './data/faq'
+import { blogPosts } from './data/blog'
+import { siteSettingsDefault } from './data/site-settings'
 import { blocksToLexical } from './blog-lexical'
 
 // Idempotent seeders: each upserts by slug so the dev seed route can be re-run
@@ -16,7 +16,7 @@ async function pruneStaleBySlug(
   payload: Payload,
   collection: 'industries' | 'case-studies' | 'blog-posts',
   canonicalSlugs: Set<string>,
-  label: string,
+  label: string
 ): Promise<string[]> {
   const results: string[] = []
   const all = await payload.find({ collection, limit: 500 })
@@ -118,8 +118,8 @@ export async function seedIndustries(payload: Payload): Promise<string[]> {
       payload,
       'industries',
       new Set(industries.map((i) => i.slug)),
-      'industry',
-    )),
+      'industry'
+    ))
   )
   return results
 }
@@ -169,8 +169,8 @@ export async function seedCaseStudies(payload: Payload): Promise<string[]> {
       payload,
       'case-studies',
       new Set(caseStudies.map((c) => c.slug)),
-      'case study',
-    )),
+      'case study'
+    ))
   )
   return results
 }
@@ -188,10 +188,7 @@ export async function seedFAQ(payload: Payload): Promise<string[]> {
         question: faq.question,
         answer: faq.answer,
         category: category.slug as
-          | 'agentic-ai'
-          | 'saas-replacement'
-          | 'service-process'
-          | 'security-governance',
+          'agentic-ai' | 'saas-replacement' | 'service-process' | 'security-governance',
         order,
       }
       const existing = await payload.find({
@@ -263,8 +260,8 @@ export async function seedBlogPosts(payload: Payload): Promise<string[]> {
       payload,
       'blog-posts',
       new Set(blogPosts.map((p) => p.slug)),
-      'blog post',
-    )),
+      'blog post'
+    ))
   )
   return results
 }

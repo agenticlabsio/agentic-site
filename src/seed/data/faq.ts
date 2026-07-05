@@ -104,7 +104,7 @@ export const faqCategories: FaqCategory[] = [
 export const faqs: Faq[] = faqCategories.flatMap((category) => category.faqs)
 
 export const faqCategoriesBySlug: Record<string, FaqCategory> = Object.fromEntries(
-  faqCategories.map((category) => [category.slug, category]),
+  faqCategories.map((category) => [category.slug, category])
 )
 
 export const faqCategorySlugs: string[] = faqCategories.map((category) => category.slug)

@@ -1,0 +1,21 @@
+{
+  "threshold": 5,
+  "reporters": ["console"],
+  "ignore": [
+    "node_modules/**",
+    ".next/**",
+    ".open-next/**",
+    ".wrangler/**",
+    "dist/**",
+    "build/**",
+    "src/payload-types.ts",
+    "src/migrations/**",
+    "apps/demo/node_modules/**",
+    "apps/demo/.next/**",
+    "apps/demo/.open-next/**"
+  ],
+  "format": ["typescript", "tsx"],
+  "absolute": true,
+  "minLines": 10,
+  "minTokens": 50
+}

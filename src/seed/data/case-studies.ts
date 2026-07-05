@@ -359,13 +359,11 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
     solution: {
-      intro:
-        'We built an agentic bridge between the legacy ERP and the procurement system:',
+      intro: 'We built an agentic bridge between the legacy ERP and the procurement system:',
       components: [
         {
           title: 'System bridge agent',
-          description:
-            'Connects legacy ERP and modern procurement data without re-platforming',
+          description: 'Connects legacy ERP and modern procurement data without re-platforming',
         },
         {
           title: 'Data normalization',
@@ -440,8 +438,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           title: 'Margin guardrails',
-          description:
-            'Flags below-floor discounts and routes exceptions to deal-desk approval',
+          description: 'Flags below-floor discounts and routes exceptions to deal-desk approval',
         },
         {
           title: 'Leakage analytics',
@@ -559,7 +556,7 @@ export const caseStudiesAggregateStats: CardMetric[] = [
 ]
 
 export const caseStudiesBySlug: Record<string, CaseStudy> = Object.fromEntries(
-  caseStudies.map((c) => [c.slug, c]),
+  caseStudies.map((c) => [c.slug, c])
 )
 
 export const caseStudySlugs: string[] = caseStudies.map((c) => c.slug)

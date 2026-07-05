@@ -1,0 +1,18 @@
+# Default owners for everything in the repo
+* @agenticlabsio/engineering
+
+# Frontend code
+/src/app/ @agenticlabsio/engineering
+/src/components/ @agenticlabsio/engineering
+
+# CMS configuration
+/src/collections/ @agenticlabsio/engineering
+/src/globals/ @agenticlabsio/engineering
+/src/payload.config.ts @agenticlabsio/engineering
+
+# Infrastructure and deployment
+/wrangler.jsonc @agenticlabsio/engineering
+/.github/workflows/ @agenticlabsio/engineering
+
+# Demo app
+/apps/demo/ @agenticlabsio/engineering

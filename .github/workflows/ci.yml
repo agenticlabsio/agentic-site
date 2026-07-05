@@ -11,6 +11,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks - Secret Scanning
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   verify:
     runs-on: ubuntu-latest
     steps:
@@ -35,6 +47,23 @@ jobs:
 
       - name: Test
         run: pnpm test:run
+
+      - name: Dead Code Detection
+        run: pnpm knip --no-exit-code || true
+
+      - name: Duplicate Code Detection
+        run: pnpm duplicates || true
+
+      - name: Validate AGENTS.md commands
+        run: |
+          echo "Validating AGENTS.md documented commands..."
+          grep -E "^- \`pnpm" AGENTS.md | sed 's/.*`\(pnpm [^`]*\)`.*/\1/' | while read cmd; do
+            script=$(echo "$cmd" | awk '{print $2}')
+            if ! grep -q "\"$script\":" package.json; then
+              echo "Warning: Script '$script' referenced in AGENTS.md not found in package.json"
+            fi
+          done
+          echo "AGENTS.md validation complete"
 
       - name: Build
         run: pnpm build

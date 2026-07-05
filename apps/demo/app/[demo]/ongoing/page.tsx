@@ -67,7 +67,7 @@ function AccuracyCurve({
         </svg>
       </div>
       <div className="mt-3 flex items-baseline justify-between">
-        <span className="figures font-mono text-xs text-faint">
+        <span className="figures font-mono text-xs text-muted-fg">
           W0 &rarr; W12
         </span>
         <span className="figures font-display text-2xl font-semibold text-accent-dark">

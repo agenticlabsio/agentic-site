@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import { caseStudies } from '@/content/case-studies'
+import { getCaseStudies } from '@/lib/payload'
 
-// "In Production" proof section — pulls the real case studies so the homepage
-// shows genuine deployments (linked to their detail pages) rather than invented
-// examples. Server component: the data is static, no client interactivity.
-export default function InProduction() {
-  const studies = caseStudies.slice(0, 5)
+// "In Production" proof section — pulls the real case studies from the CMS so the
+// homepage shows genuine deployments (linked to their detail pages) and stays in
+// lockstep with /case-studies and the detail pages. Async RSC, no client JS.
+export default async function InProduction() {
+  const studies = (await getCaseStudies()).slice(0, 5)
 
   return (
     <section
@@ -65,7 +65,7 @@ export default function InProduction() {
 
         <div className="inprod-grid">
           {studies.map((study) => {
-            const metric = study.card.metrics[0]
+            const metric = study.card.metrics?.[0]
             return (
               <Link
                 key={study.slug}
@@ -143,7 +143,16 @@ export default function InProduction() {
                   }}
                 >
                   View Case Study
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </span>

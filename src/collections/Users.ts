@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { isAdmin, isAdminField, isAdminOrSelf } from '../access/roles'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -10,6 +11,16 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
     group: 'Admin',
+  },
+  // Team management: only admins can add or remove employees. An editor can
+  // read and update their own account (name, password) but not anyone else's,
+  // and the `roles` field below is admin-only so editors cannot self-promote.
+  // (Payload still allows the very first user to be created when the DB is empty.)
+  access: {
+    read: isAdminOrSelf,
+    create: isAdmin,
+    update: isAdminOrSelf,
+    delete: isAdmin,
   },
   fields: [
     {
@@ -27,6 +38,11 @@ export const Users: CollectionConfig = {
       ],
       defaultValue: ['editor'],
       saveToJWT: true,
+      access: {
+        // Prevent privilege escalation: an editor editing their own profile
+        // cannot change their roles; only admins can grant/revoke roles.
+        update: isAdminField,
+      },
     },
   ],
 }

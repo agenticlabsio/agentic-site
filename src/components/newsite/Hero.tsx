@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { DEMO_URL } from '@/lib/seo'
 
@@ -111,9 +109,7 @@ export default function Hero() {
                 letterSpacing: '-0.015em',
               }}
             >
-              <span>
-                Transform Your Enterprise
-              </span>
+              <span>Transform Your Enterprise</span>
               <span>
                 <span
                   className="text-gradient"

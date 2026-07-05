@@ -62,7 +62,7 @@ export default function Home() {
               </p>
               <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 border-t border-[color:var(--hairline-soft)] pt-4">
                 {d.cardStats.map((s) => (
-                  <span key={s.label} className="text-sm text-faint">
+                  <span key={s.label} className="text-sm text-muted-fg">
                     <span className="figures font-mono font-medium text-ink">
                       {s.value}
                     </span>{" "}
@@ -85,7 +85,7 @@ export default function Home() {
             </div>
             <h2 className="text-2xl">Deployed client work</h2>
           </div>
-          <p className="max-w-md text-sm text-faint">
+          <p className="max-w-md text-sm text-muted-fg">
             Case-study demos from production engagements — the problem, the
             build, and the measured outcome.
           </p>

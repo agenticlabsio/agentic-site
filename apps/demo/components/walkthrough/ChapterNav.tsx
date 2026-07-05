@@ -9,9 +9,9 @@ export default function ChapterNav({ demoSlug }: { demoSlug: string }) {
   const base = `/${demoSlug}`;
 
   return (
-    <nav aria-label="Chapters" className="lg:sticky lg:top-24">
+    <nav aria-label="Chapters" className="min-w-0 max-w-full lg:sticky lg:top-24">
       <div className="eyebrow-muted mb-4 hidden lg:block">Walkthrough</div>
-      <ol className="flex gap-1 overflow-x-auto lg:flex-col lg:gap-0">
+      <ol className="chapter-strip flex w-full gap-1 overflow-x-auto lg:flex-col lg:gap-0">
         {chapters.map((ch) => {
           const href = `${base}${ch.path}`;
           const active = pathname === href;
@@ -27,7 +27,7 @@ export default function ChapterNav({ demoSlug }: { demoSlug: string }) {
                 }`}
               >
                 <span
-                  className={`figures font-mono text-xs ${active ? "text-accent-dark" : "text-faint"}`}
+                  className={`figures font-mono text-xs ${active ? "text-accent-dark" : "text-muted-fg"}`}
                 >
                   {ch.num}
                 </span>

@@ -16,9 +16,9 @@ export interface SiteHeaderProps {
   cta: { label: string; href: string }
 }
 
-// Single header for every public page — logo, route nav, theme toggle, and
-// mobile menu. Replaces the homepage-only Navbar and the chrome-less
-// MarketingHeader that interior pages used to render separately.
+// Single header for every public page — logo, route nav, and mobile menu.
+// The desktop nav needs ~1080px to fit every label plus both CTAs without
+// clipping, so the mobile menu covers everything below that.
 export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -26,7 +26,7 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -37,6 +37,17 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
     }
   }, [mobileOpen])
 
+  useEffect(() => {
+    if (!mobileOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [mobileOpen])
+
+  const isActive = (href: string) => href !== '/' && pathname.startsWith(href)
+
   return (
     <>
       <header
@@ -46,10 +57,10 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
           left: 0,
           right: 0,
           zIndex: 50,
-          transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+          transition: 'background-color 0.3s ease, border-color 0.3s ease',
           background: scrolled ? 'var(--nav-bg)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px) saturate(1.4)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(1.4)' : 'none',
+          backdropFilter: scrolled ? 'blur(20px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
           borderBottom: scrolled ? '1px solid var(--nav-border)' : '1px solid transparent',
         }}
       >
@@ -65,27 +76,28 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
             />
           </Link>
 
-          <div className="nav-desktop" style={{ alignItems: 'center', gap: 4 }}>
+          <nav className="nav-desktop" aria-label="Main" style={{ alignItems: 'center', gap: 4 }}>
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="font-display nav-link"
+                aria-current={isActive(item.href) ? 'page' : undefined}
                 style={{
-                  padding: '8px 16px',
+                  padding: '10px 14px',
                   fontSize: '0.9rem',
                   fontWeight: 500,
                   textDecoration: 'none',
                   letterSpacing: '0.01em',
-                  borderRadius: 8,
-                  transition: 'all 0.2s ease',
-                  color: pathname.startsWith(item.href) ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  borderRadius: 6,
+                  whiteSpace: 'nowrap',
+                  color: isActive(item.href) ? 'var(--text-primary)' : 'var(--text-secondary)',
                 }}
               >
                 {item.label}
               </Link>
             ))}
-          </div>
+          </nav>
 
           <div className="nav-desktop" style={{ flexShrink: 0, alignItems: 'center', gap: 12 }}>
             <a
@@ -99,17 +111,24 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
                 gap: 8,
                 background: 'var(--accent)',
                 color: 'var(--cta-btn-color)',
-                padding: '10px 18px',
-                borderRadius: 8,
+                padding: '11px 18px',
+                borderRadius: 6,
                 fontSize: '0.88rem',
                 fontWeight: 500,
                 textDecoration: 'none',
-                transition: 'all 0.2s ease',
+                whiteSpace: 'nowrap',
+                transition: 'background-color 0.2s ease',
                 cursor: 'pointer',
               }}
             >
               <span>Live Demo</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
                 <path d="M8 5v14l11-7z" />
               </svg>
             </a>
@@ -122,17 +141,18 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
                 gap: 8,
                 background: 'var(--cta-btn-bg)',
                 color: 'var(--cta-btn-color)',
-                padding: '10px 20px',
-                borderRadius: 8,
+                padding: '11px 20px',
+                borderRadius: 6,
                 fontSize: '0.88rem',
                 fontWeight: 500,
                 textDecoration: 'none',
-                transition: 'all 0.2s ease',
+                whiteSpace: 'nowrap',
+                transition: 'background-color 0.2s ease',
                 cursor: 'pointer',
               }}
             >
               <span>{cta.label}</span>
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path
                   d="M3 8h10M9 4l4 4-4 4"
                   stroke="var(--cta-btn-arrow)"
@@ -144,7 +164,10 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
             </Link>
           </div>
 
-          <div className="nav-mobile-right" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div
+            className="nav-mobile-right"
+            style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+          >
             <button
               className="nav-mobile-toggle"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -156,8 +179,12 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
                 border: 'none',
                 cursor: 'pointer',
                 flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
                 gap: 5,
-                padding: 8,
+                width: 44,
+                height: 44,
+                padding: 0,
               }}
             >
               <span
@@ -167,7 +194,7 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
                   height: 2,
                   background: 'var(--text-primary)',
                   borderRadius: 2,
-                  transition: 'all 0.3s ease',
+                  transition: 'transform 0.3s ease',
                   transform: mobileOpen ? 'rotate(45deg) translate(3px,3px)' : 'none',
                 }}
               />
@@ -178,7 +205,7 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
                   height: 2,
                   background: 'var(--text-primary)',
                   borderRadius: 2,
-                  transition: 'all 0.3s ease',
+                  transition: 'opacity 0.3s ease',
                   opacity: mobileOpen ? 0 : 1,
                 }}
               />
@@ -189,7 +216,7 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
                   height: 2,
                   background: 'var(--text-primary)',
                   borderRadius: 2,
-                  transition: 'all 0.3s ease',
+                  transition: 'transform 0.3s ease',
                   transform: mobileOpen ? 'rotate(-45deg) translate(3px,-3px)' : 'none',
                 }}
               />
@@ -197,88 +224,103 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
           </div>
         </div>
 
+        {/* Collapsed state uses grid-rows 0fr + visibility:hidden so the hidden
+            links leave the tab order and no layout property animates. */}
         <div
           id="nav-mobile-menu"
           className="nav-mobile-menu"
           style={{
-            maxHeight: mobileOpen ? 500 : 0,
-            overflow: 'hidden',
-            transition: 'max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+            display: 'grid',
+            gridTemplateRows: mobileOpen ? '1fr' : '0fr',
+            visibility: mobileOpen ? 'visible' : 'hidden',
+            transition: 'grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s',
             background: 'var(--nav-bg)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
             borderBottom: mobileOpen ? '1px solid var(--nav-border)' : '1px solid transparent',
           }}
         >
-          <div style={{ padding: '8px 24px 24px' }}>
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
+          <div style={{ overflow: 'hidden', minHeight: 0 }}>
+            <div style={{ padding: '8px 24px 24px' }}>
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="font-display"
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  style={{
+                    display: 'block',
+                    padding: '14px 0',
+                    minHeight: 44,
+                    color: 'var(--text-secondary)',
+                    fontSize: '1.05rem',
+                    textDecoration: 'none',
+                    borderBottom: '1px solid var(--border)',
+                    transition: 'color 0.2s ease',
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <a
+                href={DEMO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="font-display"
                 style={{
-                  display: 'block',
-                  padding: '14px 0',
-                  color: 'var(--text-secondary)',
-                  fontSize: '1.05rem',
+                  marginTop: 20,
+                  width: '100%',
+                  textAlign: 'center',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 8,
+                  background: 'var(--accent)',
+                  color: 'var(--cta-btn-color)',
+                  padding: '14px 24px',
+                  minHeight: 44,
+                  borderRadius: 6,
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
                   textDecoration: 'none',
-                  borderBottom: '1px solid var(--border)',
-                  transition: 'color 0.2s ease',
                 }}
               >
-                {item.label}
+                <span>Live Demo</span>
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </a>
+              <Link
+                href={cta.href}
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  marginTop: 12,
+                  width: '100%',
+                  textAlign: 'center',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 8,
+                  background: 'var(--cta-btn-bg)',
+                  color: 'var(--cta-btn-color)',
+                  padding: '14px 24px',
+                  minHeight: 44,
+                  borderRadius: 6,
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
+                  textDecoration: 'none',
+                }}
+              >
+                <span>{cta.label}</span>
               </Link>
-            ))}
-            <a
-              href={DEMO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              style={{
-                marginTop: 20,
-                width: '100%',
-                textAlign: 'center',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 8,
-                background: 'var(--accent)',
-                color: 'var(--cta-btn-color)',
-                padding: '14px 24px',
-                borderRadius: 8,
-                fontSize: '0.9rem',
-                fontWeight: 500,
-                textDecoration: 'none',
-              }}
-            >
-              <span>Live Demo</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </a>
-            <Link
-              href={cta.href}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                marginTop: 12,
-                width: '100%',
-                textAlign: 'center',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 8,
-                background: 'var(--cta-btn-bg)',
-                color: 'var(--cta-btn-color)',
-                padding: '14px 24px',
-                borderRadius: 8,
-                fontSize: '0.9rem',
-                fontWeight: 500,
-                textDecoration: 'none',
-              }}
-            >
-              <span>{cta.label}</span>
-            </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -286,7 +328,7 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
       <style>{`
         .nav-desktop { display: none; }
         .nav-mobile-toggle { display: flex; }
-        .nav-mobile-menu { display: block; }
+        .nav-mobile-menu { display: grid; }
         .nav-mobile-right { display: flex; }
 
         .nav-link {
@@ -298,17 +340,14 @@ export default function SiteHeader({ navItems, cta }: SiteHeaderProps) {
         }
 
         .nav-cta:hover, .nav-cta:focus-visible {
-          box-shadow: 0 0 0 1px var(--border-accent), 0 8px 28px var(--accent-glow);
-          transform: translateY(-1px);
+          background: var(--accent-dark);
         }
 
         .nav-demo:hover, .nav-demo:focus-visible {
           background: var(--accent-dark);
-          box-shadow: 0 8px 28px var(--accent-glow);
-          transform: translateY(-1px);
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1080px) {
           .nav-desktop { display: flex !important; }
           .nav-mobile-toggle { display: none !important; }
           .nav-mobile-menu { display: none !important; }

@@ -5,14 +5,9 @@ export interface Product {
   tagline: string;
   description: string;
   useCase: string[];
-  impact: string[];
   clientProblem: string;
   solution: string[];
   outcomes: string[];
-  appUrl: string;
-  videoUrl: string | null;
-  icon: string;
-  status: "live" | "coming-soon";
 }
 
 export const products: Product[] = [
@@ -28,11 +23,6 @@ export const products: Product[] = [
       "Running multi-year spend analysis across siloed datasets to uncover hidden savings",
       "Automating financial reconciliation workflows previously requiring dedicated FTE teams",
     ],
-    impact: [
-      "Reduced financial analysis timelines from days to minutes across years of spend data",
-      "Surfaced previously invisible overhead cost reduction opportunities worth 8–12% of purchasing spend",
-      "Freed multiple FTEs from manual reconciliation to focus on strategic procurement initiatives",
-    ],
     clientProblem:
       "Legacy ERP platform does not easily communicate with newer procurement system. Overhead expenses have unrealized reduction opportunity. Analysis comparing years of data would take FTEs days to complete manually.",
     solution: [
@@ -41,14 +31,10 @@ export const products: Product[] = [
       "Runs automated comparative financial analysis in minutes vs. days",
     ],
     outcomes: [
-      "Reduced financial analysis from days to minutes across years of spend data",
-      "Identified unrealized overhead cost reduction opportunities previously invisible",
-      "Freed FTE capacity from manual reconciliation; comparable projects show 8–12% purchasing savings",
+      "Financial analysis reduced from days to minutes across years of spend data",
+      "Surfaced previously invisible overhead reduction opportunities worth 8–12% of purchasing spend",
+      "Freed FTE capacity from manual reconciliation for strategic procurement work",
     ],
-    appUrl: "#",
-    videoUrl: null,
-    icon: "Factory",
-    status: "live",
   },
   {
     slug: "finance-back-office",
@@ -62,11 +48,6 @@ export const products: Product[] = [
       "Reconciling general ledger balances across disparate systems and flagging discrepancies",
       "Replacing manual data entry in financial reporting and month-end close workflows",
     ],
-    impact: [
-      "Reduced reconciliation staffing from 3 FTEs to 1 — saving ~$450K annually",
-      "Close cycles 85% faster with 95% fewer reconciliation errors",
-      "AP processing costs cut up to 80% with median ROI of 150% within the first year",
-    ],
     clientProblem:
       "Finance and back-office teams bogged down with manual, time-intensive reconciliation, accounts payable processing, and reporting tasks — leading to slow close cycles, high error rates, and excessive FTE cost for routine transactional work.",
     solution: [
@@ -75,14 +56,10 @@ export const products: Product[] = [
       "Automated financial reporting replaces manual data entry and close-cycle work",
     ],
     outcomes: [
-      "Reduced reconciliation from 3 FTEs to 1; ~$450K in annual savings",
-      "85% faster close cycles and 95% reduction in reconciliation errors",
-      "AP processing costs cut up to 80%; median ROI of 150% within first year",
+      "Reconciliation staffing reduced from 3 FTEs to 1 — ~$450K in annual savings",
+      "85% faster close cycles and 95% fewer reconciliation errors",
+      "AP processing costs cut up to 80%; median ROI of 150% within the first year",
     ],
-    appUrl: "#",
-    videoUrl: null,
-    icon: "Calculator",
-    status: "live",
   },
   {
     slug: "gaming-content-sync",
@@ -96,11 +73,6 @@ export const products: Product[] = [
       "Applying frame-accurate corrections automatically across large content libraries",
       "Scaling content production without proportionally scaling production staff",
     ],
-    impact: [
-      "Eliminated manual sync workflows — production time cut from hours to minutes per asset",
-      "Enabled content output to scale without adding production headcount",
-      "AI-synced content delivers 30% higher viewer engagement compared to manually synced assets",
-    ],
     clientProblem:
       "Client required precise synchronization of video and audio content for online gaming experiences. Manual syncing was time-consuming, inconsistent, and couldn't scale to meet the volume and speed of content production.",
     solution: [
@@ -109,13 +81,9 @@ export const products: Product[] = [
       "Reduces hours of manual sync work per asset down to minutes",
     ],
     outcomes: [
-      "Eliminated manual sync workflows; production time cut from hours to minutes per asset",
-      "Enabled content output to scale without adding production staff",
+      "Manual sync workflows eliminated — production time cut from hours to minutes per asset",
+      "Content output scales without adding production headcount",
       "Industry data: AI-synced content delivers 30% higher viewer engagement vs. manual",
     ],
-    appUrl: "#",
-    videoUrl: null,
-    icon: "Gamepad2",
-    status: "live",
   },
 ];

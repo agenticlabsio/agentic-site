@@ -20,9 +20,22 @@ import { CtaSection, type CtaSectionProps } from './sections/CtaSection'
 export type DetailSection =
   | { type: 'metrics'; heading: string; variant: 'band' | 'cards'; items: MetricItem[] }
   | ({ type: 'narrative' } & NarrativeSectionProps)
-  | ({ type: 'cardGrid' } & { heading: string; description?: string; items: CardGridItem[]; variant?: 'bordered' | 'plain'; columns?: 2 | 3; bgTint?: boolean })
+  | ({ type: 'cardGrid' } & {
+      heading: string
+      description?: string
+      items: CardGridItem[]
+      variant?: 'bordered' | 'plain'
+      columns?: 2 | 3
+      bgTint?: boolean
+    })
   | { type: 'processSteps'; heading: string; description?: string; steps: ProcessStep[] }
-  | { type: 'integrations'; heading: string; description?: string; items: string[]; bgTint?: boolean }
+  | {
+      type: 'integrations'
+      heading: string
+      description?: string
+      items: string[]
+      bgTint?: boolean
+    }
   | { type: 'statBand'; heading: string; items: MarketStat[] }
   | { type: 'checklist'; heading: string; items: string[] }
   | { type: 'pillLinks'; heading: string; slugs: string[] }
@@ -34,7 +47,14 @@ export type DetailSection =
 function renderSection(section: DetailSection, key: number) {
   switch (section.type) {
     case 'metrics':
-      return <MetricsGrid key={key} heading={section.heading} variant={section.variant} items={section.items} />
+      return (
+        <MetricsGrid
+          key={key}
+          heading={section.heading}
+          variant={section.variant}
+          items={section.items}
+        />
+      )
     case 'narrative':
       return <NarrativeSection key={key} {...section} />
     case 'cardGrid':
@@ -75,14 +95,23 @@ function renderSection(section: DetailSection, key: number) {
       )
     case 'beforeAfter':
       return (
-        <BeforeAfterSection key={key} heading={section.heading} before={section.before} after={section.after} />
+        <BeforeAfterSection
+          key={key}
+          heading={section.heading}
+          before={section.before}
+          after={section.after}
+        />
       )
     case 'quote':
       return <QuoteSection key={key} text={section.text} author={section.author} />
     case 'cta':
       return <CtaSection key={key} {...section} />
-    default:
-      return null
+    default: {
+      // Exhaustiveness guard: adding a DetailSection variant without a case here
+      // becomes a compile error instead of silently rendering nothing.
+      const _exhaustive: never = section
+      return _exhaustive
+    }
   }
 }
 

@@ -1,0 +1,53 @@
+flowchart TB
+    subgraph "Client Layer"
+        Browser["Browser"]
+        Agent["AI Agents"]
+    end
+
+    subgraph "Edge Layer - Cloudflare"
+        Pages["Cloudflare Pages"]
+        CDN["Cloudflare CDN"]
+    end
+
+    subgraph "Application Layer"
+        subgraph "Main Site"
+            NextJS["Next.js 15 App Router"]
+            PayloadCMS["Payload CMS 3"]
+            OpenNext["OpenNext Adapter"]
+        end
+        subgraph "Demo App"
+            DemoNext["Next.js Demo App"]
+        end
+    end
+
+    subgraph "Data Layer - Cloudflare"
+        D1["Cloudflare D1\n(SQLite)"]
+        R2["Cloudflare R2\n(Media Storage)"]
+    end
+
+    subgraph "External Services"
+        GitHub["GitHub\n(Source Control)"]
+        Mesa["Mesa Review\n(PR Reviews)"]
+    end
+
+    Browser --> CDN
+    Agent --> CDN
+    CDN --> Pages
+    Pages --> OpenNext
+    OpenNext --> NextJS
+    NextJS --> PayloadCMS
+    PayloadCMS --> D1
+    PayloadCMS --> R2
+    
+    Pages --> DemoNext
+    
+    GitHub --> Mesa
+    GitHub --> Pages
+
+    classDef cloudflare fill:#f48120,color:#fff
+    classDef app fill:#0070f3,color:#fff
+    classDef data fill:#10b981,color:#fff
+    
+    class Pages,CDN,D1,R2 cloudflare
+    class NextJS,PayloadCMS,OpenNext,DemoNext app
+    class GitHub,Mesa data

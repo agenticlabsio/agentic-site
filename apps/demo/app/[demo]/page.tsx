@@ -27,7 +27,7 @@ export default async function OverviewPage({
           {d.phases.map((p) => (
             <li key={p.num} className="bg-elevated p-6">
               <div className="flex items-baseline justify-between">
-                <span className="figures font-mono text-xs text-faint">
+                <span className="figures font-mono text-xs text-muted-fg">
                   {p.num}
                 </span>
                 <span className="eyebrow">{p.duration}</span>

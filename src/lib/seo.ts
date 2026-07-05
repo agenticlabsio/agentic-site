@@ -10,6 +10,9 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://agenticlabs
 // hero, and closing CTA bands. Defined once so the URL isn't scattered.
 export const DEMO_URL = 'https://demo.agenticlabs.io'
 
+// Scheduling link for every "book a call" action — the one real booking path.
+export const CALENDLY_URL = 'https://calendly.com/cloud-agenticlabs/30min'
+
 // Builds per-page metadata with a self-referential canonical + OpenGraph/Twitter.
 // `title` is passed through the root layout's "%s | Agentic Labs" template.
 export function pageMetadata(path: string, title: string, description: string): Metadata {

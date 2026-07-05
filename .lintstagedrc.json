@@ -1,0 +1,5 @@
+{
+  "src/**/*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+  "apps/demo/**/*.{ts,tsx}": ["pnpm --dir apps/demo exec eslint --fix"],
+  "*.{json,md,css}": ["prettier --write"]
+}

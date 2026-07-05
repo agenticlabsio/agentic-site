@@ -1,7 +1,8 @@
-// Shared content types for the marketing site's entity data.
-// These shapes are the single source of truth: the seed script writes them into
-// Payload, the Payload collections mirror them, and the RSC pages read them back
-// through the typed fetchers in src/lib/payload.ts.
+// Authoring shapes for the seed corpora in this directory. These describe the
+// data the seed script writes into Payload — they are NOT the runtime source of
+// truth. At runtime the RSC pages read Payload records typed by the generated
+// src/payload-types.ts; if these shapes and the Payload collections drift, the
+// generated types win. Keep them aligned with the collection configs.
 
 export interface Capability {
   title: string

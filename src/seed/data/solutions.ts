@@ -503,7 +503,8 @@ export const solutions: Solution[] = [
       {
         step: 3,
         title: 'MCP Implementation',
-        description: 'Deploy MCP servers that give agentic solutions secure, contextualized data access.',
+        description:
+          'Deploy MCP servers that give agentic solutions secure, contextualized data access.',
       },
       {
         step: 4,
@@ -640,7 +641,8 @@ export const solutions: Solution[] = [
       {
         step: 2,
         title: 'Instrumentation',
-        description: 'Deploy monitoring on agentic solutions—every action, decision, and outcome is tracked.',
+        description:
+          'Deploy monitoring on agentic solutions—every action, decision, and outcome is tracked.',
       },
       {
         step: 3,
@@ -858,7 +860,7 @@ export const solutions: Solution[] = [
 ]
 
 export const solutionsBySlug: Record<string, Solution> = Object.fromEntries(
-  solutions.map((s) => [s.slug, s]),
+  solutions.map((s) => [s.slug, s])
 )
 
 export const solutionSlugs: string[] = solutions.map((s) => s.slug)

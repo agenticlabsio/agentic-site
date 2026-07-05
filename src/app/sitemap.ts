@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/seo'
 import { getAllMarketingSlugs, getAllBlogPostSlugs } from '@/lib/payload'
+import { legalDocuments } from '@/content/legal'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_URL
@@ -10,7 +11,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getAllBlogPostSlugs(),
   ])
 
-  const staticPages: { path: string; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']; priority: number }[] = [
+  const staticPages: {
+    path: string
+    changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']
+    priority: number
+  }[] = [
     { path: '', changeFrequency: 'weekly', priority: 1 },
     { path: '/solutions', changeFrequency: 'weekly', priority: 0.9 },
     { path: '/industries', changeFrequency: 'weekly', priority: 0.9 },
@@ -21,6 +26,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/resources', changeFrequency: 'weekly', priority: 0.8 },
     { path: '/resources/blog', changeFrequency: 'weekly', priority: 0.8 },
     { path: '/resources/faq', changeFrequency: 'weekly', priority: 0.8 },
+    { path: '/trust', changeFrequency: 'monthly', priority: 0.5 },
+    { path: '/legal', changeFrequency: 'monthly', priority: 0.4 },
   ]
 
   const detailPathByType = {
@@ -49,6 +56,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: entry.updatedAt ?? currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
+    })),
+    // Legal detail pages (static, code-managed)
+    ...legalDocuments.map((doc) => ({
+      url: `${baseUrl}/legal/${doc.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
     })),
   ]
 

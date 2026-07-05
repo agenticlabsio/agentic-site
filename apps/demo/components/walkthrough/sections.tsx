@@ -47,7 +47,7 @@ export function StatBand({ stats }: { stats: StatWithSub[] }) {
             {s.value}
           </div>
           <div className="mt-1 text-sm font-medium text-ink-soft">{s.label}</div>
-          <div className="text-sm text-faint">{s.sub}</div>
+          <div className="text-sm text-muted-fg">{s.sub}</div>
         </div>
       ))}
     </div>
@@ -81,7 +81,7 @@ export function ValueSplitPanel({ demo }: { demo: Demo }) {
           </div>
         ))}
       </div>
-      <p className="mt-6 text-sm leading-relaxed text-faint">{demo.value.note}</p>
+      <p className="mt-6 text-sm leading-relaxed text-muted-fg">{demo.value.note}</p>
     </div>
   );
 }
@@ -119,7 +119,7 @@ export function TraceSteps({ steps }: { steps: TraceStep[] }) {
                 {step.kind === "human" ? "Reviewer gate" : "Automated"}
               </span>
             </div>
-            <p className="mt-1 text-sm text-faint">{step.detail}</p>
+            <p className="mt-1 text-sm text-muted-fg">{step.detail}</p>
           </div>
         </li>
       ))}

@@ -69,3 +69,6 @@ jobs:
         run: pnpm build
         env:
           NODE_OPTIONS: --no-deprecation --max-old-space-size=8000
+          # Build-time only: Payload requires a value to collect page data in a
+          # production build; nothing built here is deployed or persisted.
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET || 'ci-verify-build-only' }}

@@ -24,7 +24,7 @@ export default function Hero() {
               textWrap: 'balance',
             }}
           >
-            Agentic systems that run entire departments.
+            Agentic solutions that pay for themselves.
           </h1>
 
           <div style={{ height: 2, width: 72, background: 'var(--accent)', margin: '28px auto' }} />
@@ -39,9 +39,10 @@ export default function Hero() {
               textWrap: 'pretty',
             }}
           >
-            Agentic Labs builds and operates agentic systems — AI agents with the authority to
-            execute complete workflows — inside finance, procurement, revenue, and compliance
-            operations. In production in 6–12 weeks, on infrastructure you control. No migrations.
+            Agentic Labs builds and operates AI agents that take the manual operations work off your
+            finance, procurement, revenue, and compliance teams — so they can focus on customers.
+            Measured in dollars, deployed on infrastructure you own: your data, your models, your
+            agents, your workflows.
           </p>
 
           <div

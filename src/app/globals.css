@@ -215,7 +215,7 @@
 
   ::selection {
     background-color: var(--color-brand);
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   :focus-visible {
@@ -265,7 +265,7 @@
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
   background: var(--color-gray-900);
-  color: #ffffff;
+  color: var(--color-white);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.9375rem;
@@ -273,7 +273,7 @@
   transition: background-color var(--transition-base);
 }
 .btn-brand:hover {
-  color: #ffffff;
+  color: var(--color-white);
   background: var(--color-brand-dark);
 }
 .btn-brand:active {
@@ -419,7 +419,7 @@
 }
 
 .blog-content blockquote {
-  border-left: 3px solid var(--color-brand);
+  border-left: 1px solid var(--color-brand-300);
   padding-left: 1.25rem;
   color: var(--text-primary);
   font-style: italic;
@@ -453,7 +453,7 @@
 .newsite {
   --bg-primary: #f7f7f3;
   --bg-secondary: #efefe9;
-  --bg-elevated: #ffffff;
+  --bg-elevated: var(--color-white);
   --accent: #1e5f45;
   --accent-light: #337a5b;
   --accent-dark: #174d38;
@@ -461,8 +461,8 @@
   --accent-highlight: #174d38;
   --accent-secondary: #1e5f45;
   --accent-secondary-light: #337a5b;
-  --bg-card: #ffffff;
-  --bg-card-hover: #ffffff;
+  --bg-card: var(--color-white);
+  --bg-card-hover: var(--color-white);
   --text-primary: #161613;
   --text-secondary: #4c4c44;
   --text-muted: #6e6e63;
@@ -470,23 +470,23 @@
   --border-accent: rgba(30, 95, 69, 0.35);
   --font-display: var(--font-newsreader), Georgia, serif;
   --font-body: var(--font-plex-sans), sans-serif;
-  --hero-bg-gradient: linear-gradient(180deg, #fdfdfb 0%, #f7f7f3 100%);
+  --hero-bg-gradient: linear-gradient(180deg, var(--color-white) 0%, #f7f7f3 100%);
   --grid-line: transparent;
-  --nav-bg: rgba(253, 253, 251, 0.85);
+  --nav-bg: color-mix(in srgb, var(--color-white) 85%, transparent);
   --nav-border: rgba(22, 22, 19, 0.08);
   --partner-text: rgba(22, 22, 19, 0.35);
   --cta-btn-bg: #161613;
-  --cta-btn-color: #ffffff;
-  --cta-btn-arrow: #7dbd9b;
-  --card-blue-bg: #ffffff;
+  --cta-btn-color: var(--color-white);
+  --cta-btn-arrow: var(--color-brand-300);
+  --card-blue-bg: var(--color-white);
   --card-blue-border: rgba(22, 22, 19, 0.12);
-  --card-blue-bg-hover: #ffffff;
+  --card-blue-bg-hover: var(--color-white);
   --card-blue-border-hover: rgba(30, 95, 69, 0.35);
   --tag-bg: rgba(30, 95, 69, 0.06);
   --tag-border: rgba(30, 95, 69, 0.2);
-  --faq-bg: #ffffff;
+  --faq-bg: var(--color-white);
   --faq-border: rgba(22, 22, 19, 0.1);
-  --faq-bg-open: #ffffff;
+  --faq-bg-open: var(--color-white);
   --faq-border-open: rgba(30, 95, 69, 0.35);
   --footer-bg: #efefe9;
   --grain-opacity: 0;
@@ -523,7 +523,7 @@
 
 .newsite ::selection {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 /* Layout helpers used by the redesign components */
@@ -673,7 +673,7 @@
 }
 .btn-demo:hover {
   background: var(--accent-dark);
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 /* Bordered card (former double-bezel — now a flat hairline card, names kept) */

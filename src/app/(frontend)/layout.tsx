@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: '%s | Agentic Labs',
   },
   description:
-    'Custom agentic solutions — enterprise AI agents and multi-agentic systems that automate entire departments end to end, in production in 6–12 weeks on infrastructure you control. Book a discovery call.',
+    'Custom agentic solutions that pay for themselves — enterprise AI agents that take on manual operations work, deployed on infrastructure you own. Your data, models, agents, and workflows stay yours. Book a discovery call.',
   keywords: [
     'agentic solutions',
     'enterprise AI agents',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     siteName: 'Agentic Labs',
     title: 'Agentic Labs | Custom Agentic Solutions for the Enterprise',
     description:
-      'Custom agentic solutions that automate entire departments end to end — in production in 6–12 weeks, on infrastructure you control.',
+      'Agentic solutions that pay for themselves — AI agents that take on manual operations work, on infrastructure you own.',
     images: [
       {
         url: '/og-image.png',
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Agentic Labs | Custom Agentic Solutions',
     description:
-      'Custom agentic solutions that automate entire departments end to end — in production in 6–12 weeks, on infrastructure you control.',
+      'Agentic solutions that pay for themselves — AI agents that take on manual operations work, on infrastructure you own.',
     creator: '@agenticlabs',
     images: ['/og-image.png'],
   },

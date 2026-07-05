@@ -1,17 +1,17 @@
-const taskAutomation = [
-  'One tool per task, none aware of the others',
-  'Point automations that break on exceptions',
-  'People still gluing systems together by hand',
-  'Dashboards that report problems, not resolve them',
-  'Effort scattered across disconnected scripts',
+const transformationPitch = [
+  'Automate entire departments, end to end',
+  'Replace headcount from day one',
+  'Move fast, measure the value later',
+  'Black-box platforms that hold your data',
+  'Pilots that never survive security review',
 ]
 
-const departmentTransformation = [
-  'Multi-agent systems that own end-to-end workflows',
-  'Intake to execution to reporting, handled',
-  'Whole process chains replaced, not single steps',
-  'Proactive agents that resolve, not just alert',
-  'One governed operational layer across your stack',
+const whatWeBuild = [
+  'Agents that own defined workflows — reconciliation, approvals, reporting, follow-ups',
+  'Your team stays in command of every decision',
+  'A dollar baseline agreed before we build, measured after',
+  'Your data, models, agents, and workflows — owned by you',
+  'Governed, logged, and audit-ready from week one',
 ]
 
 const markStyle: React.CSSProperties = {
@@ -41,7 +41,7 @@ export default function Contrast() {
               textWrap: 'balance',
             }}
           >
-            We don&apos;t automate tasks. We rebuild how departments run.
+            We don&apos;t replace departments. We take the busywork off them.
           </h2>
           <p
             style={{
@@ -51,8 +51,9 @@ export default function Contrast() {
               maxWidth: '58ch',
             }}
           >
-            A single automation that answers emails isn&apos;t transformation. The difference shows
-            up in what the system is allowed to own.
+            The agentic wins that stick aren&apos;t moonshots. They&apos;re the manual coordination,
+            reconciliation, and reporting your team shouldn&apos;t be doing by hand — automated
+            correctly, with your people in command.
           </p>
         </div>
 
@@ -72,7 +73,7 @@ export default function Contrast() {
                 marginBottom: 20,
               }}
             >
-              Task automation
+              The transformation pitch
             </h3>
             <ul
               style={{
@@ -83,7 +84,7 @@ export default function Contrast() {
                 gap: 14,
               }}
             >
-              {taskAutomation.map((item) => (
+              {transformationPitch.map((item) => (
                 <li
                   key={item}
                   style={{
@@ -115,7 +116,7 @@ export default function Contrast() {
                 marginBottom: 20,
               }}
             >
-              Department transformation
+              What we build instead
             </h3>
             <ul
               style={{
@@ -126,7 +127,7 @@ export default function Contrast() {
                 gap: 14,
               }}
             >
-              {departmentTransformation.map((item) => (
+              {whatWeBuild.map((item) => (
                 <li
                   key={item}
                   style={{
@@ -155,8 +156,8 @@ export default function Contrast() {
                 fontWeight: 500,
               }}
             >
-              Your finance team operates like it&apos;s three times the size. Your ops team ships
-              without the backlog.
+              Your team stops gluing systems together by hand — and spends that time on the customer
+              problems only people can solve.
             </p>
           </div>
         </div>

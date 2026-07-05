@@ -19,7 +19,7 @@ export default function Closing() {
               textWrap: 'balance',
             }}
           >
-            See what agentic systems could run inside your company.
+            See where agents would pay for themselves in your operation.
           </h2>
 
           <p

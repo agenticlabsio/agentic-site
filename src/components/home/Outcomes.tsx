@@ -5,9 +5,9 @@ const outcomes = [
       'Background agents remove the manual coordination, approvals, and repetitive operational work that pile up across systems.',
   },
   {
-    title: 'Accelerate execution',
+    title: 'Return time to customers',
     description:
-      'Processes that once required multiple team handoffs now execute continuously, without waiting on a queue.',
+      'The hours your team spends on data entry, handoffs, and status-chasing go back to the problems only people can solve.',
   },
   {
     title: 'Scale without hiring',

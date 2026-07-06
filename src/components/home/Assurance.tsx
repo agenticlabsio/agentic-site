@@ -17,9 +17,9 @@ const assurances = [
       'Every action, decision, and workflow is logged for review and audit. Complete transparency into agent behavior.',
   },
   {
-    title: 'No black boxes',
+    title: 'You own the stack',
     description:
-      'We never deploy opaque systems. Every agent component can be inspected, understood, and explained.',
+      'Data, models, agents, and workflows are yours — built in your environment, documented, and handed over. Every component can be inspected and explained. No lock-in.',
   },
 ]
 

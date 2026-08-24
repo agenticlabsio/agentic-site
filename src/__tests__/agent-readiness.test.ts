@@ -11,7 +11,7 @@ import {
 describe('agent readiness', () => {
   it('detects markdown content negotiation requests', () => {
     expect(acceptsMarkdown('text/markdown')).toBe(true)
-    expect(acceptsMarkdown('text/html, text/markdown;q=0.9')).toBe(true)
+    expect(acceptsMarkdown('text/html, text/markdown;q=0.9')).toBe(true)\n    expect(acceptsMarkdown('text/markdown;q=0.5')).toBe(true)\n    expect(acceptsMarkdown('text/markdown;q=0')).toBe(false)
     expect(acceptsMarkdown('text/html')).toBe(false)
     expect(acceptsMarkdown(null)).toBe(false)
   })

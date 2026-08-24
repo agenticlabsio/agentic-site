@@ -44,5 +44,14 @@ export function acceptsMarkdown(acceptHeader: string | null): boolean {
   return acceptHeader
     .split(',')
     .map((value) => value.trim().toLowerCase())
-    .some((value) => value.startsWith('text/markdown') && !value.includes('q=0'))
+    .some((value) => {
+      if (!value.startsWith('text/markdown')) return false
+
+      const quality = value
+        .split(';')
+        .map((part) => part.trim())
+        .find((part) => part.startsWith('q='))
+
+      return quality ? Number(quality.slice(2)) > 0 : true
+    })
 }

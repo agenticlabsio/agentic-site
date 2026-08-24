@@ -50,13 +50,19 @@ function markdownResponse(body: string, status = 200): NextResponse {
 
 export function middleware(request: NextRequest) {
   const accept = request.headers.get('accept')
-  if (!acceptsMarkdown(accept)) return NextResponse.next()
-
   const { pathname } = request.nextUrl
 
   if (pathname === '/') {
-    return markdownResponse(AGENT_HOMEPAGE_MARKDOWN)
+    if (acceptsMarkdown(accept)) {
+      return markdownResponse(AGENT_HOMEPAGE_MARKDOWN)
+    }
+
+    const response = NextResponse.next()
+    response.headers.set('Vary', MARKDOWN_VARY)
+    return response
   }
+
+  if (!acceptsMarkdown(accept)) return NextResponse.next()
 
   if (!isKnownPublicPath(pathname)) {
     return markdownResponse(AGENT_404_MARKDOWN, 404)

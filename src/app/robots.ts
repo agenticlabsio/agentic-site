@@ -17,6 +17,8 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'PerplexityBot', allow: '/' },
       { userAgent: 'ClaudeBot', allow: '/' },
       { userAgent: 'Anthropic-AI', allow: '/' },
+      { userAgent: 'DeepSeekBot', allow: '/' },
+      { userAgent: 'ora-agent', allow: '/' },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
   }
